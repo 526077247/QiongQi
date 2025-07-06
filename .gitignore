@@ -1,0 +1,14 @@
+node_modules
+Intermediate
+.history
+.idea
+.vs
+Build
+Binaries
+Cooked
+Crashes
+Logs
+Saved
+Plugins/Puerts/ThirdParty/v8_11.8.172
+Plugins/Puerts/Binaries
+Plugins/Puerts/Intermediate
