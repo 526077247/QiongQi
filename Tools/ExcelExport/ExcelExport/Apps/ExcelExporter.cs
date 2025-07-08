@@ -258,8 +258,7 @@ namespace QiongQi
                 {
                     stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]},'{configList[i]}');");
                     stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]}Category,'{configList[i]}Category');");
-                    stringBuilder.AppendLine($"\tConfigManager.instance.loadOneInThread({configList[i]}Category,'{configList[i]}Category', configBytes);");
-                    stringBuilder.AppendLine($"\tconfigBytes.set('{configList[i]}Category',{configList[i]}CategoryData);");
+                    stringBuilder.AppendLine($"\tConfigManager.instance.loadOneInThread({configList[i]}Category,'{configList[i]}Category', {configList[i]}CategoryData.{configList[i]}CategoryData);");
                 }
                 stringBuilder.AppendLine("}");
 

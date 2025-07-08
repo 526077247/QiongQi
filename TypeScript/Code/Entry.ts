@@ -13,7 +13,7 @@ import { CoroutineLockManager } from "./Module/CoroutineLock/CoroutineLockManage
 // import { HomeScene } from "./Game/Scene/LoginScene"
 import { I18NManager } from "./Module/I18N/I18NManager"
 import { CacheManager } from "./Module/Player/CacheManager"
-// import { ConfigManager } from "./Module/Config/ConfigManager"
+import { ConfigManager } from "./Module/Config/ConfigManager"
 // import { ImageLoaderManager } from "./Module/Resource/ImageLoaderManager"
 // import { CameraManager } from "./Module/Camera/CameraManager"
 // import { UIToastManager } from "./Module/UI/Toast/UIToastManager"
@@ -34,8 +34,7 @@ export class Entry
             ManagerProvider.registerManager(CacheManager);
 
             // ManagerProvider.registerManager(BundleManager);
-            // const cm = ManagerProvider.registerManager(ConfigManager);
-            // await cm.loadAsync();
+            ManagerProvider.registerManager(ConfigManager);
            
             // ManagerProvider.registerManager(ResourceManager);
             // ManagerProvider.registerManager(GameObjectPoolManager);

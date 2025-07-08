@@ -14,8 +14,7 @@ export class ConfigManager implements IManager{
 
     public init() {
         ConfigManager._instance = this;
-        const configBytes: Map<string, any> = new Map<string, any>();
-        register(configBytes);
+        register();
     }
 
     public destroy() {
@@ -34,10 +33,9 @@ export class ConfigManager implements IManager{
         return category as T;
     }
 
-    public loadOneInThread<T>(type: new (...args:any[]) => T, name: string = "", configBytes: Map<string, any>){
+    public loadOneInThread<T>(type: new (...args:any[]) => T, name: string = "", jObj: any){
         if (string.isNullOrEmpty(name))
             name = type.name;
-        const jObj = configBytes.get(name);
         const category = JsonHelper.deserialize(type, jObj);
         category.endInit();
     }

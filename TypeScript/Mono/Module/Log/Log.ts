@@ -61,8 +61,12 @@ export class Log {
     public static info(message: any, ...args: any[]): void {
         if (!Log.checkLogLevel(InfoLevel) || !Log._logger) return;
 
-        if (typeof message !== 'string') {
+        if(!message){
             message = String(message);
+        }
+        
+        if (typeof message !== 'string') {
+            message = JSON.stringify(message);
         }
 
         if (args.length > 0) {

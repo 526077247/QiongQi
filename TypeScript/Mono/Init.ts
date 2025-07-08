@@ -5,7 +5,6 @@ import { Entry } from "../Code/Entry";
 import { ETTask } from "../ThirdParty/ETTask/ETTask";
 import { ManagerProvider } from "./Core/Manager/ManagerProvider";
 import { Define } from "./Define";
-
 export class Init
 {
     public static start() 
