@@ -3,6 +3,7 @@ Intermediate
 .history
 .idea
 .vs
+.vscode
 Build
 Binaries
 Cooked
@@ -14,3 +15,11 @@ Plugins/Puerts/Binaries
 Plugins/Puerts/Intermediate
 Plugins/Puerts/Source/CSharpParamDefaultValueMetas
 Content/JavaScript
+
+/Tools/ExcelExport/ExcelExport/obj
+/Tools/ExcelExport/.idea
+/Tools/ExcelExport/.vs
+/Bin
+/Excel/Json
+ts_file_versions_info.json
+QiongQi.sln

@@ -7,8 +7,10 @@ export class JsonHelper {
      * 注册可序列化的类
      * @param type 要注册的类
      */
-    static registerClass<T>(type: new (...args:any[]) => T, ignoreProps?: string[]): void {
-        const className = type.name;
+    static registerClass<T>(type: new (...args:any[]) => T, className: string, ignoreProps?: string[]): void {
+        if(!className){
+            className = type.name;
+        }
         if (this.typeRegistry.has(className)) {
             return;
         }
@@ -31,8 +33,7 @@ export class JsonHelper {
      * @param pretty 是否格式化输出
      * @returns JSON 字符串
      */
-    public static toJson<T>(type: new (...args:any[]) => T, obj: any, pretty: boolean = false): string {
-        if(!!type) this.registerClass(type);
+    public static toJson(obj: any, pretty: boolean = false): string {
         const serialized = this.serialize(obj);
         
         return !!pretty 
@@ -129,7 +130,6 @@ export class JsonHelper {
      * @returns 反序列化后的对象
      */
     public static fromJson<T>(type: new (...args:any[]) => T, json: string) {
-        if(!!type) this.registerClass(type);
         const parsed = JSON.parse(json);
         return this.deserialize(type, parsed);
     }
@@ -149,10 +149,9 @@ export class JsonHelper {
         // 处理数组
         if (Array.isArray(data)) {
             return data.map((item, i) => 
-                this.deserialize(item, `${path}[${i}]`)
+                this.deserialize(null, item, `${path}[${i}]`)
             );
         }
-
         // 处理特殊类型
         if ('_type' in data || !!type) {
             const typeNmae = data._type;
@@ -165,8 +164,8 @@ export class JsonHelper {
             if (typeNmae === 'Map') {
                 return new Map(
                     (data._value as [any, any][]).map(([key, value]) => [
-                        this.deserialize(key, `${path}.key`),
-                        this.deserialize(value, `${path}.value`)
+                        this.deserialize(null, key, `${path}.key`),
+                        this.deserialize(null, value, `${path}.value`)
                     ])
                 );
             }
@@ -175,7 +174,7 @@ export class JsonHelper {
             if (typeNmae === 'Set') {
                 return new Set(
                     (data._value as any[]).map((value, i) => 
-                        this.deserialize(value, `${path}[${i}]`)
+                        this.deserialize(null, value, `${path}[${i}]`)
                     )
                 );
             }
@@ -189,7 +188,7 @@ export class JsonHelper {
             // 反序列化属性
             for (const key in data) {
                 if (key !== '_type' && data.hasOwnProperty(key) && (!hasIgnore||!JsonHelper.isIgnoreProperty(typeNmae, key))) {
-                    (instance as any)[key] = this.deserialize(data[key], `${path}.${key}`);
+                    (instance as any)[key] = this.deserialize(null, data[key], `${path}.${key}`);
                 }
             }
             
@@ -197,7 +196,6 @@ export class JsonHelper {
             if (typeof (instance as any).fromJSON === 'function') {
                 return (instance as any).fromJSON(data);
             }
-            
             return instance;
         }
         
@@ -205,7 +203,7 @@ export class JsonHelper {
         const result: Record<string, any> = {};
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
-                result[key] = this.deserialize(data[key], `${path}.${key}`);
+                result[key] = this.deserialize(null, data[key], `${path}.${key}`);
             }
         }
         return result;

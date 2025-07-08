@@ -16,8 +16,8 @@ void UQiongQiGameInstance::OnStart()
 	//GameScript->WaitDebugger();
 	TArray<TPair<FString, UObject*>> Arguments;
 	Arguments.Add(TPair<FString, UObject*>(TEXT("GameInstance"), this));
-    
-	GameScript->Start("Init", Arguments);
+
+	GameScript->Start("Start", Arguments);
 }
 
 void UQiongQiGameInstance::Shutdown()

@@ -2,7 +2,7 @@ import { LinkedList } from "../Object/LinkedList"
 import { UnOrderDoubleKeyDictionary } from "../Object/UnOrderDoubleKeyDictionary"
 import { IManagerDestroy, IManager } from "./IManager"
 import { IUpdate, ILateUpdate} from "../../Module/Update/IUpdate"
-import { CCCLifeTimeHelper } from "../../Helper/UELifeTimeHelper"
+import { UELifeTimeHelper } from "../../Helper/UELifeTimeHelper"
 export class ManagerProvider
 {
     static readonly instance : ManagerProvider = new ManagerProvider();
@@ -89,10 +89,10 @@ export class ManagerProvider
         {
             node.value.update();
         }
-        var count = CCCLifeTimeHelper.updateFinishTask.count;
+        var count = UELifeTimeHelper.updateFinishTask.count;
         while (count-- > 0)
         {
-            var task = CCCLifeTimeHelper.updateFinishTask.dequeue();
+            var task = UELifeTimeHelper.updateFinishTask.dequeue();
             task.setResult();
         }
     }
@@ -102,10 +102,10 @@ export class ManagerProvider
         {
             node.value.lateUpdate();
         }
-        var count = CCCLifeTimeHelper.updateFinishTask.count;
+        var count = UELifeTimeHelper.updateFinishTask.count;
         while (count-- > 0)
         {
-            var task = CCCLifeTimeHelper.updateFinishTask.dequeue();
+            var task = UELifeTimeHelper.updateFinishTask.dequeue();
             task.setResult();
         }
     }
