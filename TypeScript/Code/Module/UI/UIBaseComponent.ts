@@ -15,10 +15,10 @@ export abstract class UIBaseComponent {
 
     public abstract getConstructor(): new () => UIBaseComponent;
 
-    protected parent: UIBaseContainer;
+    public parent: UIBaseContainer;
     protected widget : Widget;
     protected parentWidget : PanelWidget;
-    protected path: string;
+    public path: string;
     private timerId: bigint = 0n;
     private _activeSelf: boolean = false;
 
@@ -46,7 +46,15 @@ export abstract class UIBaseComponent {
     {
         if (this.widget == null)
         {
-            var pTrans: PanelWidget = this.getParentWidget();
+            if(string.isNullOrEmpty(this.path))
+            {
+                this.widget = this.getParentWidget();
+                if (this.widget != null)
+                {
+                    return this.widget;
+                }
+            }
+            var pTrans: PanelWidget = this.getParentPanelWidget();
             if (pTrans != null)
             {
                 // var rc = pTrans.getComponent<ReferenceCollector>(ReferenceCollector);
@@ -64,7 +72,7 @@ export abstract class UIBaseComponent {
                         const children = pRoot.GetAllChildren();
                         pRoot = null;
                         for (let index = 0; index < children.Num(); index++) {
-                            const element: Widget = children[index];
+                            const element: Widget = children.Get(index);
                             if(element.GetName() == name){
                                 pRoot = element as PanelWidget;
                                 break;
@@ -94,7 +102,7 @@ export abstract class UIBaseComponent {
         return this.widget;
     }
 
-    protected getParentWidget(): PanelWidget
+    protected getParentPanelWidget(): PanelWidget
     {
         if (this.parentWidget == null)
         {
@@ -111,6 +119,20 @@ export abstract class UIBaseComponent {
         }
 
         return this.parentWidget;
+    }
+
+    private getParentWidget(): Widget
+    {
+        var pui = this.parent;
+        if (pui == null)
+        {
+            Log.error("ParentTransform is null Path:" + this.path);
+        }
+        else
+        {
+            pui.activatingWidget();
+            return pui.widget;
+        }
     }
 
     public _afterOnEnable()

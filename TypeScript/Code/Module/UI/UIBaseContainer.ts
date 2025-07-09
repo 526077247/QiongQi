@@ -14,7 +14,7 @@ import { UIBaseComponent } from "./UIBaseComponent";
  */
 export abstract class UIBaseContainer extends UIBaseComponent {
 
-    private components : UnOrderDoubleKeyDictionary<string, new (...args: any[]) => any, UIBaseComponent>; //[path]:[component_name:UIBaseContainer]
+    private components : UnOrderDoubleKeyDictionary<string, new (...args: any[]) => any, UIBaseComponent>; //[path]:[component_name:UIBaseComponent]
     private length: number = 0;
 
     public _afterOnEnable()
@@ -104,9 +104,9 @@ export abstract class UIBaseContainer extends UIBaseComponent {
      * @param component 
      * @returns 
      */
-    private recordUIComponent(name: string, componentClass: new (...args: any[]) => any, component: UIBaseContainer)
+    private recordUIComponent(name: string, componentClass: new (...args: any[]) => any, component: UIBaseComponent)
     {
-        if (this.components == null) this.components = new UnOrderDoubleKeyDictionary<string, new (...args: any[]) => any, UIBaseContainer>();
+        if (this.components == null) this.components = new UnOrderDoubleKeyDictionary<string, new (...args: any[]) => any, UIBaseComponent>();
         if (this.components.containSubKey(name, componentClass))
         {
             Log.error("Already exist component_class : " + componentClass.name);
@@ -123,7 +123,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
      * @param name 游戏物体名称
      * @returns 
      */
-    public addComponentNotCreate<T extends UIBaseContainer>(type: new () => T, name: string): T
+    public addComponentNotCreate<T extends UIBaseComponent>(type: new () => T, name: string): T
     {
         const componentInst: T = new type();
         componentInst.path = name;
@@ -139,7 +139,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
      * @param name 游戏物体名称
      * @returns 
      */
-    public addComponent<T extends UIBaseContainer, A = void, B = void, C = void>(type: new () => T, path: string = "", a?:A, b?:B, c?:C) : T
+    public addComponent<T extends UIBaseComponent, A = void, B = void, C = void>(type: new () => T, path: string = "", a?:A, b?:B, c?:C) : T
     {
         const componentInst: T = new type();
         componentInst.path = path;
@@ -160,7 +160,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
      * @param path 
      * @returns 
      */
-    public getComponent<T extends UIBaseContainer>(type: (new () => T),path: string = ""): T
+    public getComponent<T extends UIBaseComponent>(type: (new () => T),path: string = ""): T
     {
         if (this.components == null) return null;
         const [res, component] = this.components.tryGetValue(path, type);
@@ -176,7 +176,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
      * @param type 
      * @param path 
      */
-    public removeComponent<T extends UIBaseContainer>(type: new () => T,path: string = "")
+    public removeComponent<T extends UIBaseComponent>(type: new () => T,path: string = "")
     {
         var component = this.getComponent<T>(type, path);
         if (component != null)

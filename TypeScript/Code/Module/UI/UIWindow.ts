@@ -1,3 +1,4 @@
+import { UserWidget } from "ue";
 import { ObjectPool } from "../../../Mono/Core/ObjectPool";
 import { UIBaseView } from "./UIBaseView";
 import { UILayerNames } from "./UIManager";
@@ -35,6 +36,8 @@ export class UIWindow {
      * 窗口类型
      */
     public view: UIBaseView;
+
+    public userWidget: UserWidget
 
     public static create(): UIWindow
     {

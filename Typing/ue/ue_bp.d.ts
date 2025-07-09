@@ -26,7 +26,6 @@ declare module "ue" {
     namespace Game.AssetsPackage.UI.UICommon.Prefabs.UIRoot {
         class UIRoot_C extends UE.UserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            Bg: UE.Image;
             Root: UE.CanvasPanel;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): UIRoot_C;

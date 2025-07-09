@@ -78,7 +78,8 @@ export class UIManager implements IManager {
     public static get instance(): UIManager {
         return UIManager._instance;
     }
-    private _gameObject: UE.PanelWidget;
+    private _gameObject: UE.CanvasPanel;
+    private _rootLoading: UE.Widget;
    
     private layers: Map<UILayerNames, UILayer>;//所有可用的层级
     private windowStack: Map<UILayerNames, LinkedList<string>>;//窗口记录队列
@@ -118,13 +119,14 @@ export class UIManager implements IManager {
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIRootClass, null) as UE.UserWidget;
         UIRoot.AddToViewport();
-        this._gameObject = UIRoot.WidgetTree.RootWidget as UE.PanelWidget;
+        this._gameObject = UIRoot.WidgetTree.RootWidget as UE.CanvasPanel;
+        this._rootLoading = this._gameObject.GetChildAt(0);
         this.layers = new Map<UILayerNames, UILayer>();
         for (let i = 0; i < configs.length; i++) {
             var layer = configs[i];
             const widget = UE.NewObject(UE.CanvasPanel.StaticClass(),null,UILayerNames[layer.name]) as UE.CanvasPanel;
-            this._gameObject.AddChild(widget);
-            let newLayer: UILayer = ManagerProvider.registerManager<UILayer, UILayerDefine, UE.PanelWidget>(UILayer, layer, widget, null, UILayerNames[layer.name]);
+            const canvasSlots = this._gameObject.AddChildToCanvas(widget);
+            let newLayer: UILayer = ManagerProvider.registerManager<UILayer, UILayerDefine, UE.CanvasPanel, UE.CanvasPanelSlot>(UILayer, layer, widget, canvasSlots, UILayerNames[layer.name]);
             this.layers.set(layer.name,newLayer);
             this.windowStack.set(layer.name,new LinkedList<string>());
             Log.info("create layer "+UILayerNames[layer.name]);
@@ -133,8 +135,8 @@ export class UIManager implements IManager {
 
     private destroyLayer(){
         for (const [key,value] of this.layers) {
-            var obj = value.widget;
-            // obj.destroy();
+            var obj = value.canvas;
+            obj.RemoveFromParent();
         }
         this.layers.clear();
         this.layers = null;
@@ -524,17 +526,27 @@ export class UIManager implements IManager {
     private async innerOpenWindowGetGameObject(path: string, target: UIWindow)
     {
         const view = target.view;
-        // var go = await GameObjectPoolManager.instance.getGameObjectAsync(path);
-        // if (go == null)
-        // {
-        //     Log.error(`UIManager InnerOpenWindow ${target.prefabPath} fail`);
-        //     return;
-        // }
-        // var node: Node = go;
-        // node.setParent(this.getLayer(target.layer).node, false);
-
-        // node.name = target.name;
-        // view.setNode(node);
+        let UIClass = UE.Class.Find(path);
+        if(!UIClass)
+        {
+            UIClass = UE.Class.Load(path);
+        }
+        if(!UIClass)
+        {
+            Log.error(target.name + " class not found at path:"+path);
+            return;
+        }
+        const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIClass, null) as UE.UserWidget;
+        UIRoot.AddToViewport();
+        target.userWidget = UIRoot;
+        var go = UIRoot.WidgetTree.RootWidget as UE.PanelWidget;
+        if (go == null)
+        {
+            Log.error(`UIManager InnerOpenWindow ${target.prefabPath} fail`);
+            return;
+        }
+        view.setWidget(go);
+        
         var viewAny = view as any;
         if(!!viewAny?.onCreate){
             viewAny.onCreate();
@@ -542,17 +554,22 @@ export class UIManager implements IManager {
         if(!!viewAny?.onLanguageChange){
             I18NManager.instance.registerI18NEntity(viewAny as II18N);
         }
+
+        if(!!this._rootLoading){
+            this._rootLoading.RemoveFromParent();
+            this._rootLoading = null;
+        }
     }
 
     private innerResetWindowLayer(window: UIWindow)
     {
         var target = window;
         var view = target.view;
-        var node = view.getWidget();
-        if (!!node)
+        var widget = view.getWidget();
+        if (!!widget)
         {
             var layer = this.getLayer(target.layer);
-            // node.setParent(layer.node, false);
+            layer.canvas.AddChildToCanvas(widget);
         }
     }
 
@@ -576,14 +593,15 @@ export class UIManager implements IManager {
             view.setActive(false);
     }
 
-    private innerDestroyWindow(target: UIWindow,  clear: boolean = false)
+    private innerDestroyWindow(target: UIWindow, clear: boolean = false)
     {
         var view = target.view;
         if (view != null)
         {
-            var obj = view.getWidget();
+            var obj = target.userWidget;
             if (obj)
             {
+                obj.RemoveFromViewport();
                 // if (!GameObjectPoolManager.instance)
                 //     obj.destroy()
                 // else
