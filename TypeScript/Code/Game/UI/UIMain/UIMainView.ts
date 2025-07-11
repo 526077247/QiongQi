@@ -8,10 +8,10 @@ import { IOnEnable } from "../../../Module/UI/IOnEnable";
 // import { IOnWidthPaddingChange } from "../../../Module/UI/IOnWidthPaddingChange";
 import { UIBaseView } from "../../../Module/UI/UIBaseView";
 import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
-// import { UIImage } from "../../../Module/UIComponent/UIImage";
+import { UIImage } from "../../../Module/UIComponent/UIImage";
 // import { UILoopGridView } from "../../../Module/UIComponent/UILoopGridView";
 // import { UILoopListView2 } from "../../../Module/UIComponent/UILoopListView2";
-// import { UIText } from "../../../Module/UIComponent/UIText";
+import { UIText } from "../../../Module/UIComponent/UIText";
 // import { MenuPara, UIMenu } from "../UICommon/UIMenu";
 // import { CellItem } from "./CellItem";
 // import { DateItem } from "./DateItem";
@@ -30,8 +30,8 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
         return true;
     }
 
-    // public image: UIImage;
-	// public text: UIText;
+    public image: UIImage;
+	public text: UIText;
     // public menu: UIMenu
 
     // public loopGridView: UILoopGridView;
@@ -51,8 +51,8 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
 
     public onCreate()
     {
-        // this.image = this.addComponent<UIImage>(UIImage,"Image");
-		// this.text = this.addComponent<UIText>(UIText,"Text");
+        this.image = this.addComponent<UIImage>(UIImage,"Image");
+		this.text = this.addComponent<UIText>(UIText,"Text");
 		// this.menu = this.addComponent<UIMenu>(UIMenu,"UIMenu");
         // this.loopGridView = this.addComponent<UILoopGridView>(UILoopGridView,"ScrollList/LoopGrid");
         // this.loopGridView.initGridView(0,this.onGetGridItemByIndex.bind(this));

@@ -3,7 +3,8 @@ import { IOnCreate } from "../UI/IOnCreate";
 import { IOnDestroy } from "../UI/IOnDestroy";
 import { UIBaseContainer } from "../UI/UIBaseContainer";
 import * as string from "../../../Mono/Helper/StringHelper"
-import { Image } from "ue";
+import { Color, Image, PaperSprite, LinearColor, Texture2D, SlateBrush, ESlateBrushDrawType, ESlateBrushTileType, Margin, SlateColor } from "ue";
+import { ImageLoaderManager } from "../Resource/ImageLoaderManager";
 
 export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<string> {
 
@@ -26,20 +27,20 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
     {
         if (!string.isNullOrEmpty(this.spritePath))
         {
-            this.image.spriteFrame = null;
+            this.image.SetBrush(null);
             ImageLoaderManager.instance?.releaseImage(this.spritePath);
             this.spritePath = null;
         }
 
         if (this.isSetSprite)
         {
-            this.image.spriteFrame = null;
+            this.image.SetBrush(null);
             this.isSetSprite = false;
         }
         
         if (!string.isNullOrEmpty(this.cacheUrl))
         {
-            ImageLoaderManager.instance?.releaseOnlineImage(this.cacheUrl);
+            // ImageLoaderManager.instance?.releaseOnlineImage(this.cacheUrl);
         }
     }
 
@@ -47,10 +48,10 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
     {
         if (this.image == null)
         {
-            this.image = this.getNode().getComponent<Sprite>(Sprite);
+            this.image = this.getWidget() as Image;
             if (this.image == null)
             {
-                Log.error(`添加UI侧组件UIImage时，物体${this.getNode().name}上没有找到Sprite组件`);
+                Log.error(`添加UI侧组件UIImage时，物体${this.getWidget().GetName()}不是Image组件`);
             }
         }
     }
@@ -67,32 +68,29 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
         const thisVersion = this.version;
         if (spritePath == this.spritePath && !this.isSetSprite)
         {
-            if (this.image != null) this.image.enabled = true;
             return;
         }
         this.activatingComponent();
         // if (this.bgAutoFit != null) this.bgAutoFit.enabled = false;
-        this.image.enabled = false;
         var baseSpritePath = this.spritePath;
 
         if (string.isNullOrEmpty(spritePath))
         {
-            this.image.spriteFrame = null;
-            this.image.enabled = true;
+            this.image.SetBrush(null);
             this.isSetSprite = false;
             this.spritePath = spritePath;
         }
         else
         {
-            var sprite = await ImageLoaderManager.instance.loadSpriteAsync(spritePath);
+            var sprite: PaperSprite = await ImageLoaderManager.instance.loadSpriteAsync(spritePath);
             if (thisVersion != this.version)
             {
                 ImageLoaderManager.instance.releaseImage(spritePath);
                 return;
             }
             this.spritePath = spritePath;
-            this.image.enabled = true;
-            this.image.spriteFrame = sprite;
+            //todo:
+            this.image.SetBrushFromTexture(sprite.BakedSourceTexture);
             this.isSetSprite = false;
             if(setNativeSize)
                 this.setNativeSize();
@@ -113,39 +111,39 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
      * @param setNativeSize 
      * @param defaultSpritePath 
      */
-    public async setOnlineSpritePath(url: string, setNativeSize: boolean = false, defaultSpritePath: string = null)
-    {
-        this.activatingComponent();
-        if (!string.isNullOrEmpty(defaultSpritePath))
-        {
-            await this.setSpritePath(defaultSpritePath,setNativeSize);
-        }
-        this.version++;
-        const thisVersion = this.version;
-        var sprite = await ImageLoaderManager.instance.getOnlineSprite(url);
-        if (sprite != null)
-        {
-            if (thisVersion != this.version)
-            {
-                ImageLoaderManager.instance.releaseOnlineImage(url);
-                return;
-            }
-            this.setSprite(sprite);
-            if (!string.isNullOrEmpty(this.cacheUrl))
-            {
-                ImageLoaderManager.instance.releaseOnlineImage(this.cacheUrl);
-                this.cacheUrl = null;
-            }
-            this.cacheUrl = url;
-        }
-    }
+    // public async setOnlineSpritePath(url: string, setNativeSize: boolean = false, defaultSpritePath: string = null)
+    // {
+    //     this.activatingComponent();
+    //     if (!string.isNullOrEmpty(defaultSpritePath))
+    //     {
+    //         await this.setSpritePath(defaultSpritePath,setNativeSize);
+    //     }
+    //     this.version++;
+    //     const thisVersion = this.version;
+    //     var sprite = await ImageLoaderManager.instance.getOnlineSprite(url);
+    //     if (sprite != null)
+    //     {
+    //         if (thisVersion != this.version)
+    //         {
+    //             ImageLoaderManager.instance.releaseOnlineImage(url);
+    //             return;
+    //         }
+    //         this.setSprite(sprite);
+    //         if (!string.isNullOrEmpty(this.cacheUrl))
+    //         {
+    //             ImageLoaderManager.instance.releaseOnlineImage(this.cacheUrl);
+    //             this.cacheUrl = null;
+    //         }
+    //         this.cacheUrl = url;
+    //     }
+    // }
 
     public setNativeSize()
     {
-        if(this.image == null || this.image.spriteFrame == null) return;
-        let uiTrans = this.getTransform();
-        uiTrans.width = this.image.spriteFrame.width;
-        uiTrans.height = this.image.spriteFrame.height;
+    //     if(this.image == null || this.image.spriteFrame == null) return;
+    //     let uiTrans = this.getTransform();
+    //     uiTrans.width = this.image.spriteFrame.width;
+    //     uiTrans.height = this.image.spriteFrame.height;
     }
 
     public getSpritePath()
@@ -153,48 +151,57 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
         return this.spritePath;
     }
 
-    public setColor(color: string|math.Color)
+    public setColor(color: string | Color | LinearColor| SlateColor)
     {
-        if(color instanceof math.Color){
+        if(color instanceof Color){
             this.activatingComponent();
-            this.image.color = color;
+            this.image.SetColorAndOpacity(new LinearColor(color));
+            return;
+        }
+        if(color instanceof LinearColor){
+            this.activatingComponent();
+            this.image.SetColorAndOpacity(color);
+            return;
+        }
+        if(color instanceof SlateColor){
+            this.activatingComponent();
+            this.image.SetColorAndOpacity(color.SpecifiedColor);
             return;
         }
         if(string.isNullOrEmpty(color)) return;
         this.activatingComponent();
-        this.image.color.fromHEX(color);
+        const colorRgb = Color.FromHex(color);
+        this.image.SetColorAndOpacity(new LinearColor(colorRgb));
     }
 
-    public getColor(): math.Color
+    public getColor(): Color
     {
         this.activatingComponent();
-        return this.image.color;
+        return this.image.ColorAndOpacity.ToRGBE();
     }
 
-    public setImageAlpha(a: number, changeChild: boolean = false)
+    public setImageAlpha(a: number)
     {
         this.activatingComponent();
-        this.image.color = new math.Color(this.image.color.r,this.image.color.g, this.image.color.b,a);
-        if (changeChild)
-        {
-            var images = this.image.getComponentsInChildren<Sprite>(Sprite);
-            for (let i = 0; i < images.length; i++)
-            {
-                images[i].color = new math.Color(images[i].color.r,images[i].color.g, images[i].color.b,a);
-            }
+        const color = this.image.ColorAndOpacity;
+        color.A = a;
+        this.image.SetColorAndOpacity(color);
+    }
+
+    // public setEnabled(flag: boolean)
+    // {
+    //     this.activatingComponent();
+    //     this.image.enabled = flag;
+    // }
+
+    public setSprite(sprite: PaperSprite|Texture2D)
+    {
+        this.activatingComponent();
+        if(sprite instanceof Texture2D){
+            this.image.SetBrushFromTexture(sprite);
+        }else{
+            this.image.SetBrushFromTexture(sprite.BakedSourceTexture);
         }
-    }
-
-    public setEnabled(flag: boolean)
-    {
-        this.activatingComponent();
-        this.image.enabled = flag;
-    }
-
-    public setSprite( sprite: SpriteFrame)
-    {
-        this.activatingComponent();
-        this.image.spriteFrame = sprite;
         this.isSetSprite = true;
     }
 }

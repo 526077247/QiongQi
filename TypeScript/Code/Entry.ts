@@ -16,7 +16,7 @@ import { CacheManager } from "./Module/Player/CacheManager"
 import { ConfigManager } from "./Module/Config/ConfigManager"
 import { UILoadingView } from './Game/UI/UILoading/UILoadingView';
 import { Define } from '../Mono/Define';
-// import { ImageLoaderManager } from "./Module/Resource/ImageLoaderManager"
+import { ImageLoaderManager } from "./Module/Resource/ImageLoaderManager"
 // import { CameraManager } from "./Module/Camera/CameraManager"
 // import { UIToastManager } from "./Module/UI/Toast/UIToastManager"
 
@@ -40,7 +40,7 @@ export class Entry
            
             // ManagerProvider.registerManager(ResourceManager);
             // ManagerProvider.registerManager(GameObjectPoolManager);
-            // ManagerProvider.registerManager(ImageLoaderManager);
+            ManagerProvider.registerManager(ImageLoaderManager);
 
 
             ManagerProvider.registerManager(I18NManager);

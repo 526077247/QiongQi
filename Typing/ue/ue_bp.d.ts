@@ -6,7 +6,7 @@ declare module "ue" {
 
     import * as UE from "ue"
 
-// __TYPE_DECL_START: ABF7F76C4D648A14F7154DB264292564
+// __TYPE_DECL_START: 12B4A926471FE522A05DDE81263C9D91
     namespace Game.AssetsPackage.UI.UIMain.Prefabs.UIMainView {
         class UIMainView_C extends UE.UserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);

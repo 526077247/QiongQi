@@ -1,7 +1,5 @@
-import { ProgressBar } from "ue";
+import { Slider } from "ue";
 import { Log } from "../../../Mono/Module/Log/Log";
-import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
-import { TimerType } from "../../../Mono/Module/Timer/TimerType";
 import { IOnDestroy } from "../UI/IOnDestroy";
 import { UIBaseComponent } from "../UI/UIBaseComponent";
 
@@ -10,20 +8,13 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
     public getConstructor(){
         return UISlider;
     }
-    private slider: ProgressBar;
+    private slider: Slider;
     private onValueChanged: (val:number) => void;
     private isWholeNumbers: boolean;
     private valueList: [];
 
-    private min: number = 0;
-    private max: number = 1;
-
-    private isSetting: boolean = false;
-
-    private _lastValue:number;
-    private _checkTimerId;
     private get sliderValue():number{
-        return this.min + this.slider.Percent*(this.max - this.min)
+        return this.slider.Value
     }
 
     public onDestroy(){
@@ -34,65 +25,31 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
     {
         if (this.slider == null)
         {
-            this.slider = this.getWidget() as ProgressBar;
+            this.slider = this.getWidget() as Slider;
             if (this.slider == null)
             {
-                Log.error(`添加UI侧组件UISlider时，物体${this.getWidget().GetName()}不是ProgressBar组件`);
+                Log.error(`添加UI侧组件UISlider时，物体${this.getWidget().GetName()}不是Slider组件`);
             }
         }
     }
+
     public setOnValueChanged(callback: (val:number) => void)
     {
         this.activatingComponent();
         this.removeOnValueChanged();
         this.onValueChanged = callback;
-        if(TimerManager.instance.remove(this._checkTimerId)){
-            this._checkTimerId = 0n;
-        }
-        this._checkTimerId = TimerManager.instance.newFrameTimer(TimerType.ComponentUpdate, this.check, this);
+        this.slider.OnValueChanged.Add(this.onValueChanged)
     }
 
     public removeOnValueChanged()
     {
         if (this.onValueChanged != null)
         {
+            this.slider.OnValueChanged.Remove(this.onValueChanged)
             this.onValueChanged = null;
-            if(TimerManager.instance.remove(this._checkTimerId)){
-                this._checkTimerId = 0n;
-            }
         }
     }
-
-    public check()
-    {
-        if(!!this.slider)
-        {
-            if(!!this._lastValue && this.onValueChanged)
-            {
-                if(this._lastValue!= this.slider.Percent)
-                {
-                    this.onValueChangedEvent();
-                }
-            }
-            this._lastValue = this.slider.Percent;
-        }
-    }
-
     
-    private onValueChangedEvent(){
-        if(this.isSetting) return;
-        if(this.isWholeNumbers){
-            this.isSetting = true;
-            let val = this.sliderValue;
-            val = Math.floor(val+0.5)
-            this.setValue(val)
-            this.isSetting= false;
-        }
-        if(this.onValueChanged){
-            this.onValueChanged(this.sliderValue)
-        }
-    }
-
     public setWholeNumbers(wholeNumbers: boolean)
     {
         this.activatingComponent();
@@ -105,6 +62,7 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
         this.setWholeNumbers(true);
         this.setMinValue(0);
         this.setMaxValue(valueList.length - 1);
+        this.slider.SetStepSize(1)
     }
 
     public getValueList():[]
@@ -125,7 +83,7 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
         {
             if (this.valueList[i] == value)
             {
-                this.slider.SetPercent(i/(this.valueList.length-1));
+                this.slider.SetValue(i);
                 return;
             }
         }
@@ -150,13 +108,11 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
     public setValue(value: number)
     {
         this.activatingComponent();
-        
-        if (!this.isWholeNumbers){
-            this.slider.SetPercent((value - this.min) / (this.max - this.min));
+        if(this.isWholeNumbers){
+            this.slider.SetValue(Math.floor(value));
         }else{
-            this.slider.SetPercent((Math.floor(value) - this.min) / (this.max - this.min));
+            this.slider.SetValue(value);
         }
-        Log.info("setValue"+this.slider.Percent);
     }
 
     public getValue(): number
@@ -173,24 +129,24 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
     public setNormalizedValue(value: number)
     {
         this.activatingComponent();
-        this.slider.SetPercent(value);
+        this.slider.SetValue((this.slider.MaxValue - this.slider.MinValue) * value);
     }
     
     public getNormalizedValue(): number
     {
         this.activatingComponent();
-        return this.slider.Percent;
+        return (this.slider.Value - this.slider.MinValue) / (this.slider.MaxValue - this.slider.MinValue);
     }
 
     public setMaxValue(value: number)
     {
         this.activatingComponent();
-        this.max = value;
+        this.slider.SetMaxValue(value);
     }
 
     public setMinValue(value: number)
     {
         this.activatingComponent();
-        this.min = value;
+        this.slider.SetMinValue(value);
     }
 }

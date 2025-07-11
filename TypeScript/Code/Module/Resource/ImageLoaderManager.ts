@@ -7,7 +7,8 @@ import * as string from "../../../Mono/Helper/StringHelper"
 import { Log } from "../../../Mono/Module/Log/Log";
 import { ETTask } from "../../../ThirdParty/ETTask/ETTask";
 import { HttpManager } from "../../../Mono/Module/Http/HttpManager";
-import { PaperSprite, Texture2D } from "ue";
+import { PaperSprite, ResourceManager, Texture2D } from "ue";
+import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
 class SpriteValue
 {
     public asset: PaperSprite;
@@ -41,7 +42,7 @@ export class ImageLoaderManager implements IManager{
         this.cacheSingleSprite.setCheckCanPopCallback(( key: string,  value: SpriteValue) => { return value.refCount == 0; });
         this.cacheSingleSprite.setPopCallback((key, value) =>
         {
-            ResourceManager.instance.releaseAsset(value.asset);
+            ResourceManager.GetInstance().ReleaseResource(value.asset);
             value.asset = null;
             value.texture = null;
             value.refCount = 0;
@@ -128,7 +129,7 @@ export class ImageLoaderManager implements IManager{
     public clear()
     {
         for (const [key,value] of this.cacheSingleSprite) {
-            ResourceManager.instance?.releaseAsset(value.asset);
+            ResourceManager.GetInstance()?.ReleaseResource(value.asset);
             value.asset = null;
             value.texture = null;
             value.refCount = 0;
@@ -154,7 +155,25 @@ export class ImageLoaderManager implements IManager{
                 return valueC;
             }
         }
-        const asset: PaperSprite = await ResourceManager.instance.loadAsync<PaperSprite>(SpriteFrame,assetAddress+"/spriteFrame");
+
+        ResourceManager.GetInstance().LoadResourceAsync(assetAddress);
+        let suc:boolean = false;
+        while(true)
+        {
+            await TimerManager.instance.waitAsync(1);
+            const state = ResourceManager.GetInstance().GetLoadingState(assetAddress)
+            if(state != 1)
+            {
+                suc = state == 2;
+                break;
+            }
+        }
+        if(!suc)
+        {
+            Log.error("图片精灵不存在！请检查图片设置！\n" + assetAddress);
+            return null;
+        }
+        const asset: PaperSprite = ResourceManager.GetInstance().GetLoadedResource(assetAddress) as PaperSprite;
         if (asset != null)
         {
             let value = cacheCls.get(assetAddress);
