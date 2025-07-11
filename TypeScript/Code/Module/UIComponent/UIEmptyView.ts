@@ -1,6 +1,6 @@
-import { UIBaseContainer } from "../UI/UIBaseContainer";
+import { UIBaseComponent } from "../UI/UIBaseComponent";
 
-export class UIEmptyView extends UIBaseContainer{
+export class UIEmptyView extends UIBaseComponent{
     public getConstructor(){
         return UIEmptyView;
     }

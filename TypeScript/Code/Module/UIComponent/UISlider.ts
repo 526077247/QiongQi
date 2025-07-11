@@ -1,10 +1,11 @@
 import { ProgressBar } from "ue";
 import { Log } from "../../../Mono/Module/Log/Log";
-import { IUpdate } from "../../../Mono/Module/Update/IUpdate";
+import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
+import { TimerType } from "../../../Mono/Module/Timer/TimerType";
 import { IOnDestroy } from "../UI/IOnDestroy";
 import { UIBaseComponent } from "../UI/UIBaseComponent";
 
-export class UISlider extends UIBaseComponent implements IOnDestroy,IUpdate {
+export class UISlider extends UIBaseComponent implements IOnDestroy {
 
     public getConstructor(){
         return UISlider;
@@ -20,6 +21,7 @@ export class UISlider extends UIBaseComponent implements IOnDestroy,IUpdate {
     private isSetting: boolean = false;
 
     private _lastValue:number;
+    private _checkTimerId;
     private get sliderValue():number{
         return this.min + this.slider.Percent*(this.max - this.min)
     }
@@ -44,6 +46,10 @@ export class UISlider extends UIBaseComponent implements IOnDestroy,IUpdate {
         this.activatingComponent();
         this.removeOnValueChanged();
         this.onValueChanged = callback;
+        if(TimerManager.instance.remove(this._checkTimerId)){
+            this._checkTimerId = 0n;
+        }
+        this._checkTimerId = TimerManager.instance.newFrameTimer(TimerType.ComponentUpdate, this.check, this);
     }
 
     public removeOnValueChanged()
@@ -51,10 +57,13 @@ export class UISlider extends UIBaseComponent implements IOnDestroy,IUpdate {
         if (this.onValueChanged != null)
         {
             this.onValueChanged = null;
+            if(TimerManager.instance.remove(this._checkTimerId)){
+                this._checkTimerId = 0n;
+            }
         }
     }
 
-    public update()
+    public check()
     {
         if(!!this.slider)
         {

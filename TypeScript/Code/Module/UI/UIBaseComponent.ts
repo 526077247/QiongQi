@@ -3,9 +3,8 @@ import { Log } from "../../../Mono/Module/Log/Log";
 import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
 import { TimerType } from "../../../Mono/Module/Timer/TimerType";
 // import { ReferenceCollector } from "../../../Mono/Module/UI/ReferenceCollector";
-// import { I18NManager } from "../I18N/I18NManager";
 import * as string from "../../../Mono/Helper/StringHelper"
-import { PanelWidget, Widget } from "ue";
+import { ESlateVisibility, PanelWidget, UserWidget, Widget } from "ue";
 import { UIBaseContainer } from "./UIBaseContainer";
 
 /**
@@ -17,7 +16,7 @@ export abstract class UIBaseComponent {
 
     public parent: UIBaseContainer;
     protected widget : Widget;
-    protected parentWidget : PanelWidget;
+    protected parentWidget : Widget;
     public path: string;
     private timerId: bigint = 0n;
     private _activeSelf: boolean = false;
@@ -46,16 +45,17 @@ export abstract class UIBaseComponent {
     {
         if (this.widget == null)
         {
+            const pWidget = this.getParentWidget();
             if(string.isNullOrEmpty(this.path))
             {
-                this.widget = this.getParentWidget();
+                this.widget = pWidget;
                 if (this.widget != null)
                 {
                     return this.widget;
                 }
             }
-            var pTrans: PanelWidget = this.getParentPanelWidget();
-            if (pTrans != null)
+
+            if (!!pWidget)
             {
                 // var rc = pTrans.getComponent<ReferenceCollector>(ReferenceCollector);
                 // if (rc != null)
@@ -65,20 +65,39 @@ export abstract class UIBaseComponent {
 
                 if (this.widget == null)
                 {
-                    let pRoot = pTrans;
+                    let pRoot = pWidget;
                     const pathvs = this.path.split('/');
-                    for (let i = 0; i < pathvs.length; i++) {
+                    for (let i = 0; i < pathvs.length; i++) 
+                    {
                         const name = pathvs[i];
-                        const children = pRoot.GetAllChildren();
-                        pRoot = null;
-                        for (let index = 0; index < children.Num(); index++) {
-                            const element: Widget = children.Get(index);
-                            if(element.GetName() == name){
-                                pRoot = element as PanelWidget;
-                                break;
+                        const pw = pRoot as PanelWidget;
+                        if(!!pw.GetAllChildren)
+                        {
+                            const children = pw.GetAllChildren();
+                            pRoot = null;
+                            for (let index = 0; index < children.Num(); index++) {
+                                const element: Widget = children.Get(index);
+                                if(element.GetName() == name){
+                                    pRoot = element;
+                                    break;
+                                }
                             }
                         }
-                        if(pRoot == null){
+                        else
+                        {
+                            const uw = pRoot as UserWidget;
+                            pRoot = null;
+                            if(!!uw.WidgetTree)
+                            {
+                                pRoot = uw.WidgetTree.RootWidget;
+                                if(name != "Root")
+                                {
+                                    i--;
+                                }
+                            }
+                        }
+                        if(pRoot == null)
+                        {
                             break;
                         }
                     }
@@ -93,6 +112,7 @@ export abstract class UIBaseComponent {
                     // }
                 }
             }
+            
             if (this.widget == null)
             {
                 Log.error(this.parent.constructor.name + "路径错误:" + this.path);
@@ -102,7 +122,7 @@ export abstract class UIBaseComponent {
         return this.widget;
     }
 
-    protected getParentPanelWidget(): PanelWidget
+    protected getParentWidget(): Widget
     {
         if (this.parentWidget == null)
         {
@@ -114,25 +134,11 @@ export abstract class UIBaseComponent {
             else
             {
                 pui.activatingWidget();
-                this.parentWidget = pui.widget as PanelWidget;
+                this.parentWidget = pui.widget as Widget;
             }
         }
 
         return this.parentWidget;
-    }
-
-    private getParentWidget(): Widget
-    {
-        var pui = this.parent;
-        if (pui == null)
-        {
-            Log.error("ParentTransform is null Path:" + this.path);
-        }
-        else
-        {
-            pui.activatingWidget();
-            return pui.widget;
-        }
     }
 
     public _afterOnEnable()
@@ -180,8 +186,8 @@ export abstract class UIBaseComponent {
     protected innerSetActive(active: boolean)
     {
         this._activeSelf = active;
-        // if (this.getNode() != null && this.node.active != active)
-        //     this.node.active = active;
+        if (this.getWidget() != null && this.widget.Visibility != (this._activeSelf ? ESlateVisibility.Visible:ESlateVisibility.Collapsed))
+            this.widget.SetVisibility(this._activeSelf ? ESlateVisibility.Visible:ESlateVisibility.Collapsed);
     }
 
     public setActive<P1 = void, P2 = void, P3 = void, P4 = void>(active: boolean, p1?: P1, p2?:P2, p3?: P3, p4?: P4)

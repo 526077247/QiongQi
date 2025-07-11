@@ -7,7 +7,7 @@ import { IOnCreate } from "../../../Module/UI/IOnCreate";
 import { IOnEnable } from "../../../Module/UI/IOnEnable";
 // import { IOnWidthPaddingChange } from "../../../Module/UI/IOnWidthPaddingChange";
 import { UIBaseView } from "../../../Module/UI/UIBaseView";
-// import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
+import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
 // import { UIImage } from "../../../Module/UIComponent/UIImage";
 // import { UILoopGridView } from "../../../Module/UIComponent/UILoopGridView";
 // import { UILoopListView2 } from "../../../Module/UIComponent/UILoopListView2";
