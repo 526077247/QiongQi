@@ -12,7 +12,7 @@ import { UIImage } from "../../../Module/UIComponent/UIImage";
 // import { UILoopGridView } from "../../../Module/UIComponent/UILoopGridView";
 // import { UILoopListView2 } from "../../../Module/UIComponent/UILoopListView2";
 import { UIText } from "../../../Module/UIComponent/UIText";
-// import { MenuPara, UIMenu } from "../UICommon/UIMenu";
+import { MenuPara, UIMenu } from "../UICommon/UIMenu";
 // import { CellItem } from "./CellItem";
 // import { DateItem } from "./DateItem";
 
@@ -32,7 +32,7 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
 
     public image: UIImage;
 	public text: UIText;
-    // public menu: UIMenu
+    public menu: UIMenu
 
     // public loopGridView: UILoopGridView;
     // public loopListView2: UILoopListView2;
@@ -53,7 +53,7 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
     {
         this.image = this.addComponent<UIImage>(UIImage,"Image");
 		this.text = this.addComponent<UIText>(UIText,"Text");
-		// this.menu = this.addComponent<UIMenu>(UIMenu,"UIMenu");
+		this.menu = this.addComponent<UIMenu,string>(UIMenu,"UIMenu","UIMenuItem");
         // this.loopGridView = this.addComponent<UILoopGridView>(UILoopGridView,"ScrollList/LoopGrid");
         // this.loopGridView.initGridView(0,this.onGetGridItemByIndex.bind(this));
         // this.loopListView2 = this.addComponent<UILoopListView2>(UILoopListView2,"ScrollList/LoopList");
@@ -61,27 +61,27 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
         // this.welcome = this.addComponent<UIEmptyView>(UIEmptyView,"ScrollList/Welcome");
 
         //模拟读配置
-        // const paras: MenuPara[] = [];
-        // for (const [id, name] of this.config) {
-        //     const menuPara = new MenuPara();
-        //     menuPara.id = id;
-        //     menuPara.name = name;
-        //     paras[paras.length] = menuPara;
-        // }
+        const paras: MenuPara[] = [];
+        for (const [id, name] of this.config) {
+            const menuPara = new MenuPara();
+            menuPara.id = id;
+            menuPara.name = name;
+            paras[paras.length] = menuPara;
+        }
         
-        // this.menu.setData(paras, this.onMenuIndexChanged.bind(this));
+        this.menu.setData(paras, this.onMenuIndexChanged.bind(this));
     }
 
 
     public onEnable()
     {
-        // this.menu.setActiveIndex(0,true);
+        this.menu.setActiveIndex(0,true);
     }
 
-    // public onMenuIndexChanged(para: MenuPara){
-    //     this.curId = para.id;
-	// 	this.refreshItemSpaceShow();
-    // }
+    public onMenuIndexChanged(para: MenuPara){
+        this.curId = para.id;
+		this.refreshItemSpaceShow();
+    }
 
     // public onGetGridItemByIndex(gridView: LoopGridView, index: number, row: number, column: number): LoopGridViewItem
     // {
@@ -133,42 +133,42 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
     //     return item;
     // }
 
-    // public refreshItemSpaceShow()
-    // {
-    //     var conf = this.config.get(this.curId);
-    //     this.text.setText(conf);
-    //     switch (this.curId)
-    //     {
-    //         case 1:
-    //             this.welcome.setActive(true);
-    //             this.loopGridView.setActive(false);
-    //             this.loopListView2.setActive(false);
-    //             break;
-    //         case 2:
-    //             this.welcome.setActive(false);
-    //             this.loopGridView.setActive(true);
-    //             this.loopListView2.setActive(false);
-    //             const dtNow: Date = new Date();     
-    //             this.firstDay = new Date(dtNow.getFullYear(), dtNow.getMonth(), 1); 
-    //             const days = this.getDaysInCurrentMonth(dtNow.getFullYear(), dtNow.getMonth());
-    //             this.totalDay = days + this.firstDay.getDay();
-    //             this.loopGridView.setListItemCount(this.totalDay);
-    //             this.loopGridView.refreshAllShownItem();
-    //             break;
-    //         case 3:
-    //             this.welcome.setActive(false);
-    //             this.loopGridView.setActive(false);
-    //             this.loopListView2.setActive(true);
-    //             this.loopListView2.setListItemCount(200);//无限列表需要修改编译ScrollView引擎源码以支持修改滑动速度,否则滑动惯性会有问题
-    //             this.loopListView2.refreshAllShownItem();
-    //             break;
-    //         default:
-    //             this.welcome.setActive(false);
-    //             this.loopGridView.setActive(false);
-    //             this.loopListView2.setActive(false);
-    //             break;
-    //     }
-    // }
+    public refreshItemSpaceShow()
+    {
+        var conf = this.config.get(this.curId);
+        this.text.setText(conf);
+        // switch (this.curId)
+        // {
+        //     case 1:
+        //         this.welcome.setActive(true);
+        //         this.loopGridView.setActive(false);
+        //         this.loopListView2.setActive(false);
+        //         break;
+        //     case 2:
+        //         this.welcome.setActive(false);
+        //         this.loopGridView.setActive(true);
+        //         this.loopListView2.setActive(false);
+        //         const dtNow: Date = new Date();     
+        //         this.firstDay = new Date(dtNow.getFullYear(), dtNow.getMonth(), 1); 
+        //         const days = this.getDaysInCurrentMonth(dtNow.getFullYear(), dtNow.getMonth());
+        //         this.totalDay = days + this.firstDay.getDay();
+        //         this.loopGridView.setListItemCount(this.totalDay);
+        //         this.loopGridView.refreshAllShownItem();
+        //         break;
+        //     case 3:
+        //         this.welcome.setActive(false);
+        //         this.loopGridView.setActive(false);
+        //         this.loopListView2.setActive(true);
+        //         this.loopListView2.setListItemCount(200);//无限列表需要修改编译ScrollView引擎源码以支持修改滑动速度,否则滑动惯性会有问题
+        //         this.loopListView2.refreshAllShownItem();
+        //         break;
+        //     default:
+        //         this.welcome.setActive(false);
+        //         this.loopGridView.setActive(false);
+        //         this.loopListView2.setActive(false);
+        //         break;
+        // }
+    }
 
     // private getDaysInCurrentMonth(year:number,month:number) {
         

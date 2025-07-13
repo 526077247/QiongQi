@@ -2,11 +2,11 @@ import { Log } from "../../../Mono/Module/Log/Log";
 import { I18NKey } from "../Const/I18NKey";
 import { I18NManager } from "../I18N/I18NManager";
 import { II18N } from "../I18N/II18N";
-import { UIBaseContainer } from "../UI/UIBaseContainer";
+import { UIBaseComponent } from "../UI/UIBaseComponent";
 import * as string from "../../../Mono/Helper/StringHelper"
 import { Color, LinearColor, SlateColor, TextBlock } from "ue";
 
-export class UIText extends UIBaseContainer implements II18N {
+export class UIText extends UIBaseComponent implements II18N {
 
     public getConstructor(){
         return UIText;
@@ -19,10 +19,14 @@ export class UIText extends UIBaseContainer implements II18N {
     {
         if (this.text == null)
         {
-            this.text = this.getWidget() as TextBlock;
-            if (this.text == null)
+            const widget = this.getWidget();
+            if (!(widget instanceof TextBlock))
             {
-                Log.error(`添加UI侧组件UIText时，物体${this.getWidget().GetName()}不是TextBlock组件`);
+                Log.error(`添加UI侧组件UIText时，物体${widget.GetName()}不是TextBlock组件`);
+            }
+            else
+            {
+                this.text = widget as TextBlock;
             }
         }
     }

@@ -16,7 +16,6 @@ import * as UE from 'ue'
 // import { GameObjectPoolManager } from '../Resource/GameObjectPoolManager';
 import { I18NManager } from '../I18N/I18NManager';
 import { II18N } from '../I18N/II18N';
-// import { AnchorPreset, RectTransform } from '../../../Mono/Module/UI/RectTransfrom';
 
 export enum UILayerNames
 {
@@ -516,6 +515,10 @@ export class UIManager implements IManager {
             await this.addWindowToStack(target, p1, p2, p3);
             target.loadingState = UIWindowLoadingState.LoadOver;
             return res;
+        }
+        catch (e)
+        {
+            Log.error(e);
         }
         finally
         {

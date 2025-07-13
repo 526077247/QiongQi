@@ -1,12 +1,12 @@
 import { Log } from "../../../Mono/Module/Log/Log";
 import { IOnCreate } from "../UI/IOnCreate";
 import { IOnDestroy } from "../UI/IOnDestroy";
-import { UIBaseContainer } from "../UI/UIBaseContainer";
+import { UIBaseComponent } from "../UI/UIBaseComponent";
 import * as string from "../../../Mono/Helper/StringHelper"
 import { Color, Image, PaperSprite, LinearColor, Texture2D, SlateBrush, ESlateBrushDrawType, ESlateBrushTileType, Margin, SlateColor } from "ue";
 import { ImageLoaderManager } from "../Resource/ImageLoaderManager";
 
-export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<string> {
+export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<string> {
 
     public getConstructor(){
         return UIImage;
@@ -48,10 +48,14 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
     {
         if (this.image == null)
         {
-            this.image = this.getWidget() as Image;
-            if (this.image == null)
+            const widget = this.getWidget();
+            if (!(widget instanceof Image))
             {
-                Log.error(`添加UI侧组件UIImage时，物体${this.getWidget().GetName()}不是Image组件`);
+                Log.error(`添加UI侧组件UIImage时，物体${widget.GetName()}不是Image组件`);
+            }
+            else
+            {
+                this.image = widget as Image;
             }
         }
     }
@@ -187,13 +191,7 @@ export class UIImage extends UIBaseContainer implements IOnDestroy, IOnCreate<st
         color.A = a;
         this.image.SetColorAndOpacity(color);
     }
-
-    // public setEnabled(flag: boolean)
-    // {
-    //     this.activatingComponent();
-    //     this.image.enabled = flag;
-    // }
-
+    
     public setSprite(sprite: PaperSprite|Texture2D)
     {
         this.activatingComponent();

@@ -1,14 +1,7 @@
-﻿
-import {UnOrderDoubleKeyDictionary} from "../../../Mono/Core/Object/UnOrderDoubleKeyDictionary"
+﻿import {UnOrderDoubleKeyDictionary} from "../../../Mono/Core/Object/UnOrderDoubleKeyDictionary"
 import { Log } from "../../../Mono/Module/Log/Log";
-import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
-import { TimerType } from "../../../Mono/Module/Timer/TimerType";
-// import { ReferenceCollector } from "../../../Mono/Module/UI/ReferenceCollector";
-// import { I18NManager } from "../I18N/I18NManager";
-import * as string from "../../../Mono/Helper/StringHelper"
 import { PanelWidget, Widget } from "ue";
 import { UIBaseComponent } from "./UIBaseComponent";
-
 /**
  * 对应PanelWidget
  */
@@ -42,7 +35,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
 
     public beforeOnDestroy()
     {
-        super.beforeOnDestroy();
+        this._beforeOnDestroy();
         if (this.components != null)
         {
             var keys1 = [...this.components.keys()];

@@ -6,11 +6,11 @@ declare module "ue" {
 
     import * as UE from "ue"
 
-// __TYPE_DECL_START: 12B4A926471FE522A05DDE81263C9D91
+// __TYPE_DECL_START: 613FCDF442375201ABF1C3A6F73D8773
     namespace Game.AssetsPackage.UI.UIMain.Prefabs.UIMainView {
         class UIMainView_C extends UE.UserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            Bg: UE.Image;
+            Image: UE.Image;
             Root: UE.CanvasPanel;
             static StaticClass(): Class;
             static Find(OrigInName: string, Outer?: Object): UIMainView_C;
@@ -36,7 +36,7 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
-// __TYPE_DECL_START: 3896DCE8453F728A5DA87B87C8A4F0CA
+// __TYPE_DECL_START: 113AAA894F9A36874207A3BAFD20D266
     namespace Game.AssetsPackage.UI.UICommon.Prefabs.RootLoading {
         class RootLoading_C extends UE.UserWidget {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);

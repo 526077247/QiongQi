@@ -34,10 +34,14 @@ export class UIProgressBar extends UIBaseComponent implements IOnDestroy {
     {
         if (this.slider == null)
         {
-            this.slider = this.getWidget() as ProgressBar;
-            if (this.slider == null)
+            const widget = this.getWidget();
+            if (!(widget instanceof ProgressBar))
             {
-                Log.error(`添加UI侧组件UIProgressBar时，物体${this.getWidget().GetName()}不是ProgressBar组件`);
+                Log.error(`添加UI侧组件UIProgressBar时，物体${widget.GetName()}不是ProgressBar组件`);
+            }
+            else
+            {
+                this.slider = widget as ProgressBar;
             }
         }
     }
@@ -156,7 +160,6 @@ export class UIProgressBar extends UIBaseComponent implements IOnDestroy {
         }else{
             this.slider.SetPercent((Math.floor(value) - this.min) / (this.max - this.min));
         }
-        Log.info("setValue"+this.slider.Percent);
     }
 
     public getValue(): number

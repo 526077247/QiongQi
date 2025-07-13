@@ -25,10 +25,14 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
     {
         if (this.slider == null)
         {
-            this.slider = this.getWidget() as Slider;
-            if (this.slider == null)
+            const widget = this.getWidget();
+            if (!(widget instanceof Slider))
             {
-                Log.error(`添加UI侧组件UISlider时，物体${this.getWidget().GetName()}不是Slider组件`);
+                Log.error(`添加UI侧组件UISlider时，物体${widget.GetName()}不是Slider组件`);
+            }
+            else
+            {
+                this.slider = widget as Slider;
             }
         }
     }

@@ -63,7 +63,7 @@ export class CoroutineLockInfo{
 }
 
 export class CoroutineLockQueue{
-    queue: Queue<CoroutineLockInfo> = new Queue<CoroutineLockInfo>
+    private queue: Queue<CoroutineLockInfo> = new Queue<CoroutineLockInfo>();
 
     public get count()
     {

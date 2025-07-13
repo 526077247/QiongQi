@@ -2,7 +2,6 @@
 import { Log } from "../../../Mono/Module/Log/Log";
 import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
 import { TimerType } from "../../../Mono/Module/Timer/TimerType";
-// import { ReferenceCollector } from "../../../Mono/Module/UI/ReferenceCollector";
 import * as string from "../../../Mono/Helper/StringHelper"
 import { ESlateVisibility, PanelWidget, UserWidget, Widget } from "ue";
 import { UIBaseContainer } from "./UIBaseContainer";
@@ -19,7 +18,8 @@ export abstract class UIBaseComponent {
     protected parentWidget : Widget;
     public path: string;
     private timerId: bigint = 0n;
-    private _activeSelf: boolean = false;
+    private _enableSelf: boolean = true;
+    private _activeSelf: boolean = true;
 
     public get activeSelf(): boolean{
         return this._activeSelf;
@@ -65,44 +65,7 @@ export abstract class UIBaseComponent {
 
                 if (this.widget == null)
                 {
-                    let pRoot = pWidget;
-                    const pathvs = this.path.split('/');
-                    for (let i = 0; i < pathvs.length; i++) 
-                    {
-                        const name = pathvs[i];
-                        const pw = pRoot as PanelWidget;
-                        if(!!pw.GetAllChildren)
-                        {
-                            const children = pw.GetAllChildren();
-                            pRoot = null;
-                            for (let index = 0; index < children.Num(); index++) {
-                                const element: Widget = children.Get(index);
-                                if(element.GetName() == name){
-                                    pRoot = element;
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            const uw = pRoot as UserWidget;
-                            pRoot = null;
-                            if(!!uw.WidgetTree)
-                            {
-                                pRoot = uw.WidgetTree.RootWidget;
-                                if(name != "Root")
-                                {
-                                    i--;
-                                }
-                            }
-                        }
-                        if(pRoot == null)
-                        {
-                            break;
-                        }
-                    }
-                    
-                    this.widget = pRoot;
+                    this.widget = this.findChild(pWidget,this.path);
                     // if(EDITOR)
                     // {
                     //     if (this.node != null && !string.isNullOrEmpty(this.path) && rc != null)
@@ -120,6 +83,51 @@ export abstract class UIBaseComponent {
         }
 
         return this.widget;
+    }
+    
+    protected findChild(widget: Widget, path: string){
+        if(!widget) return widget;
+        let pRoot = widget;
+        const pathvs = path.split('/');
+        
+        for (let i = 0; i < pathvs.length; i++)
+        {
+            const name = pathvs[i];
+            const pw = pRoot as PanelWidget;
+            if(!!pw.GetAllChildren)
+            {
+                const children = pw.GetAllChildren();
+                pRoot = null;
+                for (let index = 0; index < children.Num(); index++) {
+                    const element: Widget = children.Get(index);
+                    if(element.GetName() == name){
+                        pRoot = element;
+                        break;
+                    }
+                }
+                if(pRoot == null){
+                    Log.error("Not found "+name);
+                }
+            }
+            else
+            {
+                const uw = pRoot as UserWidget;
+                pRoot = null;
+                if(!!uw.WidgetTree)
+                {
+                    pRoot = uw.WidgetTree.RootWidget;
+                    if(name != "Root")
+                    {
+                        i--;
+                    }
+                }
+            }
+            if(pRoot == null)
+            {
+                break;
+            }
+        }
+        return pRoot;
     }
 
     protected getParentWidget(): Widget
@@ -164,8 +172,7 @@ export abstract class UIBaseComponent {
             }
         }
     }
-
-    public beforeOnDestroy()
+    protected _beforeOnDestroy()
     {
         const thisAny = this as any;
         if (!!thisAny.update)
@@ -175,6 +182,10 @@ export abstract class UIBaseComponent {
                 this.timerId = 0n;
             }
         }
+    }
+    public beforeOnDestroy()
+    {
+        this._beforeOnDestroy()
         
         if (this.parent != null && !!this.path)
             this.parent._innerRemoveComponent(this, this.path);
@@ -182,12 +193,32 @@ export abstract class UIBaseComponent {
             Log.info("Close window here, type name: " + this.constructor.name);
     }
 
+    protected getShowState():ESlateVisibility{
+        if(!this._activeSelf){
+            return ESlateVisibility.Collapsed;
+        }else{
+            if(!this._enableSelf) {
+                return ESlateVisibility.Hidden;
+            }else{
+                return ESlateVisibility.Visible;
+            }
+        }
+    }
 
     protected innerSetActive(active: boolean)
     {
         this._activeSelf = active;
-        if (this.getWidget() != null && this.widget.Visibility != (this._activeSelf ? ESlateVisibility.Visible:ESlateVisibility.Collapsed))
-            this.widget.SetVisibility(this._activeSelf ? ESlateVisibility.Visible:ESlateVisibility.Collapsed);
+        const state = this.getShowState();
+        if (this.getWidget() != null && this.widget.Visibility != state)
+            this.widget.SetVisibility(state);
+    }
+
+    public setEnabled(flag: boolean)
+    {
+        this._enableSelf = flag;
+        const state = this.getShowState();
+        if (this.getWidget() != null && this.widget.Visibility != state)
+            this.widget.SetVisibility(state);
     }
 
     public setActive<P1 = void, P2 = void, P3 = void, P4 = void>(active: boolean, p1?: P1, p2?:P2, p3?: P3, p4?: P4)
