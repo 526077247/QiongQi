@@ -114,7 +114,7 @@ export class LoopListView2
         }
 
         const pool = new ItemPool();
-        pool.init(prefab, data.mPadding, data.mStartPosOffset, data.mInitCreateCount, this.mContainerTrans);
+        pool.init(prefab, prefabName, data.mPadding, data.mStartPosOffset, data.mInitCreateCount, this.mContainerTrans);
         pool.SizeX = config.mSizeX;
         pool.SizeY = config.mSizeY;
        

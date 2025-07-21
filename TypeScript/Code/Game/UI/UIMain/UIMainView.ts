@@ -1,14 +1,9 @@
-import { CanvasPanel, ScrollBox, SizeBox, UeBridgeHelper, WidgetLayoutLibrary } from "ue";
-import { Define } from "../../../../Mono/Define";
-import { Log } from "../../../../Mono/Module/Log/Log";
-import { IUpdate } from "../../../../Mono/Module/Update/IUpdate";
-import { LoopGridView, LoopGridViewSettingParam } from "../../../../ThirdParty/SuperScrollView/GridView/LoopGridView";
+import { LoopGridView } from "../../../../ThirdParty/SuperScrollView/GridView/LoopGridView";
 import { LoopGridViewItem } from "../../../../ThirdParty/SuperScrollView/GridView/LoopGridViewItem";
 import { LoopListView2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListView2";
 import { LoopListViewItem2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListViewItem2";
 import { IOnCreate } from "../../../Module/UI/IOnCreate";
 import { IOnEnable } from "../../../Module/UI/IOnEnable";
-// import { IOnWidthPaddingChange } from "../../../Module/UI/IOnWidthPaddingChange";
 import { UIBaseView } from "../../../Module/UI/UIBaseView";
 import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
 import { UIImage } from "../../../Module/UIComponent/UIImage";
@@ -20,7 +15,7 @@ import { CellItem } from "./CellItem";
 import { DateItem } from "./DateItem";
 
 
-export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable, IUpdate{
+export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
 
     public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UIMain/Prefabs/UIMainView.UIMainView_C";
 
@@ -78,19 +73,6 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable, IUpd
         
         this.menu.setData(paras, this.onMenuIndexChanged.bind(this));
     }
-
-    public update() 
-    {
-        // var box = this.loopListView2.getWidget() as ScrollBox;
-        // var content = ((box.GetChildAt(0) as SizeBox).GetChildAt(0) as CanvasPanel)
-        // for (let index = 0; index < content.GetChildrenCount(); index++) {
-        //     const element = content.GetChildAt(index);
-        //     Log.info(element.GetName() + " " + WidgetLayoutLibrary.SlotAsCanvasSlot(element).GetPosition().X+" " + WidgetLayoutLibrary.SlotAsCanvasSlot(element).GetPosition().Y)
-           
-        // }
-        // Log.info(Define.DeltaTime)
-    }
-
 
     public onEnable()
     {

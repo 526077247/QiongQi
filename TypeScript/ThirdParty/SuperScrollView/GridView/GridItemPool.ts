@@ -12,9 +12,9 @@ export class GridItemPool {
 
     constructor() {}
 
-    public init(prefab: Class, createCount: number, parent: CanvasPanel): void {
+    public init(prefab: Class, mPrefabName: string, createCount: number, parent: CanvasPanel): void {
         this._prefab = prefab;
-        this._prefabName = prefab.GetName();
+        this._prefabName = mPrefabName;
         this._initCreateCount = createCount;
         this._itemParent = parent;
         

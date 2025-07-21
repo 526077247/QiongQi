@@ -174,7 +174,7 @@ export class LoopGridView {
         }
 
         const pool = new GridItemPool();
-        pool.init(prefab, data.mInitCreateCount, this.mcontainerTrans);
+        pool.init(prefab, prefabName, data.mInitCreateCount, this.mcontainerTrans);
     
         this.mitemPoolDict.set(prefabName, pool);
         this.mitemPoolList.push(pool);

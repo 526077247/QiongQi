@@ -14,10 +14,10 @@ export class ItemPool {
     public SizeX;
     public SizeY;
 
-    public init(prefabObj: Class, padding: number, startPosOffset: number, 
+    public init(prefabObj: Class, mPrefabName: string, padding: number, startPosOffset: number, 
                 createCount: number, parent: CanvasPanel): void {
         this.mPrefabObj = prefabObj;
-        this.mPrefabName = prefabObj.GetName();
+        this.mPrefabName = mPrefabName;
         this.mInitCreateCount = createCount;
         this.mPadding = padding;
         this.mStartPosOffset = startPosOffset;
