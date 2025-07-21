@@ -27,6 +27,7 @@ void UQiongQiGameInstance::Shutdown()
 
 void UQiongQiGameInstance::Tick(float DeltaTime)
 {
+	GameDeltaTime = DeltaTime;
 	NotifyUpdate.Broadcast();
 }
 

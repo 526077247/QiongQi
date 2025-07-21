@@ -97,6 +97,7 @@ export class Log {
 
     public static error(message: string): void;
     public static error(error: Error): void;
+    public static error(message: any): void;
     public static error(message: string, ...args: any[]): void;
     public static error(input: string | Error, ...args: any[]): void {
         if (!Log._logger) return;
@@ -111,7 +112,11 @@ export class Log {
             }
         } else {
             let message = input as string;
-
+            
+            if (typeof input !== 'string') {
+                message = JSON.stringify(message);
+            }
+    
             if (args.length > 0) {
                 message = string.format(message, ...args);
             }

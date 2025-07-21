@@ -1,8 +1,11 @@
+import { CanvasPanel, ScrollBox, SizeBox, UeBridgeHelper, WidgetLayoutLibrary } from "ue";
+import { Define } from "../../../../Mono/Define";
 import { Log } from "../../../../Mono/Module/Log/Log";
+import { IUpdate } from "../../../../Mono/Module/Update/IUpdate";
 // import { LoopGridView } from "../../../../ThirdParty/SuperScrollView/GridView/LoopGridView";
 // import { LoopGridViewItem } from "../../../../ThirdParty/SuperScrollView/GridView/LoopGridViewItem";
-// import { LoopListView2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListView2";
-// import { LoopListViewItem2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListViewItem2";
+import { LoopListView2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListView2";
+import { LoopListViewItem2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListViewItem2";
 import { IOnCreate } from "../../../Module/UI/IOnCreate";
 import { IOnEnable } from "../../../Module/UI/IOnEnable";
 // import { IOnWidthPaddingChange } from "../../../Module/UI/IOnWidthPaddingChange";
@@ -10,14 +13,14 @@ import { UIBaseView } from "../../../Module/UI/UIBaseView";
 import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
 import { UIImage } from "../../../Module/UIComponent/UIImage";
 // import { UILoopGridView } from "../../../Module/UIComponent/UILoopGridView";
-// import { UILoopListView2 } from "../../../Module/UIComponent/UILoopListView2";
+import { UILoopListView2 } from "../../../Module/UIComponent/UILoopListView2";
 import { UIText } from "../../../Module/UIComponent/UIText";
 import { MenuPara, UIMenu } from "../UICommon/UIMenu";
 // import { CellItem } from "./CellItem";
-// import { DateItem } from "./DateItem";
+import { DateItem } from "./DateItem";
 
 
-export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
+export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable, IUpdate{
 
     public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UIMain/Prefabs/UIMainView.UIMainView_C";
 
@@ -35,8 +38,8 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
     public menu: UIMenu
 
     // public loopGridView: UILoopGridView;
-    // public loopListView2: UILoopListView2;
-    // public welcome: UIEmptyView;
+    public loopListView2: UILoopListView2;
+    public welcome: UIEmptyView;
 
     public curId: number;
 
@@ -56,9 +59,11 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
 		this.menu = this.addComponent<UIMenu,string>(UIMenu,"UIMenu","UIMenuItem");
         // this.loopGridView = this.addComponent<UILoopGridView>(UILoopGridView,"ScrollList/LoopGrid");
         // this.loopGridView.initGridView(0,this.onGetGridItemByIndex.bind(this));
-        // this.loopListView2 = this.addComponent<UILoopListView2>(UILoopListView2,"ScrollList/LoopList");
-        // this.loopListView2.initListView(0,this.onGetListItemByIndex.bind(this));
-        // this.welcome = this.addComponent<UIEmptyView>(UIEmptyView,"ScrollList/Welcome");
+       
+        this.loopListView2 = this.addComponent<UILoopListView2>(UILoopListView2,"ScrollList/LoopList");
+        this.loopListView2.initListView(this.onGetListItemByIndex.bind(this));
+        this.loopListView2.addItemPrefabConfData("SizeBox/Content/DateItem");
+        this.welcome = this.addComponent<UIEmptyView>(UIEmptyView,"ScrollList/Welcome");
 
         //模拟读配置
         const paras: MenuPara[] = [];
@@ -70,6 +75,18 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
         }
         
         this.menu.setData(paras, this.onMenuIndexChanged.bind(this));
+    }
+
+    public update() 
+    {
+        // var box = this.loopListView2.getWidget() as ScrollBox;
+        // var content = ((box.GetChildAt(0) as SizeBox).GetChildAt(0) as CanvasPanel)
+        // for (let index = 0; index < content.GetChildrenCount(); index++) {
+        //     const element = content.GetChildAt(index);
+        //     Log.info(element.GetName() + " " + WidgetLayoutLibrary.SlotAsCanvasSlot(element).GetPosition().X+" " + WidgetLayoutLibrary.SlotAsCanvasSlot(element).GetPosition().Y)
+           
+        // }
+        // Log.info(Define.DeltaTime)
     }
 
 
@@ -116,58 +133,58 @@ export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
     //     return item;
     // }
 
-    // public onGetListItemByIndex(listView: LoopListView2, index: number): LoopListViewItem2
-    // {
-    //     const item: LoopListViewItem2 = listView.newListViewItem("DateItem");
-    //     let dateItem: DateItem;
-    //     if (!item.isInitHandlerCalled)
-    //     {
-    //         item.isInitHandlerCalled = true;
-    //         dateItem = this.loopListView2.addItemViewComponent<DateItem>(DateItem,item);
-    //     }
-    //     else
-    //     {
-    //         dateItem = this.loopListView2.getUIItemView<DateItem>(DateItem,item);
-    //     }
-    //     dateItem.setData(index);
-    //     return item;
-    // }
+    public onGetListItemByIndex(listView: LoopListView2, index: number): LoopListViewItem2
+    {
+        const item: LoopListViewItem2 = listView.newListViewItem("DateItem_C");
+        let dateItem: DateItem;
+        if (!item.isInitHandlerCalled)
+        {
+            item.isInitHandlerCalled = true;
+            dateItem = this.loopListView2.addItemViewComponent<DateItem>(DateItem,item);
+        }
+        else
+        {
+            dateItem = this.loopListView2.getUIItemView<DateItem>(DateItem,item);
+        }
+        dateItem.setData(index);
+        return item;
+    }
 
     public refreshItemSpaceShow()
     {
         var conf = this.config.get(this.curId);
         this.text.setText(conf);
-        // switch (this.curId)
-        // {
-        //     case 1:
-        //         this.welcome.setActive(true);
-        //         this.loopGridView.setActive(false);
-        //         this.loopListView2.setActive(false);
-        //         break;
-        //     case 2:
-        //         this.welcome.setActive(false);
+        switch (this.curId)
+        {
+            case 1:
+                this.welcome.setActive(true);
+                // this.loopGridView.setActive(false);
+                this.loopListView2.setActive(false);
+                break;
+            case 2:
+                this.welcome.setActive(false);
         //         this.loopGridView.setActive(true);
-        //         this.loopListView2.setActive(false);
+                this.loopListView2.setActive(false);
         //         const dtNow: Date = new Date();     
         //         this.firstDay = new Date(dtNow.getFullYear(), dtNow.getMonth(), 1); 
         //         const days = this.getDaysInCurrentMonth(dtNow.getFullYear(), dtNow.getMonth());
         //         this.totalDay = days + this.firstDay.getDay();
         //         this.loopGridView.setListItemCount(this.totalDay);
         //         this.loopGridView.refreshAllShownItem();
-        //         break;
-        //     case 3:
-        //         this.welcome.setActive(false);
+                break;
+            case 3:
+                this.welcome.setActive(false);
         //         this.loopGridView.setActive(false);
-        //         this.loopListView2.setActive(true);
-        //         this.loopListView2.setListItemCount(200);//无限列表需要修改编译ScrollView引擎源码以支持修改滑动速度,否则滑动惯性会有问题
-        //         this.loopListView2.refreshAllShownItem();
-        //         break;
-        //     default:
-        //         this.welcome.setActive(false);
+                this.loopListView2.setActive(true);
+                this.loopListView2.setListItemCount(-1);
+                this.loopListView2.refreshAllShownItem();
+                break;
+            default:
+                this.welcome.setActive(false);
         //         this.loopGridView.setActive(false);
-        //         this.loopListView2.setActive(false);
-        //         break;
-        // }
+                this.loopListView2.setActive(false);
+                break;
+        }
     }
 
     // private getDaysInCurrentMonth(year:number,month:number) {

@@ -25,6 +25,7 @@ export class Init
     {
         try
         {
+            Define.DeltaTime = Define.Game.GameDeltaTime;
             ManagerProvider.update();
             ManagerProvider.lateUpdate();
         }

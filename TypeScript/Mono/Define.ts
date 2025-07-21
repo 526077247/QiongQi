@@ -2,6 +2,7 @@
 export class Define {
 
     public static Game: UE.QiongQiGameInstance
+    public static DeltaTime: number
 
     private static readonly dWidth = 768;
     private static readonly dHeight = 1366;

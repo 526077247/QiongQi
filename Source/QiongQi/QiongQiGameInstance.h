@@ -20,6 +20,8 @@ class QIONGQI_API UQiongQiGameInstance : public UGameInstance, public FTickableG
 
 	UPROPERTY()
 	FNotifyUpdate NotifyUpdate;
+	UPROPERTY()
+	float GameDeltaTime;
 
 	virtual void Init() override;
 	virtual void OnStart() override;

@@ -14,7 +14,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
     private showCount: number = 0
     private itemViewList: UE.Widget[] = []
     
-    private template: string;
+    private template: UE.Class;
     private comp: UE.PanelWidget;
 
     public onDestroy()
@@ -37,11 +37,44 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
             }
         }
     }
+
+    public setTemplate(template:string|UE.Class){
+        if(template instanceof UE.Class){
+            this.template = template;
+            return;
+        }
+        if(string.isNullOrEmpty(template)){
+            Log.error("template == null!")
+            return null;
+        }
+        
+        if(template.startsWith("/")){
+            //预制体
+            let itemClass = UE.Class.Find(template);
+            if(!itemClass)
+            {
+                itemClass = UE.Class.Load(template);
+                if(!itemClass) {
+                    Log.error("UIRoot class not found at path:" + template);
+                    return null;
+                }
+            }
+            this.template = itemClass;
+        }else{
+            //子节点
+            const child: UE.Widget = this.findChild(this.getWidget(), template);
+            if(child instanceof UE.PanelWidget){
+                Log.error("不支持PanelWidget作为子节点")
+                return null;
+            }
+            this.template = child.GetClass();
+        }
+    }
     
 
-    public initListView(template:string, totalCount: number, onGetItemCallback:(index:number, node: UE.Widget)=> void = null)
+    public initListView(template:string|UE.Class, totalCount: number, onGetItemCallback:(index:number, node: UE.Widget)=> void = null)
     {
-        this.template = template;
+        this.setTemplate(template);
         this.activatingComponent();
         this.onGetItemCallback = onGetItemCallback;
         this.setListItemCount(totalCount);
@@ -93,7 +126,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
                 this.itemViewList[i].SetVisibility(UE.ESlateVisibility.Visible);
                 this.onGetItemCallback?.(i, this.itemViewList[i]);
             } else if (i < totalCount) {
-                const item: UE.UserWidget = this.NewItemView();
+                const item: UE.UserWidget = this.newItemView();
                 item.AddToViewport();
                 item.SetVisibility(UE.ESlateVisibility.Visible);
                 if(this.comp instanceof UE.VerticalBox){
@@ -114,33 +147,12 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
         }
     }
 
-    private NewItemView(){
-        if(string.isNullOrEmpty(this.template)){
-            Log.error("this.template == null!")
+    private newItemView(){
+        if(this.template == null) {
+            Log.error("未设置子节点模板")
             return null;
         }
-        
-        if(this.template.startsWith("/")){
-            //预制体
-            let itemClass = UE.Class.Find(this.template);
-            if(!itemClass)
-            {
-                itemClass = UE.Class.Load(this.template);
-                if(!itemClass) {
-                    Log.error("UIRoot class not found at path:" + this.template);
-                    return null;
-                }
-            }
-            return UE.WidgetBlueprintLibrary.Create(Define.Game, itemClass, null) as UE.UserWidget;
-        }else{
-            //子节点
-            const child: UE.Widget = this.findChild(this.getWidget(), this.template);
-            if(child instanceof UE.PanelWidget){
-                Log.error("不支持PanelWidget作为子节点")
-                return null;
-            }
-            return UE.WidgetBlueprintLibrary.Create(Define.Game, child.GetClass(), null) as UE.UserWidget;
-        }
+        return UE.WidgetBlueprintLibrary.Create(Define.Game, this.template, null) as UE.UserWidget;
     }
     public refreshAllShownItem()
     {

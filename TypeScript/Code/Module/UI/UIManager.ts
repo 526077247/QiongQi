@@ -118,8 +118,9 @@ export class UIManager implements IManager {
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIRootClass, null) as UE.UserWidget;
         UIRoot.AddToViewport();
-        this._gameObject = UIRoot.WidgetTree.RootWidget as UE.CanvasPanel;
-        this._rootLoading = this._gameObject.GetChildAt(0);
+        const root = UIRoot.WidgetTree.RootWidget as UE.CanvasPanel;
+        this._gameObject = (root.GetChildAt(1) as UE.SafeZone).GetChildAt(0) as UE.CanvasPanel;
+        this._rootLoading = root.GetChildAt(0);
         this.layers = new Map<UILayerNames, UILayer>();
         for (let i = 0; i < configs.length; i++) {
             var layer = configs[i];
