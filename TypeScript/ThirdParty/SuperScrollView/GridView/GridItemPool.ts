@@ -9,6 +9,7 @@ export class GridItemPool {
     private _pooledItems: LoopGridViewItem[] = [];
     private static _curItemIdCount: number = 0;
     private _itemParent: CanvasPanel = null;
+    private _needNew: boolean| null = null;
 
     constructor() {}
 
@@ -78,13 +79,22 @@ export class GridItemPool {
         if (!this._prefab || !this._itemParent) {
             throw new Error("ItemPool not initialized properly");
         }
-        let newNode: Widget = WidgetBlueprintLibrary.Create(this._itemParent.GetWorld(), this._prefab, null);
-        if(newNode == null){
+        let newNode: Widget;
+        if(this._needNew){
             newNode = NewObject(this._prefab, null) as Widget;
-            if(newNode == null) throw new Error("ItemPool Create Fail " + this._prefab.GetName());
+        }else{
+            newNode = WidgetBlueprintLibrary.Create(this._itemParent.GetWorld(), this._prefab, null)
+            if(this._needNew == null && newNode == null) {
+                newNode = NewObject(this._prefab, null) as Widget;
+                if(!!newNode){
+                    this._needNew = true;
+                }else{
+                    throw new Error("ItemPool Create Fail " + this._prefab.GetName());
+                }
+            }
         }
+
         const canvasSlots = this._itemParent.AddChildToCanvas(newNode);
-        
         canvasSlots.SetPosition(Vector2D.ZeroVector);
         newNode.SetRenderScale(Vector2D.ZeroVector);
         newNode.SetRenderTransformAngle(0);

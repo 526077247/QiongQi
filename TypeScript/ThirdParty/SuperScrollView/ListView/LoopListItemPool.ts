@@ -1,4 +1,4 @@
-import { CanvasPanel, Class, ESlateVisibility, PanelWidget, Vector2D, Widget, WidgetBlueprintLibrary } from "ue";
+import { CanvasPanel, Class, ESlateVisibility, NewObject, PanelWidget, Vector2D, Widget, WidgetBlueprintLibrary } from "ue";
 import { LoopListViewItem2 } from "./LoopListViewItem2";
 
 export class ItemPool {
@@ -13,6 +13,7 @@ export class ItemPool {
     private mItemParent: CanvasPanel | null = null;
     public SizeX;
     public SizeY;
+    private _needNew: boolean| null = null;
 
     public init(prefabObj: Class, mPrefabName: string, padding: number, startPosOffset: number, 
                 createCount: number, parent: CanvasPanel): void {
@@ -104,7 +105,21 @@ export class ItemPool {
         if (!this.mPrefabObj || !this.mItemParent) {
             throw new Error("ItemPool not initialized properly");
         }
-        const newNode = WidgetBlueprintLibrary.Create(this.mItemParent.GetWorld(), this.mPrefabObj, null);
+        let newNode: Widget;
+        if(this._needNew){
+            newNode = NewObject(this.mPrefabObj, null) as Widget;
+        }else{
+            newNode = WidgetBlueprintLibrary.Create(this.mItemParent.GetWorld(), this.mPrefabObj, null)
+            if(this._needNew == null && newNode == null) {
+                newNode = NewObject(this.mPrefabObj, null) as Widget;
+                if(!!newNode){
+                    this._needNew = true;
+                }else{
+                    throw new Error("ItemPool Create Fail " + this.mPrefabObj.GetName());
+                }
+            }
+        }
+
         const canvasSlots = this.mItemParent.AddChildToCanvas(newNode);
         canvasSlots.SetPosition(Vector2D.ZeroVector);
         newNode.SetRenderScale(Vector2D.ZeroVector);

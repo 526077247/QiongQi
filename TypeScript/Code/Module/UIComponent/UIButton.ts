@@ -38,8 +38,9 @@ export class UIButton extends UIBaseContainer implements IOnDestroy {
         this.removeOnClick();
         this.onClick = callback;
         if(!this.onClickSelf){
-            this.onClickSelf = this.onClickEvent.bind(this)
+            this.onClickSelf = ()=>{this.onClickEvent()}
         }
+        this.button.OnPressed.Add(this.onClickSelf);
         this.button.OnClicked.Add(this.onClickSelf);
     }
 
@@ -47,6 +48,7 @@ export class UIButton extends UIBaseContainer implements IOnDestroy {
     {
         if (!!this.onClick)
         {
+            this.button.OnPressed.Remove(this.onClickSelf);
             this.button.OnClicked.Remove(this.onClickSelf);
             this.onClick = null;
         }

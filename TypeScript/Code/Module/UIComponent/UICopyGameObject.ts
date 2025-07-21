@@ -16,7 +16,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
     
     private template: UE.Class;
     private comp: UE.PanelWidget;
-
+    private _needNew: boolean| null = null;
     public onDestroy()
     {
         this.clear();
@@ -39,6 +39,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
     }
 
     public setTemplate(template:string|UE.Class){
+        this._needNew = null;
         if(template instanceof UE.Class){
             this.template = template;
             return;
@@ -126,11 +127,15 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
                 this.itemViewList[i].SetVisibility(UE.ESlateVisibility.Visible);
                 this.onGetItemCallback?.(i, this.itemViewList[i]);
             } else if (i < totalCount) {
-                const item: UE.UserWidget = this.newItemView();
-                item.AddToViewport();
+                const item: UE.Widget = this.newItemView();
                 item.SetVisibility(UE.ESlateVisibility.Visible);
                 if(this.comp instanceof UE.VerticalBox){
                     const slot = this.comp.AddChildToVerticalBox(item);
+                    const size =  slot.Size;
+                    size.SizeRule = UE.ESlateSizeRule.Fill;
+                    slot.SetSize(size);
+                }else if(this.comp instanceof UE.HorizontalBox){
+                    const slot = this.comp.AddChildToHorizontalBox(item);
                     const size =  slot.Size;
                     size.SizeRule = UE.ESlateSizeRule.Fill;
                     slot.SetSize(size);
@@ -152,7 +157,21 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
             Log.error("未设置子节点模板")
             return null;
         }
-        return UE.WidgetBlueprintLibrary.Create(Define.Game, this.template, null) as UE.UserWidget;
+        let newNode: UE.Widget;
+        if(this._needNew){
+            newNode = UE.NewObject(this.template, null) as UE.Widget;
+        }else{
+            newNode = UE.WidgetBlueprintLibrary.Create(Define.Game, this.template, null)
+            if(this._needNew == null && newNode == null) {
+                newNode = UE.NewObject(this.template, null) as UE.Widget;
+                if(!!newNode){
+                    this._needNew = true;
+                }else{
+                    throw new Error("ItemPool Create Fail " + this.template.GetName());
+                }
+            }
+        }
+        return newNode;
     }
     public refreshAllShownItem()
     {
