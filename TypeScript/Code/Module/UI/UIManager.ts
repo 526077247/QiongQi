@@ -84,6 +84,7 @@ export class UIManager implements IManager {
     private windowStack: Map<UILayerNames, LinkedList<string>>;//窗口记录队列
     private windows: Map<string, UIWindow>; //所有存活的窗体  {uiName:window}
 
+    public RootTree: UE.WidgetTree
     public init() {
         UIManager._instance = this;
         this.windows = new Map<string, UIWindow>();
@@ -118,7 +119,8 @@ export class UIManager implements IManager {
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIRootClass, null) as UE.UserWidget;
         UIRoot.AddToViewport();
-        const root = UIRoot.WidgetTree.RootWidget as UE.CanvasPanel;
+        this.RootTree = UIRoot.WidgetTree;
+        const root = this.RootTree.RootWidget as UE.CanvasPanel;
         this._gameObject = (root.GetChildAt(1) as UE.SafeZone).GetChildAt(0) as UE.CanvasPanel;
         this._rootLoading = root.GetChildAt(0);
         this.layers = new Map<UILayerNames, UILayer>();

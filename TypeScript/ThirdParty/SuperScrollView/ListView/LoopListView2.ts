@@ -1,13 +1,11 @@
-import { CanvasPanel, Class, UeBridgeHelper, EOrientation, ESlateVisibility, EUINavigation, ScrollBox, SizeBox, Vector2D, Widget, Vector2f, CanvasPanelSlot } from "ue";
-import { Define } from "../../../Mono/Define";
-import { Log } from "../../../Mono/Module/Log/Log";
+import { CanvasPanel, Class, UeBridgeHelper, EOrientation, ESlateVisibility, ScrollBox, SizeBox, Vector2D, Widget, CanvasPanelSlot } from "ue";
 import { ListItemArrangeType } from "../Common/CommonDefine";
 import { ItemPosMgr } from "../Common/ItemPosMgr";
 import { ItemPool } from "./LoopListItemPool";
 import { LoopListViewItem2 } from "./LoopListViewItem2";
 
 export class ItemPrefabConfData {
-    //相对路径或者Controller路径
+    public name: string
     mItemPrefab: Class = null;
     mPadding: number = 0;
     mInitCreateCount: number = 0;
@@ -109,7 +107,7 @@ export class LoopListView2
         }
 
         const prefab = data.mItemPrefab;
-        const prefabName = prefab.GetName();
+        const prefabName = config.name || prefab.GetName();
         if (this.mItemPoolDict.has(prefabName)) {
             console.error(`A item prefab with name ${prefabName} has existed!`);
             return;
@@ -211,7 +209,7 @@ export class LoopListView2
         this.setScrollbarListener();
         // this.adjustPivot();
         // this.adjustAnchor(this.mContainerTrans);
-        this.adjustContainerPivot(this.mContainerTrans);
+        // this.adjustContainerPivot(this.mContainerTrans);
 
         this.clearListView();
         this.onGetItemByIndex = onGetItemByIndex;
@@ -1684,7 +1682,7 @@ export class LoopListView2
         }
     }
     
-    private adjustContainerPivot(rtf: CanvasPanel): void {
+    // private adjustContainerPivot(rtf: CanvasPanel): void {
         // const pivot = new Vector2D();
         // switch (this.arrangeType) {
         //     case ListItemArrangeType.BottomToTop:
@@ -1701,7 +1699,7 @@ export class LoopListView2
         //         break;
         // }
         // rtf.setAnchorPoint(pivot.X, pivot.Y);
-    }
+    // }
 
     public refreshAllShownItem()
     {

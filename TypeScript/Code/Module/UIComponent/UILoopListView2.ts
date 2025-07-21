@@ -92,11 +92,11 @@ export class UILoopListView2 extends UIBaseContainer implements IOnDestroy,IUpda
             }else{
                 //子节点
                 const child: Widget = this.findChild(this.getWidget(), data);
-                if(child instanceof PanelWidget){
+                if(child instanceof PanelWidget && child.GetChildrenCount() > 0){
                     Log.error("不支持PanelWidget作为子节点")
                     return null;
                 }
-                
+                configData.name = child.GetName();
                 configData.mItemPrefab = child.GetClass();
                 const slot = WidgetLayoutLibrary.SlotAsCanvasSlot(child);
                 if(slot != null){

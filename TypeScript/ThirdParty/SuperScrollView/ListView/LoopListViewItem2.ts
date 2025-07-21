@@ -1,6 +1,4 @@
-import { CanvasPanelSlot, Vector2D, Widget } from "ue";
-import { JsonHelper } from "../../../Mono/Helper/JsonHelper";
-import { Log } from "../../../Mono/Module/Log/Log";
+import { CanvasPanelSlot, Widget } from "ue";
 import { ListItemArrangeType } from "../../../ThirdParty/SuperScrollView/Common/CommonDefine";
 import { LoopListView2 } from "./LoopListView2";
 
@@ -23,26 +21,10 @@ export class LoopListViewItem2
     
     // 用户自定义数据
     private mUserObjectData: any = null;
-    private mUserIntData1: number = 0;
-    private mUserIntData2: number = 0;
-    private mUserStringData1: string | null = null;
-    private mUserStringData2: string | null = null;
 
     // 公共属性访问器
     get userObjectData(): any { return this.mUserObjectData; }
     set userObjectData(value: any) { this.mUserObjectData = value; }
-
-    get userIntData1(): number { return this.mUserIntData1; }
-    set userIntData1(value: number) { this.mUserIntData1 = value; }
-
-    get userIntData2(): number { return this.mUserIntData2; }
-    set userIntData2(value: number) { this.mUserIntData2 = value; }
-
-    get userStringData1(): string | null { return this.mUserStringData1; }
-    set userStringData1(value: string | null) { this.mUserStringData1 = value; }
-
-    get userStringData2(): string | null { return this.mUserStringData2; }
-    set userStringData2(value: string | null) { this.mUserStringData2 = value; }
 
     get startPosOffset(): number { return this.mStartPosOffset; }
     set startPosOffset(value: number) { this.mStartPosOffset = value; }
@@ -178,7 +160,6 @@ export class LoopListViewItem2
         corners[3] = worldPos.X + width * (1-alignment.X); // 右
         
         const offset = this.parentListView.scrollRect.GetScrollOffset();
-        // Log.info(this.itemIndex +" "+ JsonHelper.toJson(corners)+offset);
         if(this.parentListView.isVertList){
             corners[0] += this.parentListView.arrangeType == ListItemArrangeType.TopToBottom?-offset:offset;
             corners[1] += this.parentListView.arrangeType == ListItemArrangeType.TopToBottom?-offset:offset;
@@ -186,7 +167,5 @@ export class LoopListViewItem2
             corners[2] += this.parentListView.arrangeType == ListItemArrangeType.LeftToRight?-offset:offset;
             corners[3] += this.parentListView.arrangeType == ListItemArrangeType.LeftToRight?-offset:offset;
         }
-        // Log.info(JsonHelper.toJson(corners));
-        
     }
 }

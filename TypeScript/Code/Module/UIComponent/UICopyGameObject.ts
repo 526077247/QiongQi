@@ -63,7 +63,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
         }else{
             //子节点
             const child: UE.Widget = this.findChild(this.getWidget(), template);
-            if(child instanceof UE.PanelWidget){
+            if(child instanceof UE.PanelWidget && child.GetChildrenCount() > 0){
                 Log.error("不支持PanelWidget作为子节点")
                 return null;
             }
