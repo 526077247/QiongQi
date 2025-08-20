@@ -127,8 +127,9 @@ export class UIManager implements IManager {
         for (let i = 0; i < configs.length; i++) {
             var layer = configs[i];
             const widget = UE.NewObject(UE.CanvasPanel.StaticClass(),null,UILayerNames[layer.name]) as UE.CanvasPanel;
-            const canvasSlots = this._gameObject.AddChildToCanvas(widget);
-            let newLayer: UILayer = ManagerProvider.registerManager<UILayer, UILayerDefine, UE.CanvasPanel, UE.CanvasPanelSlot>(UILayer, layer, widget, canvasSlots, UILayerNames[layer.name]);
+            const canvasSlot = this._gameObject.AddChildToCanvas(widget);
+            this.resetCanvasSlot(canvasSlot);
+            let newLayer: UILayer = ManagerProvider.registerManager<UILayer, UILayerDefine, UE.CanvasPanel, UE.CanvasPanelSlot>(UILayer, layer, widget, canvasSlot, UILayerNames[layer.name]);
             this.layers.set(layer.name,newLayer);
             this.windowStack.set(layer.name,new LinkedList<string>());
             Log.info("create layer "+UILayerNames[layer.name]);
@@ -543,7 +544,6 @@ export class UIManager implements IManager {
             return;
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIClass, null) as UE.UserWidget;
-        UIRoot.AddToViewport();
         target.userWidget = UIRoot;
         var go = UIRoot.WidgetTree.RootWidget as UE.PanelWidget;
         if (go == null)
@@ -575,7 +575,8 @@ export class UIManager implements IManager {
         if (!!widget)
         {
             var layer = this.getLayer(target.layer);
-            layer.canvas.AddChildToCanvas(widget);
+            window.canvasSlot = layer.canvas.AddChildToCanvas(widget);
+            this.resetCanvasSlot(window.canvasSlot);
         }
     }
 
@@ -652,8 +653,10 @@ export class UIManager implements IManager {
         var uiTrans: UE.Widget = view.getWidget();
         if (uiTrans != null)
         {
-            // uiTrans.setSiblingIndex(uiTrans.parent.children.length - 1);
-            // GuidanceManager.Instance?.NoticeEvent("Open_"+target.Name);
+            var layer = this.getLayer(target.layer);
+            //重新添加一次移到最上面
+            target.canvasSlot = layer.canvas.AddChildToCanvas(uiTrans);
+            this.resetCanvasSlot(target.canvasSlot);
         }
     }
 
@@ -673,6 +676,19 @@ export class UIManager implements IManager {
         {
             Log.error("not layer, name :" + layerName);
         }
+    }
+    
+    private resetCanvasSlot(canvasSlots: UE.CanvasPanelSlot){
+        let anchor = canvasSlots.GetAnchors();
+        anchor.Maximum.Set(1,1);
+        anchor.Minimum.Set(0,0)
+        canvasSlots.SetAnchors(anchor);
+        let offset = canvasSlots.GetOffsets()
+        offset.Left = 0;
+        offset.Right = 0;
+        offset.Top = 0;
+        offset.Bottom = 0;
+        canvasSlots.SetOffsets(offset);
     }
 
     private getUIName<T extends UIBaseView | void>(ui: (new () => T)| string | UIBaseView){

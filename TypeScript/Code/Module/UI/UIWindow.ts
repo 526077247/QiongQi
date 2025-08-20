@@ -1,4 +1,4 @@
-import { UserWidget } from "ue";
+import { UserWidget, CanvasPanelSlot } from "ue";
 import { ObjectPool } from "../../../Mono/Core/ObjectPool";
 import { UIBaseView } from "./UIBaseView";
 import { UILayerNames } from "./UIManager";
@@ -38,6 +38,8 @@ export class UIWindow {
     public view: UIBaseView;
 
     public userWidget: UserWidget
+    
+    public canvasSlot: CanvasPanelSlot
 
     public static create(): UIWindow
     {
