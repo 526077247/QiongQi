@@ -5,7 +5,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <BaseOutputPath>..\..\..\Bin\</BaseOutputPath>
+    <BaseOutputPath>..\..\Bin\</BaseOutputPath>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <RootNamespace>QiongQi</RootNamespace>
   </PropertyGroup>
@@ -16,16 +16,16 @@
 	</PropertyGroup>
 	
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<OutputPath>..\..\..\Bin\</OutputPath>
+		<OutputPath>..\..\Bin\</OutputPath>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<DefineConstants>TRACECOREAPP;NOT_UNITY</DefineConstants>
+		<DefineConstants>TRACECOREAPP</DefineConstants>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-		<OutputPath>..\..\..\Bin\</OutputPath>
+		<OutputPath>..\..\Bin\</OutputPath>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<DefineConstants>TRACECOREAPP;NOT_UNITY</DefineConstants>
+		<DefineConstants>TRACECOREAPP</DefineConstants>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 

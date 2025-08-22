@@ -253,7 +253,7 @@ namespace QiongQi
                     stringBuilder.AppendLine($"import * as {configList[i]}CategoryData from '../Data/{configList[i]}Category.Data';");
                 }
 
-                stringBuilder.AppendLine("export function register(configBytes: Map<string, any>){");
+                stringBuilder.AppendLine("export function register(){");
                 for (int i = 0; i < configList.Count; i++)
                 {
                     stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]},'{configList[i]}');");
