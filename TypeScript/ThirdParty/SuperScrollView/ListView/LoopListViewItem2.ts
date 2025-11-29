@@ -67,7 +67,7 @@ export class LoopListViewItem2
             return pos.Y;
         } 
         // else if (this.parentListView.arrangeType === ListItemArrangeType.BottomToTop) {
-        //     return pos.Y + this.canvasPanelSlot.GetSize().Y;
+        //     return pos.Y - this.canvasPanelSlot.GetSize().Y;
         // }
         return 0;
     }
@@ -77,7 +77,7 @@ export class LoopListViewItem2
         const pos = this.canvasPanelSlot.GetPosition();
         
         if (this.parentListView.arrangeType === ListItemArrangeType.TopToBottom) {
-            return pos.Y - this.canvasPanelSlot.GetSize().Y;
+            return pos.Y + this.canvasPanelSlot.GetSize().Y;
         } 
         // else if (this.parentListView.arrangeType === ListItemArrangeType.BottomToTop) {
         //     return pos.Y;
@@ -156,7 +156,7 @@ export class LoopListViewItem2
         const height = this.canvasPanelSlot.GetSize().Y;
         corners[0] = worldPos.Y + height * (1-alignment.Y); // 下
         corners[1] = worldPos.Y - height * alignment.Y; // 上
-        corners[2] = worldPos.X - width * alignment.X, // 左
+        corners[2] = worldPos.X - width * alignment.X; // 左
         corners[3] = worldPos.X + width * (1-alignment.X); // 右
         
         const offset = this.parentListView.scrollRect.GetScrollOffset();

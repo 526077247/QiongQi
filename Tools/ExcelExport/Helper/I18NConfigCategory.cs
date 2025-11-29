@@ -15,12 +15,12 @@ public class I18NConfigCategory
 public partial class I18NConfig
 {
     /// <summary>Id</summary>
-    public int Id { get; set; }
+    public int id { get; set; }
 
     /// <summary>索引标识</summary>
-	public string Key { get; set; }
+	public string key { get; set; }
 
     /// <summary>内容</summary>
-    public string Value { get; set; }
+    public string value { get; set; }
 }
 

@@ -37,6 +37,11 @@ export class UIWindow {
      */
     public view: UIBaseView;
 
+    /**
+     * 是否消息盒子
+     */
+    public isBox: boolean;
+
     public userWidget: UserWidget
     
     public canvasSlot: CanvasPanelSlot
@@ -54,6 +59,7 @@ export class UIWindow {
         this.prefabPath = null;
         this.layer = UILayerNames.BackgroundLayer;
         this.view = null;
+        this.isBox = false;
         ObjectPool.instance.recycle(this);
     }
 }

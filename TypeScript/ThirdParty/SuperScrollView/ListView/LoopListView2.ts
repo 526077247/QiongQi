@@ -62,7 +62,7 @@ export class LoopListView2
     private distanceForNew0: number = 200;
     private distanceForRecycle1: number = 300;
     private distanceForNew1: number = 200;
-    private mIsDraging: boolean = false;
+    // private mIsDraging: boolean = false;
     // private pointerEventData: EventTouch = null;
     private lastItemIndex: number = 0;
     private lastItemPadding: number = 0;
@@ -83,7 +83,7 @@ export class LoopListView2
     get itemTotalCount(): number { return this.mItemTotalCount; }
     get containerTrans(): CanvasPanel { return this.mContainerTrans; }
     get scrollRect(): ScrollBox { return this.mScrollRect; }
-    get isDraging(): boolean { return this.mIsDraging; }
+    // get isDraging(): boolean { return this.mIsDraging; }
     get isListViewInited(): boolean { return this.mListViewInited; }
     get supportScrollBar(): boolean { return this.mSupportScrollBar; }
     set supportScrollBar(value: boolean) { this.mSupportScrollBar = value; }
@@ -930,8 +930,7 @@ export class LoopListView2
             const downPos0 = this.itemWorldCorners[0];
     
 
-            if (!this.mIsDraging && 
-                tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+            if (tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
                 this.viewPortRectLocalCorners[1] - downPos0 > distanceForRecycle0) {
                 this.mItemList.splice(0, 1);
                 this.recycleItemTmp(tViewItem0);
@@ -949,8 +948,7 @@ export class LoopListView2
             const topPos1 = this.itemWorldCorners[1];
             const downPos1 = this.itemWorldCorners[0];
 
-            if (!this.mIsDraging && 
-                tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+            if (tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
                 topPos1 - this.viewPortRectLocalCorners[0] > distanceForRecycle1) {
                 this.mItemList.pop();
                 this.recycleItemTmp(tViewItem1);
@@ -1073,8 +1071,7 @@ export class LoopListView2
         //     const topPos0 = this.itemWorldCorners[1];
         //     const downPos0 = this.itemWorldCorners[0];
     
-        //     if (!this.mIsDraging && 
-        //         tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+        //     if (tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
         //         topPos0 - this.viewPortRectLocalCorners[0] > distanceForRecycle0) {
                 
         //         this.mItemList.splice(0, 1);
@@ -1093,8 +1090,7 @@ export class LoopListView2
         //     const topPos1 = this.itemWorldCorners[1];
         //     const downPos1 = this.itemWorldCorners[0];
     
-        //     if (!this.mIsDraging && 
-        //         tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+        //     if (tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
         //         this.viewPortRectLocalCorners[1] - downPos1 > distanceForRecycle1) {
                 
         //         this.mItemList.pop();
@@ -1237,8 +1233,7 @@ export class LoopListView2
             const leftPos0 = this.itemWorldCorners[2];
             const rightPos0 = this.itemWorldCorners[3];
     
-            if (!this.mIsDraging && 
-                tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+            if (tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
                 this.viewPortRectLocalCorners[2] - rightPos0 > distanceForRecycle0) {
                 
                 this.mItemList.splice(0, 1);
@@ -1257,8 +1252,7 @@ export class LoopListView2
             const leftPos1 = this.itemWorldCorners[2];
             const rightPos1 = this.itemWorldCorners[3];
     
-            if (!this.mIsDraging && 
-                tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+            if (tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
                 leftPos1 - this.viewPortRectLocalCorners[3] > distanceForRecycle1) {
                 
                 this.mItemList.pop();
@@ -1384,8 +1378,7 @@ export class LoopListView2
         //     const leftPos0 = this.itemWorldCorners[2];
         //     const rightPos0 = this.itemWorldCorners[3];
     
-        //     if (!this.mIsDraging && 
-        //         tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+        //     if (tViewItem0.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
         //         leftPos0 - this.viewPortRectLocalCorners[3] > distanceForRecycle0) {
                 
         //         this.mItemList.splice(0, 1);
@@ -1404,8 +1397,7 @@ export class LoopListView2
         //     const leftPos1 = this.itemWorldCorners[2];
         //     const rightPos1 = this.itemWorldCorners[3];
     
-        //     if (!this.mIsDraging && 
-        //         tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
+        //     if (tViewItem1.itemCreatedCheckFrameCount !== this.listUpdateCheckFrameCount &&
         //         this.viewPortRectLocalCorners[2] - rightPos1 > distanceForRecycle1) {
                 
         //         this.mItemList.pop();
@@ -1558,11 +1550,11 @@ export class LoopListView2
         // else if (this.arrangeType === ListItemArrangeType.BottomToTop) {
         //     let pos = 0;
         //     if (this.mSupportScrollBar) {
-        //         pos = this.getItemPos(this.mItemList[0].itemIndex);
+        //         pos = -this.getItemPos(this.mItemList[0].itemIndex);
         //     }
             
         //     const pos1 = this.mItemList[0].canvasPanelSlot.GetPosition();
-        //     const d = pos + pos1.Y;
+        //     const d = pos - pos1.Y;
         //     let curY = pos;
             
         //     for (let i = 0; i < count; i++) {

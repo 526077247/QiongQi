@@ -25,6 +25,7 @@ export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<st
 
     public onDestroy()
     {
+        this.version++;
         if (!string.isNullOrEmpty(this.spritePath))
         {
             this.image.SetBrush(null);
