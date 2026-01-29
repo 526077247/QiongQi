@@ -1,7 +1,7 @@
 import { UserWidget, CanvasPanelSlot } from "ue";
 import { ObjectPool } from "../../../Mono/Core/ObjectPool";
 import { UIBaseView } from "./UIBaseView";
-import { UILayerNames } from "./UIManager";
+import { UILayerNames } from "./UILayerNames";
 
 export enum UIWindowLoadingState{
     NotStart, // 未开始
@@ -14,7 +14,7 @@ export class UIWindow {
     /**
      * 窗口名字
      */
-    public name:string;
+    public name:new()=>void;
     /**
      * 是否激活
      */

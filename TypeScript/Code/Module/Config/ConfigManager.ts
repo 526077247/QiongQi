@@ -14,7 +14,7 @@ export class ConfigManager implements IManager{
 
     public init() {
         ConfigManager._instance = this;
-        register();
+        register(this.loadOneInThread.bind(this));
     }
 
     public destroy() {

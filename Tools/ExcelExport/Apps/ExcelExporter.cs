@@ -244,7 +244,6 @@ namespace QiongQi
                 Task.WaitAll(tasks.ToArray());
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.AppendLine("import { JsonHelper } from '../../../../Mono/Helper/JsonHelper';");
-                stringBuilder.AppendLine("import { ConfigManager } from '../../Config/ConfigManager';");
                 
                 
                 for (int i = 0; i < configList.Count; i++)
@@ -253,12 +252,12 @@ namespace QiongQi
                     stringBuilder.AppendLine($"import * as {configList[i]}CategoryData from '../Data/{configList[i]}Category.Data';");
                 }
 
-                stringBuilder.AppendLine("export function register(){");
+                stringBuilder.AppendLine("export function register(loadOneInThread: Function){");
                 for (int i = 0; i < configList.Count; i++)
                 {
                     stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]},'{configList[i]}');");
                     stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]}Category,'{configList[i]}Category');");
-                    stringBuilder.AppendLine($"\tConfigManager.instance.loadOneInThread({configList[i]}Category,'{configList[i]}Category', {configList[i]}CategoryData.{configList[i]}CategoryData);");
+                    stringBuilder.AppendLine($"\tloadOneInThread({configList[i]}Category,'{configList[i]}Category', {configList[i]}CategoryData.{configList[i]}CategoryData);");
                 }
                 stringBuilder.AppendLine("}");
 

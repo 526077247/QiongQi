@@ -6,7 +6,7 @@ import { UIMainView } from "../UI/UIMain/UIMainView";
 export class HomeScene implements IScene
 {
     private win: UILoadingView;
-    private dontDestroyWindow: string[] = [UILoadingView.name];
+    private dontDestroyWindow: Array<new()=>void> = [UILoadingView];
 
     public getName(): string
     {
@@ -28,7 +28,7 @@ export class HomeScene implements IScene
         return[cleanup, loadScene, prepare]
     }
     
-    public getDontDestroyWindow(): string[]{
+    public getDontDestroyWindow(): Array<new()=>void>{
         return this.dontDestroyWindow;
     }
     /**

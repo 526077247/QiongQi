@@ -1,7 +1,7 @@
 import { CanvasPanel, CanvasPanelSlot, PanelWidget, Widget } from "ue";
 import { IManager } from "../../../Mono/Core/Manager/IManager"
-import { Define } from "../../../Mono/Define";
-import { UILayerDefine, UILayerNames, UIManager } from "./UIManager"
+import { UILayerNames } from "./UILayerNames";
+import { UILayerDefine } from "./UILayerDefine";
 
 export class UILayer implements IManager<UILayerDefine, PanelWidget, CanvasPanelSlot>{
 
