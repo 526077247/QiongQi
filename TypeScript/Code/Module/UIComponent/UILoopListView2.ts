@@ -1,4 +1,4 @@
-import { Class, PanelWidget, ScrollBox, ScrollBoxSlot, Widget, WidgetLayoutLibrary } from "ue";
+import { Class, ESlateVisibility, PanelWidget, ScrollBox, ScrollBoxSlot, Widget, WidgetLayoutLibrary } from "ue";
 import { Log } from "../../../Mono/Module/Log/Log";
 import { IUpdate } from "../../../Mono/Module/Update/IUpdate";
 import { ItemPrefabConfData, LoopListView2, LoopListViewInitParam } from "../../../ThirdParty/SuperScrollView/ListView/LoopListView2";
@@ -96,6 +96,7 @@ export class UILoopListView2 extends UIBaseContainer implements IOnDestroy,IUpda
                     Log.error("不支持PanelWidget作为子节点")
                     return null;
                 }
+                child.SetVisibility(ESlateVisibility.Collapsed);
                 configData.name = child.GetName();
                 configData.mItemPrefab = child.GetClass();
                 const slot = WidgetLayoutLibrary.SlotAsCanvasSlot(child);

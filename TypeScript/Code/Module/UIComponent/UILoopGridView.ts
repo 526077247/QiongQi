@@ -1,4 +1,4 @@
-import { Class, PanelWidget, ScrollBox, Vector2D, Widget } from "ue";
+import { Class, ESlateVisibility, PanelWidget, ScrollBox, Vector2D, Widget } from "ue";
 import { Log } from "../../../Mono/Module/Log/Log";
 import { GridViewItemPrefabConfData, LoopGridView, LoopGridViewSettingParam } from "../../../ThirdParty/SuperScrollView/GridView/LoopGridView";
 import { LoopGridViewItem } from "../../../ThirdParty/SuperScrollView/GridView/LoopGridViewItem";
@@ -115,6 +115,7 @@ export class UILoopGridView extends UIBaseContainer implements IOnDestroy, IUpda
                     Log.error("不支持PanelWidget作为子节点")
                     return null;
                 }
+                child.SetVisibility(ESlateVisibility.Collapsed);
                 configData.name = child.GetName();
                 configData.mItemPrefab = child.GetClass();
                 this.loopGridView.addItemPrefabConfData(configData);
