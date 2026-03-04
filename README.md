@@ -59,6 +59,10 @@ FSlateShaderResourceProxy* FSlateAtlasedTextureResource::FindOrCreateAtlasedProx
 	return Proxy;
 }
 ```
+* Project Setting
+
+  然后打开project setting里 开启atlas实验性功能"Enable Sprite Atlas Groups"
+
 1. 参考[官方文档](https://puerts.github.io/docs/puerts/unreal/install) 安装node、ts开发环境,下载虚拟机如v8_11.8.172,解压到QiongQi/Plugins/Puerts/ThirdParty
 2. 右键QiongQi/QiongQi.uproject,选择生成vs project files
 3. 进入项目目录下：QiongQi/Plugins/Puerts，并执行命令 node enable_puerts_module.js
