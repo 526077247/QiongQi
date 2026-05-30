@@ -155,8 +155,8 @@ export class SceneManager implements IManager{
             pc.ClientForceGarbageCollection();
             pc.ClientForceGarbageCollection();
             
-        } catch (e) {
-            Log.info('Manual GC not supported:', e.message);
+        } catch (e: any) {
+            Log.info('Manual GC not supported:', e?.message);
         }
 
 

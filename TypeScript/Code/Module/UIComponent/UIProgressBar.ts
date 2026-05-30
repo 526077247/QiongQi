@@ -21,7 +21,7 @@ export class UIProgressBar extends UIBaseComponent implements IOnDestroy {
     private isSetting: boolean = false;
 
     private _lastValue:number;
-    private _checkTimerId;
+    private _checkTimerId: bigint;
     private get sliderValue():number{
         return this.min + this.slider.Percent*(this.max - this.min)
     }
@@ -116,7 +116,7 @@ export class UIProgressBar extends UIBaseComponent implements IOnDestroy {
         return this.valueList;
     }
    
-    public setWholeNumbersValue(value)
+    public setWholeNumbersValue(value: number)
     {
         this.activatingComponent();
         if (!this.isWholeNumbers)

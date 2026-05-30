@@ -38,7 +38,7 @@ export class UICopyGameObject extends UIBaseContainer implements IOnDestroy{
         }
     }
 
-    public setTemplate(template:string|UE.Class){
+    public setTemplate(template:string|UE.Class): void{
         this._needNew = null;
         if(template instanceof UE.Class){
             this.template = template;

@@ -74,7 +74,7 @@ export class UISlider extends UIBaseComponent implements IOnDestroy {
         return this.valueList;
     }
    
-    public setWholeNumbersValue(value)
+    public setWholeNumbersValue(value: number)
     {
         this.activatingComponent();
         if (!this.isWholeNumbers)

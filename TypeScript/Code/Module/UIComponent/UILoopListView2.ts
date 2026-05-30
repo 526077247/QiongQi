@@ -57,7 +57,7 @@ export class UILoopListView2 extends UIBaseContainer implements IOnDestroy,IUpda
      * @param data 
      * @param autoLength 是否自适应宽度（垂直列表） 或高度（水平列表）
      */
-    public addItemPrefabConfData(data: ItemPrefabConfData| Class| string, autoLength:boolean = true){
+    public addItemPrefabConfData(data: ItemPrefabConfData| Class| string, autoLength:boolean = true): void{
         this.activatingComponent();
         if(data instanceof ItemPrefabConfData) {
             this.loopListView.addItemPrefabConfData(data);

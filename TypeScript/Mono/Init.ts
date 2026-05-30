@@ -29,7 +29,7 @@ export class Init
             ManagerProvider.update();
             ManagerProvider.lateUpdate();
         }
-        catch(e)
+        catch(e: any)
         {
             Log.error(e);
         }

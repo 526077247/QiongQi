@@ -78,7 +78,7 @@ export class UILoopGridView extends UIBaseContainer implements IOnDestroy, IUpda
      * 添加预制体配置数据
      * @param data 
      */
-    public addItemPrefabConfData(data: GridViewItemPrefabConfData| Class| string){
+    public addItemPrefabConfData(data: GridViewItemPrefabConfData| Class| string): void{
         this.activatingComponent();
         if(data instanceof GridViewItemPrefabConfData) {
             this.loopGridView.addItemPrefabConfData(data);
