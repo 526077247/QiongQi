@@ -28,19 +28,13 @@ export class Entry
             ManagerProvider.registerManager(TimerManager);
             ManagerProvider.registerManager(CacheManager);
 
-            // ManagerProvider.registerManager(BundleManager);
             ManagerProvider.registerManager(ConfigManager);
-           
-            // ManagerProvider.registerManager(ResourceManager);
-            // ManagerProvider.registerManager(GameObjectPoolManager);
             ManagerProvider.registerManager(ImageLoaderManager);
 
 
             ManagerProvider.registerManager(I18NManager);
             ManagerProvider.registerManager(UIManager);
-            // ManagerProvider.registerManager(UIToastManager);
-            
-            // ManagerProvider.registerManager(CameraManager);
+
             ManagerProvider.registerManager(SceneManager);
 
             await SceneManager.instance.switchScene(HomeScene)

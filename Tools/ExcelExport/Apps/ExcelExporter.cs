@@ -242,26 +242,6 @@ namespace QiongQi
                     tasks.Add(task);
                 }
                 Task.WaitAll(tasks.ToArray());
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine("import { JsonHelper } from '../../../../Mono/Helper/JsonHelper';");
-                
-                
-                for (int i = 0; i < configList.Count; i++)
-                {
-                    stringBuilder.AppendLine($"import {{ {configList[i]}, {configList[i]}Category }} from './{configList[i]}';");
-                    stringBuilder.AppendLine($"import * as {configList[i]}CategoryData from '../Data/{configList[i]}Category.Data';");
-                }
-
-                stringBuilder.AppendLine("export function register(loadOneInThread: Function){");
-                for (int i = 0; i < configList.Count; i++)
-                {
-                    stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]},'{configList[i]}');");
-                    stringBuilder.AppendLine($"\tJsonHelper.registerClass({configList[i]}Category,'{configList[i]}Category');");
-                    stringBuilder.AppendLine($"\tloadOneInThread({configList[i]}Category,'{configList[i]}Category', {configList[i]}CategoryData.{configList[i]}CategoryData);");
-                }
-                stringBuilder.AppendLine("}");
-
-                File.WriteAllText(ClientClassDir + "/ConfigManager.register.ts", stringBuilder.ToString());
                 Console.WriteLine("ExcelExporter 成功");
             }
             catch (Exception e)

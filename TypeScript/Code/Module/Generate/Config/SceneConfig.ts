@@ -1,4 +1,6 @@
+import { JsonHelper } from "../../../../Mono/Helper/JsonHelper";
 import { Log } from "../../../../Mono/Module/Log/Log";
+import * as Data from '../Data/SceneConfigCategory.Data';
 
 export class SceneConfig {
 	/** Id*/
@@ -14,11 +16,15 @@ export class SceneConfig {
 
 export class SceneConfigCategory{
 
-    public constructor(){
-        SceneConfigCategory.instance = this;
+    private static _instance: SceneConfigCategory;
+    public static get instance():SceneConfigCategory{
+        if(SceneConfigCategory._instance != null) return SceneConfigCategory._instance
+        JsonHelper.registerClass(SceneConfig,'SceneConfig');
+        JsonHelper.registerClass(SceneConfigCategory,'SceneConfigCategory');
+        const category = JsonHelper.deserialize(SceneConfigCategory, Data) as SceneConfigCategory;
+        category.endInit();
+        SceneConfigCategory._instance = category;
     }
-
-    public static instance:SceneConfigCategory;
 
     private dict = new Map<number, SceneConfig>();
 

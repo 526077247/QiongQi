@@ -147,7 +147,7 @@ export class LoopListView2
         this.mListViewInited = false;
     }
 
-    public cleanUp(name: string = null, beforeDestroy:(node)=> void = null)
+    public cleanUp(name: string = null, beforeDestroy:(node: Widget)=> void = null)
     {
         if (name == null)
         {

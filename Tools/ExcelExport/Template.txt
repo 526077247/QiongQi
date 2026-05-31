@@ -1,4 +1,6 @@
-﻿import { Log } from "../../../../Mono/Module/Log/Log";
+﻿import { JsonHelper } from "../../../../Mono/Helper/JsonHelper";
+import { Log } from "../../../../Mono/Module/Log/Log";
+import * as Data from '../Data/(ConfigName)Category.Data';
 
 export class (ConfigName) {
 (Fields)
@@ -6,11 +8,15 @@ export class (ConfigName) {
 
 export class (ConfigName)Category{
 
-    public constructor(){
-        (ConfigName)Category.instance = this;
+    private static _instance: (ConfigName)Category;
+    public static get instance():(ConfigName)Category{
+        if((ConfigName)Category._instance != null) return (ConfigName)Category._instance
+        JsonHelper.registerClass((ConfigName),'(ConfigName)');
+        JsonHelper.registerClass((ConfigName)Category,'(ConfigName)Category');
+        const category = JsonHelper.deserialize((ConfigName)Category, Data) as (ConfigName)Category;
+        category.endInit();
+        (ConfigName)Category._instance = category;
     }
-
-    public static instance:(ConfigName)Category;
 
     private dict = new Map<number, (ConfigName)>();
 

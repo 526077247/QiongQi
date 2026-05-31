@@ -37066,45 +37066,6 @@ declare module "ue" {
         __tid_AnchorData_0__: boolean;
     }
     
-    enum ESourceType { SRC_PreviousRegexMatch, SRC_GpuFamily, SRC_GlVersion, SRC_AndroidVersion, SRC_DeviceMake, SRC_DeviceModel, SRC_DeviceBuildNumber, SRC_VulkanVersion, SRC_UsingHoudini, SRC_VulkanAvailable, SRC_CommandLine, SRC_Hardware, SRC_Chipset, SRC_ConfigRuleVar, SRC_HMDSystemName, SRC_SM5Available, SRC_MAX, __typeKeyDoNoAccess}
-    enum ECompareType { CMP_Equal, CMP_Less, CMP_LessEqual, CMP_Greater, CMP_GreaterEqual, CMP_NotEqual, CMP_Regex, CMP_EqualIgnore, CMP_LessIgnore, CMP_LessEqualIgnore, CMP_GreaterIgnore, CMP_GreaterEqualIgnore, CMP_NotEqualIgnore, CMP_Hash, CMP_MAX, __typeKeyDoNoAccess}
-    class ProfileMatchItem {
-        constructor();
-        constructor(SourceType: UE.ESourceType, CompareType: UE.ECompareType, MatchString: string);
-        SourceType: UE.ESourceType;
-        CompareType: UE.ECompareType;
-        MatchString: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ProfileMatchItem_0__: boolean;
-    }
-    
-    class ProfileMatch {
-        constructor();
-        constructor(Profile: string, Match: TArray<UE.ProfileMatchItem>);
-        Profile: string;
-        Match: TArray<UE.ProfileMatchItem>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ProfileMatch_0__: boolean;
-    }
-    
-    class AndroidDeviceProfileMatchingRules extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MatchProfile: TArray<UE.ProfileMatch>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): AndroidDeviceProfileMatchingRules;
-        static Load(InName: string): AndroidDeviceProfileMatchingRules;
-    
-        __tid_AndroidDeviceProfileMatchingRules_0__: boolean;
-    }
-    
     class AndroidFileMediaSourceFactory extends UE.Factory {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -37156,29 +37117,6 @@ declare module "ue" {
         static Load(InName: string): AndroidFileServerRuntimeSettings;
     
         __tid_AndroidFileServerRuntimeSettings_0__: boolean;
-    }
-    
-    class JavaSurfaceViewDevice {
-        constructor();
-        constructor(Manufacturer: string, Model: string);
-        Manufacturer: string;
-        Model: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_JavaSurfaceViewDevice_0__: boolean;
-    }
-    
-    class AndroidJavaSurfaceViewDevices extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        SurfaceViewDevices: TArray<UE.JavaSurfaceViewDevice>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): AndroidJavaSurfaceViewDevices;
-        static Load(InName: string): AndroidJavaSurfaceViewDevices;
-    
-        __tid_AndroidJavaSurfaceViewDevices_0__: boolean;
     }
     
     class AndroidMediaSettings extends UE.Object {
@@ -39906,6 +39844,31 @@ declare module "ue" {
         __tid_AnimNodeExposedValueHandler_PropertyAccess_0__: boolean;
     }
     
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
+        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
+            constructor();
+            constructor(__NameProperty_11: string, __NameProperty_12: string, __NameProperty_13: string, __NameProperty_14: string, __IntProperty_15: number, __StructProperty_16: UE.AnimNodeFunctionRef, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base, AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess);
+            __NameProperty_11: string;
+            __NameProperty_12: string;
+            __NameProperty_13: string;
+            __NameProperty_14: string;
+            __IntProperty_15: number;
+            __StructProperty_16: UE.AnimNodeFunctionRef;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
+            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
+            AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess;
+            AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess;
+            AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
+        }
+        
+    }
+
     namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
         class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
             constructor();
@@ -39923,31 +39886,6 @@ declare module "ue" {
             AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
             AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess;
             AnimGraphNode_BlendSpacePlayer: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
-        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
-            constructor();
-            constructor(__NameProperty_11: string, __NameProperty_12: string, __NameProperty_13: string, __NameProperty_14: string, __IntProperty_15: number, __StructProperty_16: UE.AnimNodeFunctionRef, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base, AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess);
-            __NameProperty_11: string;
-            __NameProperty_12: string;
-            __NameProperty_13: string;
-            __NameProperty_14: string;
-            __IntProperty_15: number;
-            __StructProperty_16: UE.AnimNodeFunctionRef;
-            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
-            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
-            AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess;
             /**
              * @deprecated use StaticStruct instead.
              */
@@ -76244,10 +76182,6 @@ declare module "ue" {
         __tid_CompareIntDataflowNode_0__: boolean;
     }
     
-    namespace Niagara.Enums.Comparison.CompareValues {
-        enum CompareValues { "Return Largest", "Return Smallest", CompareValues_MAX, __typeKeyDoNoAccess}
-    }
-
     class CompileAllBlueprintsCommandlet extends UE.Commandlet {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -96411,10 +96345,6 @@ declare module "ue" {
         __tid_DynamicTextureInstance_0__: boolean;
     }
     
-    namespace ControlRig.Modules.E_SkeletonData {
-        enum E_SkeletonData { "UE5 Mannequin", "UE4 Mannequin", Mixamo, AdvancedSkeleton, HumanIK, mGear, Motive, Vicon, XSens, Paragon, E_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EActivationFunction { Linear, ReLU, LeakyReLU, Tanh, Sigmoid, EActivationFunction_MAX, __typeKeyDoNoAccess}
     enum EAdManagerDelegate { AMD_ClickedBanner, AMD_UserClosedAd, AMD_MAX, __typeKeyDoNoAccess}
     enum EAILockSource { Animation, Logic, Script, Gameplay, MAX, __typeKeyDoNoAccess}
@@ -96503,14 +96433,6 @@ declare module "ue" {
     enum ECameraRigLayer { Base, Main, Global, Visual, ECameraRigLayer_MAX, __typeKeyDoNoAccess}
     enum ECameraShakePatternUpdateResultFlags { ApplyAsAbsolute, SkipAutoScale, SkipAutoPlaySpace, Default, ECameraShakePatternUpdateResultFlags_MAX, __typeKeyDoNoAccess}
     enum ECanCreateConnectionResponse { CONNECT_RESPONSE_MAKE, CONNECT_RESPONSE_DISALLOW, CONNECT_RESPONSE_BREAK_OTHERS_A, CONNECT_RESPONSE_BREAK_OTHERS_B, CONNECT_RESPONSE_BREAK_OTHERS_AB, CONNECT_RESPONSE_MAKE_WITH_CONVERSION_NODE, CONNECT_RESPONSE_MAKE_WITH_PROMOTION, CONNECT_RESPONSE_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.CascadeConversion.ECascadeNiagaraOrbitChainMode {
-        enum ECascadeNiagaraOrbitChainMode { Add, Scale, Link, NONE, ECascadeNiagaraOrbitChainMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.CascadeConversion.ECascadeNiagaraTwoVectorChannels {
-        enum ECascadeNiagaraTwoVectorChannels { XY, YZ, XZ, ECascadeNiagaraTwoVectorChannels_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EChannelEditToolAction { NoAction, Add, Copy, Delete, EChannelEditToolAction_MAX, __typeKeyDoNoAccess}
     enum EChannelMaskParameterColor { Red, Green, Blue, Alpha, EChannelMaskParameterColor_MAX, __typeKeyDoNoAccess}
     enum EChaosSoftsSimulationSpace { WorldSpace, ComponentSpace, ReferenceBoneSpace, EChaosSoftsSimulationSpace_MAX, __typeKeyDoNoAccess}
@@ -103649,10 +103571,6 @@ declare module "ue" {
     enum EInertializationBoneState { Invalid, Valid, Excluded, EInertializationBoneState_MAX, __typeKeyDoNoAccess}
     enum EInertializationSpace { Default, WorldSpace, WorldRotation, EInertializationSpace_MAX, __typeKeyDoNoAccess}
     enum EInertializationState { Inactive, Pending, Active, EInertializationState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Modules.Audio.EInitialAudioParamType {
-        enum EInitialAudioParamType { Boolean, Integer, Float, EInitialAudioParamType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EInitialOscillatorOffset { EOO_OffsetRandom, EOO_OffsetZero, EOO_MAX, __typeKeyDoNoAccess}
     enum EInitialWaveOscillatorOffsetType { Random, Zero, EInitialWaveOscillatorOffsetType_MAX, __typeKeyDoNoAccess}
     enum EInputAxisSwizzle { YXZ, ZYX, XZY, YZX, ZXY, EInputAxisSwizzle_MAX, __typeKeyDoNoAccess}
@@ -105432,413 +105350,25 @@ declare module "ue" {
         __tid_EnhancedInputWorldSubsystem_0__: boolean;
     }
     
-    namespace Niagara.Enums.Angles.ENiagara_AngleInput {
-        enum ENiagara_AngleInput { Degrees, "Normalized Angle (0-1)", Radians, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_AttributeSamplingApplyOutput {
-        enum ENiagara_AttributeSamplingApplyOutput { Apply, Output, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_AudioParamType {
-        enum ENiagara_AudioParamType { Volume, Pitch, Location, Rotation, "Boolean Parameter", "Float Parameter", "Integer Parameter", "Paused State", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_AutomaticManual {
-        enum ENiagara_AutomaticManual { "Automatic (From Renderer SubImage Size)", Manual, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_BankOnTurns {
-        enum ENiagara_BankOnTurns { "Add Local Banking Rotation", "Full Orientation Update", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_BoundsCalculationMethod {
-        enum ENiagara_BoundsCalculationMethod { "Emitter Bounds with Padding", "Local Space Bounding Box", "World Space Bounding Box", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_BoxPlaneMode {
-        enum ENiagara_BoxPlaneMode { Box, Plane, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraMeshOrientation {
-        enum ENiagara_CameraMeshOrientation { "Camera Position", "Camera Plane", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraProperties {
-        enum ENiagara_CameraProperties { "Camera Position", "Camera Forward Vector", "Camera Up Vector", "Camera Right Vector", "Vector To Camera", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraVectors {
-        enum ENiagara_CameraVectors { "Camera Forward Vector", "Camera Up Vector", "Camera Right Vector", "Vector To Camera", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CollisionType {
-        enum ENiagara_CollisionType { "GPU Depth Buffer", "GPU Distance Fields", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_ColorInitializationMode {
-        enum ENiagara_ColorInitializationMode { Unset, "Direct Set", "Random Range", "Random Hue/Saturation/Value", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_ColorInput {
-        enum ENiagara_ColorInput { "Particle Color", "Chaos DI Color", "User Color", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_ConeMode {
-        enum ENiagara_ConeMode { "Spherical Cone", "Spherical Wedge", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CPUCollisionType {
-        enum ENiagara_CPUCollisionType { "Ray Traced", "Analytical Planes", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_CurlNoiseRemapType {
-        enum ENiagara_CurlNoiseRemapType { Off, Uniform, "Non-Uniform", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_CylinderMode {
-        enum ENiagara_CylinderMode { Random, Direct, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadApplicationMode {
-        enum ENiagara_DirectReadApplicationMode { Overwrite, Add, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadParticleIDSampling {
-        enum ENiagara_DirectReadParticleIDSampling { Disabled, "Apply Sampled ID as Ribbon ID", "Output Only", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadSamplingMode {
-        enum ENiagara_DirectReadSamplingMode { Disabled, "Apply to Attribute", "Output Only", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_EmitterLocSamplingMode {
-        enum ENiagara_EmitterLocSamplingMode { Random, Sequential, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_EmitterStateOptions {
-        enum ENiagara_EmitterStateOptions { Infinite, Once, Multiple, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_FadeOperationType {
-        enum ENiagara_FadeOperationType { Linear, Percentage, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_Float4Channel {
-        enum ENiagara_Float4Channel { R, G, B, A, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_FPSPlayrate {
-        enum ENiagara_FPSPlayrate { "Loops Per Second", "Frames Per Second", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_GDFQueryExecutionRate {
-        enum ENiagara_GDFQueryExecutionRate { "First Frame", "Every Frame", "On Demand", Never, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_GlobalVsRigidBodyDistanceFields {
-        enum ENiagara_GlobalVsRigidBodyDistanceFields { "Global Distance Field", "Global Distance field + High Quality Rigid Body SDF", "Static Distance Field Volume Texture", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_GPUCollisionType {
-        enum ENiagara_GPUCollisionType { "GPU Depth Buffer", "GPU Distance Fields", "GPU Ray Traces (Experimental)", "Analytical Planes", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_IDAttributes {
-        enum ENiagara_IDAttributes { "Particles.UniqueID", "Particles.ID Index", "Particles.ID Acquire Tag", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_ImportanceColorMode {
-        enum ENiagara_ImportanceColorMode { "RGB Luminance", "RGB Average", "RGB Max", "Individual RGBA Channel", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_ImportanceRejectionMode {
-        enum ENiagara_ImportanceRejectionMode { "RGB Luminance", "RGB Average", "RGB Max", "R Channel", "G Channel", "B Channel", "A Channel", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_InfiniteLoopDuration {
-        enum ENiagara_InfiniteLoopDuration { Fixed, Infinite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_IntegerConversion {
-        enum ENiagara_IntegerConversion { Truncate, Round, Ceil, Floor, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_LifetimeInheritanceOptions {
-        enum ENiagara_LifetimeInheritanceOptions { Min, Max, Overwrite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_LifetimeMode {
-        enum ENiagara_LifetimeMode { "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_LocationShapes {
-        enum ENiagara_LocationShapes { Sphere, Cylinder, "Box / Plane", Torus, "Ring / Disc", Cone, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Events.ENiagara_LocEventType {
-        enum ENiagara_LocEventType { "Send Rate", "Send Per Unit Traveled", "Every Frame", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_LWCConvertPosToVec {
-        enum ENiagara_LWCConvertPosToVec { "Passthrough as a Non Large World Vector", "Convert to Absolute Large World Space", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_LWCConvertVecToPos {
-        enum ENiagara_LWCConvertVecToPos { "Passthrough as Non Large World Position", "Interpret as a Large World Position Vector", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_MassInitializationMode {
-        enum ENiagara_MassInitializationMode { "Unset / (Mass of 1)", "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_MeshLocalBoundsCalcMethod {
-        enum ENiagara_MeshLocalBoundsCalcMethod { "Minimum Bounds", "Maximum Bounds", Size, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_MeshOrientationOptions {
-        enum ENiagara_MeshOrientationOptions { None, Random, System, "Orient to Vector", "Orient to Matrix", "Orient to Quaternion", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_MultipleLerpCount {
-        enum ENiagara_MultipleLerpCount { ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_OffsetMode {
-        enum ENiagara_OffsetMode { Default, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_OrientVectorCount {
-        enum ENiagara_OrientVectorCount { Facing, "Facing/Up", "Facing/Side", "Facing/Side/Up", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_PartitionMode {
-        enum ENiagara_PartitionMode { Alternating, Sequential, "Elapsed Time", Distance, "Float Comparison", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_PositionInitializationMode {
-        enum ENiagara_PositionInitializationMode { Unset, "Direct Set", "Simulation Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_PositionInput {
-        enum ENiagara_PositionInput { "Chaos DI Position", "User Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_RotationDefinitionApproach {
-        enum ENiagara_RotationDefinitionApproach { Euler, Quaternion, "Axis Angle ", "Basis Vectors", Matrix, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_RotationMode {
-        enum ENiagara_RotationMode { Default, "Axis Angle", "Yaw / Pitch / Roll", Quaternion, Matrix, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_ScaleMode {
-        enum ENiagara_ScaleMode { Default, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_ScaleSpriteSize {
-        enum ENiagara_ScaleSpriteSize { Uniform, "Uniform Curve", "Non-Uniform", "Non-Uniform Curve", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SizeScaleMode {
-        enum ENiagara_SizeScaleMode { Unset, Uniform, "Random Uniform", "Non-Uniform", "Random Non-Uniform", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SpawnBurstMode {
-        enum ENiagara_SpawnBurstMode { Timed, Manual, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_SplinePointCount {
-        enum ENiagara_SplinePointCount { ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SpriteRotationMode {
-        enum ENiagara_SpriteRotationMode { Unset, Random, "Direct Angle (Degrees)", "Direct Normalized Angle (0-1)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticSamplingMode {
-        enum ENiagara_StaticSamplingMode { Triangles, Sockets, Vertices, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticSocketMode {
-        enum ENiagara_StaticSocketMode { "Random (All Sockets)", "Random (Filtered Sockets)", "Direct (All Sockets)", "Direct (Filtered Sockets)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticTriangleMode {
-        enum ENiagara_StaticTriangleMode { "Random (All Triangles)", "Random (Section Filter)", "Direct (All Triangles)", "Direct (Section Filter)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticVertexMode {
-        enum ENiagara_StaticVertexMode { "Random Vertex", "Direct Vertex", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SubUVLookupMode {
-        enum ENiagara_SubUVLookupMode { Linear, Curve, Random, Infinite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SubUVLookupModeV2 {
-        enum ENiagara_SubUVLookupModeV2 { Linear, Curve, Random, "Infinite Loop", "Direct Index", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineAuthority {
-        enum ENiagara_TimelineAuthority { "Play is the Authority", "Rewind is the Authority", Pause, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TImelineMode {
-        enum ENiagara_TimelineMode { "Automatic Rewind", "Manual Rewind", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineOutput {
-        enum ENiagara_TimelineOutput { None, Float, Vector2D, Vector, "Linear Color", Integer, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineOutputMode {
-        enum ENiagara_TimelineOutputMode { Array, Curve, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformBaseOptions {
-        enum ENiagara_TransformBaseOptions { "Transform Vector", "Transform Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformMode {
-        enum ENiagara_TransformMode { Manual, Matrix, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_TransformOrder {
-        enum ENiagara_TransformOrder { "Scale / Rotate / Offset", "Scale / Offset / Rotate", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformOrientationMode {
-        enum ENiagara_TransformOrientationMode { "Yaw/Pitch/Roll", Quaternion, Matrix, "Basis Vectors", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_TransformType {
-        enum ENiagara_TransformType { Default, "Custom Matrix", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Ribbons.ENiagara_UnsetDirectSet {
-        enum ENiagara_UnsetDirectSet { Unset, "Direct Set", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Ribbons.ENiagara_UnsetDirectSetRandom {
-        enum ENiagara_UnsetDirectSetRandom { Unset, "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_UpdateMeshOrientationMode {
-        enum ENiagara_UpdateMeshOrientationMode { "Rotation Rate", "Orient To Vector(s)", "Orient to Position", "Flight Orientation", "Rolling Orientation", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_UVFlippingMode {
-        enum ENiagara_UVFlippingMode { Unset, "Random X", "Random Y", "Random X / Y", Custom, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_VelocityInput {
-        enum ENiagara_VelocityInput { "Chaos DI Velocity", "User Velocity", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_VelocityMode {
-        enum ENiagara_VelocityMode { Linear, "From Point", "In Cone", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WaveformBlendMode {
-        enum ENiagara_WaveformBlendMode { Add, Subtract, Multiply, Max, Min, Interpolate, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WaveformCount {
-        enum ENiagara_WaveformCount { "[1] One", "[2] Two", "[3] Three", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_Waveforms {
-        enum ENiagara_Waveforms { Sine, Cosine, "Compound Sin/Cos", Pendulum, Square, Pulse, Triangle, Sawtooth, Random, "Random Blend", "Random Spline", "Random Spline Smooth", "Random Spline Segmented", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WrapClamp {
-        enum ENiagara_WrapClamp { Clamp, Wrap, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraAddDefaultsTrackMode { NoSubtracks, ComponentTrackOnly, LifecycleTrack, ENiagaraAddDefaultsTrackMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraAerodynamicDragPivotMode {
-        enum ENiagaraAerodynamicDragPivotMode { Random, Direct, ENiagaraAerodynamicDragPivotMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.EniagaraAlternateRendererModes {
-        enum EniagaraAlternateRendererModes { Sprite, Mesh, Ribbon, Light, EniagaraAlternateRendererModes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraAnimTrailWidthMode {
-        enum ENiagaraAnimTrailWidthMode { Auto, Manual, ENiagaraAnimTrailWidthMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraArraySamplingMode {
-        enum ENiagaraArraySamplingMode { Random, "Direct Set", Interpolate, ENiagaraArraySamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraAssetLibraryAssetTypes { Emitters, Systems, Scripts, ENiagaraAssetLibraryAssetTypes_MAX, __typeKeyDoNoAccess}
     enum ENiagaraAssetTagDefinitionImportance { Primary, Secondary, Internal, ENiagaraAssetTagDefinitionImportance_MAX, __typeKeyDoNoAccess}
     enum ENiagaraBaseTypes { Half, Float, Int32, Bool, Max, ENiagaraBaseTypes_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraBoneSamplingMode {
-        enum ENiagaraBoneSamplingMode { "Random (Filtered Bones)", "Random (Unfiltered Bones)", "Random (All Bones)", "Direct (Filtered Bones)", "Direct (Unfiltered Bones)", "Direct (All Bones)", ENiagaraBoneSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraBoneSocketSamplingMode {
-        enum ENiagaraBoneSocketSamplingMode { "Random (Filtered Bone or Sockets)", "Direct (Filtered Bone or Sockets)", ENiagaraBoneSocketSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraBoolDisplayMode { DisplayAlways, DisplayIfTrue, DisplayIfFalse, ENiagaraBoolDisplayMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraBooleanLogicOps {
-        enum ENiagaraBooleanLogicOps { "Greater Than", "Greater Than Or Equal To", "Equal To", "Not Equal To", ENiagaraBooleanLogicOps_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraBooleanLogicOps_v2 {
-        enum ENiagaraBooleanLogicOps_v2 { "A Greater Than B", "A Greater Than Or Equal To B", "A Equal To B", "A Not Equal To B", "A Less Than B", "A Less Than Or Equal To B", ENiagaraBooleanLogicOps_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraCalculateRadiusOptions {
-        enum ENiagaraCalculateRadiusOptions { Bounds, "Minimum Axis", "Maximum Axis", ENiagaraCalculateRadiusOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCategoryExpandState { Default, DefaultExpandModified, CollapseAll, ExpandAll, ENiagaraCategoryExpandState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraChannelCorrelation {
-        enum ENiagaraChannelCorrelation { "Link RGBA", "Link RGB / Link A", "Random Individual Channels", ENiagaraChannelCorrelation_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraClipboardFunctionInputValueMode { Local, Linked, Data, ObjectAsset, Expression, Dynamic, ResetToDefault, ENiagaraClipboardFunctionInputValueMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraClipboardFunctionScriptMode { ScriptAsset, Assignment, ENiagaraClipboardFunctionScriptMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCollisionMode { None, SceneGeometry, DepthBuffer, DistanceField, ENiagaraCollisionMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCollisionRadiusOptions {
-        enum ENiagaraCollisionRadiusOptions { Sprite, Mesh, Custom, ENiagaraCollisionRadiusOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCompilationMode { Original, AsyncTasks, Verify, ENiagaraCompilationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompilationState { CheckDDC, Precompile, StartCompileJob, AwaitResult, OptimizeByteCode, ProcessResult, PutToDDC, Finished, Aborted, ENiagaraCompilationState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompileErrorSeverity { Ignore, LogOnly, Warning, Error, ENiagaraCompileErrorSeverity_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompileUsageStaticSwitch { Spawn, Update, Event, SimulationStage, Default, ENiagaraCompileUsageStaticSwitch_MAX, __typeKeyDoNoAccess}
     enum ENiagaraConditionalOperator { Equals, NotEqual, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, Max, ENiagaraConditionalOperator_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCoordinateSpace {
-        enum ENiagaraCoordinateSpace { Simulation, World, Local, ENiagaraCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCoordinateSpace { Simulation, World, Local, ENiagaraCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCurlNoiseQuality {
-        enum ENiagaraCurlNoiseQuality { "Baked (Low)", "Baked (Medium)", "Baked (High)", "Evaluated (Ultra)", ENiagaraCurlNoiseQuality_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDataChannelAllocationMode { Static, Dynamic, ENiagaraDataChannelAllocationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataChanneSpawnModuleMode { ConditionalSpawn, DirectSpawn, ENiagaraDataChanneSpawnModuleMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataChanneWriteModuleMode { AppendNewElement, WriteToExistingElement, ENiagaraDataChanneWriteModuleMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataSetAccessMode { AppendConsume, Direct, Num, ENiagaraDataSetAccessMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Utility.ENiagaraDebugDrawLineMode {
-        enum ENiagaraDebugDrawLineMode { "Start/End Position", Vector, "Direction/Length", ENiagaraDebugDrawLineMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagaraDebugDrawMode {
-        enum ENiagaraDebugDrawMode { Off, Line, Box, Sphere, ENiagaraDebugDrawMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Masks.ENiagaraDebugDrawShape {
-        enum ENiagaraDebugDrawShape { Sphere, Box, Plane, Slab, ENiagaraDebugDrawShape_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDebugHUDDOverviewSort { Name, NumberRegistered, NumberActive, NumberScalability, MemoryUsage, RecentlyVisibilty, ENiagaraDebugHUDDOverviewSort_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudFont { Small, Normal, ENiagaraDebugHudFont_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudHAlign { Left, Center, Right, ENiagaraDebugHudHAlign_MAX, __typeKeyDoNoAccess}
@@ -105849,129 +105379,33 @@ declare module "ue" {
     enum ENiagaraDebugHudVAlign { Top, Center, Bottom, ENiagaraDebugHudVAlign_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudVerbosity { None, Basic, Verbose, ENiagaraDebugHudVerbosity_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugPlaybackMode { Play, Loop, Paused, Step, ENiagaraDebugPlaybackMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraDecalTransforms {
-        enum ENiagaraDecalTransforms { Simulation, World, Local, Decal, ENiagaraDecalTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDefaultGpuTranslucentLatency { Immediate, Latent, ENiagaraDefaultGpuTranslucentLatency_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultMode { Value, Binding, Custom, FailIfPreviouslyNotSet, ENiagaraDefaultMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultRendererMotionVectorSetting { Precise, Approximate, ENiagaraDefaultRendererMotionVectorSetting_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultRendererPixelCoverageMode { Enabled, Disabled, ENiagaraDefaultRendererPixelCoverageMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultSortPrecision { Low, High, ENiagaraDefaultSortPrecision_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDeviceProfileRedirectMode { CVar, DeviceProfile, ENiagaraDeviceProfileRedirectMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraDragCoefficientShapeMode {
-        enum ENiagaraDragCoefficientShapeMode { Exponent, Curve, ENiagaraDragCoefficientShapeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraDragMethodMode {
-        enum ENiagaraDragMethodMode { Linear, Aerodynamic, ENiagaraDragMethodMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterLifeCycleMode {
-        enum ENiagaraEmitterLifeCycleMode { System, Self, ENiagaraEmitterLifeCycleMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterScalabilityMode {
-        enum ENiagaraEmitterScalabilityMode { System, Self, None, ENiagaraEmitterScalabilityMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterScalabilityMode_Limited {
-        enum ENiagaraEmitterScalabilityMode_Limited { System, Self, ENiagaraEmitterScalabilityMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraExecutionState { Active, Inactive, InactiveClear, Complete, Disabled, Num, ENiagaraExecutionState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraExecutionStateSource { Scalability, Internal, Owner, InternalCompletion, ENiagaraExecutionStateSource_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraExpansionMode {
-        enum ENiagaraExpansionMode { Inside, Centered, Outside, ENiagaraExpansionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraFrictionMergeType {
-        enum ENiagaraFrictionMergeType { Ignore, Average, Min, Max, ENiagaraFrictionMergeType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraFunctionDebugState { NoDebug, Basic, ENiagaraFunctionDebugState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Utility.ENiagaraGBufferList {
-        enum ENiagaraGBufferList { "Base Color", "Custom Depth", "Custom Stencil", Depth, "Diffuse Color", Metallic, Roughness, "Scene Color", "Screen Velocity", "Shading Model ID", Specular, "World Normal", "World Velocity", ENiagaraGBufferList_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagaraGBufferQueryType {
-        enum ENiagaraGBufferQueryType { Position, "Viewport UV", "Screen UV", ENiagaraGBufferQueryType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraGpuBufferFormat { Float, HalfFloat, UnsignedNormalizedByte, Max, ENiagaraGpuBufferFormat_MAX, __typeKeyDoNoAccess}
     enum ENiagaraGpuComputeTickStage { PreInitViews, PostInitViews, PostOpaqueRender, Max, First, Last, ENiagaraGpuComputeTickStage_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraGPUDepthResponseType {
-        enum ENiagaraGPUDepthResponseType { Kill, Bounce, ENiagaraGPUDepthResponseType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraGpuSyncMode { None, SyncCpuToGpu, SyncGpuToCpu, SyncBoth, ENiagaraGpuSyncMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraGridPlacementType {
-        enum ENiagaraGridPlacementType { "Padding Per Cell ", "Bounding Box Size", ENiagaraGridPlacementType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraInactiveMode {
-        enum ENiagaraInactiveMode { "Complete (Let Particles Finish then Kill Emitter)", "Kill (Emitter and Particles Die Immediately)", "Continue (Emitter Deactivates But Doesn't Die Until System Does)", ENiagaraInactiveMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraInputNodeUsage { Undefined, Parameter, Attribute, SystemConstant, TranslatorConstant, RapidIterationParameter, ENiagaraInputNodeUsage_MAX, __typeKeyDoNoAccess}
     enum ENiagaraInputWidgetType { Default, Slider, Volume, NumericDropdown, EnumStyle, SegmentedButtons, ENiagaraInputWidgetType_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraKillVolumeOptions {
-        enum ENiagaraKillVolumeOptions { Sphere, Box, Plane, Slab, Cone, ENiagaraKillVolumeOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraLegacyTrailWidthMode { FromCentre, FromFirst, FromSecond, ENiagaraLegacyTrailWidthMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraLibrarySourceDefaultMode { Value, Binding, FailIfPreviouslyNotSet, ENiagaraLibrarySourceDefaultMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraLibrarySynchronizedDefaultMode { Definition, Value, Binding, Custom, FailIfPreviouslyNotSet, ENiagaraLibrarySynchronizedDefaultMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraLinearColor_Channels {
-        enum ENiagaraLinearColor_Channels { R, G, B, A, ENiagaraLinearColor_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMassByVolume {
-        enum ENiagaraMassByVolume { Rock, Steel, Wood, Water, Paper, Styrofoam, ENiagaraMassByVolume_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMassCalculationForRendererTypes {
-        enum ENiagaraMassCalculationForRendererTypes { Sprite, Mesh, Ribbon, ENiagaraMassCalculationForRendererTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMenuSections { Suggested, General, ENiagaraMenuSections_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshFacingMode { Default, Velocity, CameraPosition, CameraPlane, ENiagaraMeshFacingMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshLockedAxisSpace { Simulation, World, Local, ENiagaraMeshLockedAxisSpace_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshLODMode { LODLevel, LODBias, ByComponentBounds, PerParticle, ENiagaraMeshLODMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMeshOrSprite {
-        enum ENiagaraMeshOrSprite { Sprite, Mesh, ENiagaraMeshOrSprite_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMeshPivotOffsetSpace { Mesh, Simulation, World, Local, ENiagaraMeshPivotOffsetSpace_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMeshSamplingMode {
-        enum ENiagaraMeshSamplingMode { Random, Direct, ENiagaraMeshSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMeshSurfaceSamplingMode {
-        enum ENiagaraMeshSurfaceSamplingMode { Triangles, Vertices, ENiagaraMeshSurfaceSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMeshTransforms {
-        enum ENiagaraMeshTransforms { Simulation, World, Local, Mesh, ENiagaraMeshTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMessageSeverity { CriticalError, Error, PerformanceWarning, Warning, Info, ENiagaraMessageSeverity_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMinOrMax {
-        enum ENiagaraMinOrMax { Min, Max, ENiagaraMinOrMax_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMipMapGeneration { Disabled, PostStage, PostSimulate, ENiagaraMipMapGeneration_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMipMapGenerationType { Unfiltered, Linear, Blur1, Blur2, Blur3, Blur4, ENiagaraMipMapGenerationType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraModuleDependencyUsage { None, Spawn, Update, Event, SimulationStage, ENiagaraModuleDependencyUsage_MAX, __typeKeyDoNoAccess}
     enum ENiagaraNamespaceMetadataOptions { HideInScript, HideInSystem, AdvancedInScript, AdvancedInSystem, PreventEditingNamespace, PreventEditingNamespaceModifier, PreventEditingName, PreventCreatingInSystemEditor, HideInDefinitions, ENiagaraNamespaceMetadataOptions_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraNumericVariableTypes {
-        enum ENiagaraNumericVariableTypes { Float, "Vector 2D", "Vector 3D", "Vector 4D", "Linear Color", Quaternion, Position, ENiagaraNumericVariableTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraOrientationAxis {
-        enum ENiagaraOrientationAxis { "X Axis", "Y Axis", "Z Axis", ENiagaraOrientationAxis_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraOrientationAxis { XAxis, YAxis, ZAxis, ENiagaraOrientationAxis_MAX, __typeKeyDoNoAccess}
     enum ENiagaraOutlinerSortMode { Auto, FilterMatches, AverageTime, MaxTime, ENiagaraOutlinerSortMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraOutlinerTimeUnits { Microseconds, Milliseconds, Seconds, ENiagaraOutlinerTimeUnits_MAX, __typeKeyDoNoAccess}
@@ -105980,56 +105414,8 @@ declare module "ue" {
     enum ENiagaraPlatformSetState { Disabled, Enabled, Active, Unknown, ENiagaraPlatformSetState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraPreviewGridResetMode { Never, Individual, All, ENiagaraPreviewGridResetMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraPythonScriptInputSource { Input, Output, Local, InputOutput, InitialValueInput, None, Num, ENiagaraPythonScriptInputSource_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraQuaternionDerivationTechnique {
-        enum ENiagaraQuaternionDerivationTechnique { "X Vector", "X And Y Vectors", "X And Z Vectors", ENiagaraQuaternionDerivationTechnique_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRandomnessEvaluation {
-        enum ENiagaraRandomnessEvaluation { "Spawn Only", "Every Frame", ENiagaraRandomnessEvaluation_MAX, __typeKeyDoNoAccess}
-    }
-
     namespace Niagara.Enums.ENiagaraRandomnessMode {
         enum ENiagaraRandomnessMode { "Simulation Defaults", Determinisitic, "Non-Deterministic", ENiagaraRandomnessMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleAttributeMode {
-        enum ENiagaraRecycleAttributeMode { "No Change", "Initial Value", Set, ENiagaraRecycleAttributeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleColorMode {
-        enum ENiagaraRecycleColorMode { "No Change", "Initial Value", Set, "Random Range", "Random Hue/Saturation/Value", ENiagaraRecycleColorMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleLifetimeMode {
-        enum ENiagaraRecycleLifetimeMode { "No Change", "Initial Value", Set, Random, ENiagaraRecycleLifetimeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleMassMode {
-        enum ENiagaraRecycleMassMode { "No Change", "Initial Value", Set, Random, ENiagaraRecycleMassMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleRendererType {
-        enum ENiagaraRecycleRendererType { "Set (Diameter)", Sprite, Mesh, ENiagaraRecycleRendererType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleSpriteRotationMode {
-        enum ENiagaraRecycleSpriteRotationMode { "No Change", "Initial Value", Random, "Direct Angle (Degrees)", "Direct Normalized Angle (0-1)", ENiagaraRecycleSpriteRotationMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleSpriteSizeMode {
-        enum ENiagaraRecycleSpriteSizeMode { "No Change", "Initial Value", Uniform, "Random Uniform", "Non-Uniform", "Random Non-Uniform", ENiagaraRecycleSpriteSizeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRegionCoordinateSpace {
-        enum ENiagaraRegionCoordinateSpace { World, Local, ENiagaraRegionCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Masks.ENiagaraRegionMaskValue {
-        enum ENiagaraRegionMaskValue { Float, Vector2D, Vector, "Linear Color", ENiagaraRegionMaskValue_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRegionTransformOrder {
-        enum ENiagaraRegionTransformOrder { "Offset-Rotation", "Rotation-Offset", ENiagaraRegionTransformOrder_MAX, __typeKeyDoNoAccess}
     }
 
     enum ENiagaraRendererGpuTranslucentLatency { ProjectDefault, Immediate, Latent, ENiagaraRendererGpuTranslucentLatency_MAX, __typeKeyDoNoAccess}
@@ -106037,10 +105423,6 @@ declare module "ue" {
     enum ENiagaraRendererSortPrecision { Default, Low, High, ENiagaraRendererSortPrecision_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRendererSourceDataMode { Particles, Emitter, ENiagaraRendererSourceDataMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRenderTargetVolumeVisualizerMask { R, G, B, A, ENiagaraRenderTargetVolumeVisualizerMask_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraRestitutionMergeType {
-        enum ENiagaraRestitutionMergeType { Ignore, Min, Max, Average, ENiagaraRestitutionMergeType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraRibbonAgeOffsetMode { Scale, Clip, ENiagaraRibbonAgeOffsetMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonDrawDirection { FrontToBack, BackToFront, ENiagaraRibbonDrawDirection_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonFacingMode { Screen, Custom, CustomSideVector, ENiagaraRibbonFacingMode_MAX, __typeKeyDoNoAccess}
@@ -106048,55 +105430,11 @@ declare module "ue" {
     enum ENiagaraRibbonTessellationMode { Automatic, Custom, Disabled, ENiagaraRibbonTessellationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonUVDistributionMode { ScaledUniformly, ScaledUsingRibbonSegmentLength, TiledOverRibbonLength, TiledFromStartOverRibbonLength, ENiagaraRibbonUVDistributionMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonUVEdgeMode { SmoothTransition, Locked, ENiagaraRibbonUVEdgeMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Location.ENiagaraRingDiscMode {
-        enum ENiagaraRingDiscMode { Circle, Hexagon, ENiagaraRingDiscMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraScaleColorMode {
-        enum ENiagaraScaleColorMode { "RGB and Alpha Separately", "RGBA Together", "RGBA Linear Color Curve", ENiagaraScaleColorMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraScriptContextStaticSwitch { System, Emitter, Particle, ENiagaraScriptContextStaticSwitch_MAX, __typeKeyDoNoAccess}
     enum ENiagaraScriptGroup { Particle, Emitter, System, Max, ENiagaraScriptGroup_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraShapeTorusMode {
-        enum ENiagaraShapeTorusMode { Torus, TorusKnot, ENiagaraShapeTorusMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSimCacheSectionPlayMode { SimWithoutCache, DisplayCacheOnly, ENiagaraSimCacheSectionPlayMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSimCacheSectionStretchMode { Repeat, TimeDilate, ENiagaraSimCacheSectionStretchMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSimulationTarget {
-        enum ENiagaraSimulationTarget { "CPU Sim", "GPUCompute Sim", ENiagaraSimulationTarget_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkeletalSpawning {
-        enum ENiagaraSkeletalSpawning { Bones, Sockets, "Bones and Sockets", ENiagaraSkeletalSpawning_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelMeshPositionSamplingMode {
-        enum ENiagaraSkelMeshPositionSamplingMode { "Apply (Rigid)", "Apply (Soft)", Output, ENiagaraSkelMeshPositionSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelMeshTransforms {
-        enum ENiagaraSkelMeshTransforms { Simulation, World, Local, "Sampled Mesh", "Mesh Particle", ENiagaraSkelMeshTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelSamplingFilteringMode {
-        enum ENiagaraSkelSamplingFilteringMode { All, Filtered, Unfiltered, ENiagaraSkelSamplingFilteringMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelSamplingModeFull {
-        enum ENiagaraSkelSamplingModeFull { "Skeleton (Bones)", "Skeleton (Sockets)", "Skeleton (Bones and Sockets)", "Surface (Triangles)", "Surface (Vertices)", ENiagaraSkelSamplingModeFull_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSocketSamplingMode {
-        enum ENiagaraSocketSamplingMode { "Random (Filtered Sockets)", "Direct (Filtered Sockets)", ENiagaraSocketSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSortMode { None, ViewDepth, ViewDistance, CustomAscending, CustomDecending, ENiagaraSortMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSphereDistributionMode {
-        enum ENiagaraSphereDistributionMode { Random, Direct, Uniform, ENiagaraSphereDistributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSpriteAlignment { Unaligned, VelocityAligned, CustomAlignment, Automatic, ENiagaraSpriteAlignment_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSpriteFacingMode { FaceCamera, FaceCameraPlane, CustomFacingVector, FaceCameraPosition, FaceCameraDistanceBlend, Automatic, ENiagaraSpriteFacingMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStackEntryInlineDisplayMode { Expression, GraphHorizontal, GraphVertical, GraphHybrid, None, ENiagaraStackEntryInlineDisplayMode_MAX, __typeKeyDoNoAccess}
@@ -106105,91 +105443,11 @@ declare module "ue" {
     enum ENiagaraStatEvaluationType { Average, Maximum, ENiagaraStatEvaluationType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStaticSwitchType { Bool, Integer, Enum, ENiagaraStaticSwitchType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStripScriptByteCodeOption { Default, Strip_Original, Strip_Experimental, ENiagaraStripScriptByteCodeOption_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSUbUVAnimationMode {
-        enum ENiagaraSUbUVAnimationMode { Linear, Random, ENiagaraSUbUVAnimationMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSystemInactiveMode {
-        enum ENiagaraSystemInactiveMode { "Complete (Let Emitters Finish then Kill The System)", "Kill (System and Emitters Die Immediately)", ENiagaraSystemInactiveMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSystemInstanceState { None, PendingSpawn, PendingSpawnPaused, Spawning, Running, Paused, Num, ENiagaraSystemInstanceState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionEndBehavior { SetSystemInactive, Deactivate, None, ENiagaraSystemSpawnSectionEndBehavior_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionEvaluateBehavior { ActivateIfInactive, None, ENiagaraSystemSpawnSectionEvaluateBehavior_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionStartBehavior { Activate, ENiagaraSystemSpawnSectionStartBehavior_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraTorusDistributionMode {
-        enum ENiagaraTorusDistributionMode { Random, Direct, ENiagaraTorusDistributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraTorusMode {
-        enum ENiagaraTorusMode { Torus, TorusKnot, Ring, ENiagaraTorusMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraTriangleSamplingMode {
-        enum ENiagaraTriangleSamplingMode { "Random (All Triangles)", "Random (Sampling Regions)", "Direct (All Triangles)", "Direct (Sampling Regions)", ENiagaraTriangleSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraValidationSeverity { Info, Warning, Error, ENiagaraValidationSeverity_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraVector2_Channels {
-        enum ENiagaraVector2_Channels { X, Y, ENiagaraVector2_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVector3_Channels {
-        enum ENiagaraVector3_Channels { X, Y, Z, ENiagaraVector3_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVector4_Channels {
-        enum ENiagaraVector4_Channels { X, Y, Z, W, ENiagaraVector4_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVectorNoiseQuality {
-        enum ENiagaraVectorNoiseQuality { "Baked (Low)", "Baked (Medium)", "Baked (High)", "Evaluated (Ultra)", "Vector Field Asset", ENiagaraVectorNoiseQuality_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVertexFilteringMode {
-        enum ENiagaraVertexFilteringMode { All, Filtered, ENiagaraVertexFilteringMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVertexSamplingMode {
-        enum ENiagaraVertexSamplingMode { "Random (All Vertices)", "Random (Sampling Regions)", "Direct (All Vertices)", "Direct (Sampling Regions)", ENiagaraVertexSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindCollisionMode {
-        enum ENiagaraWindCollisionMode { None, "From Collision Module", ENiagaraWindCollisionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindCombingMode {
-        enum ENiagaraWindCombingMode { None, "Surface Distance", ENiagaraWindCombingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindFrictionDistanceMode {
-        enum ENiagaraWindFrictionDistanceMode { "Distance Limit", "Falloff Start / End", ENiagaraWindFrictionDistanceMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindFrictionMode {
-        enum ENiagaraWindFrictionMode { None, "Surface Distance", ENiagaraWindFrictionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindGroundMaskMode {
-        enum ENiagaraWindGroundMaskMode { "Direct Set", Landscape, ENiagaraWindGroundMaskMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindOffsetMode {
-        enum ENiagaraWindOffsetMode { None, "Direct Set", "Time Offset", ENiagaraWindOffsetMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceContributionMode {
-        enum ENiagaraWindTurbulenceContributionMode { "Direct Set", "Speed Range", "Speed Range Curve", ENiagaraWindTurbulenceContributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceFrequencyMode {
-        enum ENiagaraWindTurbulenceFrequencyMode { Constant, Varying, ENiagaraWindTurbulenceFrequencyMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceMode {
-        enum ENiagaraWindTurbulenceMode { None, "Curl Noise", ENiagaraWindTurbulenceMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagartaDataChannelReadResult { Success, Failure, ENiagartaDataChannelReadResult_MAX, __typeKeyDoNoAccess}
     enum ENiagraDataChannel_IslandMode { AlignedStatic, Dynamic, ENiagraDataChannel_MAX, __typeKeyDoNoAccess}
     enum ENNEAttributeDataType { None, Float, FloatArray, Int32, Int32Array, String, StringArray, Tensor, TensorArray, ENNEAttributeDataType_MAX, __typeKeyDoNoAccess}
@@ -171592,10 +170850,6 @@ declare module "ue" {
         __tid_NewPluginDescriptorData_0__: boolean;
     }
     
-    namespace Niagara.Enums.Niagara_Units {
-        enum Niagara_Units { Centimeters, Meters, Kilometers, Niagara_MAX, __typeKeyDoNoAccess}
-    }
-
     class NiagaraMenuAction_Base {
         constructor();
         /**
@@ -190479,18 +189733,6 @@ declare module "ue" {
         __tid_PinTypeSelectorFilter_0__: boolean;
     }
     
-    namespace Niagara.Functions.PivotPainter.PivotPainter16bitTextureAlphaDataTypes {
-        enum PivotPainter16bitTextureAlphaDataTypes { "Number of Steps to Root", "Random 0-1", "Origin Extents (16-bit)", "Bounding Box Diameter", "Selection Order (Int as float)", "Normalized 0-1 Hierarchy Position", "Object X Width", "Object Y Depth", "Object Z Height", "Parent Index (Float - Up To 2048)", PivotPainter16bitTextureAlphaDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Functions.PivotPainter.PivotPainter8BitTextureAlphaDataTypes {
-        enum PivotPainter8BitTextureAlphaDataTypes { "Normalized 0-1 Hierarchy Position", "Normalized 0-1 Value Per Element", "X Extent Divided by 2048 (2048 max)", "Y Extent Divided by 2048 (2048 max)", "Z Extent Divided by 2048 (2048 max)", PivotPainter8BitTextureAlphaDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Functions.PivotPainter.PivotPainterTextureRGBDataTypes {
-        enum PivotPainterTextureRGBDataTypes { "Pivot Position (16-bit)", "Origin Position (16-bit)", "Origin Extents (16-bit)", "X-Vector (8-bit)", "Y-Vector (8-bit)", "Z-Vector (8-bit)", PivotPainterTextureRGBDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     class PivotPlaneTranslationGizmoHandleGroup extends UE.AxisGizmoHandleGroup {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -191246,10 +190488,6 @@ declare module "ue" {
         __tid_PlatformsMenuSettings_0__: boolean;
     }
     
-    namespace Niagara.Enums.Audio.PlayAudioMode {
-        enum PlayAudioMode { "Direct Set", Random, "On Death", PlayAudioMode_MAX, __typeKeyDoNoAccess}
-    }
-
     class PrimaryDataAsset extends UE.DataAsset {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         AssetBundleData_EditorOnly: UE.AssetBundleData;
@@ -213238,10 +212476,6 @@ declare module "ue" {
         __tid_SceneCaptureCube_0__: boolean;
     }
     
-    namespace Niagara.Enums.Collision.SceneDepthCollisionQueryMethod {
-        enum SceneDepthCollisionQueryMethod { "Scene Depth", "Custom Depth", "Partial Depth", SceneDepthCollisionQueryMethod_MAX, __typeKeyDoNoAccess}
-    }
-
     class SceneOutlinerMenuContext extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;

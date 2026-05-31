@@ -11,8 +11,8 @@ export class ItemPool {
     private mPooledItemList: LoopListViewItem2[] = [];
     private static mCurItemIdCount: number = 0;
     private mItemParent: CanvasPanel | null = null;
-    public SizeX;
-    public SizeY;
+    public SizeX: number;
+    public SizeY: number;
     private _needNew: boolean| null = null;
 
     public init(prefabObj: Class, mPrefabName: string, padding: number, startPosOffset: number, 
