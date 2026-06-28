@@ -374,6 +374,10 @@ export class UIManager implements IManager {
             await TimerManager.instance.waitAsync(1);
         }
         await TimerManager.instance.waitTillAsync(time);
+        if(!this.boxes.has(view))
+        {
+            return;
+        }
         this.innerCloseWindow(target);
         this.innerDestroyWindow(target);
         this.boxes.delete(view);
@@ -583,7 +587,13 @@ export class UIManager implements IManager {
             target.loadingState = UIWindowLoadingState.Loading;
             if (needLoad)
             {
-                await this.innerOpenWindowGetGameObject(target.prefabPath, target);
+                const success = await this.innerOpenWindowGetGameObject(target.prefabPath, target);
+                if (!success)
+                {
+                    target.active = false;
+                    target.loadingState = UIWindowLoadingState.NotStart;
+                    return null;
+                }
             }
             this.innerResetWindowLayer(target);
             await this.addWindowToStack(target, p1, p2, p3, p4);
@@ -600,7 +610,7 @@ export class UIManager implements IManager {
         }
     }
 
-    private async innerOpenWindowGetGameObject(path: string, target: UIWindow)
+    private async innerOpenWindowGetGameObject(path: string, target: UIWindow): Promise<boolean>
     {
         const view = target.view;
         let UIClass = UE.Class.Find(path);
@@ -611,7 +621,7 @@ export class UIManager implements IManager {
         if(!UIClass)
         {
             Log.error(target.name + " class not found at path:"+path);
-            return;
+            return false;
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIClass, null) as UE.UserWidget;
         target.userWidget = UIRoot;
@@ -635,6 +645,7 @@ export class UIManager implements IManager {
             this._rootLoading.RemoveFromParent();
             this._rootLoading = null;
         }
+        return true;
     }
 
     private innerResetWindowLayer(window: UIWindow)

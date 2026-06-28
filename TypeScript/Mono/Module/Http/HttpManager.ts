@@ -56,8 +56,8 @@ export class HttpManager
         if(headers!=null)
         {
             for (const key in headers) {
-                if (Object.prototype.hasOwnProperty.call(param, key)) {
-                    const val = param[key];
+                if (Object.prototype.hasOwnProperty.call(headers, key)) {
+                    const val = headers[key];
                     xhr.setRequestHeader(key, val)
                 }
             }
@@ -96,8 +96,8 @@ export class HttpManager
         if(headers!=null)
         {
             for (const key in headers) {
-                if (Object.prototype.hasOwnProperty.call(param, key)) {
-                    const val = param[key];
+                if (Object.prototype.hasOwnProperty.call(headers, key)) {
+                    const val = headers[key];
                     xhr.setRequestHeader(key, val)
                 }
             }
