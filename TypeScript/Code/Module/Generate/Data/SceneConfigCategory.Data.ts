@@ -1,3 +1,1 @@
-export const SceneConfigCategoryData = {"_t":"SceneConfigCategory","list":[
-{"_t":"SceneConfig","id":1,"name":"Sample","desc":"","perfab":"scenes/mapscene/sample"},
-]}
+export const SceneConfigCategoryData = {"_t":"SceneConfigCategory","list":[{"_t":"SceneConfig","id":1,"name":"Sample","desc":"","perfab":"scenes/mapscene/sample"}]}

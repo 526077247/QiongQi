@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CommandLine;
+using System;
 using System.Threading;
-using CommandLine;
 namespace QiongQi
 {
     internal static class Program
@@ -37,15 +37,20 @@ namespace QiongQi
                     //        return 0;
                     //    }
                     case AppType.I18NExporter:
-                    {
-                        ExcelExporter.ExportI18N();
-                        return 0;
-                    }
+                        {
+                            ExcelExporter.ExportI18N();
+                            return 0;
+                        }
                     case AppType.ExporterAll:
                         {
                             ExcelExporter.Export();
                             //AttrExporter.Export();
                             ExcelExporter.ExportI18N();
+                            return 0;
+                        }
+                    case AppType.ExporterTarget:
+                        {
+                            ExcelExporter.ExportTarget(options.Param);
                             return 0;
                         }
                 }
