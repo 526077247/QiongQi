@@ -10,6 +10,9 @@ public class QiongQiEditorTarget : TargetRules
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
-		ExtraModuleNames.Add("QiongQi");
+		ExtraModuleNames.AddRange(new string[]
+		{
+			"QiongQi",
+		});
 	}
 }

@@ -16,10 +16,10 @@ Plugins/Puerts/Intermediate
 Plugins/Puerts/Source/CSharpParamDefaultValueMetas
 Content/JavaScript
 Release/
-/Tools/ExcelExport/obj
-/Tools/ExcelExport/.idea
-/Tools/ExcelExport/.vs
+obj
 /Bin
 /Excel/Json
 ts_file_versions_info.json
 QiongQi.sln
+HotPatcherRes
+/FileServer
