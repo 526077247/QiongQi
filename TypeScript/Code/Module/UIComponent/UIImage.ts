@@ -3,7 +3,7 @@ import { IOnCreate } from "../UI/IOnCreate";
 import { IOnDestroy } from "../UI/IOnDestroy";
 import { UIBaseComponent } from "../UI/UIBaseComponent";
 import * as string from "../../../Mono/Helper/StringHelper"
-import { Color, Image, PaperSprite, LinearColor, Texture2D, SlateBrush, ESlateBrushDrawType, ESlateBrushTileType, Margin, SlateColor } from "ue";
+import { Color, Image, PaperSprite, LinearColor, Texture2D, SlateColor, Vector2D } from "ue";
 import { ImageLoaderManager } from "../Resource/ImageLoaderManager";
 
 export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<string> {
@@ -41,7 +41,8 @@ export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<st
         
         if (!string.isNullOrEmpty(this.cacheUrl))
         {
-            // ImageLoaderManager.instance?.releaseOnlineImage(this.cacheUrl);
+            ImageLoaderManager.instance?.releaseOnlineImage(this.cacheUrl);
+            this.cacheUrl = null;
         }
     }
 
@@ -94,8 +95,7 @@ export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<st
                 return;
             }
             this.spritePath = spritePath;
-            //todo:
-            this.image.SetBrushFromTexture(sprite.BakedSourceTexture);
+            this.image.SetBrushResourceObject(sprite);
             this.isSetSprite = false;
             if(setNativeSize)
                 this.setNativeSize();
@@ -116,39 +116,73 @@ export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<st
      * @param setNativeSize 
      * @param defaultSpritePath 
      */
-    // public async setOnlineSpritePath(url: string, setNativeSize: boolean = false, defaultSpritePath: string = null)
-    // {
-    //     this.activatingComponent();
-    //     if (!string.isNullOrEmpty(defaultSpritePath))
-    //     {
-    //         await this.setSpritePath(defaultSpritePath,setNativeSize);
-    //     }
-    //     this.version++;
-    //     const thisVersion = this.version;
-    //     var sprite = await ImageLoaderManager.instance.getOnlineSprite(url);
-    //     if (sprite != null)
-    //     {
-    //         if (thisVersion != this.version)
-    //         {
-    //             ImageLoaderManager.instance.releaseOnlineImage(url);
-    //             return;
-    //         }
-    //         this.setSprite(sprite);
-    //         if (!string.isNullOrEmpty(this.cacheUrl))
-    //         {
-    //             ImageLoaderManager.instance.releaseOnlineImage(this.cacheUrl);
-    //             this.cacheUrl = null;
-    //         }
-    //         this.cacheUrl = url;
-    //     }
-    // }
+    public async setOnlineSpritePath(url: string, setNativeSize: boolean = false, defaultSpritePath: string = null)
+    {
+        this.activatingComponent();
+        if (!string.isNullOrEmpty(defaultSpritePath))
+        {
+            await this.setSpritePath(defaultSpritePath, setNativeSize);
+        }
+        this.version++;
+        const thisVersion = this.version;
+        var sprite = await ImageLoaderManager.instance.getOnlineTexture(url);
+        if (sprite != null)
+        {
+            if (thisVersion != this.version)
+            {
+                ImageLoaderManager.instance.releaseOnlineImage(url);
+                return;
+            }
+            this.setSprite(sprite);
+            if (setNativeSize)
+            {
+                this.setNativeSize();
+            }
+            if (!string.isNullOrEmpty(this.cacheUrl))
+            {
+                ImageLoaderManager.instance.releaseOnlineImage(this.cacheUrl);
+                this.cacheUrl = null;
+            }
+            this.cacheUrl = url;
+        }
+    }
 
+    /**
+     * 按照当前图片资源的原始像素尺寸设置组件大小（需先调用 setSprite / setSpritePath / setOnlineSpritePath 设置资源）
+     */
     public setNativeSize()
     {
-    //     if(this.image == null || this.image.spriteFrame == null) return;
-    //     let uiTrans = this.getTransform();
-    //     uiTrans.width = this.image.spriteFrame.width;
-    //     uiTrans.height = this.image.spriteFrame.height;
+        if (this.image == null)
+        {
+            return;
+        }
+        const brush = this.image.Brush;
+        if (brush == null)
+        {
+            return;
+        }
+        const resourceObject = brush.ResourceObject;
+        let width: number = 0;
+        let height: number = 0;
+        if (resourceObject instanceof PaperSprite)
+        {
+            // PaperSprite 的 BakedSourceDimension 即 Sprite 在源纹理中的像素尺寸（图集内为对应区域尺寸，非整图）
+            width = resourceObject.BakedSourceDimension.X;
+            height = resourceObject.BakedSourceDimension.Y;
+        }
+        else if (resourceObject instanceof Texture2D)
+        {
+            width = resourceObject.Blueprint_GetSizeX();
+            height = resourceObject.Blueprint_GetSizeY();
+        }
+        if (width <= 0 || height <= 0)
+        {
+            return;
+        }
+        brush.ImageSize.X = width;
+        brush.ImageSize.Y = height;
+        // 覆盖 DesiredSize，使布局（如按期望尺寸排列的容器）按原生尺寸生效
+        this.image.SetDesiredSizeOverride(new Vector2D(width, height));
     }
 
     public getSpritePath()
@@ -199,7 +233,7 @@ export class UIImage extends UIBaseComponent implements IOnDestroy, IOnCreate<st
         if(sprite instanceof Texture2D){
             this.image.SetBrushFromTexture(sprite);
         }else{
-            this.image.SetBrushFromTexture(sprite.BakedSourceTexture);
+            this.image.SetBrushResourceObject(sprite);
         }
         this.isSetSprite = true;
     }

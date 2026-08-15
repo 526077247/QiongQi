@@ -26902,18 +26902,6 @@ declare module "ue" {
         __tid_ActorComponentInstanceSourceInfo_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.ActorComponentMacros {
-        class ActorComponentMacros_C extends UE.ActorComponent {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): ActorComponentMacros_C;
-            static Load(InName: string): ActorComponentMacros_C;
-        
-            __tid_ActorComponentMacros_C_0__: boolean;
-        }
-        
-    }
-
     class ActorContainerPath {
         constructor();
         constructor(ContainerGuids: TArray<UE.Guid>);
@@ -28322,18 +28310,6 @@ declare module "ue" {
         __tid_ActorLocatorFragmentResolveParameter_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.ActorMacros {
-        class ActorMacros_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): ActorMacros_C;
-            static Load(InName: string): ActorMacros_C;
-        
-            __tid_ActorMacros_C_0__: boolean;
-        }
-        
-    }
-
     namespace Engine.PythonTypes {
         class ActorOnClickedSignature__PythonCallable extends UE.PythonCallableForDelegate {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -35755,571 +35731,6 @@ declare module "ue" {
         __tid_AITask_RunEQS_0__: boolean;
     }
     
-    class PointerToUberGraphFrame {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_PointerToUberGraphFrame_0__: boolean;
-    }
-    
-    class BoxComponent extends UE.ShapeComponent {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        BoxExtent: UE.Vector;
-        /*
-         *@return the box extent, scaled by the component scale.
-         */
-        GetScaledBoxExtent() : UE.Vector;
-        /*
-         *@return the box extent, ignoring component scale.
-         */
-        GetUnscaledBoxExtent() : UE.Vector;
-        /*
-         *Change the box extent size. This is the unscaled size, before component scale is applied.
-         *@param       InBoxExtent: new extent (radius) for the box.
-         *@param       bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor.
-         */
-        SetBoxExtent(InBoxExtent: UE.Vector, bUpdateOverlaps?: boolean /* = true */) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): BoxComponent;
-        static Load(InName: string): BoxComponent;
-    
-        __tid_BoxComponent_0__: boolean;
-    }
-    
-    enum EFunctionalTestLogHandling { ProjectDefault, OutputIsError, OutputIgnored, EFunctionalTestLogHandling_MAX, __typeKeyDoNoAccess}
-    class RandomStream {
-        constructor();
-        constructor(InitialSeed: number, Seed: number);
-        InitialSeed: number;
-        Seed: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_RandomStream_0__: boolean;
-    }
-    
-    enum EFunctionalTestResult { Default, Invalid, Error, Running, Failed, Succeeded, EFunctionalTestResult_MAX, __typeKeyDoNoAccess}
-    class FuncTestRenderingComponent extends UE.PrimitiveComponent {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FuncTestRenderingComponent;
-        static Load(InName: string): FuncTestRenderingComponent;
-    
-        __tid_FuncTestRenderingComponent_0__: boolean;
-    }
-    
-    enum EHorizTextAligment { EHTA_Left, EHTA_Center, EHTA_Right, EHTA_MAX, __typeKeyDoNoAccess}
-    enum EVerticalTextAligment { EVRTA_TextTop, EVRTA_TextCenter, EVRTA_TextBottom, EVRTA_QuadTop, EVRTA_MAX, __typeKeyDoNoAccess}
-    class TextRenderComponent extends UE.PrimitiveComponent {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Text: string;
-        TextMaterial: UE.MaterialInterface;
-        Font: UE.Font;
-        HorizontalAlignment: UE.EHorizTextAligment;
-        VerticalAlignment: UE.EVerticalTextAligment;
-        TextRenderColor: UE.Color;
-        XScale: number;
-        YScale: number;
-        WorldSize: number;
-        InvDefaultSize: number;
-        HorizSpacingAdjust: number;
-        VertSpacingAdjust: number;
-        bAlwaysRenderAsText: boolean;
-        /*
-         *Get local size of text
-         */
-        GetTextLocalSize() : UE.Vector;
-        /*
-         *Get world space size of text
-         */
-        GetTextWorldSize() : UE.Vector;
-        /*
-         *Change the text value and signal the primitives to be rebuilt
-         */
-        K2_SetText(Value: string) : void;
-        /*
-         *Change the font and signal the primitives to be rebuilt
-         */
-        SetFont(Value: $Nullable<UE.Font>) : void;
-        /*
-         *Change the horizontal alignment and signal the primitives to be rebuilt
-         */
-        SetHorizontalAlignment(Value: UE.EHorizTextAligment) : void;
-        /*
-         *Change the text horizontal spacing adjustment and signal the primitives to be rebuilt
-         */
-        SetHorizSpacingAdjust(Value: number) : void;
-        /*
-         *Change the text value and signal the primitives to be rebuilt
-         */
-        SetText(Value: string) : void;
-        /*
-         *Change the text material and signal the primitives to be rebuilt
-         */
-        SetTextMaterial(Material: $Nullable<UE.MaterialInterface>) : void;
-        /*
-         *Change the text render color and signal the primitives to be rebuilt
-         */
-        SetTextRenderColor(Value: UE.Color) : void;
-        /*
-         *Change the vertical alignment and signal the primitives to be rebuilt
-         */
-        SetVerticalAlignment(Value: UE.EVerticalTextAligment) : void;
-        /*
-         *Change the text vertical spacing adjustment and signal the primitives to be rebuilt
-         */
-        SetVertSpacingAdjust(Value: number) : void;
-        /*
-         *Change the world size of the text and signal the primitives to be rebuilt
-         */
-        SetWorldSize(Value: number) : void;
-        /*
-         *Change the text X scale and signal the primitives to be rebuilt
-         */
-        SetXScale(Value: number) : void;
-        /*
-         *Change the text Y scale and signal the primitives to be rebuilt
-         */
-        SetYScale(Value: number) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): TextRenderComponent;
-        static Load(InName: string): TextRenderComponent;
-    
-        __tid_TextRenderComponent_0__: boolean;
-    }
-    
-    enum EComparisonMethod { Equal_To, Not_Equal_To, Greater_Than_Or_Equal_To, Less_Than_Or_Equal_To, Greater_Than, Less_Than, EComparisonMethod_MAX, __typeKeyDoNoAccess}
-    class DateTime {
-        constructor();
-        constructor(Ticks: bigint);
-        Ticks: bigint;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_DateTime_0__: boolean;
-    }
-    
-    class Box2D {
-        constructor();
-        constructor(p0: number);
-        constructor(p0: Vector2D, p1: Vector2D);
-        constructor(p0: Vector2D, p1: number);
-        constructor(p0: UE.TArray<UE.Vector2D>);
-        Min: UE.Vector2D;
-        Max: UE.Vector2D;
-        bIsValid: boolean;
-        ComputeSquaredDistanceToPoint(p0: Vector2D) : number;
-        ExpandBy(p0: number) : Box2D;
-        GetArea() : number;
-        GetCenter() : Vector2D;
-        GetCenterAndExtents(p0: $Ref<Vector2D>, p1: $Ref<Vector2D>) : void;
-        GetClosestPointTo(p0: Vector2D) : Vector2D;
-        GetExtent() : Vector2D;
-        GetSize() : Vector2D;
-        Init() : void;
-        Intersect(p0: Box2D) : boolean;
-        IsInside(p0: Vector2D) : boolean;
-        IsInside(p0: Box2D) : boolean;
-        op_Addition(p0: Vector2D) : Box2D;
-        op_Addition(p0: Box2D) : Box2D;
-        op_Equality(p0: Box2D) : boolean;
-        op_Inequality(p0: Box2D) : boolean;
-        set_Item(p0: number) : Vector2D;
-        ShiftBy(p0: Vector2D) : Box2D;
-        ToString() : string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_Box2D_0__: boolean;
-    }
-    
-    class TraceQueryTestNames {
-        constructor();
-        constructor(ComponentName: string, PhysicalMaterialName: string, ActorName: string);
-        ComponentName: string;
-        PhysicalMaterialName: string;
-        ActorName: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TraceQueryTestNames_0__: boolean;
-    }
-    
-    class TraceQueryTestResultsInnerMost {
-        constructor();
-        constructor(SingleHit: UE.HitResult, SingleNames: UE.TraceQueryTestNames, bSingleResult: boolean, MultiHits: TArray<UE.HitResult>, MultiNames: TArray<UE.TraceQueryTestNames>, bMultiResult: boolean);
-        SingleHit: UE.HitResult;
-        SingleNames: UE.TraceQueryTestNames;
-        bSingleResult: boolean;
-        MultiHits: TArray<UE.HitResult>;
-        MultiNames: TArray<UE.TraceQueryTestNames>;
-        bMultiResult: boolean;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TraceQueryTestResultsInnerMost_0__: boolean;
-    }
-    
-    class TraceQueryTestResultsInner {
-        constructor();
-        constructor(LineResults: UE.TraceQueryTestResultsInnerMost, SphereResults: UE.TraceQueryTestResultsInnerMost, CapsuleResults: UE.TraceQueryTestResultsInnerMost, BoxResults: UE.TraceQueryTestResultsInnerMost);
-        LineResults: UE.TraceQueryTestResultsInnerMost;
-        SphereResults: UE.TraceQueryTestResultsInnerMost;
-        CapsuleResults: UE.TraceQueryTestResultsInnerMost;
-        BoxResults: UE.TraceQueryTestResultsInnerMost;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TraceQueryTestResultsInner_0__: boolean;
-    }
-    
-    class TraceChannelTestBatchOptions {
-        constructor();
-        constructor(bLineTrace: boolean, bSphereTrace: boolean, bCapsuleTrace: boolean, bBoxTrace: boolean, bChannelTrace: boolean, bObjectsTrace: boolean, bProfileTrace: boolean);
-        bLineTrace: boolean;
-        bSphereTrace: boolean;
-        bCapsuleTrace: boolean;
-        bBoxTrace: boolean;
-        bChannelTrace: boolean;
-        bObjectsTrace: boolean;
-        bProfileTrace: boolean;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TraceChannelTestBatchOptions_0__: boolean;
-    }
-    
-    class TraceQueryTestResults extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        ChannelResults: UE.TraceQueryTestResultsInner;
-        ObjectResults: UE.TraceQueryTestResultsInner;
-        ProfileResults: UE.TraceQueryTestResultsInner;
-        BatchOptions: UE.TraceChannelTestBatchOptions;
-        /*
-         *Output string value
-         */
-        ToString() : string;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): TraceQueryTestResults;
-        static Load(InName: string): TraceQueryTestResults;
-    
-        __tid_TraceQueryTestResults_0__: boolean;
-    }
-    
-    class FunctionalTest extends UE.Actor {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        TestLabel: string;
-        Author: string;
-        Description: string;
-        TestTags: string;
-        SpriteComponent: UE.BillboardComponent;
-        bIsEnabled: boolean;
-        LogErrorHandling: UE.EFunctionalTestLogHandling;
-        LogWarningHandling: UE.EFunctionalTestLogHandling;
-        ObservationPoint: UE.Actor;
-        bShouldDelayGarbageCollection: boolean;
-        RandomNumbersStream: UE.RandomStream;
-        Result: UE.EFunctionalTestResult;
-        PreparationTimeLimit: number;
-        TimeLimit: number;
-        TimesUpMessage: string;
-        TimesUpResult: UE.EFunctionalTestResult;
-        OnTestPrepare: $MulticastDelegate<() => void>;
-        OnTestStart: $MulticastDelegate<() => void>;
-        OnTestFinished: $MulticastDelegate<() => void>;
-        AutoDestroyActors: TArray<UE.Actor>;
-        RenderComp_EditorOnly: UE.FuncTestRenderingComponent;
-        TestName_EditorOnly: UE.TextRenderComponent;
-        bIsRunning: boolean;
-        TotalTime: number;
-        AddError(Message: string) : void;
-        AddInfo(Message: string) : void;
-        /*
-         *Causes the test to be rerun for a specific named reason.
-         */
-        AddRerun(Reason: string) : void;
-        AddWarning(Message: string) : void;
-        /*
-         *Assert that two bools are equal
-         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
-         */
-        AssertEqual_Bool(Actual: boolean, Expected: boolean, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two two-component boxes are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Box2D(Actual: UE.Box2D, Expected: UE.Box2D, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two double are equal within tolerance between two doubles.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} within Tolerance for context '')
-         */
-        AssertEqual_Double(Actual: number, Expected: number, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two floats are equal within tolerance between two floats.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} within Tolerance for context '')
-         */
-        AssertEqual_Float(Actual: number, Expected: number, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two ints are equal
-         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
-         */
-        AssertEqual_Int(Actual: number, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two 4x4 matrices are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Matrix(Actual: UE.Matrix, Expected: UE.Matrix, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two FNames are equal
-         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
-         */
-        AssertEqual_Name(Actual: string, Expected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two Objects are equal
-         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
-         */
-        AssertEqual_Object(Actual: $Nullable<UE.Object>, Expected: $Nullable<UE.Object>, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two planes are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Plane(Actual: UE.Plane, Expected: UE.Plane, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two quats are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Quat(Actual: UE.Quat, Expected: UE.Quat, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that the component angles of two rotators are all equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Rotator(Actual: UE.Rotator, Expected: UE.Rotator, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that the orientation of two rotators is the same within a small tolerance. Robust to quaternion singularities where angles can differ despite having an identical orientation.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_RotatorOrientation(Actual: UE.Rotator, Expected: UE.Rotator, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two Strings are equal.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_String(Actual: string, Expected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two TraceQueryResults are equal.
-         *@param What   A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_TraceQueryResults(Actual: $Nullable<UE.TraceQueryTestResults>, Expected: $Nullable<UE.TraceQueryTestResults>, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two transforms are (components memberwise - translation, rotation, scale) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Transform(Actual: UE.Transform, Expected: UE.Transform, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two vectors are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Vector(Actual: UE.Vector, Expected: UE.Vector, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two two-component vectors are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Vector2D(Actual: UE.Vector2D, Expected: UE.Vector2D, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two four-component vectors are (memberwise) equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertEqual_Vector4(Actual: UE.Vector4, Expected: UE.Vector4, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that a boolean value is false.
-         *@param Message       The message to display if the assert fails ("Assertion Failed: 'Message' for context ''")
-         */
-        AssertFalse(Condition: boolean, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that a UObject is valid
-         *@param Message       The message to display if the object is invalid ("Invalid object: 'Message' for context ''")
-         */
-        AssertIsValid(Object: $Nullable<UE.Object>, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two two-component boxes are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Box2D(Actual: UE.Box2D, NotExpected: UE.Box2D, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two 4x4 matrices are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Matrix(Actual: UE.Matrix, NotExpected: UE.Matrix, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two planes are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Plane(Actual: UE.Plane, NotExpected: UE.Plane, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two quats are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Quat(Actual: UE.Quat, NotExpected: UE.Quat, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that the component angles of two rotators are all not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Rotator(Actual: UE.Rotator, NotExpected: UE.Rotator, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two Strings are not equal.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_String(Actual: string, NotExpected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two transforms are (components memberwise - translation, rotation, scale) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Transform(Actual: UE.Transform, NotExpected: UE.Transform, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two vectors are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Vector(Actual: UE.Vector, NotExpected: UE.Vector, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two two-component vectors are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Vector2D(Actual: UE.Vector2D, NotExpected: UE.Vector2D, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that two four-component vectors are (memberwise) not equal within a small tolerance.
-         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
-         */
-        AssertNotEqual_Vector4(Actual: UE.Vector4, NotExpected: UE.Vector4, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert that a boolean value is true.
-         *@param Message       The message to display if the assert fails ("Assertion Failed: 'Message' for context ''")
-         */
-        AssertTrue(Condition: boolean, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert on a relationship between two DateTimes.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
-         */
-        AssertValue_DateTime(Actual: UE.DateTime, ShouldBe: UE.EComparisonMethod, Expected: UE.DateTime, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert on a relationship between two doubles.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
-         */
-        AssertValue_Double(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert on a relationship between two floats.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
-         */
-        AssertValue_Float(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Assert on a relationship between two integers.
-         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
-         */
-        AssertValue_Int(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
-        /*
-         *Used by debug drawing to gather actors this test is using and point at them on the level to better understand test's setup
-         */
-        DebugGatherRelevantActors() : TArray<UE.Actor>;
-        FinishTest(TestResult: UE.EFunctionalTestResult, Message: string) : void;
-        /*
-         *Returns the current re-run reason if we're in a named re-run.
-         */
-        GetCurrentRerunReason() : string;
-        IsEnabled() : boolean;
-        /*
-         *IsReady() is called once per frame after a test is run, until it returns true.  You should use this function to
-         *delay Start being called on the test until preconditions are met.
-         */
-        IsReady() : boolean;
-        /*
-         *AActor interface end
-         */
-        IsRunning() : boolean;
-        LogMessage(Message: string) : void;
-        OnAdditionalTestFinishedMessageRequest(TestResult: UE.EFunctionalTestResult) : string;
-        /*
-         *retrieves information whether test wants to have another run just after finishing
-         */
-        OnWantsReRunCheck() : boolean;
-        /*
-         *Prepare Test is fired once the test starts up, before the test IsReady() and thus before Start Test is called.
-         *So if there's some initial conditions or setup that you might need for your IsReady() check, you might want
-         *to do that here.
-         */
-        ReceivePrepareTest() : void;
-        /*
-         *Called once the IsReady() check for the test returns true.  After that happens the test has Officially started,
-         *and it will begin receiving Ticks in the blueprint.
-         */
-        ReceiveStartTest() : void;
-        /*
-         *Actors registered this way will be automatically destroyed (by limiting their lifespan)
-         *    on test finish
-         */
-        RegisterAutoDestroyActor(ActorToAutoDestroy: $Nullable<UE.Actor>) : void;
-        /*
-         *Sets the CVar from the given input. Variable gets reset after the test.
-         */
-        SetConsoleVariable(Name: string, InValue: string) : void;
-        /*
-         *Sets the CVar from the given input. Variable gets reset after the test.
-         */
-        SetConsoleVariableFromBoolean(Name: string, InValue: boolean) : void;
-        /*
-         *Sets the CVar from the given input. Variable gets reset after the test.
-         */
-        SetConsoleVariableFromFloat(Name: string, InValue: number) : void;
-        /*
-         *Sets the CVar from the given input. Variable gets reset after the test.
-         */
-        SetConsoleVariableFromInteger(Name: string, InValue: number) : void;
-        SetTimeLimit(NewTimeLimit: number, ResultWhenTimeRunsOut: UE.EFunctionalTestResult) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FunctionalTest;
-        static Load(InName: string): FunctionalTest;
-    
-        __tid_FunctionalTest_0__: boolean;
-    }
-    
-    namespace Engine.FunctionalTesting.Blueprints.AITesting_MoveGoal {
-        class AITesting_MoveGoal_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            MySpriteComponent: UE.BillboardComponent;
-            CollisionBox: UE.BoxComponent;
-            ObservedPawn: UE.Object;
-            CurrentTest: UE.FunctionalTest;
-            bStartEnabled: boolean;
-            ExecuteUbergraph_AITesting_MoveGoal(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            SetCollisionEnabled(bShouldBeEnabled: boolean) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): AITesting_MoveGoal_C;
-            static Load(InName: string): AITesting_MoveGoal_C;
-        
-            __tid_AITesting_MoveGoal_C_0__: boolean;
-        }
-        
-    }
-
     class AITestSpawnInfoBase {
         constructor();
         constructor(SpawnLocation: UE.Actor, NumberToSpawn: number, SpawnDelay: number, PreSpawnDelay: number);
@@ -39794,108 +39205,15 @@ declare module "ue" {
         __tid_AnimBlueprintFunctionPinInfo_0__: boolean;
     }
     
-    class AnimNodeExposedValueHandler {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AnimNodeExposedValueHandler_0__: boolean;
+    class AnimBlueprintGeneratedStruct extends UE.ScriptStruct {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): AnimBlueprintGeneratedStruct;
+        static Load(InName: string): AnimBlueprintGeneratedStruct;
+    
+        __tid_AnimBlueprintGeneratedStruct_0__: boolean;
     }
     
-    class AnimNodeExposedValueHandler_Base extends UE.AnimNodeExposedValueHandler {
-        constructor();
-        constructor(Function: UE.Function, BoundFunction: string);
-        Function: UE.Function;
-        BoundFunction: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AnimNodeExposedValueHandler_Base_0__: boolean;
-    }
-    
-    enum EPostCopyOperation { None, LogicalNegateBool, EPostCopyOperation_MAX, __typeKeyDoNoAccess}
-    class ExposedValueCopyRecord {
-        constructor();
-        constructor(CopyIndex: number, PostCopyOperation: UE.EPostCopyOperation, bOnlyUpdateWhenActive: boolean);
-        CopyIndex: number;
-        PostCopyOperation: UE.EPostCopyOperation;
-        bOnlyUpdateWhenActive: boolean;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ExposedValueCopyRecord_0__: boolean;
-    }
-    
-    class AnimNodeExposedValueHandler_PropertyAccess extends UE.AnimNodeExposedValueHandler_Base {
-        constructor();
-        constructor(CopyRecords: TArray<UE.ExposedValueCopyRecord>);
-        CopyRecords: TArray<UE.ExposedValueCopyRecord>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AnimNodeExposedValueHandler_PropertyAccess_0__: boolean;
-    }
-    
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
-        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
-            constructor();
-            constructor(__NameProperty_11: string, __NameProperty_12: string, __NameProperty_13: string, __NameProperty_14: string, __IntProperty_15: number, __StructProperty_16: UE.AnimNodeFunctionRef, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base, AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess);
-            __NameProperty_11: string;
-            __NameProperty_12: string;
-            __NameProperty_13: string;
-            __NameProperty_14: string;
-            __IntProperty_15: number;
-            __StructProperty_16: UE.AnimNodeFunctionRef;
-            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
-            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
-            AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            AnimGraphNode_StateResult: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            AnimGraphNode_StateMachine: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
-        class AnimBlueprintGeneratedConstantData extends UE.AnimBlueprintConstantData {
-            constructor();
-            constructor(__NameProperty_7: string, __StructProperty_8: UE.AnimNodeFunctionRef, __BoolProperty_9: boolean, __FloatProperty_10: number, __FloatProperty_11: number, __BoolProperty_12: boolean, __EnumProperty_13: UE.EAnimSyncMethod, __ByteProperty_14: UE.EAnimGroupRole, __NameProperty_15: string, AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess, AnimBlueprintExtension_Base: UE.AnimSubsystem_Base, AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess, AnimGraphNode_BlendSpacePlayer: UE.AnimNodeExposedValueHandler_PropertyAccess);
-            __NameProperty_7: string;
-            __StructProperty_8: UE.AnimNodeFunctionRef;
-            __BoolProperty_9: boolean;
-            __FloatProperty_10: number;
-            __FloatProperty_11: number;
-            __BoolProperty_12: boolean;
-            __EnumProperty_13: UE.EAnimSyncMethod;
-            __ByteProperty_14: UE.EAnimGroupRole;
-            __NameProperty_15: string;
-            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystem_PropertyAccess;
-            AnimBlueprintExtension_Base: UE.AnimSubsystem_Base;
-            AnimGraphNode_Root: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            AnimGraphNode_BlendSpacePlayer: UE.AnimNodeExposedValueHandler_PropertyAccess;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_AnimBlueprintGeneratedConstantData_0__: boolean;
-        }
-        
-    }
-
     class AnimBlueprintMutableData {
         constructor();
         /**
@@ -39904,30 +39222,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_AnimBlueprintMutableData_0__: boolean;
-    }
-    
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
-        class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
-            constructor();
-            constructor(__FloatProperty: number);
-            __FloatProperty: number;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_AnimBlueprintGeneratedMutableData_0__: boolean;
-        }
-        
-    }
-
-    class AnimBlueprintGeneratedStruct extends UE.ScriptStruct {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): AnimBlueprintGeneratedStruct;
-        static Load(InName: string): AnimBlueprintGeneratedStruct;
-    
-        __tid_AnimBlueprintGeneratedStruct_0__: boolean;
     }
     
     class AnimBlueprintPostCompileValidation extends UE.Object {
@@ -44966,6 +44260,56 @@ declare module "ue" {
         __tid_AnimNodeControlRigLibrary_0__: boolean;
     }
     
+    class AnimNodeExposedValueHandler {
+        constructor();
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_AnimNodeExposedValueHandler_0__: boolean;
+    }
+    
+    class AnimNodeExposedValueHandler_Base extends UE.AnimNodeExposedValueHandler {
+        constructor();
+        constructor(Function: UE.Function, BoundFunction: string);
+        Function: UE.Function;
+        BoundFunction: string;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_AnimNodeExposedValueHandler_Base_0__: boolean;
+    }
+    
+    enum EPostCopyOperation { None, LogicalNegateBool, EPostCopyOperation_MAX, __typeKeyDoNoAccess}
+    class ExposedValueCopyRecord {
+        constructor();
+        constructor(CopyIndex: number, PostCopyOperation: UE.EPostCopyOperation, bOnlyUpdateWhenActive: boolean);
+        CopyIndex: number;
+        PostCopyOperation: UE.EPostCopyOperation;
+        bOnlyUpdateWhenActive: boolean;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_ExposedValueCopyRecord_0__: boolean;
+    }
+    
+    class AnimNodeExposedValueHandler_PropertyAccess extends UE.AnimNodeExposedValueHandler_Base {
+        constructor();
+        constructor(CopyRecords: TArray<UE.ExposedValueCopyRecord>);
+        CopyRecords: TArray<UE.ExposedValueCopyRecord>;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_AnimNodeExposedValueHandler_PropertyAccess_0__: boolean;
+    }
+    
     class RigidBodyAnimNodeReference extends UE.AnimNodeReference {
         constructor();
         /**
@@ -46812,6 +46156,86 @@ declare module "ue" {
         static Load(InName: string): NiagaraValidationRuleSet;
     
         __tid_NiagaraValidationRuleSet_0__: boolean;
+    }
+    
+    enum EHorizTextAligment { EHTA_Left, EHTA_Center, EHTA_Right, EHTA_MAX, __typeKeyDoNoAccess}
+    enum EVerticalTextAligment { EVRTA_TextTop, EVRTA_TextCenter, EVRTA_TextBottom, EVRTA_QuadTop, EVRTA_MAX, __typeKeyDoNoAccess}
+    class TextRenderComponent extends UE.PrimitiveComponent {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Text: string;
+        TextMaterial: UE.MaterialInterface;
+        Font: UE.Font;
+        HorizontalAlignment: UE.EHorizTextAligment;
+        VerticalAlignment: UE.EVerticalTextAligment;
+        TextRenderColor: UE.Color;
+        XScale: number;
+        YScale: number;
+        WorldSize: number;
+        InvDefaultSize: number;
+        HorizSpacingAdjust: number;
+        VertSpacingAdjust: number;
+        bAlwaysRenderAsText: boolean;
+        /*
+         *Get local size of text
+         */
+        GetTextLocalSize() : UE.Vector;
+        /*
+         *Get world space size of text
+         */
+        GetTextWorldSize() : UE.Vector;
+        /*
+         *Change the text value and signal the primitives to be rebuilt
+         */
+        K2_SetText(Value: string) : void;
+        /*
+         *Change the font and signal the primitives to be rebuilt
+         */
+        SetFont(Value: $Nullable<UE.Font>) : void;
+        /*
+         *Change the horizontal alignment and signal the primitives to be rebuilt
+         */
+        SetHorizontalAlignment(Value: UE.EHorizTextAligment) : void;
+        /*
+         *Change the text horizontal spacing adjustment and signal the primitives to be rebuilt
+         */
+        SetHorizSpacingAdjust(Value: number) : void;
+        /*
+         *Change the text value and signal the primitives to be rebuilt
+         */
+        SetText(Value: string) : void;
+        /*
+         *Change the text material and signal the primitives to be rebuilt
+         */
+        SetTextMaterial(Material: $Nullable<UE.MaterialInterface>) : void;
+        /*
+         *Change the text render color and signal the primitives to be rebuilt
+         */
+        SetTextRenderColor(Value: UE.Color) : void;
+        /*
+         *Change the vertical alignment and signal the primitives to be rebuilt
+         */
+        SetVerticalAlignment(Value: UE.EVerticalTextAligment) : void;
+        /*
+         *Change the text vertical spacing adjustment and signal the primitives to be rebuilt
+         */
+        SetVertSpacingAdjust(Value: number) : void;
+        /*
+         *Change the world size of the text and signal the primitives to be rebuilt
+         */
+        SetWorldSize(Value: number) : void;
+        /*
+         *Change the text X scale and signal the primitives to be rebuilt
+         */
+        SetXScale(Value: number) : void;
+        /*
+         *Change the text Y scale and signal the primitives to be rebuilt
+         */
+        SetYScale(Value: number) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): TextRenderComponent;
+        static Load(InName: string): TextRenderComponent;
+    
+        __tid_TextRenderComponent_0__: boolean;
     }
     
     class NiagaraPerfBaselineActor extends UE.Actor {
@@ -52567,6 +51991,18 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_MigrationOptions_0__: boolean;
+    }
+    
+    class DateTime {
+        constructor();
+        constructor(Ticks: bigint);
+        Ticks: bigint;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_DateTime_0__: boolean;
     }
     
     class RevisionInfo {
@@ -64202,6 +63638,42 @@ declare module "ue" {
         __tid_BoundsCopyComponent_0__: boolean;
     }
     
+    class Box2D {
+        constructor();
+        constructor(p0: number);
+        constructor(p0: Vector2D, p1: Vector2D);
+        constructor(p0: Vector2D, p1: number);
+        constructor(p0: UE.TArray<UE.Vector2D>);
+        Min: UE.Vector2D;
+        Max: UE.Vector2D;
+        bIsValid: boolean;
+        ComputeSquaredDistanceToPoint(p0: Vector2D) : number;
+        ExpandBy(p0: number) : Box2D;
+        GetArea() : number;
+        GetCenter() : Vector2D;
+        GetCenterAndExtents(p0: $Ref<Vector2D>, p1: $Ref<Vector2D>) : void;
+        GetClosestPointTo(p0: Vector2D) : Vector2D;
+        GetExtent() : Vector2D;
+        GetSize() : Vector2D;
+        Init() : void;
+        Intersect(p0: Box2D) : boolean;
+        IsInside(p0: Vector2D) : boolean;
+        IsInside(p0: Box2D) : boolean;
+        op_Addition(p0: Vector2D) : Box2D;
+        op_Addition(p0: Box2D) : Box2D;
+        op_Equality(p0: Box2D) : boolean;
+        op_Inequality(p0: Box2D) : boolean;
+        set_Item(p0: number) : Vector2D;
+        ShiftBy(p0: Vector2D) : Box2D;
+        ToString() : string;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_Box2D_0__: boolean;
+    }
+    
     class Box3d {
         constructor();
         constructor(Min: UE.Vector3d, Max: UE.Vector3d, IsValid: boolean);
@@ -64228,6 +63700,30 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_Box3f_0__: boolean;
+    }
+    
+    class BoxComponent extends UE.ShapeComponent {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        BoxExtent: UE.Vector;
+        /*
+         *@return the box extent, scaled by the component scale.
+         */
+        GetScaledBoxExtent() : UE.Vector;
+        /*
+         *@return the box extent, ignoring component scale.
+         */
+        GetUnscaledBoxExtent() : UE.Vector;
+        /*
+         *Change the box extent size. This is the unscaled size, before component scale is applied.
+         *@param       InBoxExtent: new extent (radius) for the box.
+         *@param       bUpdateOverlaps: if true and this shape is registered and collides, updates touching array for owner actor.
+         */
+        SetBoxExtent(InBoxExtent: UE.Vector, bUpdateOverlaps?: boolean /* = true */) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): BoxComponent;
+        static Load(InName: string): BoxComponent;
+    
+        __tid_BoxComponent_0__: boolean;
     }
     
     class FieldNodeBase extends UE.ActorComponent {
@@ -64401,85 +63897,6 @@ declare module "ue" {
         __tid_BoxToMeshDataflowNode_0__: boolean;
     }
     
-    class Light extends UE.Actor {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        LightComponent: UE.LightComponent;
-        bEnabled: boolean;
-        GetBrightness() : number;
-        GetLightColor() : UE.LinearColor;
-        IsEnabled() : boolean;
-        /*
-         *Replication Notification Callbacks
-         */
-        OnRep_bEnabled() : void;
-        SetAffectTranslucentLighting(bNewValue: boolean) : void;
-        SetBrightness(NewBrightness: number) : void;
-        SetCastShadows(bNewValue: boolean) : void;
-        /*
-         *BEGIN DEPRECATED (use component functions now in level script)
-         */
-        SetEnabled(bSetEnabled: boolean) : void;
-        SetLightColor(NewLightColor: UE.LinearColor) : void;
-        SetLightFunctionFadeDistance(NewLightFunctionFadeDistance: number) : void;
-        SetLightFunctionMaterial(NewLightFunctionMaterial: $Nullable<UE.MaterialInterface>) : void;
-        SetLightFunctionScale(NewLightFunctionScale: UE.Vector) : void;
-        ToggleEnabled() : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): Light;
-        static Load(InName: string): Light;
-    
-        __tid_Light_0__: boolean;
-    }
-    
-    class DirectionalLight extends UE.Light {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        ArrowComponent_EditorOnly: UE.ArrowComponent;
-        DirectionalLightComponent_EditorOnly: UE.DirectionalLightComponent;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): DirectionalLight;
-        static Load(InName: string): DirectionalLight;
-    
-        __tid_DirectionalLight_0__: boolean;
-    }
-    
-    namespace Engine.EngineSky.BP_Sky_Sphere {
-        class BP_Sky_Sphere_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            SkySphereMesh: UE.StaticMeshComponent;
-            Base: UE.SceneComponent;
-            ["Sky material"]: UE.MaterialInstanceDynamic;
-            ["Refresh material"]: boolean;
-            ["Directional light actor"]: UE.DirectionalLight;
-            ["Colors determined by sun position"]: boolean;
-            ["Sun height"]: number;
-            ["Sun brightness"]: number;
-            ["Horizon Falloff"]: number;
-            ["Zenith Color"]: UE.LinearColor;
-            ["Horizon color"]: UE.LinearColor;
-            ["Cloud color"]: UE.LinearColor;
-            ["Overall Color"]: UE.LinearColor;
-            ["Cloud speed"]: number;
-            ["Cloud opacity"]: number;
-            ["Stars brightness"]: number;
-            ["Horizon color curve"]: UE.CurveLinearColor;
-            ["Zenith color curve"]: UE.CurveLinearColor;
-            ["Cloud color curve"]: UE.CurveLinearColor;
-            RefreshMaterial() : void;
-            UpdateSunDirection() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): BP_Sky_Sphere_C;
-            static Load(InName: string): BP_Sky_Sphere_C;
-        
-            __tid_BP_Sky_Sphere_C_0__: boolean;
-        }
-        
-    }
-
     enum EGraphType { GT_Function, GT_Ubergraph, GT_Macro, GT_Animation, GT_StateMachine, GT_MAX, __typeKeyDoNoAccess}
     class BPGraphClipboardData {
         constructor();
@@ -72709,6 +72126,47 @@ declare module "ue" {
         static Load(InName: string): ChaosVDSettingsObjectsOuter;
     
         __tid_ChaosVDSettingsObjectsOuter_0__: boolean;
+    }
+    
+    class Light extends UE.Actor {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        LightComponent: UE.LightComponent;
+        bEnabled: boolean;
+        GetBrightness() : number;
+        GetLightColor() : UE.LinearColor;
+        IsEnabled() : boolean;
+        /*
+         *Replication Notification Callbacks
+         */
+        OnRep_bEnabled() : void;
+        SetAffectTranslucentLighting(bNewValue: boolean) : void;
+        SetBrightness(NewBrightness: number) : void;
+        SetCastShadows(bNewValue: boolean) : void;
+        /*
+         *BEGIN DEPRECATED (use component functions now in level script)
+         */
+        SetEnabled(bSetEnabled: boolean) : void;
+        SetLightColor(NewLightColor: UE.LinearColor) : void;
+        SetLightFunctionFadeDistance(NewLightFunctionFadeDistance: number) : void;
+        SetLightFunctionMaterial(NewLightFunctionMaterial: $Nullable<UE.MaterialInterface>) : void;
+        SetLightFunctionScale(NewLightFunctionScale: UE.Vector) : void;
+        ToggleEnabled() : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): Light;
+        static Load(InName: string): Light;
+    
+        __tid_Light_0__: boolean;
+    }
+    
+    class DirectionalLight extends UE.Light {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        ArrowComponent_EditorOnly: UE.ArrowComponent;
+        DirectionalLightComponent_EditorOnly: UE.DirectionalLightComponent;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): DirectionalLight;
+        static Load(InName: string): DirectionalLight;
+    
+        __tid_DirectionalLight_0__: boolean;
     }
     
     class ChaosVDSkySphereInterface extends UE.Interface {
@@ -93358,299 +92816,6 @@ declare module "ue" {
         __tid_DEditorVectorParameterValue_0__: boolean;
     }
     
-    enum ETextShapingMethod { Auto, KerningOnly, FullShaping, ETextShapingMethod_MAX, __typeKeyDoNoAccess}
-    enum ETextFlowDirection { Auto, LeftToRight, RightToLeft, Culture, ETextFlowDirection_MAX, __typeKeyDoNoAccess}
-    class ShapedTextOptions {
-        constructor();
-        constructor(bOverride_TextShapingMethod: boolean, bOverride_TextFlowDirection: boolean, TextShapingMethod: UE.ETextShapingMethod, TextFlowDirection: UE.ETextFlowDirection);
-        bOverride_TextShapingMethod: boolean;
-        bOverride_TextFlowDirection: boolean;
-        TextShapingMethod: UE.ETextShapingMethod;
-        TextFlowDirection: UE.ETextFlowDirection;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ShapedTextOptions_0__: boolean;
-    }
-    
-    enum ETextJustify { Left, Center, Right, InvariantLeft, InvariantRight, ETextJustify_MAX, __typeKeyDoNoAccess}
-    enum ETextWrappingPolicy { DefaultWrapping, AllowPerCharacterWrapping, ETextWrappingPolicy_MAX, __typeKeyDoNoAccess}
-    class TextLayoutWidget extends UE.Widget {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        ShapedTextOptions: UE.ShapedTextOptions;
-        Justification: UE.ETextJustify;
-        WrappingPolicy: UE.ETextWrappingPolicy;
-        AutoWrapText: boolean;
-        ApplyLineHeightToBottomLine: boolean;
-        WrapTextAt: number;
-        Margin: UE.Margin;
-        LineHeightPercentage: number;
-        SetJustification(InJustification: UE.ETextJustify) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): TextLayoutWidget;
-        static Load(InName: string): TextLayoutWidget;
-    
-        __tid_TextLayoutWidget_0__: boolean;
-    }
-    
-    class TextBlock extends UE.TextLayoutWidget {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Text: string;
-        TextDelegate: $Delegate<() => string>;
-        ColorAndOpacity: UE.SlateColor;
-        ColorAndOpacityDelegate: $Delegate<() => UE.SlateColor>;
-        MinDesiredWidth: number;
-        Font: UE.SlateFontInfo;
-        StrikeBrush: UE.SlateBrush;
-        ShadowOffset: UE.Vector2D;
-        ShadowColorAndOpacity: UE.LinearColor;
-        ShadowColorAndOpacityDelegate: $Delegate<() => UE.LinearColor>;
-        bWrapWithInvalidationPanel: boolean;
-        TextTransformPolicy: UE.ETextTransformPolicy;
-        TextOverflowPolicy: UE.ETextOverflowPolicy;
-        bSimpleTextMode: boolean;
-        GetDynamicFontMaterial() : UE.MaterialInstanceDynamic;
-        GetDynamicOutlineMaterial() : UE.MaterialInstanceDynamic;
-        /*
-         *Gets the widget text
-         *@return The widget text
-         */
-        GetText() : string;
-        /*
-         *Set the auto wrap for this text block.
-         *
-         *@param InAutoTextWrap to turn wrap on or off.
-         */
-        SetAutoWrapText(InAutoTextWrap: boolean) : void;
-        /*
-         *Sets the color and opacity of the text in this text block
-         *
-         *@param InColorAndOpacity             The new text color and opacity
-         */
-        SetColorAndOpacity(InColorAndOpacity: UE.SlateColor) : void;
-        /*
-         *Dynamically set the font info for this text block
-         *
-         *@param InFontInfo The new font info
-         */
-        SetFont(InFontInfo: UE.SlateFontInfo) : void;
-        SetFontMaterial(InMaterial: $Nullable<UE.MaterialInterface>) : void;
-        SetFontOutlineMaterial(InMaterial: $Nullable<UE.MaterialInterface>) : void;
-        /*
-         *Set the minimum desired width for this text block
-         *
-         *@param InMinDesiredWidth new minimum desired width
-         */
-        SetMinDesiredWidth(InMinDesiredWidth: number) : void;
-        /*
-         *Sets the opacity of the text in this text block
-         *
-         *@param InOpacity              The new text opacity
-         */
-        SetOpacity(InOpacity: number) : void;
-        /*
-         *Sets the color and opacity of the text drop shadow
-         *Note: if opacity is zero no shadow will be drawn
-         *
-         *@param InShadowColorAndOpacity               The new drop shadow color and opacity
-         */
-        SetShadowColorAndOpacity(InShadowColorAndOpacity: UE.LinearColor) : void;
-        /*
-         *Sets the offset that the text drop shadow should be drawn at
-         *
-         *@param InShadowOffset                The new offset
-         */
-        SetShadowOffset(InShadowOffset: UE.Vector2D) : void;
-        /*
-         *Dynamically set the strike brush for this text block
-         *
-         *@param InStrikeBrush The new brush to use to strike through text
-         */
-        SetStrikeBrush(InStrikeBrush: UE.SlateBrush) : void;
-        /*
-         *Directly sets the widget text.
-         *Warning: This will wipe any binding created for the Text property!
-         *@param InText The text to assign to the widget
-         */
-        SetText(InText: string) : void;
-        /*
-         *Set the text overflow policy for this text block.
-         *
-         *@param InOverflowPolicy the new text overflow policy.
-         */
-        SetTextOverflowPolicy(InOverflowPolicy: UE.ETextOverflowPolicy) : void;
-        /*
-         *Set the text transformation policy for this text block.
-         *
-         *@param InTransformPolicy the new text transformation policy.
-         */
-        SetTextTransformPolicy(InTransformPolicy: UE.ETextTransformPolicy) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): TextBlock;
-        static Load(InName: string): TextBlock;
-    
-        __tid_TextBlock_0__: boolean;
-    }
-    
-    class SlateTextureAtlasInterface extends UE.Interface {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): SlateTextureAtlasInterface;
-        static Load(InName: string): SlateTextureAtlasInterface;
-    
-        __tid_SlateTextureAtlasInterface_0__: boolean;
-    }
-    
-    class Image extends UE.Widget {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Brush: UE.SlateBrush;
-        BrushDelegate: $Delegate<() => UE.SlateBrush>;
-        ColorAndOpacity: UE.LinearColor;
-        ColorAndOpacityDelegate: $Delegate<() => UE.LinearColor>;
-        bFlipForRightToLeftFlowDirection: boolean;
-        OnMouseButtonDownEvent: $Delegate<(MyGeometry: UE.Geometry, MouseEvent: UE.PointerEvent) => UE.EventReply>;
-        GetDynamicMaterial() : UE.MaterialInstanceDynamic;
-        SetBrush(InBrush: UE.SlateBrush) : void;
-        SetBrushFromAsset(Asset: $Nullable<UE.SlateBrushAsset>) : void;
-        /*
-         *Sets the Brush to the specified Atlas Region.
-         *
-         *  @param AtlasRegion Region of the Atlas to use to set on Brush.
-         *      @param bMatchSize If true, image will change its size to atlas region size. If false, atlas region will be stretched to image size.
-         */
-        SetBrushFromAtlasInterface(AtlasRegion: UE.SlateTextureAtlasInterface, bMatchSize?: boolean /* = false */) : void;
-        SetBrushFromMaterial(Material: $Nullable<UE.MaterialInterface>) : void;
-        SetBrushFromSoftMaterial(SoftMaterial: TSoftObjectPtr<UE.MaterialInterface>) : void;
-        /*
-         *Sets the Brush to the specified Soft Texture.
-         *
-         *  @param SoftTexture Soft Texture to use to set on Brush.
-         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
-         */
-        SetBrushFromSoftTexture(SoftTexture: TSoftObjectPtr<UE.Texture2D>, bMatchSize?: boolean /* = false */) : void;
-        /*
-         *Sets the Brush to the specified Texture.
-         *
-         *  @param Texture Texture to use to set on Brush.
-         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
-         */
-        SetBrushFromTexture(Texture: $Nullable<UE.Texture2D>, bMatchSize?: boolean /* = false */) : void;
-        /*
-         *Sets the Brush to the specified Dynamic Texture.
-         *
-         *  @param Texture Dynamic Texture to use to set on Brush.
-         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
-         */
-        SetBrushFromTextureDynamic(Texture: $Nullable<UE.Texture2DDynamic>, bMatchSize?: boolean /* = false */) : void;
-        SetBrushResourceObject(ResourceObject: $Nullable<UE.Object>) : void;
-        SetBrushTintColor(TintColor: UE.SlateColor) : void;
-        SetColorAndOpacity(InColorAndOpacity: UE.LinearColor) : void;
-        SetDesiredSizeOverride(DesiredSize: UE.Vector2D) : void;
-        SetOpacity(InOpacity: number) : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): Image;
-        static Load(InName: string): Image;
-    
-        __tid_Image_0__: boolean;
-    }
-    
-    namespace Engine.Sequencer.DefaultBurnInOptions {
-        class DefaultBurnInOptions_C extends UE.LevelSequenceBurnInInitSettings {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            TopLeftText: string;
-            TopCenterText: string;
-            TopRightText: string;
-            BottomLeftText: string;
-            BottomCenterText: string;
-            BottomRightText: string;
-            Watermark: UE.Texture2D;
-            WatermarkTint: UE.LinearColor;
-            Font: UE.SlateFontInfo;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): DefaultBurnInOptions_C;
-            static Load(InName: string): DefaultBurnInOptions_C;
-        
-            __tid_DefaultBurnInOptions_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Sequencer.DefaultBurnIn {
-        class DefaultBurnIn_C extends UE.LevelSequenceBurnIn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Border_0: UE.Border;
-            Border_3: UE.Border;
-            BottomCenter: UE.TextBlock;
-            BottomLeft: UE.TextBlock;
-            BottomRight: UE.TextBlock;
-            TopCenter: UE.TextBlock;
-            TopLeft: UE.TextBlock;
-            TopRight: UE.TextBlock;
-            Watermark: UE.Image;
-            ["Foreground Color"]: UE.LinearColor;
-            ["Background Color"]: UE.LinearColor;
-            Date: string;
-            Options: UE.Engine.Sequencer.DefaultBurnInOptions.DefaultBurnInOptions_C;
-            hh: string;
-            mm: string;
-            ss: string;
-            ff: string;
-            MasterFrame: string;
-            ShotFrame: string;
-            MasterName: string;
-            ShotName: string;
-            FocalLength: string;
-            FocusDistance: string;
-            Aperture: string;
-            SensorWidth: string;
-            SensorHeight: string;
-            SensorAspectRatio: string;
-            Translation: UE.Vector;
-            Rotation: UE.Rotator;
-            bCached: boolean;
-            EngineVersion: string;
-            SourceTimecode: string;
-            CacheData() : void;
-            /*
-             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
-             *this event may be called multiple times due to adding and removing from the hierarchy.
-             *If you need a true called-once-when-created event, use OnInitialized.
-             */
-            Construct() : void;
-            ExecuteUbergraph_DefaultBurnIn(EntryPoint: number) : void;
-            Get_BottomCenter_Text_0() : string;
-            Get_BottomLeft_Text_0() : string;
-            Get_BottomRight_Text_0() : string;
-            Get_TopCenter_Text_0() : string;
-            Get_TopLeft_Text_0() : string;
-            Get_TopRight_Text_0() : string;
-            /*
-             *Get the settings class to use for this burn in
-             */
-            GetSettingsClass() : UE.Class;
-            /*
-             *Called when this burn in is receiving its settings
-             */
-            SetSettings(InSettings: $Nullable<UE.Object>) : void;
-            /*
-             *Ticks this widget.  Override in derived classes, but always call the parent implementation.
-             *
-             *@param  MyGeometry The space allotted for this widget
-             *@param  InDeltaTime  Real time passed since last tick
-             */
-            Tick(MyGeometry: UE.Geometry, InDeltaTime: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): DefaultBurnIn_C;
-            static Load(InName: string): DefaultBurnIn_C;
-        
-            __tid_DefaultBurnIn_C_0__: boolean;
-        }
-        
-    }
-
     class DefaultCameraShakeBase extends UE.CameraShakeBase {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -96478,6 +95643,7 @@ declare module "ue" {
     enum ECombineCurvesMethod { LeaveSeparate, Union, Intersect, Difference, ExclusiveOr, ECombineCurvesMethod_MAX, __typeKeyDoNoAccess}
     enum ECommentBoxMode { GroupMovement, NoGroupMovement, ECommentBoxMode_MAX, __typeKeyDoNoAccess}
     enum ECompareOperation1Enum { Dataflow_Compare_Equal, Dataflow_Compare_Smaller, Dataflow_Compare_SmallerOrEqual, Dataflow_Compare_Greater, Dataflow_Compare_GreaterOrEqual, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
+    enum EComparisonMethod { Equal_To, Not_Equal_To, Greater_Than_Or_Equal_To, Less_Than_Or_Equal_To, Greater_Than, Less_Than, EComparisonMethod_MAX, __typeKeyDoNoAccess}
     enum ECompilerVersion { Default, VisualStudio2015, VisualStudio2017, VisualStudio2019, VisualStudio2022, ECompilerVersion_MAX, __typeKeyDoNoAccess}
     enum EComponentSelectionMode { Vertices, Edges, Faces, EComponentSelectionMode_MAX, __typeKeyDoNoAccess}
     enum EComponentSocketType { Invalid, Bone, Socket, EComponentSocketType_MAX, __typeKeyDoNoAccess}
@@ -97031,6 +96197,24 @@ declare module "ue" {
     
     enum EVirtualKeyboardTrigger { OnFocusByPointer, OnAllFocusEvents, EVirtualKeyboardTrigger_MAX, __typeKeyDoNoAccess}
     enum EVirtualKeyboardDismissAction { TextChangeOnDismiss, TextCommitOnAccept, TextCommitOnDismiss, EVirtualKeyboardDismissAction_MAX, __typeKeyDoNoAccess}
+    enum ETextJustify { Left, Center, Right, InvariantLeft, InvariantRight, ETextJustify_MAX, __typeKeyDoNoAccess}
+    enum ETextShapingMethod { Auto, KerningOnly, FullShaping, ETextShapingMethod_MAX, __typeKeyDoNoAccess}
+    enum ETextFlowDirection { Auto, LeftToRight, RightToLeft, Culture, ETextFlowDirection_MAX, __typeKeyDoNoAccess}
+    class ShapedTextOptions {
+        constructor();
+        constructor(bOverride_TextShapingMethod: boolean, bOverride_TextFlowDirection: boolean, TextShapingMethod: UE.ETextShapingMethod, TextFlowDirection: UE.ETextFlowDirection);
+        bOverride_TextShapingMethod: boolean;
+        bOverride_TextFlowDirection: boolean;
+        TextShapingMethod: UE.ETextShapingMethod;
+        TextFlowDirection: UE.ETextFlowDirection;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_ShapedTextOptions_0__: boolean;
+    }
+    
     enum ETextCommit { Default, OnEnter, OnUserMovedFocus, OnCleared, ETextCommit_MAX, __typeKeyDoNoAccess}
     class EditableText extends UE.Widget {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -102400,6 +101584,25 @@ declare module "ue" {
         __tid_EditorUtilityListView_0__: boolean;
     }
     
+    enum ETextWrappingPolicy { DefaultWrapping, AllowPerCharacterWrapping, ETextWrappingPolicy_MAX, __typeKeyDoNoAccess}
+    class TextLayoutWidget extends UE.Widget {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        ShapedTextOptions: UE.ShapedTextOptions;
+        Justification: UE.ETextJustify;
+        WrappingPolicy: UE.ETextWrappingPolicy;
+        AutoWrapText: boolean;
+        ApplyLineHeightToBottomLine: boolean;
+        WrapTextAt: number;
+        Margin: UE.Margin;
+        LineHeightPercentage: number;
+        SetJustification(InJustification: UE.ETextJustify) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): TextLayoutWidget;
+        static Load(InName: string): TextLayoutWidget;
+    
+        __tid_TextLayoutWidget_0__: boolean;
+    }
+    
     class MultiLineEditableText extends UE.TextLayoutWidget {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Text: string;
@@ -103405,20 +102608,8 @@ declare module "ue" {
     enum EFbxSceneVertexColorImportOption { Replace, Ignore, Override, EFbxSceneVertexColorImportOption_MAX, __typeKeyDoNoAccess}
     enum EFBXTestPlanActionType { Import, Reimport, AddLOD, ReimportLOD, ImportReload, AddAlternateSkinnig, EFBXTestPlanActionType_MAX, __typeKeyDoNoAccess}
     enum EFiBVersion { FIB_VER_NONE, FIB_VER_BASE, FIB_VER_VARIABLE_REFERENCE, FIB_VER_INTERFACE_GRAPHS, FIB_VER_FUNC_CALL_SITES, FIB_VER_PLUS_ONE, FIB_VER_LATEST, FIB_VER_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldActivationType {
-        enum EFieldActivationType { Delay, OnTick, OnTickWithDelay, Trigger, EFieldActivationType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldFilterType { Field_Filter_Dynamic, Field_Filter_Kinematic, Field_Filter_Static, Field_Filter_All, Field_Filter_Sleeping, Field_Filter_Disabled, Field_Filter_Max, Field_Filter_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldForceVel {
-        enum EFieldForceVel { "Use Force", "Use Velocity", EFieldForceVel_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldIntegerType { Integer_DynamicState, Integer_ActivateDisabled, Integer_CollisionGroup, Integer_PositionAnimated, Integer_PositionStatic, Integer_TargetMax, Integer_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode {
-        enum EFieldNoiseCompMode { Add, Multiply, EFieldNoiseCompMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldObjectType { Field_Object_Rigid, Field_Object_Cloth, Field_Object_Destruction, Field_Object_Character, Field_Object_All, Field_Object_Max, Field_Object_MAX, __typeKeyDoNoAccess}
     enum EFieldOperationType { Field_Multiply, Field_Divide, Field_Add, Field_Substract, Field_Operation_Max, __typeKeyDoNoAccess}
     enum EFieldOutputType { Field_Output_Vector, Field_Output_Scalar, Field_Output_Integer, Field_Output_Max, Field_Output_MAX, __typeKeyDoNoAccess}
@@ -103426,14 +102617,6 @@ declare module "ue" {
     enum EFieldPositionType { Field_Position_CenterOfMass, Field_Position_PivotPoint, Field_Position_Max, Field_Position_MAX, __typeKeyDoNoAccess}
     enum EFieldResolutionType { Field_Resolution_Minimal, Field_Resolution_DisabledParents, Field_Resolution_Maximum, Field_Resolution_Max, Field_Resolution_MAX, __typeKeyDoNoAccess}
     enum EFieldScalarType { Scalar_ExternalClusterStrain, Scalar_Kill, Scalar_DisableThreshold, Scalar_SleepingThreshold, Scalar_InternalClusterStrain, Scalar_DynamicConstraint, Scalar_TargetMax, Scalar_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldShapeType {
-        enum EFieldShapeType { Box, Sphere, Plane, EFieldShapeType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldSleepType {
-        enum EFieldSleepType { Sleep, Disable, Kill, EFieldSleepType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldVectorType { Vector_LinearForce, Vector_LinearVelocity, Vector_AngularVelocity, Vector_AngularTorque, Vector_PositionTarget, Vector_InitialLinearVelocity, Vector_InitialAngularVelocity, Vector_LinearImpulse, Vector_TargetMax, Vector_MAX, __typeKeyDoNoAccess}
     enum EFilterBarLayout { Horizontal, Vertical, EFilterBarLayout_MAX, __typeKeyDoNoAccess}
     enum EFilterPillStyle { Default, Basic, EFilterPillStyle_MAX, __typeKeyDoNoAccess}
@@ -103467,10 +102650,6 @@ declare module "ue" {
     enum EFloatArrayToIntArrayFunctionEnum { Dataflow_FloatToInt_Function_Floor, Dataflow_FloatToInt_Function_Ceil, Dataflow_FloatToInt_Function_Round, Dataflow_FloatToInt_Function_Truncate, Dataflow_FloatToInt_NonZeroToIndex, Dataflow_FloatToInt_ZeroToIndex, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
     enum EFloatToIntFunctionEnum { Dataflow_FloatToInt_Function_Floor, Dataflow_FloatToInt_Function_Ceil, Dataflow_FloatToInt_Function_Round, Dataflow_FloatToInt_Function_Truncate, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
     enum EFloatToIntMode { Truncate, Floor, Round, Ceil, EFloatToIntMode_MAX, __typeKeyDoNoAccess}
-    namespace Engine.ArtTools.RenderToTexture.Enums.EFloatTypes {
-        enum EFloatTypes { Float, Float2, Float3, Float4, EFloatTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFocusCause { Mouse, Navigation, SetDirectly, Cleared, OtherWidgetLostFocus, WindowActivate, EFocusCause_MAX, __typeKeyDoNoAccess}
     enum EFoliageScaling { Uniform, Free, LockXY, LockXZ, LockYZ, EFoliageScaling_MAX, __typeKeyDoNoAccess}
     enum EFollicleMaskChannel { R, G, B, A, EFollicleMaskChannel_MAX, __typeKeyDoNoAccess}
@@ -103485,6 +102664,8 @@ declare module "ue" {
     enum EFractureModeNewAssetLocation { SourceAssetFolder, LastUsedFolder, ContentBrowserFolder, EFractureModeNewAssetLocation_MAX, __typeKeyDoNoAccess}
     enum EFrameNumberDisplayFormats { NonDropFrameTimecode, DropFrameTimecode, Seconds, Frames, MAX_Count, EFrameNumberDisplayFormats_MAX, __typeKeyDoNoAccess}
     enum EFullyLoadPackageType { FULLYLOAD_Map, FULLYLOAD_Game_PreLoadClass, FULLYLOAD_Game_PostLoadClass, FULLYLOAD_Always, FULLYLOAD_Mutator, FULLYLOAD_MAX, __typeKeyDoNoAccess}
+    enum EFunctionalTestLogHandling { ProjectDefault, OutputIsError, OutputIgnored, EFunctionalTestLogHandling_MAX, __typeKeyDoNoAccess}
+    enum EFunctionalTestResult { Default, Invalid, Error, Running, Failed, Succeeded, EFunctionalTestResult_MAX, __typeKeyDoNoAccess}
     enum EGainParamMode { Linear, Decibels, EGainParamMode_MAX, __typeKeyDoNoAccess}
     enum EGameplayDebuggerOverrideMode { Enable, Disable, UseDefault, EGameplayDebuggerOverrideMode_MAX, __typeKeyDoNoAccess}
     enum EGameplayDebuggerShape { Invalid, Point, Segment, Box, Cone, Cylinder, Circle, Rectangle, Capsule, Polygon, Polyline, Arrow, EGameplayDebuggerShape_MAX, __typeKeyDoNoAccess}
@@ -103618,10 +102799,6 @@ declare module "ue" {
     enum EInterchangeTranslatorType { Invalid, Assets, Actors, Scenes, EInterchangeTranslatorType_MAX, __typeKeyDoNoAccess}
     enum EInterchangeVertexColorImportOption { IVCIO_Replace, IVCIO_Ignore, IVCIO_Override, IVCIO_MAX, __typeKeyDoNoAccess}
     enum EInterpToBehaviourType { OneShot, OneShot_Reverse, Loop_Reset, PingPong, EInterpToBehaviourType_MAX, __typeKeyDoNoAccess}
-    namespace Engine.ArtTools.RenderToTexture.Enums.EIntTypes {
-        enum EIntTypes { int, int2, int3, int4, EIntTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EIOSCloudKitSyncStrategy { None, OnlyAtGameStart, Always, EIOSCloudKitSyncStrategy_MAX, __typeKeyDoNoAccess}
     enum EIOSLandscapeOrientation { LandscapeLeft, LandscapeRight, EIOSLandscapeOrientation_MAX, __typeKeyDoNoAccess}
     enum EIOSMetalShaderStandard { IOSMetalSLStandard_Minimum, IOSMetalSLStandard_2_4, IOSMetalSLStandard_3_0, IOSMetalSLStandard_3_1, IOSMetalSLStandard_MAX, __typeKeyDoNoAccess}
@@ -111891,941 +111068,6 @@ declare module "ue" {
         __tid_FreezablePerPlatformInt_0__: boolean;
     }
     
-    class RadialFalloff extends UE.FieldNodeFloat {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        MinRange: number;
-        MaxRange: number;
-        Default: number;
-        Radius: number;
-        Position: UE.Vector;
-        Falloff: UE.EFieldFalloffType;
-        /*
-         *Sphere scalar field that will be defined only within a sphere
-         *@param    Magnitude Magnitude of the sphere falloff field
-         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    Default The field value will be set to Default if the sample distance from the center is higher than the radius
-         *@param    Radius Radius of the sphere falloff field
-         *@param    Position Center position of the sphere falloff field
-         *@param    Falloff Type of falloff function used if the falloff function is picked
-         */
-        SetRadialFalloff(Magnitude: number, MinRange: number, MaxRange: number, Default: number, Radius: number, Position: UE.Vector, Falloff: UE.EFieldFalloffType) : UE.RadialFalloff;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): RadialFalloff;
-        static Load(InName: string): RadialFalloff;
-    
-        __tid_RadialFalloff_0__: boolean;
-    }
-    
-    class PlaneFalloff extends UE.FieldNodeFloat {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        MinRange: number;
-        MaxRange: number;
-        Default: number;
-        Distance: number;
-        Position: UE.Vector;
-        Normal: UE.Vector;
-        Falloff: UE.EFieldFalloffType;
-        /*
-         *Plane scalar field that will be defined only within a distance from a plane
-         *@param    Magnitude Magnitude of the plane falloff field
-         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    Default The field value will be set to default if the sample projected distance ((Sample Position - Center Position).dot(Plane Normal)) is higher than the Plane Distance
-         *@param    Distance Distance limit for the plane falloff field starting from the center position and extending in the direction of the plane normal
-         *@param    Position Plane center position of the plane falloff field
-         *@param    Normal Plane normal of the plane falloff field
-         *@param    Falloff Type of falloff function used to model the evolution of the field from the plane surface to the distance isosurface
-         */
-        SetPlaneFalloff(Magnitude: number, MinRange: number, MaxRange: number, Default: number, Distance: number, Position: UE.Vector, Normal: UE.Vector, Falloff: UE.EFieldFalloffType) : UE.PlaneFalloff;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): PlaneFalloff;
-        static Load(InName: string): PlaneFalloff;
-    
-        __tid_PlaneFalloff_0__: boolean;
-    }
-    
-    class UniformInteger extends UE.FieldNodeInt {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        /*
-         *Set a uniform integer value independently of the sample position. The output is equal to magnitude
-         *@param    Magnitude The field output will be equal the magnitude
-         */
-        SetUniformInteger(Magnitude: number) : UE.UniformInteger;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): UniformInteger;
-        static Load(InName: string): UniformInteger;
-    
-        __tid_UniformInteger_0__: boolean;
-    }
-    
-    class RadialVector extends UE.FieldNodeVector {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        Position: UE.Vector;
-        /*
-         *Set a radial vector value. The direction is the normalized vector from the field position to the sample one. The output is equal to this direction * magnitude.
-         *@param    Magnitude Magnitude of the radial vector field
-         *@param    Position Center position of the radial vector field
-         */
-        SetRadialVector(Magnitude: number, Position: UE.Vector) : UE.RadialVector;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): RadialVector;
-        static Load(InName: string): RadialVector;
-    
-        __tid_RadialVector_0__: boolean;
-    }
-    
-    namespace Engine.EditorResources.FieldNodes.FS_AnchorField_Generic {
-        class FS_AnchorField_Generic_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            PlaneVolumeCol: UE.BoxComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            ["Anchor Title Text"]: UE.TextRenderComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            ["Anchor Text"]: UE.TextRenderComponent;
-            SphereVolume: UE.StaticMeshComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            Arrow: UE.ArrowComponent;
-            SphereVolumeCol: UE.SphereComponent;
-            CullingField_Plane: UE.CullingField;
-            CullingField_Sphere: UE.CullingField;
-            RadialFalloff: UE.RadialFalloff;
-            PlaneVolume: UE.StaticMeshComponent;
-            PlaneFalloff: UE.PlaneFalloff;
-            CullingField_Box: UE.CullingField;
-            BoxVolumeCol: UE.BoxComponent;
-            BoxFalloff: UE.BoxFalloff;
-            UniformInteger: UE.UniformInteger;
-            RadialVector: UE.RadialVector;
-            ["Dynamic State"]: UE.EObjectStateTypeEnum;
-            ["Anchor Active"]: boolean;
-            ["Anchor Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            Debug: boolean;
-            AnchorColour: UE.LinearColor;
-            Deactivated: UE.LinearColor;
-            AnchorVolume: UE.StaticMeshComponent;
-            AnchorTextDisplay: string;
-            ViewDebugText: boolean;
-            ViewWireFrame: boolean;
-            ViewSolidShapes: boolean;
-            TextVerticalOffset: number;
-            DeactivatedText: UE.LinearColor;
-            TextScaleMult: number;
-            AnchorDebugSetup() : void;
-            ExecuteUbergraph_FS_AnchorField_Generic(EntryPoint: number) : void;
-            ["Falloff Field Switch"](UniformInt: $Nullable<UE.UniformInteger>, CullingField: $Ref<UE.CullingField>) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            SetFalloffVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_AnchorField_Generic_C;
-            static Load(InName: string): FS_AnchorField_Generic_C;
-        
-            __tid_FS_AnchorField_Generic_C_0__: boolean;
-        }
-        
-    }
-
-    class OperatorField extends UE.FieldNodeBase {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        RightField: UE.FieldNodeBase;
-        LeftField: UE.FieldNodeBase;
-        Operation: UE.EFieldOperationType;
-        /*
-         *Compute an operation between 2 incoming fields
-         *@param    Magnitude Magnitude of the operator field
-         *@param    LeftField Input field A to be processed
-         *@param    RightField Input field B to be processed
-         *@param    Operation Type of math operation you want to perform between the 2 fields
-         */
-        SetOperatorField(Magnitude: number, LeftField: $Nullable<UE.FieldNodeBase>, RightField: $Nullable<UE.FieldNodeBase>, Operation: UE.EFieldOperationType) : UE.OperatorField;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): OperatorField;
-        static Load(InName: string): OperatorField;
-    
-        __tid_OperatorField_0__: boolean;
-    }
-    
-    class UniformVector extends UE.FieldNodeVector {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        Direction: UE.Vector;
-        /*
-         *Set a uniform vector value independently of the sample position.The output is equal to magnitude * direction
-         *@param    Magnitude Magnitude of the uniform vector field
-         *@param    Direction Normalized direction of the uniform vector field
-         */
-        SetUniformVector(Magnitude: number, Direction: UE.Vector) : UE.UniformVector;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): UniformVector;
-        static Load(InName: string): UniformVector;
-    
-        __tid_UniformVector_0__: boolean;
-    }
-    
-    class NoiseField extends UE.FieldNodeFloat {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MinRange: number;
-        MaxRange: number;
-        Transform: UE.Transform;
-        /*
-         *Defines a perlin noise scalar value if the sample is within a box
-         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
-         *@param    Transform Transform of the box in which the perlin noise will be defined
-         */
-        SetNoiseField(MinRange: number, MaxRange: number, Transform: UE.Transform) : UE.NoiseField;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): NoiseField;
-        static Load(InName: string): NoiseField;
-    
-        __tid_NoiseField_0__: boolean;
-    }
-    
-    namespace Engine.EditorResources.FieldNodes.Niagara.FS_BaseField {
-        class FS_BaseField_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DynamicStateCullingField: UE.CullingField;
-            DynamicStateField: UE.UniformInteger;
-            NoiseApplyOperatorField: UE.OperatorField;
-            FalloffCullingField: UE.CullingField;
-            FalloffApplyOperatorField: UE.OperatorField;
-            NoiseXYOperatorField: UE.OperatorField;
-            NoiseZOperatorField: UE.OperatorField;
-            NoiseYOperatorField: UE.OperatorField;
-            NoiseXOperatorField: UE.OperatorField;
-            NoiseZDirectionField: UE.UniformVector;
-            NoiseYDirectionField: UE.UniformVector;
-            NoiseXDirectionField: UE.UniformVector;
-            VectorNoiseField: UE.OperatorField;
-            NoiseZField: UE.NoiseField;
-            NoiseYField: UE.NoiseField;
-            NoiseXField: UE.NoiseField;
-            PlaneCullingFalloffField: UE.PlaneFalloff;
-            PlaneFalloffField: UE.PlaneFalloff;
-            BoxCullingFalloffField: UE.BoxFalloff;
-            BoxFalloffField: UE.BoxFalloff;
-            RadialCullingFalloffField: UE.RadialFalloff;
-            RadialFalloffField: UE.RadialFalloff;
-            Box: UE.BoxComponent;
-            Sphere: UE.SphereComponent;
-            ["Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            ["Falloff Type"]: UE.EFieldFalloffType;
-            ["Min Falloff"]: number;
-            ["Max Falloff"]: number;
-            ["Cull Outside Falloff"]: boolean;
-            ["Noise Mode"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode.EFieldNoiseCompMode;
-            ["Add Noise Gain"]: number;
-            ["Mult Noise Min"]: number;
-            ["Mult Noise Max"]: number;
-            ["Noise Use Actor Location"]: boolean;
-            ["Noise Use Actor Rotation"]: boolean;
-            ["Noise Use Actor Scale"]: boolean;
-            ["Noise Scale Mult"]: number;
-            ["Noise Gain Range"]: UE.Vector2D;
-            NoiseLocationInternal: UE.Vector;
-            NoiseRotationInternal: UE.Rotator;
-            NoiseScaleInternal: UE.Vector;
-            NoiseScaleInternalBase: number;
-            Debug: boolean;
-            DynamicState: UE.EObjectStateTypeEnum;
-            ApplyFalloff(FieldIn: $Nullable<UE.FieldNodeBase>, FieldOut: $Ref<UE.FieldNodeBase>) : void;
-            ApplyNoise(FieldIn: $Nullable<UE.FieldNodeBase>, FieldOut: $Ref<UE.FieldNodeBase>) : void;
-            BoxFalloff(BoxFalloff: $Ref<UE.FieldNodeBase>, BoxCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
-            ExecuteUbergraph_FS_BaseField(EntryPoint: number) : void;
-            GetCullingFalloffField(CullingFalloffField: $Ref<UE.FieldNodeBase>) : void;
-            GetDynamicStateField(DynamicStateField: $Ref<UE.FieldNodeBase>) : void;
-            GetFalloffField(FalloffField: $Ref<UE.FieldNodeBase>) : void;
-            PlaneFalloff(PlaneFalloff: $Ref<UE.FieldNodeBase>, PlaneCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
-            ["Radial Falloff"](RadialFalloff: $Ref<UE.FieldNodeBase>, RadialCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            ScalarNoise(ScalarNoiseField: $Ref<UE.FieldNodeBase>) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            VectorNoise(VectorNoiseField: $Ref<UE.FieldNodeBase>) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_BaseField_C;
-            static Load(InName: string): FS_BaseField_C;
-        
-            __tid_FS_BaseField_C_0__: boolean;
-        }
-        
-    }
-
-    class UniformScalar extends UE.FieldNodeFloat {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        /*
-         *Set a uniform scalar value independently of the sample position. The output is equal to magnitude
-         *@param    Magnitude The field output will be equal the magnitude
-         */
-        SetUniformScalar(Magnitude: number) : UE.UniformScalar;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): UniformScalar;
-        static Load(InName: string): UniformScalar;
-    
-        __tid_UniformScalar_0__: boolean;
-    }
-    
-    class ReturnResultsTerminal extends UE.FieldNodeBase {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        /*
-         *Terminal field of a graph
-         */
-        SetReturnResultsTerminal() : UE.ReturnResultsTerminal;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): ReturnResultsTerminal;
-        static Load(InName: string): ReturnResultsTerminal;
-    
-        __tid_ReturnResultsTerminal_0__: boolean;
-    }
-    
-    class RandomVector extends UE.FieldNodeVector {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Magnitude: number;
-        /*
-         *Set a random vector value independently of the sample position. The output is equal to magnitude * random direction
-         *@param    Magnitude Magnitude of the random vector field
-         */
-        SetRandomVector(Magnitude: number) : UE.RandomVector;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): RandomVector;
-        static Load(InName: string): RandomVector;
-    
-        __tid_RandomVector_0__: boolean;
-    }
-    
-    namespace Engine.EditorResources.FieldNodes.FS_BombField_Prototype {
-        class FS_BombField_Prototype_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
-            SphereVolumeCol: UE.SphereComponent;
-            bomb: UE.SphereComponent;
-            bombVolume: UE.StaticMeshComponent;
-            PlaneFalloff_ForceDynamic: UE.PlaneFalloff;
-            RadialFalloff_ForceDynamic: UE.RadialFalloff;
-            OperatorField_ForceDynamic: UE.OperatorField;
-            BoxFalloff_ForceDynamic: UE.BoxFalloff;
-            PlaneFalloff_InternalStrain: UE.PlaneFalloff;
-            BoxFalloff_InternalStrain: UE.BoxFalloff;
-            OperatorField_InternalStrain: UE.OperatorField;
-            RadialFalloff_InternalStrain: UE.RadialFalloff;
-            UniformIntegerFalloff: UE.UniformInteger;
-            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
-            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
-            PlaneVolumeBox: UE.BoxComponent;
-            PlaneVolume: UE.StaticMeshComponent;
-            SM_DirectionArrow: UE.StaticMeshComponent;
-            DirectionalArrowNull: UE.SphereComponent;
-            SM_RadialArrow: UE.StaticMeshComponent;
-            SM_RadialArrow4: UE.StaticMeshComponent;
-            SM_RadialArrow3: UE.StaticMeshComponent;
-            SM_RadialArrow2: UE.StaticMeshComponent;
-            SM_RadialArrow1: UE.StaticMeshComponent;
-            SM_RadialArrow5: UE.StaticMeshComponent;
-            CullingField_Plane2: UE.CullingField;
-            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow2: UE.StaticMeshComponent;
-            NoiseMaxValueText: UE.TextRenderComponent;
-            NoiseMinValueText: UE.TextRenderComponent;
-            TorqueValueText: UE.TextRenderComponent;
-            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
-            TorqueTitleText: UE.TextRenderComponent;
-            DirectionalValueText: UE.TextRenderComponent;
-            DirectionalMagTitleText: UE.TextRenderComponent;
-            RadialValueText: UE.TextRenderComponent;
-            ["Radial Mag Title Text"]: UE.TextRenderComponent;
-            StrainValueText: UE.TextRenderComponent;
-            StrainTitleText: UE.TextRenderComponent;
-            DelayTitleText: UE.TextRenderComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            DelayValueText: UE.TextRenderComponent;
-            OperatorField_FalloffSwitch_Plane: UE.OperatorField;
-            OperatorField_FalloffSwitch_Sph: UE.OperatorField;
-            OperatorField_FalloffSwitch_Box: UE.OperatorField;
-            CullingField_Plane: UE.CullingField;
-            PlaneFalloff_Magnitude: UE.PlaneFalloff;
-            PlaneFalloff: UE.PlaneFalloff;
-            CullingField_Box: UE.CullingField;
-            BoxFalloff_Culling: UE.BoxFalloff;
-            BoxFalloff: UE.BoxFalloff;
-            BoxFalloff_Magnitude: UE.BoxFalloff;
-            SphereVolume: UE.StaticMeshComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            FieldTitleText: UE.TextRenderComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            ["Field Text"]: UE.TextRenderComponent;
-            BoxVolumeCol: UE.BoxComponent;
-            UniformScalarDecay: UE.UniformScalar;
-            OperatorFieldDecay1: UE.OperatorField;
-            OperatorFieldDecay2: UE.OperatorField;
-            ReturnResultsTerminal: UE.ReturnResultsTerminal;
-            OperatorField_torqueC: UE.OperatorField;
-            OperatorField_dirNoise: UE.OperatorField;
-            OperatorField_radNoise: UE.OperatorField;
-            NoiseField_Torque: UE.NoiseField;
-            OperatorField_torque_A: UE.OperatorField;
-            UniformScalar_torque: UE.UniformScalar;
-            CullingField_DynamicState: UE.CullingField;
-            UniformInteger: UE.UniformInteger;
-            ["CullingField-Decay"]: UE.CullingField;
-            CullingFieldSphere: UE.CullingField;
-            RadialFalloffMagnitude: UE.RadialFalloff;
-            RadialFalloff_cullVolume: UE.RadialFalloff;
-            OperatorFieldDecay4: UE.OperatorField;
-            CullingField: UE.CullingField;
-            RadialFalloff: UE.RadialFalloff;
-            OperatorField_torque_B: UE.OperatorField;
-            UniformVector_torque: UE.UniformVector;
-            RandomVector_torque: UE.RandomVector;
-            NoiseField_dir: UE.NoiseField;
-            NoiseField_rad: UE.NoiseField;
-            UniformVector_dir: UE.UniformVector;
-            RadialVector_rad: UE.RadialVector;
-            ["Field Active"]: boolean;
-            Debug: boolean;
-            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
-            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            UseTick: boolean;
-            DelayAmount: number;
-            ["Use External Strain"]: boolean;
-            ["Strain Magnitude"]: number;
-            StrainFalloffType: UE.EFieldFalloffType;
-            StrainFalloffMinMax: UE.Vector2D;
-            NumStrainHits: number;
-            UseRadialVector: boolean;
-            ["Radial Magnitude"]: number;
-            UseDirectionalVector: boolean;
-            DirectionalMagnitude: number;
-            UseTorque: boolean;
-            TorqueMult: number;
-            VelocityFieldFalloffType: UE.EFieldFalloffType;
-            VelocityFalloffMinMax: UE.Vector2D;
-            UseNoise: boolean;
-            NoiseMinMax: UE.Vector2D;
-            UseDecay: boolean;
-            DecayAmount: number;
-            DecayFalloffType: UE.EFieldFalloffType;
-            DecayFalloffMinMax: UE.Vector2D;
-            FieldVolume: UE.StaticMeshComponent;
-            DecayDelay: number;
-            MaxDecayAmount: number;
-            RadialPositionOffset: UE.Vector;
-            OverideDIrectionalVector: boolean;
-            DIrectionalVectorOveride: UE.Vector;
-            TorqueVectorOveride: UE.Vector;
-            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
-            ForceMult: number;
-            BoxCullingOnPlanar: boolean;
-            PlanarFalloffDistOveride: number;
-            ["Force Dynamic Switch"]: boolean;
-            ActivateTaggedStaticAndSkeletal: boolean;
-            ["Chaos Field Name"]: string;
-            FieldColour: UE.LinearColor;
-            ShowDebugText: boolean;
-            ShowWireFrame: boolean;
-            ShowSolidShapes: boolean;
-            DirectionalDisplayScale: number;
-            RadialDisplayScale: number;
-            ["Text Vertical Offset"]: number;
-            LinearPhysicsType: UE.EFieldPhysicsType;
-            AngularPhysicsType: UE.EFieldPhysicsType;
-            FieldFalloffType: UE.EFieldFalloffType;
-            ["Field Falloff Noise"]: UE.EFieldFalloffType;
-            ["Field Falloff Torque"]: UE.EFieldFalloffType;
-            UseLifespan: boolean;
-            FieldLifespan: number;
-            UseFramesForTiming: boolean;
-            FPS: number;
-            ["Dynamic State"]: UE.EObjectStateTypeEnum;
-            PlanarFalloffDist: number;
-            TotalDecay: number;
-            FalloffMinMax: UE.Vector2D;
-            PlanarFalloffExtentColor: UE.LinearColor;
-            DIrectionalVelocityVector: UE.Vector;
-            upVector: UE.Vector;
-            worldLocation: UE.Vector;
-            forwardVector: UE.Vector;
-            rightVector: UE.Vector;
-            skel: UE.SkeletalMeshComponent;
-            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
-            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
-            PulseLevel: string;
-            TextDisplay: TArray<string>;
-            AllText: TArray<UE.TextRenderComponent>;
-            ArrowColour_Dir: UE.LinearColor;
-            ArrowColour_Normal: UE.LinearColor;
-            DeactivatedColour: UE.LinearColor;
-            DeactivatedTextColour: UE.LinearColor;
-            ["Preview Material"]: UE.MaterialInstanceDynamic;
-            TimeElapsed: number;
-            NoiseScaleMult: number;
-            NewVar_0: UE.Transform;
-            isTriggered: boolean;
-            NoiseScaleBase: number;
-            DestroyActor: boolean;
-            useBomb: boolean;
-            bombMinScale: number;
-            bombMaxScale: number;
-            bombDuration: number;
-            bombSize: number;
-            bombpos: UE.Vector;
-            bombxloc: number;
-            bombPosOrig: UE.Vector;
-            bombScaleOrig: UE.Vector;
-            delta: number;
-            totalElapsedTime: number;
-            totalDistance: number;
-            oldPos: number;
-            ["New Location"]: UE.Vector;
-            bombExtraDistance: number;
-            useBombLocationOffset: boolean;
-            useBombPhysics: boolean;
-            currentPos: number;
-            velocity: number;
-            useDynScale: boolean;
-            useDynFieldPos: boolean;
-            falloffMinMax_Input: UE.Vector2D;
-            FieldFalloffType_Input: UE.EFieldFalloffType;
-            OperatorField_Input: UE.OperatorField;
-            Magnitude_Input: number;
-            bombMass: number;
-            useProjectile: boolean;
-            projectileFired: boolean;
-            projectileVelocity: number;
-            oldPosVec: UE.Vector;
-            currentPosVec: UE.Vector;
-            velocityVec: UE.Vector;
-            projectileVelocityMult: number;
-            projectileMaxScale: number;
-            projectileMinMaxVelRange: UE.Vector2D;
-            useCCD: boolean;
-            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
-            CE_Trigger() : void;
-            DisplayTextSetup() : void;
-            ExecuteUbergraph_FS_BombField_Prototype(EntryPoint: number) : void;
-            FalloffAndCullingSwitch(FalloffType: UE.EFieldFalloffType, OperatorFieldIn: $Nullable<UE.OperatorField>, falloffMinMax: UE.Vector2D, CullingFieldOut: $Ref<UE.CullingField>) : void;
-            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
-            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, falloffMinMax_X: number, falloffMinMax_Y: number, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            FalloffSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>, NewParam: $Ref<UE.RadialFalloff>) : void;
-            ["FalloffSwitch - Strain"](Magnitude: number, FalloffType: UE.EFieldFalloffType, CullingField: $Ref<UE.CullingField>) : void;
-            FalloffSwitch_ForceDynamic(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            FalloffSwitch_InternalStrain(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            ForceMultiplier() : void;
-            InitializeFieldVariables() : void;
-            MakeDynamic_EnableNonGC() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            SetColliderLocation() : void;
-            SetVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_BombField_Prototype_C;
-            static Load(InName: string): FS_BombField_Prototype_C;
-        
-            __tid_FS_BombField_Prototype_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.FS_MasterField {
-        class FS_MasterField_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
-            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
-            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
-            PlaneVolumeBox: UE.BoxComponent;
-            PlaneVolume: UE.StaticMeshComponent;
-            SM_DirectionArrow: UE.StaticMeshComponent;
-            DirectionalArrowNull: UE.SphereComponent;
-            SphereVolumeCol: UE.SphereComponent;
-            SM_RadialArrow: UE.StaticMeshComponent;
-            SM_RadialArrow4: UE.StaticMeshComponent;
-            SM_RadialArrow3: UE.StaticMeshComponent;
-            SM_RadialArrow2: UE.StaticMeshComponent;
-            SM_RadialArrow1: UE.StaticMeshComponent;
-            SM_RadialArrow5: UE.StaticMeshComponent;
-            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow2: UE.StaticMeshComponent;
-            NoiseMaxValueText: UE.TextRenderComponent;
-            NoiseMinValueText: UE.TextRenderComponent;
-            TorqueValueText: UE.TextRenderComponent;
-            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
-            TorqueTitleText: UE.TextRenderComponent;
-            DirectionalValueText: UE.TextRenderComponent;
-            DirectionalMagTitleText: UE.TextRenderComponent;
-            RadialValueText: UE.TextRenderComponent;
-            ["Radial Mag Title Text"]: UE.TextRenderComponent;
-            StrainValueText: UE.TextRenderComponent;
-            StrainTitleText: UE.TextRenderComponent;
-            DelayTitleText: UE.TextRenderComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            DelayValueText: UE.TextRenderComponent;
-            SphereVolume: UE.StaticMeshComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            FieldTitleText: UE.TextRenderComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            ["Field Text"]: UE.TextRenderComponent;
-            BoxVolumeCol: UE.BoxComponent;
-            ReturnResultsTerminal: UE.ReturnResultsTerminal;
-            ["Field Active"]: boolean;
-            OperatorFIeld_Input: UE.OperatorField;
-            Debug: boolean;
-            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
-            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            UseTick: boolean;
-            DelayAmount: number;
-            ["Use External Strain"]: boolean;
-            ["Strain Magnitude"]: number;
-            StrainFalloffType: UE.EFieldFalloffType;
-            StrainFalloffMinMax: UE.Vector2D;
-            NumStrainHits: number;
-            UseRadialVector: boolean;
-            ["Radial Magnitude"]: number;
-            UseDirectionalVector: boolean;
-            DirectionalMagnitude: number;
-            UseTorque: boolean;
-            TorqueMult: number;
-            VelocityFieldFalloffType: UE.EFieldFalloffType;
-            VelocityFalloffMinMax: UE.Vector2D;
-            UseNoise: boolean;
-            NoiseMinMax: UE.Vector2D;
-            UseDecay: boolean;
-            DecayAmount: number;
-            DecayFalloffType: UE.EFieldFalloffType;
-            DecayFalloffMinMax: UE.Vector2D;
-            FieldVolume: UE.StaticMeshComponent;
-            DecayDelay: number;
-            MaxDecayAmount: number;
-            RadialPositionOffset: UE.Vector;
-            OverideDIrectionalVector: boolean;
-            DIrectionalVectorOveride: UE.Vector;
-            TorqueVectorOveride: UE.Vector;
-            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
-            ForceMult: number;
-            BoxCullingOnPlanar: boolean;
-            PlanarFalloffDistOveride: number;
-            ["Force Dynamic Switch"]: boolean;
-            ActivateTaggedStaticAndSkeletal: boolean;
-            ["Chaos Field Name"]: string;
-            FieldColour: UE.LinearColor;
-            ShowDebugText: boolean;
-            ShowWireFrame: boolean;
-            ShowSolidShapes: boolean;
-            DirectionalDisplayScale: number;
-            RadialDisplayScale: number;
-            ["Text Vertical Offset"]: number;
-            LinearPhysicsType: UE.EFieldPhysicsType;
-            AngularPhysicsType: UE.EFieldPhysicsType;
-            FieldFalloffType: UE.EFieldFalloffType;
-            ["Field Falloff Noise"]: UE.EFieldFalloffType;
-            ["Field Falloff Torque"]: UE.EFieldFalloffType;
-            UseLifespan: boolean;
-            FieldLifespan: number;
-            UseFramesForTiming: boolean;
-            FPS: number;
-            ["Dynamic State"]: UE.EObjectStateTypeEnum;
-            PlanarFalloffDist: number;
-            TotalDecay: number;
-            FalloffMinMax: UE.Vector2D;
-            PlanarFalloffExtentColor: UE.LinearColor;
-            DIrectionalVelocityVector: UE.Vector;
-            upVector: UE.Vector;
-            worldLocation: UE.Vector;
-            forwardVector: UE.Vector;
-            rightVector: UE.Vector;
-            skel: UE.SkeletalMeshComponent;
-            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
-            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
-            PulseLevel: string;
-            TextDisplay: TArray<string>;
-            AllText: TArray<UE.TextRenderComponent>;
-            ArrowColour_Dir: UE.LinearColor;
-            ArrowColour_Normal: UE.LinearColor;
-            DeactivatedColour: UE.LinearColor;
-            DeactivatedTextColour: UE.LinearColor;
-            ["Preview Material"]: UE.MaterialInstanceDynamic;
-            TimeElapsed: number;
-            NoiseScaleMult: number;
-            NewVar_0: UE.Transform;
-            isTriggered: boolean;
-            NoiseScaleBase: number;
-            DestroyActor: boolean;
-            FieldFalloffType_Input: UE.EFieldFalloffType;
-            FalloffMinMax_Input: UE.Vector2D;
-            Magnitude_Input: number;
-            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
-            CE_Trigger() : void;
-            DisplayTextSetup() : void;
-            ExecuteUbergraph_FS_MasterField(EntryPoint: number) : void;
-            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
-            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            ForceMultiplier() : void;
-            InitializeFieldVariables() : void;
-            MakeDynamic_EnableNonGC() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            SetVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_MasterField_C;
-            static Load(InName: string): FS_MasterField_C;
-        
-            __tid_FS_MasterField_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.Niagara.FS_RadialField {
-        class FS_RadialField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            InnerSphere: UE.SphereComponent;
-            ["Enable Field"]: boolean;
-            ["Physics Vector"]: UE.EFieldVectorType;
-            ["Field Magnitude"]: number;
-            ["Force Physics Dynamic"]: boolean;
-            VectorField: UE.FieldNodeBase;
-            ["Physics Type"]: UE.EFieldPhysicsType;
-            ExecuteUbergraph_FS_RadialField(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_RadialField_C;
-            static Load(InName: string): FS_RadialField_C;
-        
-            __tid_FS_RadialField_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.FS_SleepDisable_Generic {
-        class FS_SleepDisable_Generic_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            PlaneVolumeBoxCol: UE.BoxComponent;
-            TresholdTitleText: UE.TextRenderComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            UniformScalar: UE.UniformScalar;
-            ThresholdValueText: UE.TextRenderComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            PlaneFalloff_Magnitude: UE.PlaneFalloff;
-            RadialFalloff_Magnitude: UE.RadialFalloff;
-            CullingField_Plane: UE.CullingField;
-            RadialFalloff: UE.RadialFalloff;
-            CullingField_Box: UE.CullingField;
-            PlaneFalloff: UE.PlaneFalloff;
-            RadialVector: UE.RadialVector;
-            UniformInteger: UE.UniformInteger;
-            BoxFalloff_Magnitude: UE.BoxFalloff;
-            CullingField_Sphere: UE.CullingField;
-            Arrow: UE.ArrowComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            SphereVolume: UE.StaticMeshComponent;
-            PlaneVolume: UE.StaticMeshComponent;
-            BoxVolumeCol: UE.BoxComponent;
-            SphereVolumeCol: UE.SphereComponent;
-            SleepTitleText: UE.TextRenderComponent;
-            ["Sleep Text"]: UE.TextRenderComponent;
-            CullingField: UE.CullingField;
-            BoxFalloff: UE.BoxFalloff;
-            ["Field Active"]: boolean;
-            Threshold: number;
-            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            ["Field Behavior"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldSleepType.EFieldSleepType;
-            Debug: boolean;
-            FaloffType: UE.EFieldFalloffType;
-            FalloffMinMax: UE.Vector2D;
-            PhysicsType: UE.EFieldPhysicsType;
-            Deactivated: UE.LinearColor;
-            ShowDebugText: boolean;
-            ShowWireFrame: boolean;
-            FieldVolume: UE.StaticMeshComponent;
-            DeactivatedText: UE.LinearColor;
-            SleepText: string;
-            DisableText: string;
-            KillText: string;
-            ShowSolidShapes: boolean;
-            ["Sleep Colour Def"]: UE.LinearColor;
-            DisableColour: UE.LinearColor;
-            KillColour: UE.LinearColor;
-            ["Sleep Colour"]: UE.LinearColor;
-            ["Text Vertical Offset"]: number;
-            TextScaleMult: number;
-            ExecuteUbergraph_FS_SleepDisable_Generic(EntryPoint: number) : void;
-            ["Falloff Field Switch"](Magnitude: number, FaloffType: UE.EFieldFalloffType, CullingField: $Ref<UE.CullingField>) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            SetFalloffVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_SleepDisable_Generic_C;
-            static Load(InName: string): FS_SleepDisable_Generic_C;
-        
-            __tid_FS_SleepDisable_Generic_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.Niagara.FS_UniformScalarField {
-        class FS_UniformScalarField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ["Enable Field"]: boolean;
-            ["Physics Scalar"]: UE.EFieldScalarType;
-            ["Field Magnitude"]: number;
-            ["Force Physics Dynamic"]: boolean;
-            ["Physics Type"]: UE.EFieldPhysicsType;
-            ScalarField: UE.FieldNodeBase;
-            ExecuteUbergraph_FS_UniformScalarField(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_UniformScalarField_C;
-            static Load(InName: string): FS_UniformScalarField_C;
-        
-            __tid_FS_UniformScalarField_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.Niagara.FS_UniformVectorField {
-        class FS_UniformVectorField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Arrow: UE.ArrowComponent;
-            ["Enable Field"]: boolean;
-            ["Physics Vector"]: UE.EFieldVectorType;
-            ["Field Magnitude"]: number;
-            ["Force Physics Dynamic"]: boolean;
-            VectorField: UE.FieldNodeBase;
-            ["Physics Type"]: UE.EFieldPhysicsType;
-            ExecuteUbergraph_FS_UniformVectorField(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_UniformVectorField_C;
-            static Load(InName: string): FS_UniformVectorField_C;
-        
-            __tid_FS_UniformVectorField_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.Niagara.FS_WaveScalarField {
-        class FS_WaveScalarField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ["Enable Field"]: boolean;
-            ["Physics Scalar"]: UE.EFieldScalarType;
-            ["Field Magnitude"]: number;
-            ["Force Physics Dynamic"]: boolean;
-            ScalarField: UE.FieldNodeBase;
-            ["Wave Length"]: number;
-            ["Wave Period"]: number;
-            ["Wave Function"]: UE.EWaveFunctionType;
-            ["Wave Falloff Type"]: UE.EFieldFalloffType;
-            ["Physics Type"]: UE.EFieldPhysicsType;
-            ExecuteUbergraph_FS_WaveScalarField(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): FS_WaveScalarField_C;
-            static Load(InName: string): FS_WaveScalarField_C;
-        
-            __tid_FS_WaveScalarField_C_0__: boolean;
-        }
-        
-    }
-
     enum FTypedElementAlertColumnType { Error, Warning, MAX, __typeKeyDoNoAccess}
     class FullObjectReplicationData {
         constructor();
@@ -112852,6 +111094,382 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_FullyLoadedPackagesInfo_0__: boolean;
+    }
+    
+    class FuncTestRenderingComponent extends UE.PrimitiveComponent {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): FuncTestRenderingComponent;
+        static Load(InName: string): FuncTestRenderingComponent;
+    
+        __tid_FuncTestRenderingComponent_0__: boolean;
+    }
+    
+    class RandomStream {
+        constructor();
+        constructor(InitialSeed: number, Seed: number);
+        InitialSeed: number;
+        Seed: number;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_RandomStream_0__: boolean;
+    }
+    
+    class TraceQueryTestNames {
+        constructor();
+        constructor(ComponentName: string, PhysicalMaterialName: string, ActorName: string);
+        ComponentName: string;
+        PhysicalMaterialName: string;
+        ActorName: string;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_TraceQueryTestNames_0__: boolean;
+    }
+    
+    class TraceQueryTestResultsInnerMost {
+        constructor();
+        constructor(SingleHit: UE.HitResult, SingleNames: UE.TraceQueryTestNames, bSingleResult: boolean, MultiHits: TArray<UE.HitResult>, MultiNames: TArray<UE.TraceQueryTestNames>, bMultiResult: boolean);
+        SingleHit: UE.HitResult;
+        SingleNames: UE.TraceQueryTestNames;
+        bSingleResult: boolean;
+        MultiHits: TArray<UE.HitResult>;
+        MultiNames: TArray<UE.TraceQueryTestNames>;
+        bMultiResult: boolean;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_TraceQueryTestResultsInnerMost_0__: boolean;
+    }
+    
+    class TraceQueryTestResultsInner {
+        constructor();
+        constructor(LineResults: UE.TraceQueryTestResultsInnerMost, SphereResults: UE.TraceQueryTestResultsInnerMost, CapsuleResults: UE.TraceQueryTestResultsInnerMost, BoxResults: UE.TraceQueryTestResultsInnerMost);
+        LineResults: UE.TraceQueryTestResultsInnerMost;
+        SphereResults: UE.TraceQueryTestResultsInnerMost;
+        CapsuleResults: UE.TraceQueryTestResultsInnerMost;
+        BoxResults: UE.TraceQueryTestResultsInnerMost;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_TraceQueryTestResultsInner_0__: boolean;
+    }
+    
+    class TraceChannelTestBatchOptions {
+        constructor();
+        constructor(bLineTrace: boolean, bSphereTrace: boolean, bCapsuleTrace: boolean, bBoxTrace: boolean, bChannelTrace: boolean, bObjectsTrace: boolean, bProfileTrace: boolean);
+        bLineTrace: boolean;
+        bSphereTrace: boolean;
+        bCapsuleTrace: boolean;
+        bBoxTrace: boolean;
+        bChannelTrace: boolean;
+        bObjectsTrace: boolean;
+        bProfileTrace: boolean;
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_TraceChannelTestBatchOptions_0__: boolean;
+    }
+    
+    class TraceQueryTestResults extends UE.Object {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        ChannelResults: UE.TraceQueryTestResultsInner;
+        ObjectResults: UE.TraceQueryTestResultsInner;
+        ProfileResults: UE.TraceQueryTestResultsInner;
+        BatchOptions: UE.TraceChannelTestBatchOptions;
+        /*
+         *Output string value
+         */
+        ToString() : string;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): TraceQueryTestResults;
+        static Load(InName: string): TraceQueryTestResults;
+    
+        __tid_TraceQueryTestResults_0__: boolean;
+    }
+    
+    class FunctionalTest extends UE.Actor {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        TestLabel: string;
+        Author: string;
+        Description: string;
+        TestTags: string;
+        SpriteComponent: UE.BillboardComponent;
+        bIsEnabled: boolean;
+        LogErrorHandling: UE.EFunctionalTestLogHandling;
+        LogWarningHandling: UE.EFunctionalTestLogHandling;
+        ObservationPoint: UE.Actor;
+        bShouldDelayGarbageCollection: boolean;
+        RandomNumbersStream: UE.RandomStream;
+        Result: UE.EFunctionalTestResult;
+        PreparationTimeLimit: number;
+        TimeLimit: number;
+        TimesUpMessage: string;
+        TimesUpResult: UE.EFunctionalTestResult;
+        OnTestPrepare: $MulticastDelegate<() => void>;
+        OnTestStart: $MulticastDelegate<() => void>;
+        OnTestFinished: $MulticastDelegate<() => void>;
+        AutoDestroyActors: TArray<UE.Actor>;
+        RenderComp_EditorOnly: UE.FuncTestRenderingComponent;
+        TestName_EditorOnly: UE.TextRenderComponent;
+        bIsRunning: boolean;
+        TotalTime: number;
+        AddError(Message: string) : void;
+        AddInfo(Message: string) : void;
+        /*
+         *Causes the test to be rerun for a specific named reason.
+         */
+        AddRerun(Reason: string) : void;
+        AddWarning(Message: string) : void;
+        /*
+         *Assert that two bools are equal
+         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
+         */
+        AssertEqual_Bool(Actual: boolean, Expected: boolean, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two two-component boxes are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Box2D(Actual: UE.Box2D, Expected: UE.Box2D, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two double are equal within tolerance between two doubles.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} within Tolerance for context '')
+         */
+        AssertEqual_Double(Actual: number, Expected: number, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two floats are equal within tolerance between two floats.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} within Tolerance for context '')
+         */
+        AssertEqual_Float(Actual: number, Expected: number, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two ints are equal
+         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
+         */
+        AssertEqual_Int(Actual: number, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two 4x4 matrices are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Matrix(Actual: UE.Matrix, Expected: UE.Matrix, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two FNames are equal
+         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
+         */
+        AssertEqual_Name(Actual: string, Expected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two Objects are equal
+         *@param What   A name to use in the message if the assert fails (What: expected {Actual} to be Equal To {Expected} for context '')
+         */
+        AssertEqual_Object(Actual: $Nullable<UE.Object>, Expected: $Nullable<UE.Object>, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two planes are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Plane(Actual: UE.Plane, Expected: UE.Plane, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two quats are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Quat(Actual: UE.Quat, Expected: UE.Quat, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that the component angles of two rotators are all equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Rotator(Actual: UE.Rotator, Expected: UE.Rotator, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that the orientation of two rotators is the same within a small tolerance. Robust to quaternion singularities where angles can differ despite having an identical orientation.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_RotatorOrientation(Actual: UE.Rotator, Expected: UE.Rotator, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two Strings are equal.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_String(Actual: string, Expected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two TraceQueryResults are equal.
+         *@param What   A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_TraceQueryResults(Actual: $Nullable<UE.TraceQueryTestResults>, Expected: $Nullable<UE.TraceQueryTestResults>, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two transforms are (components memberwise - translation, rotation, scale) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Transform(Actual: UE.Transform, Expected: UE.Transform, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two vectors are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Vector(Actual: UE.Vector, Expected: UE.Vector, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two two-component vectors are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Vector2D(Actual: UE.Vector2D, Expected: UE.Vector2D, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two four-component vectors are (memberwise) equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertEqual_Vector4(Actual: UE.Vector4, Expected: UE.Vector4, What: string, Tolerance?: number /* = 0.000100 */, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that a boolean value is false.
+         *@param Message       The message to display if the assert fails ("Assertion Failed: 'Message' for context ''")
+         */
+        AssertFalse(Condition: boolean, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that a UObject is valid
+         *@param Message       The message to display if the object is invalid ("Invalid object: 'Message' for context ''")
+         */
+        AssertIsValid(Object: $Nullable<UE.Object>, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two two-component boxes are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Box2D(Actual: UE.Box2D, NotExpected: UE.Box2D, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two 4x4 matrices are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Matrix(Actual: UE.Matrix, NotExpected: UE.Matrix, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two planes are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Plane(Actual: UE.Plane, NotExpected: UE.Plane, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two quats are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Quat(Actual: UE.Quat, NotExpected: UE.Quat, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that the component angles of two rotators are all not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Rotator(Actual: UE.Rotator, NotExpected: UE.Rotator, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two Strings are not equal.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_String(Actual: string, NotExpected: string, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two transforms are (components memberwise - translation, rotation, scale) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Transform(Actual: UE.Transform, NotExpected: UE.Transform, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two vectors are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Vector(Actual: UE.Vector, NotExpected: UE.Vector, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two two-component vectors are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Vector2D(Actual: UE.Vector2D, NotExpected: UE.Vector2D, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that two four-component vectors are (memberwise) not equal within a small tolerance.
+         *@param What  A name to use in the message if the assert fails ("Expected 'What' not to be {Expected} but it was {Actual} for context ''")
+         */
+        AssertNotEqual_Vector4(Actual: UE.Vector4, NotExpected: UE.Vector4, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert that a boolean value is true.
+         *@param Message       The message to display if the assert fails ("Assertion Failed: 'Message' for context ''")
+         */
+        AssertTrue(Condition: boolean, Message: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert on a relationship between two DateTimes.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
+         */
+        AssertValue_DateTime(Actual: UE.DateTime, ShouldBe: UE.EComparisonMethod, Expected: UE.DateTime, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert on a relationship between two doubles.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
+         */
+        AssertValue_Double(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert on a relationship between two floats.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
+         */
+        AssertValue_Float(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Assert on a relationship between two integers.
+         *@param What  A name to use in the message if the assert fails (What: expected {Actual} to be <ShouldBe> {Expected} for context '')
+         */
+        AssertValue_Int(Actual: number, ShouldBe: UE.EComparisonMethod, Expected: number, What: string, ContextObject?: UE.Object /* = None */) : boolean;
+        /*
+         *Used by debug drawing to gather actors this test is using and point at them on the level to better understand test's setup
+         */
+        DebugGatherRelevantActors() : TArray<UE.Actor>;
+        FinishTest(TestResult: UE.EFunctionalTestResult, Message: string) : void;
+        /*
+         *Returns the current re-run reason if we're in a named re-run.
+         */
+        GetCurrentRerunReason() : string;
+        IsEnabled() : boolean;
+        /*
+         *IsReady() is called once per frame after a test is run, until it returns true.  You should use this function to
+         *delay Start being called on the test until preconditions are met.
+         */
+        IsReady() : boolean;
+        /*
+         *AActor interface end
+         */
+        IsRunning() : boolean;
+        LogMessage(Message: string) : void;
+        OnAdditionalTestFinishedMessageRequest(TestResult: UE.EFunctionalTestResult) : string;
+        /*
+         *retrieves information whether test wants to have another run just after finishing
+         */
+        OnWantsReRunCheck() : boolean;
+        /*
+         *Prepare Test is fired once the test starts up, before the test IsReady() and thus before Start Test is called.
+         *So if there's some initial conditions or setup that you might need for your IsReady() check, you might want
+         *to do that here.
+         */
+        ReceivePrepareTest() : void;
+        /*
+         *Called once the IsReady() check for the test returns true.  After that happens the test has Officially started,
+         *and it will begin receiving Ticks in the blueprint.
+         */
+        ReceiveStartTest() : void;
+        /*
+         *Actors registered this way will be automatically destroyed (by limiting their lifespan)
+         *    on test finish
+         */
+        RegisterAutoDestroyActor(ActorToAutoDestroy: $Nullable<UE.Actor>) : void;
+        /*
+         *Sets the CVar from the given input. Variable gets reset after the test.
+         */
+        SetConsoleVariable(Name: string, InValue: string) : void;
+        /*
+         *Sets the CVar from the given input. Variable gets reset after the test.
+         */
+        SetConsoleVariableFromBoolean(Name: string, InValue: boolean) : void;
+        /*
+         *Sets the CVar from the given input. Variable gets reset after the test.
+         */
+        SetConsoleVariableFromFloat(Name: string, InValue: number) : void;
+        /*
+         *Sets the CVar from the given input. Variable gets reset after the test.
+         */
+        SetConsoleVariableFromInteger(Name: string, InValue: number) : void;
+        SetTimeLimit(NewTimeLimit: number, ResultWhenTimeRunsOut: UE.EFunctionalTestResult) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): FunctionalTest;
+        static Load(InName: string): FunctionalTest;
+    
+        __tid_FunctionalTest_0__: boolean;
     }
     
     class PendingDelayedSpawn {
@@ -121635,6 +120253,68 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_ilterState_0__: boolean;
+    }
+    
+    class SlateTextureAtlasInterface extends UE.Interface {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): SlateTextureAtlasInterface;
+        static Load(InName: string): SlateTextureAtlasInterface;
+    
+        __tid_SlateTextureAtlasInterface_0__: boolean;
+    }
+    
+    class Image extends UE.Widget {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Brush: UE.SlateBrush;
+        BrushDelegate: $Delegate<() => UE.SlateBrush>;
+        ColorAndOpacity: UE.LinearColor;
+        ColorAndOpacityDelegate: $Delegate<() => UE.LinearColor>;
+        bFlipForRightToLeftFlowDirection: boolean;
+        OnMouseButtonDownEvent: $Delegate<(MyGeometry: UE.Geometry, MouseEvent: UE.PointerEvent) => UE.EventReply>;
+        GetDynamicMaterial() : UE.MaterialInstanceDynamic;
+        SetBrush(InBrush: UE.SlateBrush) : void;
+        SetBrushFromAsset(Asset: $Nullable<UE.SlateBrushAsset>) : void;
+        /*
+         *Sets the Brush to the specified Atlas Region.
+         *
+         *  @param AtlasRegion Region of the Atlas to use to set on Brush.
+         *      @param bMatchSize If true, image will change its size to atlas region size. If false, atlas region will be stretched to image size.
+         */
+        SetBrushFromAtlasInterface(AtlasRegion: UE.SlateTextureAtlasInterface, bMatchSize?: boolean /* = false */) : void;
+        SetBrushFromMaterial(Material: $Nullable<UE.MaterialInterface>) : void;
+        SetBrushFromSoftMaterial(SoftMaterial: TSoftObjectPtr<UE.MaterialInterface>) : void;
+        /*
+         *Sets the Brush to the specified Soft Texture.
+         *
+         *  @param SoftTexture Soft Texture to use to set on Brush.
+         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
+         */
+        SetBrushFromSoftTexture(SoftTexture: TSoftObjectPtr<UE.Texture2D>, bMatchSize?: boolean /* = false */) : void;
+        /*
+         *Sets the Brush to the specified Texture.
+         *
+         *  @param Texture Texture to use to set on Brush.
+         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
+         */
+        SetBrushFromTexture(Texture: $Nullable<UE.Texture2D>, bMatchSize?: boolean /* = false */) : void;
+        /*
+         *Sets the Brush to the specified Dynamic Texture.
+         *
+         *  @param Texture Dynamic Texture to use to set on Brush.
+         *      @param bMatchSize If true, image will change its size to texture size. If false, texture will be stretched to image size.
+         */
+        SetBrushFromTextureDynamic(Texture: $Nullable<UE.Texture2DDynamic>, bMatchSize?: boolean /* = false */) : void;
+        SetBrushResourceObject(ResourceObject: $Nullable<UE.Object>) : void;
+        SetBrushTintColor(TintColor: UE.SlateColor) : void;
+        SetColorAndOpacity(InColorAndOpacity: UE.LinearColor) : void;
+        SetDesiredSizeOverride(DesiredSize: UE.Vector2D) : void;
+        SetOpacity(InOpacity: number) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): Image;
+        static Load(InName: string): Image;
+    
+        __tid_Image_0__: boolean;
     }
     
     class ImageSequenceProtocol_BMP extends UE.ImageSequenceProtocol {
@@ -145264,326 +143944,6 @@ declare module "ue" {
         __tid_LimbSolverSettings_0__: boolean;
     }
     
-    namespace Engine.EditorResources.FieldNodes.Linear_Force_for_Cloth {
-        class Linear_Force_for_Cloth_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
-            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
-            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
-            PlaneVolumeBox: UE.BoxComponent;
-            PlaneVolume: UE.StaticMeshComponent;
-            SM_DirectionArrow: UE.StaticMeshComponent;
-            DirectionalArrowNull: UE.SphereComponent;
-            SphereVolumeCol: UE.SphereComponent;
-            SM_RadialArrow: UE.StaticMeshComponent;
-            SM_RadialArrow4: UE.StaticMeshComponent;
-            SM_RadialArrow3: UE.StaticMeshComponent;
-            SM_RadialArrow2: UE.StaticMeshComponent;
-            SM_RadialArrow1: UE.StaticMeshComponent;
-            SM_RadialArrow5: UE.StaticMeshComponent;
-            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow2: UE.StaticMeshComponent;
-            NoiseMaxValueText: UE.TextRenderComponent;
-            NoiseMinValueText: UE.TextRenderComponent;
-            TorqueValueText: UE.TextRenderComponent;
-            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
-            TorqueTitleText: UE.TextRenderComponent;
-            DirectionalValueText: UE.TextRenderComponent;
-            DirectionalMagTitleText: UE.TextRenderComponent;
-            RadialValueText: UE.TextRenderComponent;
-            ["Radial Mag Title Text"]: UE.TextRenderComponent;
-            StrainValueText: UE.TextRenderComponent;
-            StrainTitleText: UE.TextRenderComponent;
-            DelayTitleText: UE.TextRenderComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            DelayValueText: UE.TextRenderComponent;
-            SphereVolume: UE.StaticMeshComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            FieldTitleText: UE.TextRenderComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            ["Field Text"]: UE.TextRenderComponent;
-            BoxVolumeCol: UE.BoxComponent;
-            ReturnResultsTerminal: UE.ReturnResultsTerminal;
-            ["Field Active"]: boolean;
-            OperatorFIeld_Input: UE.OperatorField;
-            Debug: boolean;
-            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
-            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            UseTick: boolean;
-            DelayAmount: number;
-            ["Use External Strain"]: boolean;
-            ["Strain Magnitude"]: number;
-            StrainFalloffType: UE.EFieldFalloffType;
-            StrainFalloffMinMax: UE.Vector2D;
-            NumStrainHits: number;
-            UseRadialVector: boolean;
-            ["Radial Magnitude"]: number;
-            UseDirectionalVector: boolean;
-            DirectionalMagnitude: number;
-            UseTorque: boolean;
-            TorqueMult: number;
-            VelocityFieldFalloffType: UE.EFieldFalloffType;
-            VelocityFalloffMinMax: UE.Vector2D;
-            UseNoise: boolean;
-            NoiseMinMax: UE.Vector2D;
-            UseDecay: boolean;
-            DecayAmount: number;
-            DecayFalloffType: UE.EFieldFalloffType;
-            DecayFalloffMinMax: UE.Vector2D;
-            FieldVolume: UE.StaticMeshComponent;
-            DecayDelay: number;
-            MaxDecayAmount: number;
-            RadialPositionOffset: UE.Vector;
-            OverideDIrectionalVector: boolean;
-            DIrectionalVectorOveride: UE.Vector;
-            TorqueVectorOveride: UE.Vector;
-            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
-            ForceMult: number;
-            BoxCullingOnPlanar: boolean;
-            PlanarFalloffDistOveride: number;
-            ["Force Dynamic Switch"]: boolean;
-            ActivateTaggedStaticAndSkeletal: boolean;
-            ["Chaos Field Name"]: string;
-            FieldColour: UE.LinearColor;
-            ShowDebugText: boolean;
-            ShowWireFrame: boolean;
-            ShowSolidShapes: boolean;
-            DirectionalDisplayScale: number;
-            RadialDisplayScale: number;
-            ["Text Vertical Offset"]: number;
-            LinearPhysicsType: UE.EFieldPhysicsType;
-            AngularPhysicsType: UE.EFieldPhysicsType;
-            FieldFalloffType: UE.EFieldFalloffType;
-            ["Field Falloff Noise"]: UE.EFieldFalloffType;
-            ["Field Falloff Torque"]: UE.EFieldFalloffType;
-            UseLifespan: boolean;
-            FieldLifespan: number;
-            UseFramesForTiming: boolean;
-            FPS: number;
-            ["Dynamic State"]: UE.EObjectStateTypeEnum;
-            PlanarFalloffDist: number;
-            TotalDecay: number;
-            FalloffMinMax: UE.Vector2D;
-            PlanarFalloffExtentColor: UE.LinearColor;
-            DIrectionalVelocityVector: UE.Vector;
-            upVector: UE.Vector;
-            worldLocation: UE.Vector;
-            forwardVector: UE.Vector;
-            rightVector: UE.Vector;
-            skel: UE.SkeletalMeshComponent;
-            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
-            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
-            PulseLevel: string;
-            TextDisplay: TArray<string>;
-            AllText: TArray<UE.TextRenderComponent>;
-            ArrowColour_Dir: UE.LinearColor;
-            ArrowColour_Normal: UE.LinearColor;
-            DeactivatedColour: UE.LinearColor;
-            DeactivatedTextColour: UE.LinearColor;
-            ["Preview Material"]: UE.MaterialInstanceDynamic;
-            TimeElapsed: number;
-            NoiseScaleMult: number;
-            NewVar_0: UE.Transform;
-            isTriggered: boolean;
-            NoiseScaleBase: number;
-            DestroyActor: boolean;
-            FieldFalloffType_Input: UE.EFieldFalloffType;
-            FalloffMinMax_Input: UE.Vector2D;
-            Magnitude_Input: number;
-            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
-            CE_Trigger() : void;
-            DisplayTextSetup() : void;
-            ExecuteUbergraph_Linear_Force_for_Cloth(EntryPoint: number) : void;
-            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
-            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            ForceMultiplier() : void;
-            InitializeFieldVariables() : void;
-            MakeDynamic_EnableNonGC() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            SetVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Linear_Force_for_Cloth_C;
-            static Load(InName: string): Linear_Force_for_Cloth_C;
-        
-            __tid_Linear_Force_for_Cloth_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.EditorResources.FieldNodes.Linear_Velocity_for_Cloth {
-        class Linear_Velocity_for_Cloth_C extends UE.FieldSystemActor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
-            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
-            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
-            PlaneVolumeBox: UE.BoxComponent;
-            PlaneVolume: UE.StaticMeshComponent;
-            SM_DirectionArrow: UE.StaticMeshComponent;
-            DirectionalArrowNull: UE.SphereComponent;
-            SphereVolumeCol: UE.SphereComponent;
-            SM_RadialArrow: UE.StaticMeshComponent;
-            SM_RadialArrow4: UE.StaticMeshComponent;
-            SM_RadialArrow3: UE.StaticMeshComponent;
-            SM_RadialArrow2: UE.StaticMeshComponent;
-            SM_RadialArrow1: UE.StaticMeshComponent;
-            SM_RadialArrow5: UE.StaticMeshComponent;
-            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow1: UE.StaticMeshComponent;
-            SM_DirectionArrow2: UE.StaticMeshComponent;
-            NoiseMaxValueText: UE.TextRenderComponent;
-            NoiseMinValueText: UE.TextRenderComponent;
-            TorqueValueText: UE.TextRenderComponent;
-            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
-            TorqueTitleText: UE.TextRenderComponent;
-            DirectionalValueText: UE.TextRenderComponent;
-            DirectionalMagTitleText: UE.TextRenderComponent;
-            RadialValueText: UE.TextRenderComponent;
-            ["Radial Mag Title Text"]: UE.TextRenderComponent;
-            StrainValueText: UE.TextRenderComponent;
-            StrainTitleText: UE.TextRenderComponent;
-            DelayTitleText: UE.TextRenderComponent;
-            ActiveTitleText: UE.TextRenderComponent;
-            DelayValueText: UE.TextRenderComponent;
-            SphereVolume: UE.StaticMeshComponent;
-            ActiveValueText: UE.TextRenderComponent;
-            FieldTitleText: UE.TextRenderComponent;
-            BoxVolume: UE.StaticMeshComponent;
-            ["Field Text"]: UE.TextRenderComponent;
-            BoxVolumeCol: UE.BoxComponent;
-            ReturnResultsTerminal: UE.ReturnResultsTerminal;
-            ["Field Active"]: boolean;
-            OperatorFIeld_Input: UE.OperatorField;
-            Debug: boolean;
-            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
-            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
-            UseTick: boolean;
-            DelayAmount: number;
-            ["Use External Strain"]: boolean;
-            ["Strain Magnitude"]: number;
-            StrainFalloffType: UE.EFieldFalloffType;
-            StrainFalloffMinMax: UE.Vector2D;
-            NumStrainHits: number;
-            UseRadialVector: boolean;
-            ["Radial Magnitude"]: number;
-            UseDirectionalVector: boolean;
-            DirectionalMagnitude: number;
-            UseTorque: boolean;
-            TorqueMult: number;
-            VelocityFieldFalloffType: UE.EFieldFalloffType;
-            VelocityFalloffMinMax: UE.Vector2D;
-            UseNoise: boolean;
-            NoiseMinMax: UE.Vector2D;
-            UseDecay: boolean;
-            DecayAmount: number;
-            DecayFalloffType: UE.EFieldFalloffType;
-            DecayFalloffMinMax: UE.Vector2D;
-            FieldVolume: UE.StaticMeshComponent;
-            DecayDelay: number;
-            MaxDecayAmount: number;
-            RadialPositionOffset: UE.Vector;
-            OverideDIrectionalVector: boolean;
-            DIrectionalVectorOveride: UE.Vector;
-            TorqueVectorOveride: UE.Vector;
-            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
-            ForceMult: number;
-            BoxCullingOnPlanar: boolean;
-            PlanarFalloffDistOveride: number;
-            ["Force Dynamic Switch"]: boolean;
-            ActivateTaggedStaticAndSkeletal: boolean;
-            ["Chaos Field Name"]: string;
-            FieldColour: UE.LinearColor;
-            ShowDebugText: boolean;
-            ShowWireFrame: boolean;
-            ShowSolidShapes: boolean;
-            DirectionalDisplayScale: number;
-            RadialDisplayScale: number;
-            ["Text Vertical Offset"]: number;
-            LinearPhysicsType: UE.EFieldPhysicsType;
-            AngularPhysicsType: UE.EFieldPhysicsType;
-            FieldFalloffType: UE.EFieldFalloffType;
-            ["Field Falloff Noise"]: UE.EFieldFalloffType;
-            ["Field Falloff Torque"]: UE.EFieldFalloffType;
-            UseLifespan: boolean;
-            FieldLifespan: number;
-            UseFramesForTiming: boolean;
-            FPS: number;
-            ["Dynamic State"]: UE.EObjectStateTypeEnum;
-            PlanarFalloffDist: number;
-            TotalDecay: number;
-            FalloffMinMax: UE.Vector2D;
-            PlanarFalloffExtentColor: UE.LinearColor;
-            DIrectionalVelocityVector: UE.Vector;
-            upVector: UE.Vector;
-            worldLocation: UE.Vector;
-            forwardVector: UE.Vector;
-            rightVector: UE.Vector;
-            skel: UE.SkeletalMeshComponent;
-            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
-            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
-            PulseLevel: string;
-            TextDisplay: TArray<string>;
-            AllText: TArray<UE.TextRenderComponent>;
-            ArrowColour_Dir: UE.LinearColor;
-            ArrowColour_Normal: UE.LinearColor;
-            DeactivatedColour: UE.LinearColor;
-            DeactivatedTextColour: UE.LinearColor;
-            ["Preview Material"]: UE.MaterialInstanceDynamic;
-            TimeElapsed: number;
-            NoiseScaleMult: number;
-            NewVar_0: UE.Transform;
-            isTriggered: boolean;
-            NoiseScaleBase: number;
-            DestroyActor: boolean;
-            FieldFalloffType_Input: UE.EFieldFalloffType;
-            FalloffMinMax_Input: UE.Vector2D;
-            Magnitude_Input: number;
-            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
-            CE_Trigger() : void;
-            DisplayTextSetup() : void;
-            ExecuteUbergraph_Linear_Velocity_for_Cloth(EntryPoint: number) : void;
-            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
-            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
-            ForceMultiplier() : void;
-            InitializeFieldVariables() : void;
-            MakeDynamic_EnableNonGC() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            SetVisibility() : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Linear_Velocity_for_Cloth_C;
-            static Load(InName: string): Linear_Velocity_for_Cloth_C;
-        
-            __tid_Linear_Velocity_for_Cloth_C_0__: boolean;
-        }
-        
-    }
-
     class LinearAnalysisProperties extends UE.AnalysisProperties {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         FunctionAxis: UE.EAnalysisLinearAxis;
@@ -178070,6 +176430,25 @@ declare module "ue" {
         __tid_NodeToCodeAssociation_0__: boolean;
     }
     
+    class NoiseField extends UE.FieldNodeFloat {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        MinRange: number;
+        MaxRange: number;
+        Transform: UE.Transform;
+        /*
+         *Defines a perlin noise scalar value if the sample is within a box
+         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    Transform Transform of the box in which the perlin noise will be defined
+         */
+        SetNoiseField(MinRange: number, MaxRange: number, Transform: UE.Transform) : UE.NoiseField;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): NoiseField;
+        static Load(InName: string): NoiseField;
+    
+        __tid_NoiseField_0__: boolean;
+    }
+    
     class NoiseFieldDataflowNode extends UE.DataflowNode {
         constructor();
         constructor(SamplePositions: TArray<UE.Vector3f>, SampleIndices: UE.DataflowVertexSelection, MinRange: number, MaxRange: number, Transform: UE.Transform, FieldFloatResult: TArray<number>, FieldRemap: TArray<number>, NumSamplePositions: number);
@@ -180018,6 +178397,18 @@ declare module "ue" {
     }
 
     namespace Engine.PythonTypes {
+        class OnHttpResult__PythonCallable extends UE.PythonCallableForDelegate {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): OnHttpResult__PythonCallable;
+            static Load(InName: string): OnHttpResult__PythonCallable;
+        
+            __tid_OnHttpResult__PythonCallable_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.PythonTypes {
         class OnImageWriteComplete__PythonCallable extends UE.PythonCallableForDelegate {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
             static StaticClass(): Class;
@@ -181550,6 +179941,27 @@ declare module "ue" {
         static Load(InName: string): OpenVDBImportOptionsObject;
     
         __tid_OpenVDBImportOptionsObject_0__: boolean;
+    }
+    
+    class OperatorField extends UE.FieldNodeBase {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        RightField: UE.FieldNodeBase;
+        LeftField: UE.FieldNodeBase;
+        Operation: UE.EFieldOperationType;
+        /*
+         *Compute an operation between 2 incoming fields
+         *@param    Magnitude Magnitude of the operator field
+         *@param    LeftField Input field A to be processed
+         *@param    RightField Input field B to be processed
+         *@param    Operation Type of math operation you want to perform between the 2 fields
+         */
+        SetOperatorField(Magnitude: number, LeftField: $Nullable<UE.FieldNodeBase>, RightField: $Nullable<UE.FieldNodeBase>, Operation: UE.EFieldOperationType) : UE.OperatorField;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): OperatorField;
+        static Load(InName: string): OperatorField;
+    
+        __tid_OperatorField_0__: boolean;
     }
     
     class OptimusDataTypeRef {
@@ -189413,22 +187825,6 @@ declare module "ue" {
         __tid_PhysicsVolumeExporterT3D_0__: boolean;
     }
     
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh {
-        class PhysMesh {
-            constructor();
-            constructor(SMesh: UE.StaticMesh, Transform: UE.Transform);
-            SMesh: UE.StaticMesh;
-            Transform: UE.Transform;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_PhysMesh_0__: boolean;
-        }
-        
-    }
-
     class PIERHIOverrideState {
         constructor();
         constructor(MaxShadowDepthBufferSizeX: number, MaxShadowDepthBufferSizeY: number, MaxTextureDimensions: number, MaxCubeTextureDimensions: number, SupportsRenderTargetFormat_PF_G8: boolean, SupportsRenderTargetFormat_PF_FloatRGBA: boolean, SupportsMultipleRenderTargets: boolean);
@@ -190082,6 +188478,35 @@ declare module "ue" {
         static Load(InName: string): PlaneCutToolBuilder;
     
         __tid_PlaneCutToolBuilder_0__: boolean;
+    }
+    
+    class PlaneFalloff extends UE.FieldNodeFloat {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        MinRange: number;
+        MaxRange: number;
+        Default: number;
+        Distance: number;
+        Position: UE.Vector;
+        Normal: UE.Vector;
+        Falloff: UE.EFieldFalloffType;
+        /*
+         *Plane scalar field that will be defined only within a distance from a plane
+         *@param    Magnitude Magnitude of the plane falloff field
+         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    Default The field value will be set to default if the sample projected distance ((Sample Position - Center Position).dot(Plane Normal)) is higher than the Plane Distance
+         *@param    Distance Distance limit for the plane falloff field starting from the center position and extending in the direction of the plane normal
+         *@param    Position Plane center position of the plane falloff field
+         *@param    Normal Plane normal of the plane falloff field
+         *@param    Falloff Type of falloff function used to model the evolution of the field from the plane surface to the distance isosurface
+         */
+        SetPlaneFalloff(Magnitude: number, MinRange: number, MaxRange: number, Default: number, Distance: number, Position: UE.Vector, Normal: UE.Vector, Falloff: UE.EFieldFalloffType) : UE.PlaneFalloff;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): PlaneFalloff;
+        static Load(InName: string): PlaneFalloff;
+    
+        __tid_PlaneFalloff_0__: boolean;
     }
     
     class PlaneFalloffFieldDataflowNode extends UE.DataflowNode {
@@ -190869,6 +189294,16 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_PointDamageEvent_0__: boolean;
+    }
+    
+    class PointerToUberGraphFrame {
+        constructor();
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_PointerToUberGraphFrame_0__: boolean;
     }
     
     class PointLight extends UE.Light {
@@ -193399,6 +191834,33 @@ declare module "ue" {
         __tid_RadialDamageEvent_0__: boolean;
     }
     
+    class RadialFalloff extends UE.FieldNodeFloat {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        MinRange: number;
+        MaxRange: number;
+        Default: number;
+        Radius: number;
+        Position: UE.Vector;
+        Falloff: UE.EFieldFalloffType;
+        /*
+         *Sphere scalar field that will be defined only within a sphere
+         *@param    Magnitude Magnitude of the sphere falloff field
+         *@param    MinRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    MaxRange The initial function value between 0 and 1 will be scaled between MinRange and MaxRange before being multiplied by magnitude
+         *@param    Default The field value will be set to Default if the sample distance from the center is higher than the radius
+         *@param    Radius Radius of the sphere falloff field
+         *@param    Position Center position of the sphere falloff field
+         *@param    Falloff Type of falloff function used if the falloff function is picked
+         */
+        SetRadialFalloff(Magnitude: number, MinRange: number, MaxRange: number, Default: number, Radius: number, Position: UE.Vector, Falloff: UE.EFieldFalloffType) : UE.RadialFalloff;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): RadialFalloff;
+        static Load(InName: string): RadialFalloff;
+    
+        __tid_RadialFalloff_0__: boolean;
+    }
+    
     class RadialFalloffFieldDataflowNode extends UE.DataflowNode {
         constructor();
         constructor(SamplePositions: TArray<UE.Vector3f>, SampleIndices: UE.DataflowVertexSelection, Sphere: UE.Sphere, Translation: UE.Vector, Magnitude: number, MinRange: number, MaxRange: number, Default: number, FalloffType: UE.EDataflowFieldFalloffType, FieldFloatResult: TArray<number>, FieldRemap: TArray<number>, FieldSelectionMask: UE.DataflowVertexSelection, NumSamplePositions: number);
@@ -193681,6 +192143,23 @@ declare module "ue" {
         __tid_RadialSlider_0__: boolean;
     }
     
+    class RadialVector extends UE.FieldNodeVector {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        Position: UE.Vector;
+        /*
+         *Set a radial vector value. The direction is the normalized vector from the field position to the sample one. The output is equal to this direction * magnitude.
+         *@param    Magnitude Magnitude of the radial vector field
+         *@param    Position Center position of the radial vector field
+         */
+        SetRadialVector(Magnitude: number, Position: UE.Vector) : UE.RadialVector;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): RadialVector;
+        static Load(InName: string): RadialVector;
+    
+        __tid_RadialVector_0__: boolean;
+    }
+    
     class RadialVectorFieldDataflowNode extends UE.DataflowNode {
         constructor();
         constructor(SamplePositions: TArray<UE.Vector3f>, SampleIndices: UE.DataflowVertexSelection, Magnitude: number, Position: UE.Vector, FieldVectorResult: TArray<UE.Vector>, FieldRemap: TArray<number>, NumSamplePositions: number);
@@ -193785,6 +192264,21 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_RandomUnitVectorInConeDataflowNode_0__: boolean;
+    }
+    
+    class RandomVector extends UE.FieldNodeVector {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        /*
+         *Set a random vector value independently of the sample position. The output is equal to magnitude * random direction
+         *@param    Magnitude Magnitude of the random vector field
+         */
+        SetRandomVector(Magnitude: number) : UE.RandomVector;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): RandomVector;
+        static Load(InName: string): RandomVector;
+    
+        __tid_RandomVector_0__: boolean;
     }
     
     class RandomVectorFieldDataflowNode extends UE.DataflowNode {
@@ -194911,325 +193405,6 @@ declare module "ue" {
         __tid_RenderTargetExporterPNG_0__: boolean;
     }
     
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum {
-        enum RenderToTexture_Enum { Material, "Unwrapped Mesh", "Depth Map", Lightmaps, "Lightmaps 2-sided", "Flipbook Mesh Animation", "Physics Ground - Tiling Physics Drop of Meshes", "Tiling Material from Hand Placed Meshes", RenderToTexture_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Flipbook_Enum {
-        enum RenderToTexture_Flipbook_Enum { "Simple Mesh rotation", "Material Instance Interpolation", "Both Mesh rotation and Material Instance Interpolation", RenderToTexture_Flipbook_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Game {
-        class RenderToTexture_Game_C extends UE.GameMode {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Game_C;
-            static Load(InName: string): RenderToTexture_Game_C;
-        
-            __tid_RenderToTexture_Game_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum {
-        enum RenderToTexture_Imposter_Enum { "Full 3D Imposter", "Single Rotation Axis", RenderToTexture_Imposter_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh {
-        class TilingMesh {
-            constructor();
-            constructor(StaticMesh: UE.StaticMesh, Transform: UE.Transform, Material: UE.MaterialInstanceConstant, Visible: boolean, DisplacementTexture: UE.Texture);
-            StaticMesh: UE.StaticMesh;
-            Transform: UE.Transform;
-            Material: UE.MaterialInstanceConstant;
-            Visible: boolean;
-            DisplacementTexture: UE.Texture;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_TilingMesh_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP {
-        class RenderToTexture_LevelBP_C extends UE.Pawn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ["BottomCollision-LargeMeshesOnly"]: UE.BoxComponent;
-            ["SceneCapture Motion Position 1"]: UE.SceneCaptureComponent2D;
-            TopOutline: UE.BoxComponent;
-            PreviewMesh: UE.StaticMeshComponent;
-            TilingPreviewCapture: UE.SceneCaptureComponent2D;
-            BottomCollision: UE.BoxComponent;
-            Box5: UE.BoxComponent;
-            Box4: UE.BoxComponent;
-            Box3: UE.BoxComponent;
-            Box2: UE.BoxComponent;
-            PlaneMesh: UE.StaticMeshComponent;
-            Debug: UE.TextRenderComponent;
-            Camera1: UE.CameraComponent;
-            Root: UE.StaticMeshComponent;
-            RotationArray: TArray<UE.Rotator>;
-            ["Render Type"]: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum.RenderToTexture_Enum;
-            ["Viewport size (see Tooltip)"]: number;
-            ResolutionMultiplier: number;
-            BaseColor: boolean;
-            Specular: boolean;
-            Metallic: boolean;
-            Normal: boolean;
-            Opacity: boolean;
-            Roughness: boolean;
-            AmbientOcclusion: boolean;
-            MaterialAmbientOcclusion: boolean;
-            ["Decal Mask"]: boolean;
-            ["Lighting Only"]: boolean;
-            ["Subsurface Color"]: boolean;
-            ["Imposter Static Mesh"]: UE.StaticMesh;
-            BufferCommands: string;
-            ResCommand: string;
-            SheetSize: number;
-            ShotCommand: string;
-            MeshScale: number;
-            ["Imposter MaterialInstanceArray"]: TArray<UE.MaterialInstance>;
-            MaterialColor2: UE.LinearColor;
-            SectorSize: number;
-            InitialOffset: UE.Vector;
-            initialscale: number;
-            Internalscalefactor: number;
-            StaticMeshComponent: UE.StaticMeshComponent;
-            LevelStaticMeshActorArray: TArray<UE.Actor>;
-            ["Render to Texture Mesh"]: UE.StaticMeshActor;
-            ["Use Level Meshes for Depth"]: boolean;
-            LightVector: UE.Vector;
-            ["Directional Light"]: UE.DirectionalLight;
-            ["Opacity Mask Textures"]: TArray<UE.Texture>;
-            ["Opacity Mask Channels"]: TArray<UE.LinearColor>;
-            ["Frames around Z rotation"]: number;
-            ["Aspect Ratio 1 by"]: number;
-            ["Use Level Placed Meshes"]: boolean;
-            ["Lightmap Mesh"]: UE.StaticMeshActor;
-            ["Lightmap Mesh 2-sided, Side 1"]: UE.StaticMeshActor;
-            ["Lightmap Mesh 2-sided, Side 2"]: UE.StaticMeshActor;
-            ["Depth Map Static Mesh"]: UE.StaticMesh;
-            Unwrap: boolean;
-            ["Depth Material Mask Textures"]: TArray<UE.Texture2D>;
-            ["Flipbook Start Rotation"]: UE.Rotator;
-            ["Flipbook Rotation Axis 1"]: UE.Vector;
-            ["Flipbook Rotation Axis 2"]: UE.Vector;
-            ["Axis 1 Rotations"]: number;
-            ["Axis 2 Rotations"]: number;
-            ["Flipbook Columns (X)"]: number;
-            ["Flipbook Rows (Y)"]: number;
-            ["Flipbook MaterialInstance List"]: TArray<UE.MaterialInstance>;
-            ["Opacity MaskTextures"]: TArray<UE.Texture>;
-            ["Opacity MaskChannels"]: TArray<UE.LinearColor>;
-            ["Flipbook Static Mesh"]: UE.StaticMesh;
-            ["Flipbook Mesh scale"]: number;
-            ["Preview Speed"]: number;
-            ImposterEnum: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum.RenderToTexture_Imposter_Enum;
-            ["Single Rotation Axis"]: UE.Vector;
-            ["Unwrap Lightmap 2sided"]: boolean;
-            Unwrap2sidedMIDlistA: TArray<UE.MaterialInstanceDynamic>;
-            Unwrap2sidedMIDListB: TArray<UE.MaterialInstanceDynamic>;
-            ["Lightmap Unwrap Material"]: UE.MaterialInstanceConstant;
-            ["Unwrap Lightmap"]: boolean;
-            ["Mask Channel"]: TArray<UE.LinearColor>;
-            DepthMeshInitialSize: UE.Vector;
-            DepthMID: UE.MaterialInstanceDynamic;
-            ["Scale XY"]: number;
-            ["Scale Z"]: number;
-            ["Fit Vector and scale info onto texture"]: boolean;
-            TextSize: number;
-            ["Text Locations"]: TArray<UE.Vector>;
-            ParticleSystem: UE.ParticleSystem;
-            SavedPhysMeshList: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh.PhysMesh>;
-            ["Simulate Physics"]: boolean;
-            ["Keep Tiling Hand Placed Meshes"]: boolean;
-            ["Simple Random Placement"]: boolean;
-            ["PhysGround Mat"]: UE.MaterialInstanceConstant;
-            ["Mesh List"]: TArray<UE.StaticMesh>;
-            ["Mesh Size Min"]: number;
-            ["Mesh Size Max"]: number;
-            ["Size Curve"]: number;
-            ["Spawn by Size"]: boolean;
-            ["PhysGround Density m^2"]: number;
-            Count: number;
-            ["Number of Meshes"]: number;
-            PhysStaticMeshes: TArray<UE.StaticMeshComponent>;
-            ["Debug Displacement Depth"]: boolean;
-            ["Displacement Min"]: number;
-            ["Displacement Max"]: number;
-            ["Kill Above Z Min"]: number;
-            ["Kill Above Z Max"]: number;
-            ["Copied Mesh Array"]: TArray<UE.StaticMeshComponent>;
-            ["Current Component"]: UE.StaticMeshComponent;
-            StaticMobilityMeshes: TArray<UE.StaticMeshComponent>;
-            SavedMeshComponents: TArray<UE.StaticMeshComponent>;
-            ["Material Instance"]: UE.MaterialInstance;
-            ["Stadium Offsetting"]: boolean;
-            ["TilingMesh List"]: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh.TilingMesh>;
-            SceneDepthWorldUnits: boolean;
-            DisplacementMin: number;
-            DisplacementMax: number;
-            DebugDisplacementDepth: boolean;
-            ["Custom Depth"]: boolean;
-            ["Displacement Texture Height"]: number;
-            ["Preview Tiling"]: boolean;
-            ["Tiling Amount"]: number;
-            ImposterArray: TArray<UE.Transform>;
-            PreviewLocation: UE.Vector;
-            ["Output Depth Maps"]: boolean;
-            ImposterMeshComponents: TArray<UE.StaticMeshComponent>;
-            BackgroundSheetMID: UE.MaterialInstanceDynamic;
-            ["Debug Depth"]: boolean;
-            ["Max Pitch/Roll"]: number;
-            ["Render Motion Vectors"]: boolean;
-            SceneColor: boolean;
-            ["Sheet height"]: number;
-            ["Background Sheet Color"]: UE.LinearColor;
-            FlipbookMeshes: TArray<UE.StaticMeshComponent>;
-            ["UV Layout Dilation Amount"]: number;
-            OffsetVectors: TArray<UE.Vector>;
-            ["Empty Spacer"]: boolean;
-            CurrentRenderLoc: UE.Vector;
-            ["UV Dilation Steps"]: number;
-            MaterialChoice: UE.MaterialInstance;
-            MVFloors: TArray<UE.StaticMeshComponent>;
-            FlipbookMID: UE.MaterialInstanceDynamic;
-            ["Motion Dilation Steps"]: number;
-            UnwrappedMotionVectorMeshes: TArray<UE.StaticMeshComponent>;
-            MotionVectorIntensityBoost: number;
-            sRGB: boolean;
-            ["Render MotionVectors"]: boolean;
-            ["Large Mesh Sink Height"]: number;
-            ["Large Mesh Size Threshold"]: number;
-            ["UV DilationPass"]: boolean;
-            ["MotionVector Pass"]: boolean;
-            MotionVectorMaterial: UE.MaterialInstanceConstant;
-            MotionVectorsApplied: UE.MaterialInstanceConstant;
-            ["UV Layout DilationAmount"]: number;
-            ["UV DilationSteps"]: number;
-            ["Motion DilationSteps"]: number;
-            ["Motion Vector IntensityBoost"]: number;
-            MotionVectorsApplied_Imposter: UE.MaterialInstanceConstant;
-            ["Flipbook Preview Mat"]: UE.MaterialInstanceConstant;
-            ["Imposter-SingleAxis Preview Mat"]: UE.MaterialInstanceConstant;
-            ["Imposter-3D Preview Mat"]: UE.MaterialInstanceConstant;
-            MIDList: TArray<UE.MaterialInstanceDynamic>;
-            PolyCenter: UE.Vector;
-            ["Offst Phase"]: number;
-            ["Dilation Phase"]: number;
-            ["Ortho FOV"]: number;
-            ["Indicies to Delete"]: TArray<number>;
-            TilingAmount: number;
-            UVIndex: number;
-            ["UV Index"]: number;
-            NewVar: UE.MaterialInstanceDynamic;
-            ["Export images as EXR"]: boolean;
-            ["Copy a mesh"](MeshComponent: $Nullable<UE.StaticMeshComponent>, OffsetVector: UE.Vector, ArraytoPlaceMeshesin: $Ref<TArray<UE.StaticMeshComponent>>) : void;
-            ExecuteUbergraph_RenderToTexture_LevelBP(EntryPoint: number) : void;
-            ["Find Z Bounds"](Meshes: $Ref<TArray<UE.StaticMeshComponent>>, Min: $Ref<number>, Max: $Ref<number>) : void;
-            FlipBook() : void;
-            ["Imposter Sprites"]() : void;
-            ["Match Level Actors to Imposter Array"]() : void;
-            ["New Mesh"](Mesh: $Nullable<UE.StaticMesh>, WorldPos: UE.Vector, Material: $Nullable<UE.MaterialInterface>, Scale3d: UE.Vector, MeshComp: $Ref<UE.StaticMeshComponent>) : void;
-            ["Particle System Frame Dump"]() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            ["Render Depth Map"](MID: $Ref<UE.MaterialInstanceDynamic>) : void;
-            ["Render Lightmap"]() : void;
-            ["Render LIghtmap 2-sided"]() : void;
-            ["Render Random Tiling Physics Drop"]() : void;
-            ["Render Tiling Material"]() : void;
-            ["Render Tiling Material from Meshes"]() : void;
-            ["Render Unwrapped Mesh To Textures"]() : void;
-            ["Set Buffer Commands"]() : void;
-            ["Set up MPC"]() : void;
-            ["Setup Collision"](Visible: boolean) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_LevelBP_C;
-            static Load(InName: string): RenderToTexture_LevelBP_C;
-        
-            __tid_RenderToTexture_LevelBP_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Pawn {
-        class RenderToTexture_Pawn_C extends UE.Pawn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Pawncam: UE.CameraComponent;
-            Root: UE.StaticMeshComponent;
-            BaseColor: boolean;
-            Specular: boolean;
-            Normal: boolean;
-            Opacity: boolean;
-            Roughness: boolean;
-            AmbientOcclusion: boolean;
-            MaterialAmbientOcclusion: boolean;
-            ResolutionMultiplier: number;
-            BufferCommands: string;
-            ShotCommand: string;
-            ["Backface SSS Meshes"]: TArray<UE.StaticMeshActor>;
-            MIDArray: TArray<UE.MaterialInstanceDynamic>;
-            Generator: UE.Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP.RenderToTexture_LevelBP_C;
-            debugdepth() : void;
-            ExecuteUbergraph_RenderToTexture_Pawn(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            renderdepth() : void;
-            renderimposter() : void;
-            renderlightmaps() : void;
-            rendertextures() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Pawn_C;
-            static Load(InName: string): RenderToTexture_Pawn_C;
-        
-            __tid_RenderToTexture_Pawn_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureFunctionLibrary {
-        class RenderToTextureFunctionLibrary_C extends UE.BlueprintFunctionLibrary {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static ["Array to HLSL Int Array"](Type: UE.Engine.ArtTools.RenderToTexture.Enums.EIntTypes.EIntTypes, VariableName: $Ref<string>, int: $Ref<TArray<number>>, int2: $Ref<TArray<UE.Vector2D>>, int3: $Ref<TArray<UE.Vector>>, int4: $Ref<TArray<UE.LinearColor>>, __WorldContext: $Nullable<UE.Object>, String: $Ref<string>) : void;
-            static ["Set Canvas Material Scale and Position"](Size: UE.Vector2D, Position: UE.Vector2D, Scale: number, __WorldContext: $Nullable<UE.Object>, ScreenPosition: $Ref<UE.Vector2D>, ScreenSize: $Ref<UE.Vector2D>) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTextureFunctionLibrary_C;
-            static Load(InName: string): RenderToTextureFunctionLibrary_C;
-        
-            __tid_RenderToTextureFunctionLibrary_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureMacros {
-        class RenderToTextureMacros_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTextureMacros_C;
-            static Load(InName: string): RenderToTextureMacros_C;
-        
-            __tid_RenderToTextureMacros_C_0__: boolean;
-        }
-        
-    }
-
     class ReOrientRootBoneModifier extends UE.AnimationModifier {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Rotator: UE.Rotator;
@@ -195685,6 +193860,19 @@ declare module "ue" {
         static Load(InName: string): RetriangulateGeometrySelectionCommand;
     
         __tid_RetriangulateGeometrySelectionCommand_0__: boolean;
+    }
+    
+    class ReturnResultsTerminal extends UE.FieldNodeBase {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        /*
+         *Terminal field of a graph
+         */
+        SetReturnResultsTerminal() : UE.ReturnResultsTerminal;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): ReturnResultsTerminal;
+        static Load(InName: string): ReturnResultsTerminal;
+    
+        __tid_ReturnResultsTerminal_0__: boolean;
     }
     
     class ReverbEffectFactory extends UE.Factory {
@@ -219426,18 +217614,6 @@ declare module "ue" {
         __tid_StackBox_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.StandardMacros {
-        class StandardMacros_C extends UE.Object {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): StandardMacros_C;
-            static Load(InName: string): StandardMacros_C;
-        
-            __tid_StandardMacros_C_0__: boolean;
-        }
-        
-    }
-
     class StandardSculptBrushOpProps extends UE.MeshSculptBrushOpProps {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Strength: number;
@@ -227045,6 +225221,105 @@ declare module "ue" {
         __tid_TextBinding_0__: boolean;
     }
     
+    class TextBlock extends UE.TextLayoutWidget {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Text: string;
+        TextDelegate: $Delegate<() => string>;
+        ColorAndOpacity: UE.SlateColor;
+        ColorAndOpacityDelegate: $Delegate<() => UE.SlateColor>;
+        MinDesiredWidth: number;
+        Font: UE.SlateFontInfo;
+        StrikeBrush: UE.SlateBrush;
+        ShadowOffset: UE.Vector2D;
+        ShadowColorAndOpacity: UE.LinearColor;
+        ShadowColorAndOpacityDelegate: $Delegate<() => UE.LinearColor>;
+        bWrapWithInvalidationPanel: boolean;
+        TextTransformPolicy: UE.ETextTransformPolicy;
+        TextOverflowPolicy: UE.ETextOverflowPolicy;
+        bSimpleTextMode: boolean;
+        GetDynamicFontMaterial() : UE.MaterialInstanceDynamic;
+        GetDynamicOutlineMaterial() : UE.MaterialInstanceDynamic;
+        /*
+         *Gets the widget text
+         *@return The widget text
+         */
+        GetText() : string;
+        /*
+         *Set the auto wrap for this text block.
+         *
+         *@param InAutoTextWrap to turn wrap on or off.
+         */
+        SetAutoWrapText(InAutoTextWrap: boolean) : void;
+        /*
+         *Sets the color and opacity of the text in this text block
+         *
+         *@param InColorAndOpacity             The new text color and opacity
+         */
+        SetColorAndOpacity(InColorAndOpacity: UE.SlateColor) : void;
+        /*
+         *Dynamically set the font info for this text block
+         *
+         *@param InFontInfo The new font info
+         */
+        SetFont(InFontInfo: UE.SlateFontInfo) : void;
+        SetFontMaterial(InMaterial: $Nullable<UE.MaterialInterface>) : void;
+        SetFontOutlineMaterial(InMaterial: $Nullable<UE.MaterialInterface>) : void;
+        /*
+         *Set the minimum desired width for this text block
+         *
+         *@param InMinDesiredWidth new minimum desired width
+         */
+        SetMinDesiredWidth(InMinDesiredWidth: number) : void;
+        /*
+         *Sets the opacity of the text in this text block
+         *
+         *@param InOpacity              The new text opacity
+         */
+        SetOpacity(InOpacity: number) : void;
+        /*
+         *Sets the color and opacity of the text drop shadow
+         *Note: if opacity is zero no shadow will be drawn
+         *
+         *@param InShadowColorAndOpacity               The new drop shadow color and opacity
+         */
+        SetShadowColorAndOpacity(InShadowColorAndOpacity: UE.LinearColor) : void;
+        /*
+         *Sets the offset that the text drop shadow should be drawn at
+         *
+         *@param InShadowOffset                The new offset
+         */
+        SetShadowOffset(InShadowOffset: UE.Vector2D) : void;
+        /*
+         *Dynamically set the strike brush for this text block
+         *
+         *@param InStrikeBrush The new brush to use to strike through text
+         */
+        SetStrikeBrush(InStrikeBrush: UE.SlateBrush) : void;
+        /*
+         *Directly sets the widget text.
+         *Warning: This will wipe any binding created for the Text property!
+         *@param InText The text to assign to the widget
+         */
+        SetText(InText: string) : void;
+        /*
+         *Set the text overflow policy for this text block.
+         *
+         *@param InOverflowPolicy the new text overflow policy.
+         */
+        SetTextOverflowPolicy(InOverflowPolicy: UE.ETextOverflowPolicy) : void;
+        /*
+         *Set the text transformation policy for this text block.
+         *
+         *@param InTransformPolicy the new text transformation policy.
+         */
+        SetTextTransformPolicy(InTransformPolicy: UE.ETextTransformPolicy) : void;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): TextBlock;
+        static Load(InName: string): TextBlock;
+    
+        __tid_TextBlock_0__: boolean;
+    }
+    
     class TextBlockWidgetStyle extends UE.SlateWidgetStyleContainerBase {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         TextBlockStyle: UE.TextBlockStyle;
@@ -229493,112 +227768,6 @@ declare module "ue" {
         __tid_TurnBasedBlueprintLibrary_0__: boolean;
     }
     
-    namespace Engine.Tutorial.BlueprintTutorials.TutorialAssets.Tutorial_BP_Class {
-        class Tutorial_BP_Class_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            DefaultSceneRoot: UE.SceneComponent;
-            SampleVariable: boolean;
-            StoredGameMode: UE.GameModeBase;
-            ExecuteUbergraph_Tutorial_BP_Class(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            /*
-             *Event called every frame, if ticking is enabled
-             */
-            ReceiveTick(DeltaSeconds: number) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Tutorial_BP_Class_C;
-            static Load(InName: string): Tutorial_BP_Class_C;
-        
-            __tid_Tutorial_BP_Class_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.BlueprintTutorials.TutorialAssets.Tutorial_BP_Interface {
-        class Tutorial_BP_Interface_C extends UE.Interface {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            TutorialSampleFunction() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): Tutorial_BP_Interface_C;
-            static Load(InName: string): Tutorial_BP_Interface_C;
-        
-            __tid_Tutorial_BP_Interface_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
-        class TutorialAnimationBlueprint_C extends UE.AnimInstance {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
-            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
-            AnimGraphNode_Root: UE.AnimNode_Root;
-            AnimGraphNode_StateResult: UE.AnimNode_StateResult;
-            AnimGraphNode_StateMachine: UE.AnimNode_StateMachine;
-            SomeBoolean: boolean;
-            SomeFloat: number;
-            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
-            /*
-             *Executed when the Animation is updated
-             */
-            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
-            ExecuteUbergraph_TutorialAnimationBlueprint(EntryPoint: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TutorialAnimationBlueprint_C;
-            static Load(InName: string): TutorialAnimationBlueprint_C;
-        
-            __tid_TutorialAnimationBlueprint_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialCharacter {
-        class TutorialCharacter_C extends UE.Character {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TutorialCharacter_C;
-            static Load(InName: string): TutorialCharacter_C;
-        
-            __tid_TutorialCharacter_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
-        class TutorialTPP_AnimBlueprint_C extends UE.AnimInstance {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            __AnimBlueprintMutables: UE.Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint.AnimBlueprintGeneratedMutableData;
-            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
-            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
-            AnimGraphNode_Root: UE.AnimNode_Root;
-            AnimGraphNode_BlendSpacePlayer: UE.AnimNode_BlendSpacePlayer;
-            Speed: number;
-            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
-            /*
-             *Executed when the Animation is updated
-             */
-            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
-            ExecuteUbergraph_TutorialTPP_AnimBlueprint(EntryPoint: number) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): TutorialTPP_AnimBlueprint_C;
-            static Load(InName: string): TutorialTPP_AnimBlueprint_C;
-        
-            __tid_TutorialTPP_AnimBlueprint_C_0__: boolean;
-        }
-        
-    }
-
     class TwistKelvinletBrushOpProps extends UE.BaseKelvinletBrushOpProps {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Strength: number;
@@ -231031,6 +229200,39 @@ declare module "ue" {
         __tid_UeBridgeHelper_0__: boolean;
     }
     
+    class UeHttpHelper extends UE.Object {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        /*
+         *发送 GET 请求
+         */
+        HttpGet(Url: string, Headers: TMap<string, string>, TimeoutSeconds: number, OnResult: $Delegate<(bSuccess: boolean, StatusCode: number, ResponseText: string) => void>) : void;
+        /*
+         *发送 POST 请求
+         */
+        HttpPost(Url: string, Headers: TMap<string, string>, Body: string, TimeoutSeconds: number, OnResult: $Delegate<(bSuccess: boolean, StatusCode: number, ResponseText: string) => void>) : void;
+        /*
+         *下载网络图片并解码为 Texture2D（异步），CachePath 非空时下载成功会写入本地缓存
+         */
+        HttpGetImage(Url: string, Headers: TMap<string, string>, TimeoutSeconds: number, CachePath: string, OnResult: $Delegate<(bSuccess: boolean, StatusCode: number, Texture: UE.Texture2D) => void>) : void;
+        /*
+         *从本地文件读取图片并解码为 Texture2D（同步）
+         */
+        LoadImageFromLocalFile(FilePath: string, OnResult: $Delegate<(bSuccess: boolean, StatusCode: number, Texture: UE.Texture2D) => void>) : void;
+        /*
+         *获取图片本地缓存根目录（不存在会自动创建）
+         */
+        GetImageCacheDir() : string;
+        /*
+         *获取单例实例
+         */
+        static GetInstance() : UE.UeHttpHelper;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): UeHttpHelper;
+        static Load(InName: string): UeHttpHelper;
+    
+        __tid_UeHttpHelper_0__: boolean;
+    }
+    
     class UIComponent extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Owner: TWeakObjectPtr<UE.Widget>;
@@ -231431,6 +229633,21 @@ declare module "ue" {
         __tid_UniformGridPanel_0__: boolean;
     }
     
+    class UniformInteger extends UE.FieldNodeInt {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        /*
+         *Set a uniform integer value independently of the sample position. The output is equal to magnitude
+         *@param    Magnitude The field output will be equal the magnitude
+         */
+        SetUniformInteger(Magnitude: number) : UE.UniformInteger;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): UniformInteger;
+        static Load(InName: string): UniformInteger;
+    
+        __tid_UniformInteger_0__: boolean;
+    }
+    
     class UniformIntegerFieldDataflowNode extends UE.DataflowNode {
         constructor();
         constructor(SamplePositions: TArray<UE.Vector3f>, SampleIndices: UE.DataflowVertexSelection, Magnitude: number, FieldIntResult: TArray<number>, FieldRemap: TArray<number>, NumSamplePositions: number);
@@ -231466,6 +229683,21 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_UniformPointSamplingDataflowNode_0__: boolean;
+    }
+    
+    class UniformScalar extends UE.FieldNodeFloat {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        /*
+         *Set a uniform scalar value independently of the sample position. The output is equal to magnitude
+         *@param    Magnitude The field output will be equal the magnitude
+         */
+        SetUniformScalar(Magnitude: number) : UE.UniformScalar;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): UniformScalar;
+        static Load(InName: string): UniformScalar;
+    
+        __tid_UniformScalar_0__: boolean;
     }
     
     class UniformScalarFieldDataflowNode extends UE.DataflowNode {
@@ -231524,6 +229756,23 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_UniformScatterPointsDataflowNode_v2_0__: boolean;
+    }
+    
+    class UniformVector extends UE.FieldNodeVector {
+        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+        Magnitude: number;
+        Direction: UE.Vector;
+        /*
+         *Set a uniform vector value independently of the sample position.The output is equal to magnitude * direction
+         *@param    Magnitude Magnitude of the uniform vector field
+         *@param    Direction Normalized direction of the uniform vector field
+         */
+        SetUniformVector(Magnitude: number, Direction: UE.Vector) : UE.UniformVector;
+        static StaticClass(): Class;
+        static Find(OrigInName: string, Outer?: Object): UniformVector;
+        static Load(InName: string): UniformVector;
+    
+        __tid_UniformVector_0__: boolean;
     }
     
     class UniformVectorFieldDataflowNode extends UE.DataflowNode {
@@ -239039,4 +237288,1748 @@ declare module "ue" {
         __tid_ZeroOutRootBoneModifier_0__: boolean;
     }
     
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
+        class AnimBlueprintGeneratedMutableData extends UE.AnimBlueprintMutableData {
+            constructor();
+            constructor(__FloatProperty: number);
+            __FloatProperty: number;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_AnimBlueprintGeneratedMutableData_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint {
+        class TutorialTPP_AnimBlueprint_C extends UE.AnimInstance {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            __AnimBlueprintMutables: UE.Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialTPP_AnimBlueprint.AnimBlueprintGeneratedMutableData;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
+            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
+            AnimGraphNode_Root: UE.AnimNode_Root;
+            AnimGraphNode_BlendSpacePlayer: UE.AnimNode_BlendSpacePlayer;
+            Speed: number;
+            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
+            /*
+             *Executed when the Animation is updated
+             */
+            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
+            ExecuteUbergraph_TutorialTPP_AnimBlueprint(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): TutorialTPP_AnimBlueprint_C;
+            static Load(InName: string): TutorialTPP_AnimBlueprint_C;
+        
+            __tid_TutorialTPP_AnimBlueprint_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.Character.TutorialCharacter {
+        class TutorialCharacter_C extends UE.Character {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): TutorialCharacter_C;
+            static Load(InName: string): TutorialCharacter_C;
+        
+            __tid_TutorialCharacter_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Tutorial.SubEditors.TutorialAssets.TutorialAnimationBlueprint {
+        class TutorialAnimationBlueprint_C extends UE.AnimInstance {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            AnimBlueprintExtension_PropertyAccess: UE.AnimSubsystemInstance;
+            AnimBlueprintExtension_Base: UE.AnimSubsystemInstance;
+            AnimGraphNode_Root: UE.AnimNode_Root;
+            AnimGraphNode_StateResult: UE.AnimNode_StateResult;
+            AnimGraphNode_StateMachine: UE.AnimNode_StateMachine;
+            SomeBoolean: boolean;
+            SomeFloat: number;
+            AnimGraph(AnimGraph: $Ref<UE.PoseLink>) : void;
+            /*
+             *Executed when the Animation is updated
+             */
+            BlueprintUpdateAnimation(DeltaTimeX: number) : void;
+            ExecuteUbergraph_TutorialAnimationBlueprint(EntryPoint: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): TutorialAnimationBlueprint_C;
+            static Load(InName: string): TutorialAnimationBlueprint_C;
+        
+            __tid_TutorialAnimationBlueprint_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Tutorial.BlueprintTutorials.TutorialAssets.Tutorial_BP_Class {
+        class Tutorial_BP_Class_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DefaultSceneRoot: UE.SceneComponent;
+            SampleVariable: boolean;
+            StoredGameMode: UE.GameModeBase;
+            ExecuteUbergraph_Tutorial_BP_Class(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Tutorial_BP_Class_C;
+            static Load(InName: string): Tutorial_BP_Class_C;
+        
+            __tid_Tutorial_BP_Class_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Tutorial.BlueprintTutorials.TutorialAssets.Tutorial_BP_Interface {
+        class Tutorial_BP_Interface_C extends UE.Interface {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            TutorialSampleFunction() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Tutorial_BP_Interface_C;
+            static Load(InName: string): Tutorial_BP_Interface_C;
+        
+            __tid_Tutorial_BP_Interface_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Sequencer.DefaultBurnInOptions {
+        class DefaultBurnInOptions_C extends UE.LevelSequenceBurnInInitSettings {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            TopLeftText: string;
+            TopCenterText: string;
+            TopRightText: string;
+            BottomLeftText: string;
+            BottomCenterText: string;
+            BottomRightText: string;
+            Watermark: UE.Texture2D;
+            WatermarkTint: UE.LinearColor;
+            Font: UE.SlateFontInfo;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DefaultBurnInOptions_C;
+            static Load(InName: string): DefaultBurnInOptions_C;
+        
+            __tid_DefaultBurnInOptions_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.Sequencer.DefaultBurnIn {
+        class DefaultBurnIn_C extends UE.LevelSequenceBurnIn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Border_0: UE.Border;
+            Border_3: UE.Border;
+            BottomCenter: UE.TextBlock;
+            BottomLeft: UE.TextBlock;
+            BottomRight: UE.TextBlock;
+            TopCenter: UE.TextBlock;
+            TopLeft: UE.TextBlock;
+            TopRight: UE.TextBlock;
+            Watermark: UE.Image;
+            ["Foreground Color"]: UE.LinearColor;
+            ["Background Color"]: UE.LinearColor;
+            Date: string;
+            Options: UE.Engine.Sequencer.DefaultBurnInOptions.DefaultBurnInOptions_C;
+            hh: string;
+            mm: string;
+            ss: string;
+            ff: string;
+            MasterFrame: string;
+            ShotFrame: string;
+            MasterName: string;
+            ShotName: string;
+            FocalLength: string;
+            FocusDistance: string;
+            Aperture: string;
+            SensorWidth: string;
+            SensorHeight: string;
+            SensorAspectRatio: string;
+            Translation: UE.Vector;
+            Rotation: UE.Rotator;
+            bCached: boolean;
+            EngineVersion: string;
+            SourceTimecode: string;
+            CacheData() : void;
+            /*
+             *Called after the underlying slate widget is constructed.  Depending on how the slate object is used
+             *this event may be called multiple times due to adding and removing from the hierarchy.
+             *If you need a true called-once-when-created event, use OnInitialized.
+             */
+            Construct() : void;
+            ExecuteUbergraph_DefaultBurnIn(EntryPoint: number) : void;
+            Get_BottomCenter_Text_0() : string;
+            Get_BottomLeft_Text_0() : string;
+            Get_BottomRight_Text_0() : string;
+            Get_TopCenter_Text_0() : string;
+            Get_TopLeft_Text_0() : string;
+            Get_TopRight_Text_0() : string;
+            /*
+             *Get the settings class to use for this burn in
+             */
+            GetSettingsClass() : UE.Class;
+            /*
+             *Called when this burn in is receiving its settings
+             */
+            SetSettings(InSettings: $Nullable<UE.Object>) : void;
+            /*
+             *Ticks this widget.  Override in derived classes, but always call the parent implementation.
+             *
+             *@param  MyGeometry The space allotted for this widget
+             *@param  InDeltaTime  Real time passed since last tick
+             */
+            Tick(MyGeometry: UE.Geometry, InDeltaTime: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): DefaultBurnIn_C;
+            static Load(InName: string): DefaultBurnIn_C;
+        
+            __tid_DefaultBurnIn_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.FunctionalTesting.Blueprints.AITesting_MoveGoal {
+        class AITesting_MoveGoal_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            MySpriteComponent: UE.BillboardComponent;
+            CollisionBox: UE.BoxComponent;
+            ObservedPawn: UE.Object;
+            CurrentTest: UE.FunctionalTest;
+            bStartEnabled: boolean;
+            ExecuteUbergraph_AITesting_MoveGoal(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            SetCollisionEnabled(bShouldBeEnabled: boolean) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): AITesting_MoveGoal_C;
+            static Load(InName: string): AITesting_MoveGoal_C;
+        
+            __tid_AITesting_MoveGoal_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EngineSky.BP_Sky_Sphere {
+        class BP_Sky_Sphere_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            SkySphereMesh: UE.StaticMeshComponent;
+            Base: UE.SceneComponent;
+            ["Sky material"]: UE.MaterialInstanceDynamic;
+            ["Refresh material"]: boolean;
+            ["Directional light actor"]: UE.DirectionalLight;
+            ["Colors determined by sun position"]: boolean;
+            ["Sun height"]: number;
+            ["Sun brightness"]: number;
+            ["Horizon Falloff"]: number;
+            ["Zenith Color"]: UE.LinearColor;
+            ["Horizon color"]: UE.LinearColor;
+            ["Cloud color"]: UE.LinearColor;
+            ["Overall Color"]: UE.LinearColor;
+            ["Cloud speed"]: number;
+            ["Cloud opacity"]: number;
+            ["Stars brightness"]: number;
+            ["Horizon color curve"]: UE.CurveLinearColor;
+            ["Zenith color curve"]: UE.CurveLinearColor;
+            ["Cloud color curve"]: UE.CurveLinearColor;
+            RefreshMaterial() : void;
+            UpdateSunDirection() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): BP_Sky_Sphere_C;
+            static Load(InName: string): BP_Sky_Sphere_C;
+        
+            __tid_BP_Sky_Sphere_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldShapeType {
+        enum EFieldShapeType { Box, Sphere, Plane, EFieldShapeType_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldActivationType {
+        enum EFieldActivationType { Delay, OnTick, OnTickWithDelay, Trigger, EFieldActivationType_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldForceVel {
+        enum EFieldForceVel { "Use Force", "Use Velocity", EFieldForceVel_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode {
+        enum EFieldNoiseCompMode { Add, Multiply, EFieldNoiseCompMode_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldSleepType {
+        enum EFieldSleepType { Sleep, Disable, Kill, EFieldSleepType_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Niagara.FS_BaseField {
+        class FS_BaseField_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            DynamicStateCullingField: UE.CullingField;
+            DynamicStateField: UE.UniformInteger;
+            NoiseApplyOperatorField: UE.OperatorField;
+            FalloffCullingField: UE.CullingField;
+            FalloffApplyOperatorField: UE.OperatorField;
+            NoiseXYOperatorField: UE.OperatorField;
+            NoiseZOperatorField: UE.OperatorField;
+            NoiseYOperatorField: UE.OperatorField;
+            NoiseXOperatorField: UE.OperatorField;
+            NoiseZDirectionField: UE.UniformVector;
+            NoiseYDirectionField: UE.UniformVector;
+            NoiseXDirectionField: UE.UniformVector;
+            VectorNoiseField: UE.OperatorField;
+            NoiseZField: UE.NoiseField;
+            NoiseYField: UE.NoiseField;
+            NoiseXField: UE.NoiseField;
+            PlaneCullingFalloffField: UE.PlaneFalloff;
+            PlaneFalloffField: UE.PlaneFalloff;
+            BoxCullingFalloffField: UE.BoxFalloff;
+            BoxFalloffField: UE.BoxFalloff;
+            RadialCullingFalloffField: UE.RadialFalloff;
+            RadialFalloffField: UE.RadialFalloff;
+            Box: UE.BoxComponent;
+            Sphere: UE.SphereComponent;
+            ["Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            ["Falloff Type"]: UE.EFieldFalloffType;
+            ["Min Falloff"]: number;
+            ["Max Falloff"]: number;
+            ["Cull Outside Falloff"]: boolean;
+            ["Noise Mode"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode.EFieldNoiseCompMode;
+            ["Add Noise Gain"]: number;
+            ["Mult Noise Min"]: number;
+            ["Mult Noise Max"]: number;
+            ["Noise Use Actor Location"]: boolean;
+            ["Noise Use Actor Rotation"]: boolean;
+            ["Noise Use Actor Scale"]: boolean;
+            ["Noise Scale Mult"]: number;
+            ["Noise Gain Range"]: UE.Vector2D;
+            NoiseLocationInternal: UE.Vector;
+            NoiseRotationInternal: UE.Rotator;
+            NoiseScaleInternal: UE.Vector;
+            NoiseScaleInternalBase: number;
+            Debug: boolean;
+            DynamicState: UE.EObjectStateTypeEnum;
+            ApplyFalloff(FieldIn: $Nullable<UE.FieldNodeBase>, FieldOut: $Ref<UE.FieldNodeBase>) : void;
+            ApplyNoise(FieldIn: $Nullable<UE.FieldNodeBase>, FieldOut: $Ref<UE.FieldNodeBase>) : void;
+            BoxFalloff(BoxFalloff: $Ref<UE.FieldNodeBase>, BoxCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
+            ExecuteUbergraph_FS_BaseField(EntryPoint: number) : void;
+            GetCullingFalloffField(CullingFalloffField: $Ref<UE.FieldNodeBase>) : void;
+            GetDynamicStateField(DynamicStateField: $Ref<UE.FieldNodeBase>) : void;
+            GetFalloffField(FalloffField: $Ref<UE.FieldNodeBase>) : void;
+            PlaneFalloff(PlaneFalloff: $Ref<UE.FieldNodeBase>, PlaneCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
+            ["Radial Falloff"](RadialFalloff: $Ref<UE.FieldNodeBase>, RadialCullingFalloff: $Ref<UE.FieldNodeBase>) : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            ScalarNoise(ScalarNoiseField: $Ref<UE.FieldNodeBase>) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            VectorNoise(VectorNoiseField: $Ref<UE.FieldNodeBase>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_BaseField_C;
+            static Load(InName: string): FS_BaseField_C;
+        
+            __tid_FS_BaseField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Niagara.FS_RadialField {
+        class FS_RadialField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            InnerSphere: UE.SphereComponent;
+            ["Enable Field"]: boolean;
+            ["Physics Vector"]: UE.EFieldVectorType;
+            ["Field Magnitude"]: number;
+            ["Force Physics Dynamic"]: boolean;
+            VectorField: UE.FieldNodeBase;
+            ["Physics Type"]: UE.EFieldPhysicsType;
+            ExecuteUbergraph_FS_RadialField(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_RadialField_C;
+            static Load(InName: string): FS_RadialField_C;
+        
+            __tid_FS_RadialField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Niagara.FS_UniformScalarField {
+        class FS_UniformScalarField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Enable Field"]: boolean;
+            ["Physics Scalar"]: UE.EFieldScalarType;
+            ["Field Magnitude"]: number;
+            ["Force Physics Dynamic"]: boolean;
+            ["Physics Type"]: UE.EFieldPhysicsType;
+            ScalarField: UE.FieldNodeBase;
+            ExecuteUbergraph_FS_UniformScalarField(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_UniformScalarField_C;
+            static Load(InName: string): FS_UniformScalarField_C;
+        
+            __tid_FS_UniformScalarField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Niagara.FS_UniformVectorField {
+        class FS_UniformVectorField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Arrow: UE.ArrowComponent;
+            ["Enable Field"]: boolean;
+            ["Physics Vector"]: UE.EFieldVectorType;
+            ["Field Magnitude"]: number;
+            ["Force Physics Dynamic"]: boolean;
+            VectorField: UE.FieldNodeBase;
+            ["Physics Type"]: UE.EFieldPhysicsType;
+            ExecuteUbergraph_FS_UniformVectorField(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_UniformVectorField_C;
+            static Load(InName: string): FS_UniformVectorField_C;
+        
+            __tid_FS_UniformVectorField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum {
+        enum RenderToTexture_Enum { Material, "Unwrapped Mesh", "Depth Map", Lightmaps, "Lightmaps 2-sided", "Flipbook Mesh Animation", "Physics Ground - Tiling Physics Drop of Meshes", "Tiling Material from Hand Placed Meshes", RenderToTexture_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum {
+        enum RenderToTexture_Imposter_Enum { "Full 3D Imposter", "Single Rotation Axis", RenderToTexture_Imposter_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh {
+        class PhysMesh {
+            constructor();
+            constructor(SMesh: UE.StaticMesh, Transform: UE.Transform);
+            SMesh: UE.StaticMesh;
+            Transform: UE.Transform;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_PhysMesh_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh {
+        class TilingMesh {
+            constructor();
+            constructor(StaticMesh: UE.StaticMesh, Transform: UE.Transform, Material: UE.MaterialInstanceConstant, Visible: boolean, DisplacementTexture: UE.Texture);
+            StaticMesh: UE.StaticMesh;
+            Transform: UE.Transform;
+            Material: UE.MaterialInstanceConstant;
+            Visible: boolean;
+            DisplacementTexture: UE.Texture;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_TilingMesh_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP {
+        class RenderToTexture_LevelBP_C extends UE.Pawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["BottomCollision-LargeMeshesOnly"]: UE.BoxComponent;
+            ["SceneCapture Motion Position 1"]: UE.SceneCaptureComponent2D;
+            TopOutline: UE.BoxComponent;
+            PreviewMesh: UE.StaticMeshComponent;
+            TilingPreviewCapture: UE.SceneCaptureComponent2D;
+            BottomCollision: UE.BoxComponent;
+            Box5: UE.BoxComponent;
+            Box4: UE.BoxComponent;
+            Box3: UE.BoxComponent;
+            Box2: UE.BoxComponent;
+            PlaneMesh: UE.StaticMeshComponent;
+            Debug: UE.TextRenderComponent;
+            Camera1: UE.CameraComponent;
+            Root: UE.StaticMeshComponent;
+            RotationArray: TArray<UE.Rotator>;
+            ["Render Type"]: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum.RenderToTexture_Enum;
+            ["Viewport size (see Tooltip)"]: number;
+            ResolutionMultiplier: number;
+            BaseColor: boolean;
+            Specular: boolean;
+            Metallic: boolean;
+            Normal: boolean;
+            Opacity: boolean;
+            Roughness: boolean;
+            AmbientOcclusion: boolean;
+            MaterialAmbientOcclusion: boolean;
+            ["Decal Mask"]: boolean;
+            ["Lighting Only"]: boolean;
+            ["Subsurface Color"]: boolean;
+            ["Imposter Static Mesh"]: UE.StaticMesh;
+            BufferCommands: string;
+            ResCommand: string;
+            SheetSize: number;
+            ShotCommand: string;
+            MeshScale: number;
+            ["Imposter MaterialInstanceArray"]: TArray<UE.MaterialInstance>;
+            MaterialColor2: UE.LinearColor;
+            SectorSize: number;
+            InitialOffset: UE.Vector;
+            initialscale: number;
+            Internalscalefactor: number;
+            StaticMeshComponent: UE.StaticMeshComponent;
+            LevelStaticMeshActorArray: TArray<UE.Actor>;
+            ["Render to Texture Mesh"]: UE.StaticMeshActor;
+            ["Use Level Meshes for Depth"]: boolean;
+            LightVector: UE.Vector;
+            ["Directional Light"]: UE.DirectionalLight;
+            ["Opacity Mask Textures"]: TArray<UE.Texture>;
+            ["Opacity Mask Channels"]: TArray<UE.LinearColor>;
+            ["Frames around Z rotation"]: number;
+            ["Aspect Ratio 1 by"]: number;
+            ["Use Level Placed Meshes"]: boolean;
+            ["Lightmap Mesh"]: UE.StaticMeshActor;
+            ["Lightmap Mesh 2-sided, Side 1"]: UE.StaticMeshActor;
+            ["Lightmap Mesh 2-sided, Side 2"]: UE.StaticMeshActor;
+            ["Depth Map Static Mesh"]: UE.StaticMesh;
+            Unwrap: boolean;
+            ["Depth Material Mask Textures"]: TArray<UE.Texture2D>;
+            ["Flipbook Start Rotation"]: UE.Rotator;
+            ["Flipbook Rotation Axis 1"]: UE.Vector;
+            ["Flipbook Rotation Axis 2"]: UE.Vector;
+            ["Axis 1 Rotations"]: number;
+            ["Axis 2 Rotations"]: number;
+            ["Flipbook Columns (X)"]: number;
+            ["Flipbook Rows (Y)"]: number;
+            ["Flipbook MaterialInstance List"]: TArray<UE.MaterialInstance>;
+            ["Opacity MaskTextures"]: TArray<UE.Texture>;
+            ["Opacity MaskChannels"]: TArray<UE.LinearColor>;
+            ["Flipbook Static Mesh"]: UE.StaticMesh;
+            ["Flipbook Mesh scale"]: number;
+            ["Preview Speed"]: number;
+            ImposterEnum: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum.RenderToTexture_Imposter_Enum;
+            ["Single Rotation Axis"]: UE.Vector;
+            ["Unwrap Lightmap 2sided"]: boolean;
+            Unwrap2sidedMIDlistA: TArray<UE.MaterialInstanceDynamic>;
+            Unwrap2sidedMIDListB: TArray<UE.MaterialInstanceDynamic>;
+            ["Lightmap Unwrap Material"]: UE.MaterialInstanceConstant;
+            ["Unwrap Lightmap"]: boolean;
+            ["Mask Channel"]: TArray<UE.LinearColor>;
+            DepthMeshInitialSize: UE.Vector;
+            DepthMID: UE.MaterialInstanceDynamic;
+            ["Scale XY"]: number;
+            ["Scale Z"]: number;
+            ["Fit Vector and scale info onto texture"]: boolean;
+            TextSize: number;
+            ["Text Locations"]: TArray<UE.Vector>;
+            ParticleSystem: UE.ParticleSystem;
+            SavedPhysMeshList: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh.PhysMesh>;
+            ["Simulate Physics"]: boolean;
+            ["Keep Tiling Hand Placed Meshes"]: boolean;
+            ["Simple Random Placement"]: boolean;
+            ["PhysGround Mat"]: UE.MaterialInstanceConstant;
+            ["Mesh List"]: TArray<UE.StaticMesh>;
+            ["Mesh Size Min"]: number;
+            ["Mesh Size Max"]: number;
+            ["Size Curve"]: number;
+            ["Spawn by Size"]: boolean;
+            ["PhysGround Density m^2"]: number;
+            Count: number;
+            ["Number of Meshes"]: number;
+            PhysStaticMeshes: TArray<UE.StaticMeshComponent>;
+            ["Debug Displacement Depth"]: boolean;
+            ["Displacement Min"]: number;
+            ["Displacement Max"]: number;
+            ["Kill Above Z Min"]: number;
+            ["Kill Above Z Max"]: number;
+            ["Copied Mesh Array"]: TArray<UE.StaticMeshComponent>;
+            ["Current Component"]: UE.StaticMeshComponent;
+            StaticMobilityMeshes: TArray<UE.StaticMeshComponent>;
+            SavedMeshComponents: TArray<UE.StaticMeshComponent>;
+            ["Material Instance"]: UE.MaterialInstance;
+            ["Stadium Offsetting"]: boolean;
+            ["TilingMesh List"]: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh.TilingMesh>;
+            SceneDepthWorldUnits: boolean;
+            DisplacementMin: number;
+            DisplacementMax: number;
+            DebugDisplacementDepth: boolean;
+            ["Custom Depth"]: boolean;
+            ["Displacement Texture Height"]: number;
+            ["Preview Tiling"]: boolean;
+            ["Tiling Amount"]: number;
+            ImposterArray: TArray<UE.Transform>;
+            PreviewLocation: UE.Vector;
+            ["Output Depth Maps"]: boolean;
+            ImposterMeshComponents: TArray<UE.StaticMeshComponent>;
+            BackgroundSheetMID: UE.MaterialInstanceDynamic;
+            ["Debug Depth"]: boolean;
+            ["Max Pitch/Roll"]: number;
+            ["Render Motion Vectors"]: boolean;
+            SceneColor: boolean;
+            ["Sheet height"]: number;
+            ["Background Sheet Color"]: UE.LinearColor;
+            FlipbookMeshes: TArray<UE.StaticMeshComponent>;
+            ["UV Layout Dilation Amount"]: number;
+            OffsetVectors: TArray<UE.Vector>;
+            ["Empty Spacer"]: boolean;
+            CurrentRenderLoc: UE.Vector;
+            ["UV Dilation Steps"]: number;
+            MaterialChoice: UE.MaterialInstance;
+            MVFloors: TArray<UE.StaticMeshComponent>;
+            FlipbookMID: UE.MaterialInstanceDynamic;
+            ["Motion Dilation Steps"]: number;
+            UnwrappedMotionVectorMeshes: TArray<UE.StaticMeshComponent>;
+            MotionVectorIntensityBoost: number;
+            sRGB: boolean;
+            ["Render MotionVectors"]: boolean;
+            ["Large Mesh Sink Height"]: number;
+            ["Large Mesh Size Threshold"]: number;
+            ["UV DilationPass"]: boolean;
+            ["MotionVector Pass"]: boolean;
+            MotionVectorMaterial: UE.MaterialInstanceConstant;
+            MotionVectorsApplied: UE.MaterialInstanceConstant;
+            ["UV Layout DilationAmount"]: number;
+            ["UV DilationSteps"]: number;
+            ["Motion DilationSteps"]: number;
+            ["Motion Vector IntensityBoost"]: number;
+            MotionVectorsApplied_Imposter: UE.MaterialInstanceConstant;
+            ["Flipbook Preview Mat"]: UE.MaterialInstanceConstant;
+            ["Imposter-SingleAxis Preview Mat"]: UE.MaterialInstanceConstant;
+            ["Imposter-3D Preview Mat"]: UE.MaterialInstanceConstant;
+            MIDList: TArray<UE.MaterialInstanceDynamic>;
+            PolyCenter: UE.Vector;
+            ["Offst Phase"]: number;
+            ["Dilation Phase"]: number;
+            ["Ortho FOV"]: number;
+            ["Indicies to Delete"]: TArray<number>;
+            TilingAmount: number;
+            UVIndex: number;
+            ["UV Index"]: number;
+            NewVar: UE.MaterialInstanceDynamic;
+            ["Export images as EXR"]: boolean;
+            ["Copy a mesh"](MeshComponent: $Nullable<UE.StaticMeshComponent>, OffsetVector: UE.Vector, ArraytoPlaceMeshesin: $Ref<TArray<UE.StaticMeshComponent>>) : void;
+            ExecuteUbergraph_RenderToTexture_LevelBP(EntryPoint: number) : void;
+            ["Find Z Bounds"](Meshes: $Ref<TArray<UE.StaticMeshComponent>>, Min: $Ref<number>, Max: $Ref<number>) : void;
+            FlipBook() : void;
+            ["Imposter Sprites"]() : void;
+            ["Match Level Actors to Imposter Array"]() : void;
+            ["New Mesh"](Mesh: $Nullable<UE.StaticMesh>, WorldPos: UE.Vector, Material: $Nullable<UE.MaterialInterface>, Scale3d: UE.Vector, MeshComp: $Ref<UE.StaticMeshComponent>) : void;
+            ["Particle System Frame Dump"]() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            ["Render Depth Map"](MID: $Ref<UE.MaterialInstanceDynamic>) : void;
+            ["Render Lightmap"]() : void;
+            ["Render LIghtmap 2-sided"]() : void;
+            ["Render Random Tiling Physics Drop"]() : void;
+            ["Render Tiling Material"]() : void;
+            ["Render Tiling Material from Meshes"]() : void;
+            ["Render Unwrapped Mesh To Textures"]() : void;
+            ["Set Buffer Commands"]() : void;
+            ["Set up MPC"]() : void;
+            ["Setup Collision"](Visible: boolean) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_LevelBP_C;
+            static Load(InName: string): RenderToTexture_LevelBP_C;
+        
+            __tid_RenderToTexture_LevelBP_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Pawn {
+        class RenderToTexture_Pawn_C extends UE.Pawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Pawncam: UE.CameraComponent;
+            Root: UE.StaticMeshComponent;
+            BaseColor: boolean;
+            Specular: boolean;
+            Normal: boolean;
+            Opacity: boolean;
+            Roughness: boolean;
+            AmbientOcclusion: boolean;
+            MaterialAmbientOcclusion: boolean;
+            ResolutionMultiplier: number;
+            BufferCommands: string;
+            ShotCommand: string;
+            ["Backface SSS Meshes"]: TArray<UE.StaticMeshActor>;
+            MIDArray: TArray<UE.MaterialInstanceDynamic>;
+            Generator: UE.Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP.RenderToTexture_LevelBP_C;
+            debugdepth() : void;
+            ExecuteUbergraph_RenderToTexture_Pawn(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            renderdepth() : void;
+            renderimposter() : void;
+            renderlightmaps() : void;
+            rendertextures() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Pawn_C;
+            static Load(InName: string): RenderToTexture_Pawn_C;
+        
+            __tid_RenderToTexture_Pawn_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Game {
+        class RenderToTexture_Game_C extends UE.GameMode {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Game_C;
+            static Load(InName: string): RenderToTexture_Game_C;
+        
+            __tid_RenderToTexture_Game_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Niagara.FS_WaveScalarField {
+        class FS_WaveScalarField_C extends UE.Engine.EditorResources.FieldNodes.Niagara.FS_BaseField.FS_BaseField_C {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["Enable Field"]: boolean;
+            ["Physics Scalar"]: UE.EFieldScalarType;
+            ["Field Magnitude"]: number;
+            ["Force Physics Dynamic"]: boolean;
+            ScalarField: UE.FieldNodeBase;
+            ["Wave Length"]: number;
+            ["Wave Period"]: number;
+            ["Wave Function"]: UE.EWaveFunctionType;
+            ["Wave Falloff Type"]: UE.EFieldFalloffType;
+            ["Physics Type"]: UE.EFieldPhysicsType;
+            ExecuteUbergraph_FS_WaveScalarField(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_WaveScalarField_C;
+            static Load(InName: string): FS_WaveScalarField_C;
+        
+            __tid_FS_WaveScalarField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.FS_AnchorField_Generic {
+        class FS_AnchorField_Generic_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            PlaneVolumeCol: UE.BoxComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            ["Anchor Title Text"]: UE.TextRenderComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            ["Anchor Text"]: UE.TextRenderComponent;
+            SphereVolume: UE.StaticMeshComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            Arrow: UE.ArrowComponent;
+            SphereVolumeCol: UE.SphereComponent;
+            CullingField_Plane: UE.CullingField;
+            CullingField_Sphere: UE.CullingField;
+            RadialFalloff: UE.RadialFalloff;
+            PlaneVolume: UE.StaticMeshComponent;
+            PlaneFalloff: UE.PlaneFalloff;
+            CullingField_Box: UE.CullingField;
+            BoxVolumeCol: UE.BoxComponent;
+            BoxFalloff: UE.BoxFalloff;
+            UniformInteger: UE.UniformInteger;
+            RadialVector: UE.RadialVector;
+            ["Dynamic State"]: UE.EObjectStateTypeEnum;
+            ["Anchor Active"]: boolean;
+            ["Anchor Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            Debug: boolean;
+            AnchorColour: UE.LinearColor;
+            Deactivated: UE.LinearColor;
+            AnchorVolume: UE.StaticMeshComponent;
+            AnchorTextDisplay: string;
+            ViewDebugText: boolean;
+            ViewWireFrame: boolean;
+            ViewSolidShapes: boolean;
+            TextVerticalOffset: number;
+            DeactivatedText: UE.LinearColor;
+            TextScaleMult: number;
+            AnchorDebugSetup() : void;
+            ExecuteUbergraph_FS_AnchorField_Generic(EntryPoint: number) : void;
+            ["Falloff Field Switch"](UniformInt: $Nullable<UE.UniformInteger>, CullingField: $Ref<UE.CullingField>) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            SetFalloffVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_AnchorField_Generic_C;
+            static Load(InName: string): FS_AnchorField_Generic_C;
+        
+            __tid_FS_AnchorField_Generic_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.FS_BombField_Prototype {
+        class FS_BombField_Prototype_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
+            SphereVolumeCol: UE.SphereComponent;
+            bomb: UE.SphereComponent;
+            bombVolume: UE.StaticMeshComponent;
+            PlaneFalloff_ForceDynamic: UE.PlaneFalloff;
+            RadialFalloff_ForceDynamic: UE.RadialFalloff;
+            OperatorField_ForceDynamic: UE.OperatorField;
+            BoxFalloff_ForceDynamic: UE.BoxFalloff;
+            PlaneFalloff_InternalStrain: UE.PlaneFalloff;
+            BoxFalloff_InternalStrain: UE.BoxFalloff;
+            OperatorField_InternalStrain: UE.OperatorField;
+            RadialFalloff_InternalStrain: UE.RadialFalloff;
+            UniformIntegerFalloff: UE.UniformInteger;
+            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
+            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
+            PlaneVolumeBox: UE.BoxComponent;
+            PlaneVolume: UE.StaticMeshComponent;
+            SM_DirectionArrow: UE.StaticMeshComponent;
+            DirectionalArrowNull: UE.SphereComponent;
+            SM_RadialArrow: UE.StaticMeshComponent;
+            SM_RadialArrow4: UE.StaticMeshComponent;
+            SM_RadialArrow3: UE.StaticMeshComponent;
+            SM_RadialArrow2: UE.StaticMeshComponent;
+            SM_RadialArrow1: UE.StaticMeshComponent;
+            SM_RadialArrow5: UE.StaticMeshComponent;
+            CullingField_Plane2: UE.CullingField;
+            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow2: UE.StaticMeshComponent;
+            NoiseMaxValueText: UE.TextRenderComponent;
+            NoiseMinValueText: UE.TextRenderComponent;
+            TorqueValueText: UE.TextRenderComponent;
+            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
+            TorqueTitleText: UE.TextRenderComponent;
+            DirectionalValueText: UE.TextRenderComponent;
+            DirectionalMagTitleText: UE.TextRenderComponent;
+            RadialValueText: UE.TextRenderComponent;
+            ["Radial Mag Title Text"]: UE.TextRenderComponent;
+            StrainValueText: UE.TextRenderComponent;
+            StrainTitleText: UE.TextRenderComponent;
+            DelayTitleText: UE.TextRenderComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            DelayValueText: UE.TextRenderComponent;
+            OperatorField_FalloffSwitch_Plane: UE.OperatorField;
+            OperatorField_FalloffSwitch_Sph: UE.OperatorField;
+            OperatorField_FalloffSwitch_Box: UE.OperatorField;
+            CullingField_Plane: UE.CullingField;
+            PlaneFalloff_Magnitude: UE.PlaneFalloff;
+            PlaneFalloff: UE.PlaneFalloff;
+            CullingField_Box: UE.CullingField;
+            BoxFalloff_Culling: UE.BoxFalloff;
+            BoxFalloff: UE.BoxFalloff;
+            BoxFalloff_Magnitude: UE.BoxFalloff;
+            SphereVolume: UE.StaticMeshComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            FieldTitleText: UE.TextRenderComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            ["Field Text"]: UE.TextRenderComponent;
+            BoxVolumeCol: UE.BoxComponent;
+            UniformScalarDecay: UE.UniformScalar;
+            OperatorFieldDecay1: UE.OperatorField;
+            OperatorFieldDecay2: UE.OperatorField;
+            ReturnResultsTerminal: UE.ReturnResultsTerminal;
+            OperatorField_torqueC: UE.OperatorField;
+            OperatorField_dirNoise: UE.OperatorField;
+            OperatorField_radNoise: UE.OperatorField;
+            NoiseField_Torque: UE.NoiseField;
+            OperatorField_torque_A: UE.OperatorField;
+            UniformScalar_torque: UE.UniformScalar;
+            CullingField_DynamicState: UE.CullingField;
+            UniformInteger: UE.UniformInteger;
+            ["CullingField-Decay"]: UE.CullingField;
+            CullingFieldSphere: UE.CullingField;
+            RadialFalloffMagnitude: UE.RadialFalloff;
+            RadialFalloff_cullVolume: UE.RadialFalloff;
+            OperatorFieldDecay4: UE.OperatorField;
+            CullingField: UE.CullingField;
+            RadialFalloff: UE.RadialFalloff;
+            OperatorField_torque_B: UE.OperatorField;
+            UniformVector_torque: UE.UniformVector;
+            RandomVector_torque: UE.RandomVector;
+            NoiseField_dir: UE.NoiseField;
+            NoiseField_rad: UE.NoiseField;
+            UniformVector_dir: UE.UniformVector;
+            RadialVector_rad: UE.RadialVector;
+            ["Field Active"]: boolean;
+            Debug: boolean;
+            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
+            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            UseTick: boolean;
+            DelayAmount: number;
+            ["Use External Strain"]: boolean;
+            ["Strain Magnitude"]: number;
+            StrainFalloffType: UE.EFieldFalloffType;
+            StrainFalloffMinMax: UE.Vector2D;
+            NumStrainHits: number;
+            UseRadialVector: boolean;
+            ["Radial Magnitude"]: number;
+            UseDirectionalVector: boolean;
+            DirectionalMagnitude: number;
+            UseTorque: boolean;
+            TorqueMult: number;
+            VelocityFieldFalloffType: UE.EFieldFalloffType;
+            VelocityFalloffMinMax: UE.Vector2D;
+            UseNoise: boolean;
+            NoiseMinMax: UE.Vector2D;
+            UseDecay: boolean;
+            DecayAmount: number;
+            DecayFalloffType: UE.EFieldFalloffType;
+            DecayFalloffMinMax: UE.Vector2D;
+            FieldVolume: UE.StaticMeshComponent;
+            DecayDelay: number;
+            MaxDecayAmount: number;
+            RadialPositionOffset: UE.Vector;
+            OverideDIrectionalVector: boolean;
+            DIrectionalVectorOveride: UE.Vector;
+            TorqueVectorOveride: UE.Vector;
+            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
+            ForceMult: number;
+            BoxCullingOnPlanar: boolean;
+            PlanarFalloffDistOveride: number;
+            ["Force Dynamic Switch"]: boolean;
+            ActivateTaggedStaticAndSkeletal: boolean;
+            ["Chaos Field Name"]: string;
+            FieldColour: UE.LinearColor;
+            ShowDebugText: boolean;
+            ShowWireFrame: boolean;
+            ShowSolidShapes: boolean;
+            DirectionalDisplayScale: number;
+            RadialDisplayScale: number;
+            ["Text Vertical Offset"]: number;
+            LinearPhysicsType: UE.EFieldPhysicsType;
+            AngularPhysicsType: UE.EFieldPhysicsType;
+            FieldFalloffType: UE.EFieldFalloffType;
+            ["Field Falloff Noise"]: UE.EFieldFalloffType;
+            ["Field Falloff Torque"]: UE.EFieldFalloffType;
+            UseLifespan: boolean;
+            FieldLifespan: number;
+            UseFramesForTiming: boolean;
+            FPS: number;
+            ["Dynamic State"]: UE.EObjectStateTypeEnum;
+            PlanarFalloffDist: number;
+            TotalDecay: number;
+            FalloffMinMax: UE.Vector2D;
+            PlanarFalloffExtentColor: UE.LinearColor;
+            DIrectionalVelocityVector: UE.Vector;
+            upVector: UE.Vector;
+            worldLocation: UE.Vector;
+            forwardVector: UE.Vector;
+            rightVector: UE.Vector;
+            skel: UE.SkeletalMeshComponent;
+            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
+            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
+            PulseLevel: string;
+            TextDisplay: TArray<string>;
+            AllText: TArray<UE.TextRenderComponent>;
+            ArrowColour_Dir: UE.LinearColor;
+            ArrowColour_Normal: UE.LinearColor;
+            DeactivatedColour: UE.LinearColor;
+            DeactivatedTextColour: UE.LinearColor;
+            ["Preview Material"]: UE.MaterialInstanceDynamic;
+            TimeElapsed: number;
+            NoiseScaleMult: number;
+            NewVar_0: UE.Transform;
+            isTriggered: boolean;
+            NoiseScaleBase: number;
+            DestroyActor: boolean;
+            useBomb: boolean;
+            bombMinScale: number;
+            bombMaxScale: number;
+            bombDuration: number;
+            bombSize: number;
+            bombpos: UE.Vector;
+            bombxloc: number;
+            bombPosOrig: UE.Vector;
+            bombScaleOrig: UE.Vector;
+            delta: number;
+            totalElapsedTime: number;
+            totalDistance: number;
+            oldPos: number;
+            ["New Location"]: UE.Vector;
+            bombExtraDistance: number;
+            useBombLocationOffset: boolean;
+            useBombPhysics: boolean;
+            currentPos: number;
+            velocity: number;
+            useDynScale: boolean;
+            useDynFieldPos: boolean;
+            falloffMinMax_Input: UE.Vector2D;
+            FieldFalloffType_Input: UE.EFieldFalloffType;
+            OperatorField_Input: UE.OperatorField;
+            Magnitude_Input: number;
+            bombMass: number;
+            useProjectile: boolean;
+            projectileFired: boolean;
+            projectileVelocity: number;
+            oldPosVec: UE.Vector;
+            currentPosVec: UE.Vector;
+            velocityVec: UE.Vector;
+            projectileVelocityMult: number;
+            projectileMaxScale: number;
+            projectileMinMaxVelRange: UE.Vector2D;
+            useCCD: boolean;
+            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
+            CE_Trigger() : void;
+            DisplayTextSetup() : void;
+            ExecuteUbergraph_FS_BombField_Prototype(EntryPoint: number) : void;
+            FalloffAndCullingSwitch(FalloffType: UE.EFieldFalloffType, OperatorFieldIn: $Nullable<UE.OperatorField>, falloffMinMax: UE.Vector2D, CullingFieldOut: $Ref<UE.CullingField>) : void;
+            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
+            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, falloffMinMax_X: number, falloffMinMax_Y: number, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            FalloffSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>, NewParam: $Ref<UE.RadialFalloff>) : void;
+            ["FalloffSwitch - Strain"](Magnitude: number, FalloffType: UE.EFieldFalloffType, CullingField: $Ref<UE.CullingField>) : void;
+            FalloffSwitch_ForceDynamic(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            FalloffSwitch_InternalStrain(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            ForceMultiplier() : void;
+            InitializeFieldVariables() : void;
+            MakeDynamic_EnableNonGC() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            SetColliderLocation() : void;
+            SetVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_BombField_Prototype_C;
+            static Load(InName: string): FS_BombField_Prototype_C;
+        
+            __tid_FS_BombField_Prototype_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Flipbook_Enum {
+        enum RenderToTexture_Flipbook_Enum { "Simple Mesh rotation", "Material Instance Interpolation", "Both Mesh rotation and Material Instance Interpolation", RenderToTexture_Flipbook_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.EIntTypes {
+        enum EIntTypes { int, int2, int3, int4, EIntTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.EFloatTypes {
+        enum EFloatTypes { Float, Float2, Float3, Float4, EFloatTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureMacros {
+        class RenderToTextureMacros_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTextureMacros_C;
+            static Load(InName: string): RenderToTextureMacros_C;
+        
+            __tid_RenderToTextureMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureFunctionLibrary {
+        class RenderToTextureFunctionLibrary_C extends UE.BlueprintFunctionLibrary {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static ["Array to HLSL Int Array"](Type: UE.Engine.ArtTools.RenderToTexture.Enums.EIntTypes.EIntTypes, VariableName: $Ref<string>, int: $Ref<TArray<number>>, int2: $Ref<TArray<UE.Vector2D>>, int3: $Ref<TArray<UE.Vector>>, int4: $Ref<TArray<UE.LinearColor>>, __WorldContext: $Nullable<UE.Object>, String: $Ref<string>) : void;
+            static ["Set Canvas Material Scale and Position"](Size: UE.Vector2D, Position: UE.Vector2D, Scale: number, __WorldContext: $Nullable<UE.Object>, ScreenPosition: $Ref<UE.Vector2D>, ScreenSize: $Ref<UE.Vector2D>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTextureFunctionLibrary_C;
+            static Load(InName: string): RenderToTextureFunctionLibrary_C;
+        
+            __tid_RenderToTextureFunctionLibrary_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.FS_MasterField {
+        class FS_MasterField_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
+            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
+            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
+            PlaneVolumeBox: UE.BoxComponent;
+            PlaneVolume: UE.StaticMeshComponent;
+            SM_DirectionArrow: UE.StaticMeshComponent;
+            DirectionalArrowNull: UE.SphereComponent;
+            SphereVolumeCol: UE.SphereComponent;
+            SM_RadialArrow: UE.StaticMeshComponent;
+            SM_RadialArrow4: UE.StaticMeshComponent;
+            SM_RadialArrow3: UE.StaticMeshComponent;
+            SM_RadialArrow2: UE.StaticMeshComponent;
+            SM_RadialArrow1: UE.StaticMeshComponent;
+            SM_RadialArrow5: UE.StaticMeshComponent;
+            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow2: UE.StaticMeshComponent;
+            NoiseMaxValueText: UE.TextRenderComponent;
+            NoiseMinValueText: UE.TextRenderComponent;
+            TorqueValueText: UE.TextRenderComponent;
+            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
+            TorqueTitleText: UE.TextRenderComponent;
+            DirectionalValueText: UE.TextRenderComponent;
+            DirectionalMagTitleText: UE.TextRenderComponent;
+            RadialValueText: UE.TextRenderComponent;
+            ["Radial Mag Title Text"]: UE.TextRenderComponent;
+            StrainValueText: UE.TextRenderComponent;
+            StrainTitleText: UE.TextRenderComponent;
+            DelayTitleText: UE.TextRenderComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            DelayValueText: UE.TextRenderComponent;
+            SphereVolume: UE.StaticMeshComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            FieldTitleText: UE.TextRenderComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            ["Field Text"]: UE.TextRenderComponent;
+            BoxVolumeCol: UE.BoxComponent;
+            ReturnResultsTerminal: UE.ReturnResultsTerminal;
+            ["Field Active"]: boolean;
+            OperatorFIeld_Input: UE.OperatorField;
+            Debug: boolean;
+            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
+            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            UseTick: boolean;
+            DelayAmount: number;
+            ["Use External Strain"]: boolean;
+            ["Strain Magnitude"]: number;
+            StrainFalloffType: UE.EFieldFalloffType;
+            StrainFalloffMinMax: UE.Vector2D;
+            NumStrainHits: number;
+            UseRadialVector: boolean;
+            ["Radial Magnitude"]: number;
+            UseDirectionalVector: boolean;
+            DirectionalMagnitude: number;
+            UseTorque: boolean;
+            TorqueMult: number;
+            VelocityFieldFalloffType: UE.EFieldFalloffType;
+            VelocityFalloffMinMax: UE.Vector2D;
+            UseNoise: boolean;
+            NoiseMinMax: UE.Vector2D;
+            UseDecay: boolean;
+            DecayAmount: number;
+            DecayFalloffType: UE.EFieldFalloffType;
+            DecayFalloffMinMax: UE.Vector2D;
+            FieldVolume: UE.StaticMeshComponent;
+            DecayDelay: number;
+            MaxDecayAmount: number;
+            RadialPositionOffset: UE.Vector;
+            OverideDIrectionalVector: boolean;
+            DIrectionalVectorOveride: UE.Vector;
+            TorqueVectorOveride: UE.Vector;
+            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
+            ForceMult: number;
+            BoxCullingOnPlanar: boolean;
+            PlanarFalloffDistOveride: number;
+            ["Force Dynamic Switch"]: boolean;
+            ActivateTaggedStaticAndSkeletal: boolean;
+            ["Chaos Field Name"]: string;
+            FieldColour: UE.LinearColor;
+            ShowDebugText: boolean;
+            ShowWireFrame: boolean;
+            ShowSolidShapes: boolean;
+            DirectionalDisplayScale: number;
+            RadialDisplayScale: number;
+            ["Text Vertical Offset"]: number;
+            LinearPhysicsType: UE.EFieldPhysicsType;
+            AngularPhysicsType: UE.EFieldPhysicsType;
+            FieldFalloffType: UE.EFieldFalloffType;
+            ["Field Falloff Noise"]: UE.EFieldFalloffType;
+            ["Field Falloff Torque"]: UE.EFieldFalloffType;
+            UseLifespan: boolean;
+            FieldLifespan: number;
+            UseFramesForTiming: boolean;
+            FPS: number;
+            ["Dynamic State"]: UE.EObjectStateTypeEnum;
+            PlanarFalloffDist: number;
+            TotalDecay: number;
+            FalloffMinMax: UE.Vector2D;
+            PlanarFalloffExtentColor: UE.LinearColor;
+            DIrectionalVelocityVector: UE.Vector;
+            upVector: UE.Vector;
+            worldLocation: UE.Vector;
+            forwardVector: UE.Vector;
+            rightVector: UE.Vector;
+            skel: UE.SkeletalMeshComponent;
+            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
+            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
+            PulseLevel: string;
+            TextDisplay: TArray<string>;
+            AllText: TArray<UE.TextRenderComponent>;
+            ArrowColour_Dir: UE.LinearColor;
+            ArrowColour_Normal: UE.LinearColor;
+            DeactivatedColour: UE.LinearColor;
+            DeactivatedTextColour: UE.LinearColor;
+            ["Preview Material"]: UE.MaterialInstanceDynamic;
+            TimeElapsed: number;
+            NoiseScaleMult: number;
+            NewVar_0: UE.Transform;
+            isTriggered: boolean;
+            NoiseScaleBase: number;
+            DestroyActor: boolean;
+            FieldFalloffType_Input: UE.EFieldFalloffType;
+            FalloffMinMax_Input: UE.Vector2D;
+            Magnitude_Input: number;
+            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
+            CE_Trigger() : void;
+            DisplayTextSetup() : void;
+            ExecuteUbergraph_FS_MasterField(EntryPoint: number) : void;
+            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
+            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            ForceMultiplier() : void;
+            InitializeFieldVariables() : void;
+            MakeDynamic_EnableNonGC() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            SetVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_MasterField_C;
+            static Load(InName: string): FS_MasterField_C;
+        
+            __tid_FS_MasterField_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.FS_SleepDisable_Generic {
+        class FS_SleepDisable_Generic_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            PlaneVolumeBoxCol: UE.BoxComponent;
+            TresholdTitleText: UE.TextRenderComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            UniformScalar: UE.UniformScalar;
+            ThresholdValueText: UE.TextRenderComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            PlaneFalloff_Magnitude: UE.PlaneFalloff;
+            RadialFalloff_Magnitude: UE.RadialFalloff;
+            CullingField_Plane: UE.CullingField;
+            RadialFalloff: UE.RadialFalloff;
+            CullingField_Box: UE.CullingField;
+            PlaneFalloff: UE.PlaneFalloff;
+            RadialVector: UE.RadialVector;
+            UniformInteger: UE.UniformInteger;
+            BoxFalloff_Magnitude: UE.BoxFalloff;
+            CullingField_Sphere: UE.CullingField;
+            Arrow: UE.ArrowComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            SphereVolume: UE.StaticMeshComponent;
+            PlaneVolume: UE.StaticMeshComponent;
+            BoxVolumeCol: UE.BoxComponent;
+            SphereVolumeCol: UE.SphereComponent;
+            SleepTitleText: UE.TextRenderComponent;
+            ["Sleep Text"]: UE.TextRenderComponent;
+            CullingField: UE.CullingField;
+            BoxFalloff: UE.BoxFalloff;
+            ["Field Active"]: boolean;
+            Threshold: number;
+            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            ["Field Behavior"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldSleepType.EFieldSleepType;
+            Debug: boolean;
+            FaloffType: UE.EFieldFalloffType;
+            FalloffMinMax: UE.Vector2D;
+            PhysicsType: UE.EFieldPhysicsType;
+            Deactivated: UE.LinearColor;
+            ShowDebugText: boolean;
+            ShowWireFrame: boolean;
+            FieldVolume: UE.StaticMeshComponent;
+            DeactivatedText: UE.LinearColor;
+            SleepText: string;
+            DisableText: string;
+            KillText: string;
+            ShowSolidShapes: boolean;
+            ["Sleep Colour Def"]: UE.LinearColor;
+            DisableColour: UE.LinearColor;
+            KillColour: UE.LinearColor;
+            ["Sleep Colour"]: UE.LinearColor;
+            ["Text Vertical Offset"]: number;
+            TextScaleMult: number;
+            ExecuteUbergraph_FS_SleepDisable_Generic(EntryPoint: number) : void;
+            ["Falloff Field Switch"](Magnitude: number, FaloffType: UE.EFieldFalloffType, CullingField: $Ref<UE.CullingField>) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            SetFalloffVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): FS_SleepDisable_Generic_C;
+            static Load(InName: string): FS_SleepDisable_Generic_C;
+        
+            __tid_FS_SleepDisable_Generic_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Linear_Force_for_Cloth {
+        class Linear_Force_for_Cloth_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
+            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
+            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
+            PlaneVolumeBox: UE.BoxComponent;
+            PlaneVolume: UE.StaticMeshComponent;
+            SM_DirectionArrow: UE.StaticMeshComponent;
+            DirectionalArrowNull: UE.SphereComponent;
+            SphereVolumeCol: UE.SphereComponent;
+            SM_RadialArrow: UE.StaticMeshComponent;
+            SM_RadialArrow4: UE.StaticMeshComponent;
+            SM_RadialArrow3: UE.StaticMeshComponent;
+            SM_RadialArrow2: UE.StaticMeshComponent;
+            SM_RadialArrow1: UE.StaticMeshComponent;
+            SM_RadialArrow5: UE.StaticMeshComponent;
+            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow2: UE.StaticMeshComponent;
+            NoiseMaxValueText: UE.TextRenderComponent;
+            NoiseMinValueText: UE.TextRenderComponent;
+            TorqueValueText: UE.TextRenderComponent;
+            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
+            TorqueTitleText: UE.TextRenderComponent;
+            DirectionalValueText: UE.TextRenderComponent;
+            DirectionalMagTitleText: UE.TextRenderComponent;
+            RadialValueText: UE.TextRenderComponent;
+            ["Radial Mag Title Text"]: UE.TextRenderComponent;
+            StrainValueText: UE.TextRenderComponent;
+            StrainTitleText: UE.TextRenderComponent;
+            DelayTitleText: UE.TextRenderComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            DelayValueText: UE.TextRenderComponent;
+            SphereVolume: UE.StaticMeshComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            FieldTitleText: UE.TextRenderComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            ["Field Text"]: UE.TextRenderComponent;
+            BoxVolumeCol: UE.BoxComponent;
+            ReturnResultsTerminal: UE.ReturnResultsTerminal;
+            ["Field Active"]: boolean;
+            OperatorFIeld_Input: UE.OperatorField;
+            Debug: boolean;
+            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
+            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            UseTick: boolean;
+            DelayAmount: number;
+            ["Use External Strain"]: boolean;
+            ["Strain Magnitude"]: number;
+            StrainFalloffType: UE.EFieldFalloffType;
+            StrainFalloffMinMax: UE.Vector2D;
+            NumStrainHits: number;
+            UseRadialVector: boolean;
+            ["Radial Magnitude"]: number;
+            UseDirectionalVector: boolean;
+            DirectionalMagnitude: number;
+            UseTorque: boolean;
+            TorqueMult: number;
+            VelocityFieldFalloffType: UE.EFieldFalloffType;
+            VelocityFalloffMinMax: UE.Vector2D;
+            UseNoise: boolean;
+            NoiseMinMax: UE.Vector2D;
+            UseDecay: boolean;
+            DecayAmount: number;
+            DecayFalloffType: UE.EFieldFalloffType;
+            DecayFalloffMinMax: UE.Vector2D;
+            FieldVolume: UE.StaticMeshComponent;
+            DecayDelay: number;
+            MaxDecayAmount: number;
+            RadialPositionOffset: UE.Vector;
+            OverideDIrectionalVector: boolean;
+            DIrectionalVectorOveride: UE.Vector;
+            TorqueVectorOveride: UE.Vector;
+            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
+            ForceMult: number;
+            BoxCullingOnPlanar: boolean;
+            PlanarFalloffDistOveride: number;
+            ["Force Dynamic Switch"]: boolean;
+            ActivateTaggedStaticAndSkeletal: boolean;
+            ["Chaos Field Name"]: string;
+            FieldColour: UE.LinearColor;
+            ShowDebugText: boolean;
+            ShowWireFrame: boolean;
+            ShowSolidShapes: boolean;
+            DirectionalDisplayScale: number;
+            RadialDisplayScale: number;
+            ["Text Vertical Offset"]: number;
+            LinearPhysicsType: UE.EFieldPhysicsType;
+            AngularPhysicsType: UE.EFieldPhysicsType;
+            FieldFalloffType: UE.EFieldFalloffType;
+            ["Field Falloff Noise"]: UE.EFieldFalloffType;
+            ["Field Falloff Torque"]: UE.EFieldFalloffType;
+            UseLifespan: boolean;
+            FieldLifespan: number;
+            UseFramesForTiming: boolean;
+            FPS: number;
+            ["Dynamic State"]: UE.EObjectStateTypeEnum;
+            PlanarFalloffDist: number;
+            TotalDecay: number;
+            FalloffMinMax: UE.Vector2D;
+            PlanarFalloffExtentColor: UE.LinearColor;
+            DIrectionalVelocityVector: UE.Vector;
+            upVector: UE.Vector;
+            worldLocation: UE.Vector;
+            forwardVector: UE.Vector;
+            rightVector: UE.Vector;
+            skel: UE.SkeletalMeshComponent;
+            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
+            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
+            PulseLevel: string;
+            TextDisplay: TArray<string>;
+            AllText: TArray<UE.TextRenderComponent>;
+            ArrowColour_Dir: UE.LinearColor;
+            ArrowColour_Normal: UE.LinearColor;
+            DeactivatedColour: UE.LinearColor;
+            DeactivatedTextColour: UE.LinearColor;
+            ["Preview Material"]: UE.MaterialInstanceDynamic;
+            TimeElapsed: number;
+            NoiseScaleMult: number;
+            NewVar_0: UE.Transform;
+            isTriggered: boolean;
+            NoiseScaleBase: number;
+            DestroyActor: boolean;
+            FieldFalloffType_Input: UE.EFieldFalloffType;
+            FalloffMinMax_Input: UE.Vector2D;
+            Magnitude_Input: number;
+            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
+            CE_Trigger() : void;
+            DisplayTextSetup() : void;
+            ExecuteUbergraph_Linear_Force_for_Cloth(EntryPoint: number) : void;
+            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
+            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            ForceMultiplier() : void;
+            InitializeFieldVariables() : void;
+            MakeDynamic_EnableNonGC() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            SetVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Linear_Force_for_Cloth_C;
+            static Load(InName: string): Linear_Force_for_Cloth_C;
+        
+            __tid_Linear_Force_for_Cloth_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes.Linear_Velocity_for_Cloth {
+        class Linear_Velocity_for_Cloth_C extends UE.FieldSystemActor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            FieldSystemMetaDataProcessingResolution: UE.FieldSystemMetaDataProcessingResolution;
+            SM_PlanarNormal_Arrow2: UE.StaticMeshComponent;
+            PlaneVolumeFalloffDistance: UE.StaticMeshComponent;
+            PlaneVolumeBox: UE.BoxComponent;
+            PlaneVolume: UE.StaticMeshComponent;
+            SM_DirectionArrow: UE.StaticMeshComponent;
+            DirectionalArrowNull: UE.SphereComponent;
+            SphereVolumeCol: UE.SphereComponent;
+            SM_RadialArrow: UE.StaticMeshComponent;
+            SM_RadialArrow4: UE.StaticMeshComponent;
+            SM_RadialArrow3: UE.StaticMeshComponent;
+            SM_RadialArrow2: UE.StaticMeshComponent;
+            SM_RadialArrow1: UE.StaticMeshComponent;
+            SM_RadialArrow5: UE.StaticMeshComponent;
+            SM_PlanarNormal_Arrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow1: UE.StaticMeshComponent;
+            SM_DirectionArrow2: UE.StaticMeshComponent;
+            NoiseMaxValueText: UE.TextRenderComponent;
+            NoiseMinValueText: UE.TextRenderComponent;
+            TorqueValueText: UE.TextRenderComponent;
+            ["Noise MinMaxTitle Text"]: UE.TextRenderComponent;
+            TorqueTitleText: UE.TextRenderComponent;
+            DirectionalValueText: UE.TextRenderComponent;
+            DirectionalMagTitleText: UE.TextRenderComponent;
+            RadialValueText: UE.TextRenderComponent;
+            ["Radial Mag Title Text"]: UE.TextRenderComponent;
+            StrainValueText: UE.TextRenderComponent;
+            StrainTitleText: UE.TextRenderComponent;
+            DelayTitleText: UE.TextRenderComponent;
+            ActiveTitleText: UE.TextRenderComponent;
+            DelayValueText: UE.TextRenderComponent;
+            SphereVolume: UE.StaticMeshComponent;
+            ActiveValueText: UE.TextRenderComponent;
+            FieldTitleText: UE.TextRenderComponent;
+            BoxVolume: UE.StaticMeshComponent;
+            ["Field Text"]: UE.TextRenderComponent;
+            BoxVolumeCol: UE.BoxComponent;
+            ReturnResultsTerminal: UE.ReturnResultsTerminal;
+            ["Field Active"]: boolean;
+            OperatorFIeld_Input: UE.OperatorField;
+            Debug: boolean;
+            ActivationType: UE.Engine.EditorResources.FieldNodes._Resources.EFieldActivationType.EFieldActivationType;
+            ["Field Falloff Shape"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldShapeType.EFieldShapeType;
+            UseTick: boolean;
+            DelayAmount: number;
+            ["Use External Strain"]: boolean;
+            ["Strain Magnitude"]: number;
+            StrainFalloffType: UE.EFieldFalloffType;
+            StrainFalloffMinMax: UE.Vector2D;
+            NumStrainHits: number;
+            UseRadialVector: boolean;
+            ["Radial Magnitude"]: number;
+            UseDirectionalVector: boolean;
+            DirectionalMagnitude: number;
+            UseTorque: boolean;
+            TorqueMult: number;
+            VelocityFieldFalloffType: UE.EFieldFalloffType;
+            VelocityFalloffMinMax: UE.Vector2D;
+            UseNoise: boolean;
+            NoiseMinMax: UE.Vector2D;
+            UseDecay: boolean;
+            DecayAmount: number;
+            DecayFalloffType: UE.EFieldFalloffType;
+            DecayFalloffMinMax: UE.Vector2D;
+            FieldVolume: UE.StaticMeshComponent;
+            DecayDelay: number;
+            MaxDecayAmount: number;
+            RadialPositionOffset: UE.Vector;
+            OverideDIrectionalVector: boolean;
+            DIrectionalVectorOveride: UE.Vector;
+            TorqueVectorOveride: UE.Vector;
+            ["Force/Velocity Vector Switch"]: UE.Engine.EditorResources.FieldNodes._Resources.EFieldForceVel.EFieldForceVel;
+            ForceMult: number;
+            BoxCullingOnPlanar: boolean;
+            PlanarFalloffDistOveride: number;
+            ["Force Dynamic Switch"]: boolean;
+            ActivateTaggedStaticAndSkeletal: boolean;
+            ["Chaos Field Name"]: string;
+            FieldColour: UE.LinearColor;
+            ShowDebugText: boolean;
+            ShowWireFrame: boolean;
+            ShowSolidShapes: boolean;
+            DirectionalDisplayScale: number;
+            RadialDisplayScale: number;
+            ["Text Vertical Offset"]: number;
+            LinearPhysicsType: UE.EFieldPhysicsType;
+            AngularPhysicsType: UE.EFieldPhysicsType;
+            FieldFalloffType: UE.EFieldFalloffType;
+            ["Field Falloff Noise"]: UE.EFieldFalloffType;
+            ["Field Falloff Torque"]: UE.EFieldFalloffType;
+            UseLifespan: boolean;
+            FieldLifespan: number;
+            UseFramesForTiming: boolean;
+            FPS: number;
+            ["Dynamic State"]: UE.EObjectStateTypeEnum;
+            PlanarFalloffDist: number;
+            TotalDecay: number;
+            FalloffMinMax: UE.Vector2D;
+            PlanarFalloffExtentColor: UE.LinearColor;
+            DIrectionalVelocityVector: UE.Vector;
+            upVector: UE.Vector;
+            worldLocation: UE.Vector;
+            forwardVector: UE.Vector;
+            rightVector: UE.Vector;
+            skel: UE.SkeletalMeshComponent;
+            SimmableStaticMeshes: TArray<UE.StaticMeshActor>;
+            SimmableSkelMeshes: TArray<UE.SkeletalMeshActor>;
+            PulseLevel: string;
+            TextDisplay: TArray<string>;
+            AllText: TArray<UE.TextRenderComponent>;
+            ArrowColour_Dir: UE.LinearColor;
+            ArrowColour_Normal: UE.LinearColor;
+            DeactivatedColour: UE.LinearColor;
+            DeactivatedTextColour: UE.LinearColor;
+            ["Preview Material"]: UE.MaterialInstanceDynamic;
+            TimeElapsed: number;
+            NoiseScaleMult: number;
+            NewVar_0: UE.Transform;
+            isTriggered: boolean;
+            NoiseScaleBase: number;
+            DestroyActor: boolean;
+            FieldFalloffType_Input: UE.EFieldFalloffType;
+            FalloffMinMax_Input: UE.Vector2D;
+            Magnitude_Input: number;
+            CalculateNoise(OutputPin: $Ref<UE.NoiseField>) : void;
+            CE_Trigger() : void;
+            DisplayTextSetup() : void;
+            ExecuteUbergraph_Linear_Velocity_for_Cloth(EntryPoint: number) : void;
+            FalloffAndCullSwitch_Main(Magnitude: number, FalloffType: UE.EFieldFalloffType, FalloffMinMax: UE.Vector2D, OperatorField: $Nullable<UE.OperatorField>, CullingField: $Ref<UE.CullingField>) : void;
+            FalloffShapeSwitch(falloffType: UE.EFieldFalloffType, falloffMinMax: UE.Vector2D, OperatorFieldOut: $Ref<UE.OperatorField>) : void;
+            ForceMultiplier() : void;
+            InitializeFieldVariables() : void;
+            MakeDynamic_EnableNonGC() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            /*
+             *Event called every frame, if ticking is enabled
+             */
+            ReceiveTick(DeltaSeconds: number) : void;
+            SetVisibility() : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): Linear_Velocity_for_Cloth_C;
+            static Load(InName: string): Linear_Velocity_for_Cloth_C;
+        
+            __tid_Linear_Velocity_for_Cloth_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorBlueprintResources.ActorComponentMacros {
+        class ActorComponentMacros_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ActorComponentMacros_C;
+            static Load(InName: string): ActorComponentMacros_C;
+        
+            __tid_ActorComponentMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorBlueprintResources.ActorMacros {
+        class ActorMacros_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ActorMacros_C;
+            static Load(InName: string): ActorMacros_C;
+        
+            __tid_ActorMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorBlueprintResources.StandardMacros {
+        class StandardMacros_C extends UE.Object {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): StandardMacros_C;
+            static Load(InName: string): StandardMacros_C;
+        
+            __tid_StandardMacros_C_0__: boolean;
+        }
+        
+    }
+
 }

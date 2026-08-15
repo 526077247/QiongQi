@@ -1,13 +1,10 @@
 import { IManager } from "../../../Mono/Core/Manager/IManager";
 import { LruCache } from "../../../Mono/Core/Object/LruCache";
-import { CoroutineLock, CoroutineLockManager } from "../CoroutineLock/CoroutineLockManager";
-import { CoroutineLockType } from "../CoroutineLock/CoroutineLockType";
 // import { ResourceManager } from "./ResourceManager";
 import * as string from "../../../Mono/Helper/StringHelper"
 import { Log } from "../../../Mono/Module/Log/Log";
-import { ETTask } from "../../../ThirdParty/ETTask/ETTask";
-import { HttpManager } from "../../../Mono/Module/Http/HttpManager";
 import { PaperSprite, ResourceManager, Texture2D } from "ue";
+import { HttpManager } from "../../../Mono/Module/Http/HttpManager";
 import { TimerManager } from "../../../Mono/Module/Timer/TimerManager";
 class SpriteValue
 {
@@ -36,6 +33,7 @@ export class ImageLoaderManager implements IManager{
 
     private cacheSingleSprite: LruCache<string, SpriteValue>;
     private cacheOnlineImage: Map<string, SpriteValue> ;
+    private pendingLoads: Map<string, Promise<SpriteValue>> = new Map();
     public init(){
         ImageLoaderManager._instance = this;
         this.cacheSingleSprite = new LruCache<string, SpriteValue>();
@@ -51,6 +49,7 @@ export class ImageLoaderManager implements IManager{
     }
 
     public destroy() {
+        this.pendingLoads.clear();
         ImageLoaderManager._instance = null;
     }
 
@@ -69,22 +68,9 @@ export class ImageLoaderManager implements IManager{
     public async loadSpriteAsync(imagePath: string): Promise<PaperSprite>{
         const res = this.loadSpriteSync(imagePath);
         if(res != null) return res;
-        let coroutineLock: CoroutineLock = null;
-        try
-        {
-            coroutineLock = await CoroutineLockManager.instance.wait(CoroutineLockType.Resources, string.getHash(imagePath));
-            const assetType = this.getSpriteLoadInfoByPath(imagePath);
-            var sv = await this.loadSingleImageAsyncInternal(imagePath, assetType);
-            return sv.asset;
-        }
-        catch (ex)
-        {
-            Log.error(ex);
-        }
-        finally
-        {
-            coroutineLock?.dispose();
-        }
+        const assetType = this.getSpriteLoadInfoByPath(imagePath);
+        const sv = await this.loadSingleImageAsyncInternal(imagePath, assetType);
+        return sv?.asset;
     }
 
     /**
@@ -94,25 +80,12 @@ export class ImageLoaderManager implements IManager{
      */
     public async loadTextureAsync(imagePath: string): Promise<Texture2D>
     {
-        let coroutineLock: CoroutineLock = null;
-        try
-        {
-            coroutineLock = await CoroutineLockManager.instance.wait(CoroutineLockType.Resources, string.getHash(imagePath));
-            const assetType = this.getSpriteLoadInfoByPath(imagePath);
-            var sv = await this.loadSingleImageAsyncInternal(imagePath, assetType);
-            if(sv.texture == null){
-                Log.error("不能加载图集中的图片");
-            }
-            return sv.texture;
+        const assetType = this.getSpriteLoadInfoByPath(imagePath);
+        const sv = await this.loadSingleImageAsyncInternal(imagePath, assetType);
+        if(sv?.texture == null){
+            Log.error("不能加载图集中的图片");
         }
-        catch (ex)
-        {
-            Log.error(ex);
-        }
-        finally
-        {
-            coroutineLock?.dispose();
-        }
+        return sv?.texture;
     }
 
     /**
@@ -172,6 +145,38 @@ export class ImageLoaderManager implements IManager{
     {
         const res = this.loadSingleImageSyncInternal(assetAddress);
         if(res != null) return res;
+
+        const pending = this.pendingLoads.get(assetAddress);
+        if (pending)
+        {
+            const result = await pending;
+            if (result)
+            {
+                result.refCount++;
+            }
+            return result;
+        }
+
+        const loadTask = this.doLoadSingleImage(assetAddress, type);
+        this.pendingLoads.set(assetAddress, loadTask);
+        try
+        {
+            const result = await loadTask;
+            return result;
+        }
+        catch (ex)
+        {
+            Log.error(ex);
+        }
+        finally
+        {
+            this.pendingLoads.delete(assetAddress);
+        }
+        return null;
+    }
+
+    private async doLoadSingleImage(assetAddress: string, type: SpriteType): Promise<SpriteValue>
+    {
         const cacheCls = this.cacheSingleSprite;
         ResourceManager.GetInstance().LoadResourceAsync(assetAddress);
         let suc:boolean = false;
@@ -197,24 +202,21 @@ export class ImageLoaderManager implements IManager{
             if (!!value)
             {
                 value.refCount++;
-            }
-            else
-            {
-                value = new SpriteValue();
-                value.asset = asset;
-                if(type == SpriteType.Sprite){
-                    value.texture = asset.BakedSourceTexture as Texture2D;
-                }
-                value.refCount = 1
-                cacheCls.set(assetAddress, value);
                 return value;
             }
+            value = new SpriteValue();
+            value.asset = asset;
+            if(type == SpriteType.Sprite){
+                value.texture = asset.BakedSourceTexture as Texture2D;
+            }
+            value.refCount = 1
+            cacheCls.set(assetAddress, value);
+            return value;
         }
         else
         {
             Log.error("图片精灵不存在！请检查图片设置！\n" + assetAddress);
         }
-
         return null;
     }
 
@@ -225,144 +227,118 @@ export class ImageLoaderManager implements IManager{
         return index < 0?SpriteType.Sprite:  SpriteType.SpriteAtlas;
     }
 
-    // public async getOnlineSprite(url: string, tryCount: number = 3): Promise<PaperSprite>
-    // {
-    //     await this.getOnlineTexture(url, tryCount);
-    //     const data = this.cacheOnlineImage.get(url);
-    //     if (!!data)
-    //     {
-    //         if (data.asset == null)
-    //         {
-    //             data.asset = new SpriteFrame();
-    //             data.asset.texture = data.texture;
-    //         }
-    //         return data.asset;
-    //     }
-    //     return null;
-    // }
+    /**
+     * 获取网络图片纹理
+     * @param url 图片地址
+     * @param tryCount 失败重试次数
+     */
+    public async getOnlineTexture(url: string, tryCount: number = 3): Promise<Texture2D>
+    {
+        if (string.isNullOrWhiteSpace(url)) return null;
 
-    // public async getOnlineTexture(url: string, tryCount: number = 3): Promise<Texture2D>
-    // {
-    //     if (string.isNullOrWhiteSpace(url)) return null;
-    //     let coroutineLock: CoroutineLock = null;
-    //     try
-    //     {
-    //         coroutineLock = await CoroutineLockManager.instance.wait(CoroutineLockType.Resources, string.getHash(url));
-    //         let data = this.cacheOnlineImage.get(url);
-    //         if (!!data)
-    //         {
-    //             data.refCount++;
-    //             return data.texture;
-    //         }
-    //         let texture = await HttpManager.instance.httpGetImageOnline(url, true);
-    //         if (texture != null)
-    //         {
-    //             data = new SpriteValue();
-    //             data.texture = texture;
-    //             data.refCount = 1;
-    //             this.cacheOnlineImage.set(url, data);
-    //             return data.texture;
-    //         }
-    //         else
-    //         {
-    //             for (let i = 0; i < tryCount; i++)
-    //             {
-    //                 texture = await HttpManager.instance.httpGetImageOnline(url, false);
-    //                 if (texture != null) break;
-    //             }
-    //             if (texture != null)
-    //             {
-    //                 data = new SpriteValue();
-    //                 data.texture = texture;
-    //                 data.refCount = 1;
-    //                 this.cacheOnlineImage.set(url, data);
-    //                 try
-    //                 {
-    //                     const pixelData = this.convertToUint8Array(texture.image.data);
-    //                     if(!!pixelData){
-    //                         native.saveImageData(pixelData, texture.width, texture.height, HttpManager.instance.localFile(url)).then(()=>{
-    //                             Log.info("Save image data success");
-    //                         }).catch(()=>{
-    //                             Log.info("Fail to save image data");
-    //                         });
-    //                     }
-    //                 }
-    //                 catch(ex)
-    //                 {
-    //                     Log.error(ex);
-    //                 }
-    //                 return data.texture;
-    //             }
-    //             else
-    //             {
-    //                 Log.error("网络无资源 " + url);
-    //             }
-    //         }
-    //     }
-    //     catch (ex)
-    //     {
-    //         Log.error(ex);
-    //     }
-    //     finally
-    //     {
-    //         coroutineLock?.dispose();
-    //     }
-    // }
-
-    // public releaseOnlineImage(url: string, clear: boolean = true)
-    // {
-    //     const data = this.cacheOnlineImage.get(url);
-    //     data.refCount--;
-    //     if (clear && data.refCount <= 0)
-    //     {
-    //         if (data.asset != null)
-    //         {
-    //             data.asset.destroy();
-    //         }
-    //         var img = data.texture.image;
-    //         data.texture.destroy();
-    //         img?.destroy();
-    //         this.cacheOnlineImage.delete(url);
-    //     }
-
-    //     if (this.cacheOnlineImage.size > 10)
-    //     {
-    //         const temp = [];
-    //         for (const [key,val] of this.cacheOnlineImage) 
-    //         {
-    //             if (val.refCount == 0)
-    //             {
-    //                 temp[temp.length-1] = key;
-    //             }
-    //         }
-    //         for (let index = 0; index < temp.length; index++) {
-    //             const data = this.cacheOnlineImage[temp[index]];
-    //             if (data.asset != null)
-    //             {
-    //                 data.asset.destroy();
-    //             }
-    //             var img = data.texture.image;
-    //             data.texture.destroy();
-    //             img?.destroy();
-    //             this.cacheOnlineImage.delete(url);
-    //         }
-    //     }
-    // }
-
-    private convertToUint8Array(data: any): Uint8Array {
-        if (data instanceof ArrayBuffer) {
-            return new Uint8Array(data);
+        // 同步缓存命中
+        let data = this.cacheOnlineImage.get(url);
+        if (!!data)
+        {
+            data.refCount++;
+            return data.texture;
         }
-        
-        if (ArrayBuffer.isView(data)) {
-            return new Uint8Array(data.buffer, data.byteOffset, data.byteLength);
+
+        // 检查 pending：同一 URL 并发请求复用同一加载任务
+        const pending = this.pendingLoads.get(url);
+        if (pending)
+        {
+            const result = await pending;
+            if (result)
+            {
+                result.refCount++;
+            }
+            return result?.texture;
         }
-        
-        if (data instanceof Uint8Array) {
-            return data;
+
+        // 创建加载任务
+        const loadTask = this.doLoadOnlineTexture(url, tryCount);
+        this.pendingLoads.set(url, loadTask);
+        try
+        {
+            const result = await loadTask;
+            return result?.texture;
         }
-        
-        Log.error('无法识别的图片数据类型:', typeof data);
-        return new Uint8Array(0);
+        catch (ex)
+        {
+            Log.error(ex);
+        }
+        finally
+        {
+            this.pendingLoads.delete(url);
+        }
+        return null;
     }
+
+    private async doLoadOnlineTexture(url: string, tryCount: number): Promise<SpriteValue>
+    {
+        let texture = await HttpManager.instance.httpGetImageOnline(url, true);
+        if (texture == null)
+        {
+            for (let i = 0; i < tryCount; i++)
+            {
+                texture = await HttpManager.instance.httpGetImageOnline(url, false);
+                if (texture != null) break;
+            }
+        }
+        if (texture == null)
+        {
+            Log.error("网络无资源 " + url);
+            return null;
+        }
+        const data = new SpriteValue();
+        data.texture = texture;
+        data.refCount = 1;
+        this.cacheOnlineImage.set(url, data);
+        return data;
+    }
+
+    /**
+     * 释放网络图片
+     * @param url 图片地址
+     * @param clear 引用计数归零时是否立即释放
+     */
+    public releaseOnlineImage(url: string, clear: boolean = true)
+    {
+        const data = this.cacheOnlineImage.get(url);
+        if (data == null) return;
+        data.refCount--;
+        if (clear && data.refCount <= 0)
+        {
+            this.destroyOnlineImage(url);
+        }
+
+        // 缓存数量超限时，清理引用计数为 0 的项
+        if (this.cacheOnlineImage.size > 10)
+        {
+            const temp: string[] = [];
+            for (const [key, val] of this.cacheOnlineImage)
+            {
+                if (val.refCount == 0)
+                {
+                    temp[temp.length] = key;
+                }
+            }
+            for (let index = 0; index < temp.length; index++)
+            {
+                this.destroyOnlineImage(temp[index]);
+            }
+        }
+    }
+
+    private destroyOnlineImage(url: string)
+    {
+        const data = this.cacheOnlineImage.get(url);
+        if (data == null) return;
+        data.texture = null;
+        data.asset = null;
+        data.refCount = 0;
+        this.cacheOnlineImage.delete(url);
+    }
+
 }

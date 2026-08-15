@@ -9,13 +9,14 @@ public class QiongQi : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" , "JsEnv","Puerts" ,
-			// Ìí¼ÓÒÔÏÂÄ£¿éÖ§³Ö×ÊÔ´¹ÜÀí
-            "AssetRegistry",      // Ö§³Ö×ÊÔ´×¢²áºÍÒì²½¼ÓÔØ
-            "Paper2D",            // Ö§³ÖPaperSprite×ÊÔ´
-            "Slate",              // Ö§³ÖUMGºÍSlate UI
-            "SlateCore",          // Ö§³ÖUMGºÍSlate UI
-            "UMG",                // Ö§³ÖUMG¿Ø¼ş
-			//"StreamableManager"   // Ã÷È·°üº¬Á÷Ê½¹ÜÀíÆ÷Ö§³Ö
+			// æ·»åŠ ä»¥ä¸‹æ¨¡å—æ”¯æŒèµ„æºç®¡ç†
+            "AssetRegistry",      // æ”¯æŒèµ„æºæ³¨å†Œå’Œå¼‚æ­¥åŠ è½½
+            "Paper2D",            // æ”¯æŒPaperSpriteèµ„æº
+            "Slate",              // æ”¯æŒUMGå’ŒSlate UI
+            "SlateCore",          // æ”¯æŒUMGå’ŒSlate UI
+            "UMG",                // æ”¯æŒUMGæ§ä»¶
+            "HTTP",               // æ”¯æŒ HTTP è¯·æ±‚ï¼ˆUeHttpHelperï¼‰
+			//"StreamableManager"   // æ˜ç¡®åŒ…å«æµå¼ç®¡ç†å™¨æ”¯æŒ
 		});
 
 
