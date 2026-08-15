@@ -120,9 +120,9 @@ namespace QiongQi
             
             foreach (var item in list)
             {
-                string path = Path.Combine(dir, $"{item.Key}.Data.ts");
+                string path = Path.Combine(dir, $"{item.Key}.json");
                 var jstr = JsonMapper.ToJson(item.Value);
-                File.WriteAllText(path, $"export const {item.Key}Data = " + jstr);
+                File.WriteAllText(path, jstr);
                 sb.AppendLine($"    {item.Key} = {index},");
                 index++;
             }

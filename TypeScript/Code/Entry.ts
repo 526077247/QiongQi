@@ -29,8 +29,10 @@ export class Entry
             ManagerProvider.registerManager(CacheManager);
 
             ManagerProvider.registerManager(ConfigManager);
-            ManagerProvider.registerManager(ImageLoaderManager);
+            // 启动时全量加载配置 JSON 原始数据，业务访问时再惰性反序列化
+            await ConfigManager.instance.loadAsync();
 
+            ManagerProvider.registerManager(ImageLoaderManager);
 
             ManagerProvider.registerManager(I18NManager);
             ManagerProvider.registerManager(UIManager);

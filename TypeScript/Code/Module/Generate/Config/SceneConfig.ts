@@ -1,6 +1,6 @@
 import { JsonHelper } from "../../../../Mono/Helper/JsonHelper";
 import { Log } from "../../../../Mono/Module/Log/Log";
-import * as Data from '../Data/SceneConfigCategory.Data';
+import { ConfigManager } from "../../Config/ConfigManager";
 
 export class SceneConfig {
 	/** Id*/
@@ -17,13 +17,14 @@ export class SceneConfig {
 export class SceneConfigCategory{
 
     private static _instance: SceneConfigCategory;
-    public static get instance():SceneConfigCategory{
-        if(SceneConfigCategory._instance != null) return SceneConfigCategory._instance
-        JsonHelper.registerClass(SceneConfig,'SceneConfig');
-        JsonHelper.registerClass(SceneConfigCategory,'SceneConfigCategory');
-        const category = JsonHelper.deserialize(SceneConfigCategory, Data) as SceneConfigCategory;
-        category.endInit();
-        SceneConfigCategory._instance = category;
+
+    public static get instance(): SceneConfigCategory {
+        if (!this._instance) {
+            JsonHelper.registerClass(SceneConfig,"SceneConfig");
+            JsonHelper.registerClass(SceneConfigCategory,"SceneConfigCategory");
+            this._instance = ConfigManager.instance.get(SceneConfigCategory,"SceneConfigCategory");
+        }
+        return this._instance;
     }
 
     private dict = new Map<number, SceneConfig>();

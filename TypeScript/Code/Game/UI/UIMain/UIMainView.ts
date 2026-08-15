@@ -4,7 +4,7 @@ import { LoopListView2 } from "../../../../ThirdParty/SuperScrollView/ListView/L
 import { LoopListViewItem2 } from "../../../../ThirdParty/SuperScrollView/ListView/LoopListViewItem2";
 import { IOnCreate } from "../../../Module/UI/IOnCreate";
 import { IOnEnable } from "../../../Module/UI/IOnEnable";
-import { UIBaseView } from "../../../Module/UI/UIBaseView";
+import { UIBaseView, uiView } from "../../../Module/UI/UIBaseView";
 import { UIEmptyView } from "../../../Module/UIComponent/UIEmptyView";
 import { UIImage } from "../../../Module/UIComponent/UIImage";
 import { UILoopGridView } from "../../../Module/UIComponent/UILoopGridView";
@@ -14,7 +14,7 @@ import { MenuPara, UIMenu } from "../UICommon/UIMenu";
 import { CellItem } from "./CellItem";
 import { DateItem } from "./DateItem";
 
-
+@uiView("UIMainView")
 export class UIMainView extends UIBaseView implements IOnCreate, IOnEnable{
 
     public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UIMain/Prefabs/UIMainView.UIMainView_C";

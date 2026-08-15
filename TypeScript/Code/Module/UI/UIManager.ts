@@ -62,6 +62,32 @@ export class UIManager implements IManager {
     public static get instance(): UIManager {
         return UIManager._instance;
     }
+
+    private static _typeMap: Map<string, new () => UIBaseView> = new Map();
+    private static _ctorMap: Map<new () => UIBaseView, string> = new Map();
+
+    public static register(name: string, ctor: new () => UIBaseView): void
+    {
+        UIManager._typeMap.set(name, ctor);
+        UIManager._ctorMap.set(ctor, name);
+    }
+
+    public static createView(name: string): UIBaseView
+    {
+        const ctor = UIManager._typeMap.get(name);
+        return ctor ? new ctor() : null;
+    }
+
+    public static getType(name: string): (new () => UIBaseView) | null
+    {
+        return UIManager._typeMap.get(name) ?? null;
+    }
+
+    public static getName(ctor: new () => UIBaseView): string | null
+    {
+        return UIManager._ctorMap.get(ctor) ?? null;
+    }
+
     private _gameObject: UE.CanvasPanel;
     private _rootLoading: UE.Widget;
    
@@ -163,6 +189,19 @@ export class UIManager implements IManager {
         }
 
         return false;
+    }
+
+    /**
+     * 通过类型名获取UI窗口
+     * @param name 类型名（@uiView 装饰器注册的名称）
+     * @param active 2打开且loading,1打开，-1关闭,0不做限制
+     * @returns 
+     */
+    public getWindowByName(name: string, active: number = 0): UIWindow
+    {
+        const type = UIManager.getType(name);
+        if (!type) return null;
+        return this.getWindow(type, active);
     }
 
     /**
@@ -274,12 +313,22 @@ export class UIManager implements IManager {
      * @returns 
      */
     public async openWindow<T extends UIBaseView & IOnCreate, P1 = void, P2 = void, P3 = void, P4 = void>
-        (type: (new () => T), path:string, p1?:P1, p2?:P2, p3?:P3, p4?:P4, layerName:UILayerNames = UILayerNames.NormalLayer) {
-        const uiName = this.getUIName(type);
+        (type: string | (new () => T), path:string, p1?:P1, p2?:P2, p3?:P3, p4?:P4, layerName:UILayerNames = UILayerNames.NormalLayer) {
+        let ctor: new () => T;
+        if (typeof type === 'string') {
+            ctor = UIManager.getType(type) as new () => T;
+            if (!ctor) {
+                Log.error("UIManager openWindow 类型未注册: " + type);
+                return null;
+            }
+        } else {
+            ctor = type;
+        }
+        const uiName = this.getUIName(ctor);
         var target = this.getWindow(uiName);
         if (target == null)
         {
-            target = this.initWindow<T>(type, path, layerName);
+            target = this.initWindow<T>(ctor, path, layerName);
             this.windows.set(uiName, target);
         }
         target.layer = layerName;

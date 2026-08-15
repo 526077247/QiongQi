@@ -1,6 +1,6 @@
 import { JsonHelper } from "../../../../Mono/Helper/JsonHelper";
 import { Log } from "../../../../Mono/Module/Log/Log";
-import * as Data from '../Data/ServerConfigCategory.Data';
+import { ConfigManager } from "../../Config/ConfigManager";
 
 export class ServerConfig {
 	/** Id*/
@@ -21,13 +21,14 @@ export class ServerConfig {
 export class ServerConfigCategory{
 
     private static _instance: ServerConfigCategory;
-    public static get instance():ServerConfigCategory{
-        if(ServerConfigCategory._instance != null) return ServerConfigCategory._instance
-        JsonHelper.registerClass(ServerConfig,'ServerConfig');
-        JsonHelper.registerClass(ServerConfigCategory,'ServerConfigCategory');
-        const category = JsonHelper.deserialize(ServerConfigCategory, Data) as ServerConfigCategory;
-        category.endInit();
-        ServerConfigCategory._instance = category;
+
+    public static get instance(): ServerConfigCategory {
+        if (!this._instance) {
+            JsonHelper.registerClass(ServerConfig,"ServerConfig");
+            JsonHelper.registerClass(ServerConfigCategory,"ServerConfigCategory");
+            this._instance = ConfigManager.instance.get(ServerConfigCategory,"ServerConfigCategory");
+        }
+        return this._instance;
     }
 
     private dict = new Map<number, ServerConfig>();

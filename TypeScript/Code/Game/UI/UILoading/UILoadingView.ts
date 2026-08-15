@@ -1,7 +1,8 @@
 import { IOnCreate } from "../../../Module/UI/IOnCreate";
-import { UIBaseView } from "../../../Module/UI/UIBaseView";
+import { UIBaseView, uiView } from "../../../Module/UI/UIBaseView";
 import { UIProgressBar } from "../../../Module/UIComponent/UIProgressBar";
 
+@uiView("UILoadingView")
 export class UILoadingView extends UIBaseView implements IOnCreate{
 
     public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UILoading/Prefabs/UILoadingView.UILoadingView_C";

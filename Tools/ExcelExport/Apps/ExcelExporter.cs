@@ -70,7 +70,7 @@ namespace QiongQi
 
         private const string jsonDir = "../Excel/Json/{0}/{1}";
 
-        private const string __clientProtoDir = "../TypeScript/Code/Module/Generate/Data/{0}";
+        private const string __clientProtoDir = "../Content/AssetsPackage/Config/{0}";
         private static string clientProtoDir
         {
             get
@@ -636,9 +636,8 @@ namespace QiongQi
                 }
             }
 
-            string path = Path.Combine(dir, $"{protoName}Category.Data.ts");
-            string jsonOutput = $"export const {protoName}CategoryData = "+ JsonMapper.ToJson(root);
-            File.WriteAllText(path, jsonOutput);
+            string path = Path.Combine(dir, $"{protoName}Category.json");
+            File.WriteAllText(path, JsonMapper.ToJson(root));
         }
         static void ExportSheetJson(ExcelWorksheet worksheet, string name,
                 Dictionary<string, HeadInfo> classField, ConfigType configType, StringBuilder sb)
