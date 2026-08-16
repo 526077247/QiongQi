@@ -15,9 +15,10 @@
 - **Timer 系统** — 单次定时器、可等待定时器、帧定时器、重复定时器，帧驱动
 - **事件总线 (Messager)** — 基于 (groupId, messageId) 的类型化事件订阅/广播
 - **资源加载 (ImageLoaderManager)** — LRU 缓存、引用计数、Sprite/SpriteAtlas 自动识别
-- **HTTP 网络层** — 基于 XMLHttpRequest 的 JSON 请求/响应，类型化反序列化
+- **HTTP 网络层** — 基于 UE FHttpModule 的异步请求/响应，类型化反序列化
 - **玩家数据持久化 (CacheManager)** — 基于 UE SaveGame 的键值存储
-- **AssetImportPlugin** — UE 编辑器资源导入插件
+- **热更新 (Hot Update & CDN)** — CDN 资源版本检查、断点续传下载、IoStore 三件套挂载、JS 虚拟机重启
+- **打包工具 (QiongQiPackTools)** — Slate 打包面板，集成 UAT 整包构建、HotPatcher 补丁生成、IoStore、CDN 版本清单、Chunk 分配
 
 ## 目录结构
 
@@ -29,7 +30,7 @@ QiongQi/
 │   │   ├── Entry.ts           # 框架启动入口，注册所有 Manager
 │   │   ├── Game/              # 场景与 UI 视图
 │   │   │   ├── Scene/         #   LoginScene / MapScene
-│   │   │   └── UI/            #   UIMain / UILoading / UICommon
+│   │   │   └── UI/            #   UIMain / UILoading / UIUpdate / UICommon
 │   │   └── Module/            # 业务模块
 │   │       ├── Config/        #   配置管理器
 │   │       ├── Const/         #   常量定义 (LangType, CacheKeys, I18NKey)
@@ -40,23 +41,36 @@ QiongQi/
 │   │       ├── Resource/      #   图片/资源加载
 │   │       ├── Scene/         #   场景管理器
 │   │       ├── UI/            #   UI 框架核心
-│   │       └── UIComponent/   #   UE Widget 封装组件
+│   │       ├── UIComponent/   #   UE Widget 封装组件
+│   │       └── Update/        #   热更新 (CDN 下载 / 版本检查 / 补丁挂载)
 │   ├── Mono/                  # 框架底层
 │   │   ├── Core/              #   Manager 注册体系 + 对象池 + 数据结构
 │   │   ├── Module/            #   Timer / Messager / Log / Http / Update / I18N
-│   │   ├── Helper/             #   Json / Random / String / UELifeTime 辅助类
+│   │   ├── Helper/            #   Json / Random / String / UELifeTime 辅助类
 │   │   ├── Define.ts          #   全局常量 (设计分辨率/DeltaTime/LogLevel/Debug)
 │   │   └── Init.ts            #   框架初始化
 │   └── ThirdParty/           # 第三方库
 │       ├── ETTask/            #   异步原语 (ETTask<T> + ETCancellationToken)
 │       └── SuperScrollView/   #   无限滚动列表/网格
+├── Source/                    # C++ 游戏模块
+│   └── QiongQi/               #   GameInstance / 下载 / HTTP / 资源 / 存档
 ├── Content/                   # UE 资源
-│   └── AssetsPackage/         #   打包资源 (UI/Scenes/...)
+│   └── AssetsPackage/         #   打包资源 (UI/Scenes/Config/...)
 ├── Excel/                     # Excel 配置表 + 导出工具脚本
 ├── Plugins/
 │   ├── Puerts/                # PuerTs 插件 (V8 JS 引擎 + UE 绑定)
-│   └── AssetImportPlugin/     # 资源导入插件
+│   ├── HotPatcher/            # HotPatcher 插件 (IoStore 补丁打包)
+│   ├── QiongQiEditor/         # 项目编辑器扩展 (打包面板)
+│   │   └── Source/QiongQiPackTools/  # Slate 打包面板 + UAT/HotPatcher 集成
+│   └── RuntimeFilesDownloader/ # 运行时文件下载插件
+├── Tools/
+│   ├── ExcelExport/           # .NET Excel 导出工具 (ExcelExport.dll)
+│   └── FileServer/            # .NET 本地 CDN 文件服务器 (ASP.NET Core)
 ├── Config/                    # UE 配置文件
+│   ├── DefaultGame.ini        #   打包设置 (IoStore/Chunk 规则/渠道版本)
+│   ├── DefaultEngine.ini      #   引擎设置 (渲染/默认地图/GameInstance)
+│   ├── DefaultPakFileRules.ini #  Pak 文件过滤规则
+│   └── CDNInFirstPak.ini      #   全量进首包白名单目录
 ├── Bin/                       # .NET 导出工具 (ExcelExport.dll)
 ├── tsconfig.json              # TypeScript 编译配置
 └── QiongQi.uproject           # UE5 工程文件
@@ -71,8 +85,19 @@ UE GameInstance (C++)
   └─ JS 入点 Start.ts → Init.start()
        ├─ 设置 Log / 异常处理器 / 时区
        └─ 绑定 Update 帧回调 → Entry.start()
-            └─ 异步注册所有 Manager → switchScene(LoginScene)
+            └─ 异步注册所有 Manager → 热更新检查 → switchScene(LoginScene)
 ```
+
+### C++ 层核心类
+
+| 类 | 职责 |
+|---|---|
+| `UQiongQiGameInstance` | 拥有 Puerts `FJsEnv`；暴露 `RestartJsEnv()`（热更后异步重建 JS 虚拟机）、网络状态、编辑器/调试包判断 |
+| `UUeDownloadHelper` | CDN 下载桥：断点续传、MD5 校验、Pak 挂载（HotPatcher `UFlibPakHelper::MountPak`）、本地版本读写（`Saved/Paks/version.json`）、包内版本对齐 |
+| `UeHttpHelper` | 异步 HTTP 请求（`FHttpModule`），替代浏览器 XHR |
+| `ResourceManager` | `StreamableManager` 异步资源加载 + 缓存 |
+| `QiongQiConfigLoader` | 从 `Content/AssetsPackage/Config` 加载 JSON 配置（支持 pak 内读取） |
+| `QiongQiPlayerPrefs` / `QiongQiSaveGame` | 基于 `USaveGame` 的键值持久化（String/Float/Int/Bool） |
 
 ### Manager 体系
 
@@ -89,6 +114,7 @@ UE GameInstance (C++)
 | I18NManager | 多语言切换 + 文本查询 |
 | UIManager | 窗口/弹窗/层级/组件管理 |
 | SceneManager | 异步场景切换 + 进度管线 |
+| ServerConfigManager | 服务器配置 / 渠道 / 版本管理 |
 
 ### UI 框架
 
@@ -121,7 +147,70 @@ switchScene → 开启 LoadingUI → onEnter() → 清理旧场景/旧窗口
 → onComplete() → onPrepare() → onSwitchSceneEnd() → 关闭 LoadingUI
 ```
 
-### Excel 配置管线
+## 热更新系统
+
+### 架构
+
+```
+启动 → 挂载本地已下载 CDN pak (PakOrder=100+) → SyncLocalVersionFromPackage (包内版本对齐)
+→ 创建 JsEnv → Entry.start() → 检查 CDN 版本清单 {version}.json
+→ md5 对比 → 用户确认 → 下载 pak/utoc/ucas (断点续传+重试+md5校验)
+→ 挂载 pak → SaveLocalVersion → RestartJsEnv (重建 JS 虚拟机加载新 Code)
+```
+
+### 版本清单格式
+
+CDN 根目录下的 `{version}.json`，与历史版本清单合并保证全量：
+
+```json
+{
+  "channel": "Default",
+  "platform": "pc",
+  "version": 1786890573,
+  "files": [
+    { "name": "1786890573_Windows_001_P.pak", "md5": "...", "size": 6064659 },
+    { "name": "1786890573_Windows_001_P.utoc", "md5": "...", "size": 2921 },
+    { "name": "1786890573_Windows_001_P.ucas", "md5": "...", "size": 5998560 }
+  ]
+}
+```
+
+### CDN 目录结构
+
+```
+CDN 根目录/{渠道}_{平台}/
+  ├── {版本号}.json          # 版本清单
+  ├── xxx.pak                # IoStore 三件套
+  ├── xxx.utoc
+  └── xxx.ucas
+```
+
+### 版本记录
+
+- **包内版本**：打包面板写入 `DefaultGame.ini [QiongQi] ResourceVersion`，随包固化
+- **本地版本**：`Saved/Paks/version.json`，启动时与包内版本取较大值写回
+- **短路逻辑**：全量进首包模式（`FullInFirstPak=1`）下，本地版本 ≥ 最新版本时跳过下载
+
+## 打包工具 (QiongQiPackTools)
+
+Slate 打包面板集成在 `Plugins/QiongQiEditor/Source/QiongQiPackTools/`，提供：
+
+- **整包构建**：UAT BuildCookRun 一键 Cook/Stage/Package
+- **补丁生成**：HotPatcher 补丁，支持 IoStore（.pak/.utoc/.ucas 三件套）
+- **Chunk 分配**：白名单目录进首包（pakchunk0），其余走 CDN（pakchunk100+）
+- **CDN 版本清单**：自动扫描产物生成 `{版本号}.json`，合并历史清单保证全量
+- **配置固化**：渠道/版本号/全量进首包/调试标志写入 `DefaultGame.ini` 随包固化
+- **Release 交付**：自动复制 CDN 资源与整包到 `Release/` 目录
+
+### 打包模式
+
+| 模式 | 说明 |
+|---|---|
+| 打整包 + 全量进首包 | UAT 整包 + HotPatcher 全量补丁，CDN 不产出增量 |
+| 打整包 + CDN 模式 | UAT 整包（Chunk 拆分）+ HotPatcher CDN 增量补丁 |
+| 不打整包 | 仅 HotPatcher 增量补丁，需选择历史版本作为主版本 |
+
+## Excel 配置管线
 
 ```
 .xlsx 文件 → .NET 导出工具 (ExcelExport.dll) → Generate/Data/*.Data.ts (JSON)
@@ -136,6 +225,15 @@ switchScene → 开启 LoadingUI → onEnter() → 清理旧场景/旧窗口
 | `win_startAttrExport.bat` | 导出属性数据 |
 | `win_startExportAll.bat` | 全量导出 |
 | `策划校验表工具.bat` | 策划数据校验 |
+
+## 配置文件
+
+| 文件 | 用途 |
+|---|---|
+| `DefaultGame.ini` | 打包设置（IoStore/Chunk 规则）、`[QiongQi]` 渠道/版本/全量进首包/调试标志 |
+| `DefaultEngine.ini` | 引擎设置（D3D12/SM6、默认地图 InitScene/Init、GameInstanceClass） |
+| `DefaultPakFileRules.ini` | Pak 文件过滤规则（排除 Editor 内容） |
+| `CDNInFirstPak.ini` | 全量进首包白名单目录列表 |
 
 ## 运行指南
 
@@ -222,6 +320,10 @@ node enable_puerts_module.js
 ```bash
 tsc --watch
 ```
+
+### 6. 本地 CDN 测试服务器
+
+启动 `Tools/FileServer` 提供本地 CDN 文件服务，用于热更新下载测试。
 
 ## 相关项目
 
