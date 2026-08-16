@@ -21,4 +21,16 @@ export class Define {
     public static readonly MinRepeatedTimerInterval: number = 100;
 
     public static readonly Debug = true;
+
+    public static get Networked(): boolean
+    {
+        // ENetworkConnectionStatus：0=Unknown 1=Disabled 2=Local 3=Connected；仅 Disabled(1) 视为无网络
+        const Status = Define.Game ? Define.Game.GetNetworkConnectionStatus() : 0;
+        return Status !== 1;
+    }
+
+    public static readonly ForceUpdate = false;
+
+    /** SH 服标记：由 UpdateIsSHProcess 依据 CDN 更新列表自动设置 */
+    public static isSH: boolean = false;
 }
