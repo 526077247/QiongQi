@@ -7,7 +7,6 @@
         "noEmitHelpers": false,
         "experimentalDecorators": true,
         "useDefineForClassFields": false,
-        "jsx": "react",
         "sourceMap": true,
         "typeRoots": [
             "Typing",

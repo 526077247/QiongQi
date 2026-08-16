@@ -90,6 +90,7 @@ export class UIManager implements IManager {
 
     private _gameObject: UE.CanvasPanel;
     private _rootLoading: UE.Widget;
+    private _uiRoot: UE.UserWidget;
    
     private layers: Map<UILayerNames, UILayer>;//所有可用的层级
     private windowStack: Map<UILayerNames, LinkedList<new()=>void>>;//窗口记录队列
@@ -132,6 +133,7 @@ export class UIManager implements IManager {
         }
         const UIRoot = UE.WidgetBlueprintLibrary.Create(Define.Game, UIRootClass, null) as UE.UserWidget;
         UIRoot.AddToViewport();
+        this._uiRoot = UIRoot;
         this.RootTree = UIRoot.WidgetTree;
         const root = this.RootTree.RootWidget as UE.CanvasPanel;
         this._gameObject = (root.GetChildAt(1) as UE.SafeZone).GetChildAt(0) as UE.CanvasPanel;
@@ -156,6 +158,13 @@ export class UIManager implements IManager {
         }
         this.layers.clear();
         this.layers = null;
+        // UIRoot（AddToViewport 添加的 UserWidget）也必须从视口移除，
+        // 否则 V8 销毁后 UIRoot 变为野指针，Slate 绘制时崩溃
+        if (this._uiRoot != null) {
+            this._uiRoot.RemoveFromViewport();
+            this._uiRoot = null;
+        }
+        this.RootTree = null;
         Log.info("UILayersComponent Dispose");
     }
 

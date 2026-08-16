@@ -193,9 +193,13 @@ void UPatcherProxy::Init(FPatcherEntitySettingBase* InSetting)
 	SCOPED_NAMED_EVENT_TEXT("UPatcherProxy::Init",FColor::Red);
 	Super::Init(InSetting);
 #if WITH_PACKAGE_CONTEXT
+	// UE5.5 下启用 IoStore 时若 cook 阶段使用 FZenStoreWriter（IoStoreUtilities），
+	// 在 HotPatcher 独立 cook 流程中容器环境未初始化会触发 "Attempting to call an unbound TFunction!" 崩溃。
+	// IoStore 容器 (.utoc/.ucas) 由 CreateIoStoreWorker 通过引擎 -run=IoStore commandlet 从 loose 输出生成，
+	// 因此 cook 阶段始终使用 loose writer（FHotPatcherPackageWriter），不随 bIoStore 切换 Zen writer。
 	PlatformSavePackageContexts = UFlibHotPatcherCoreHelper::CreatePlatformsPackageContexts(
 		GetSettingObject()->GetPakTargetPlatforms(),
-		GetSettingObject()->IoStoreSettings.bIoStore,
+		false,
 		GetSettingObject()->GetStorageCookedDir()
 		);
 #endif
@@ -1381,20 +1385,29 @@ namespace PatchWorker
 				}
 					
 				FString PlatformCookDir = FPaths::ConvertRelativePathToFull(FPaths::Combine(Context.GetSettingObject()->GetStorageCookedDir(),PlatformName));
+				// loose writer 在 cook 结束后会写出 {PlatformCookDir}/{ProjectName}/Mededata/packagestore.manifest
+				FString PackageStoreManifestFile = FPaths::Combine(PlatformCookDir,FApp::GetProjectName(),TEXT("Mededata"),TEXT("packagestore.manifest"));
+				// FHotPatcherPackageWriter::EndCook() writes ScriptObjects.bin alongside packagestore.manifest
+				FString ScriptObjectsFile = FPaths::Combine(PlatformCookDir,FApp::GetProjectName(),TEXT("Mededata"),TEXT("ScriptObjects.bin"));
+				FString ScriptObjectsCmd = FPaths::FileExists(ScriptObjectsFile) 
+					? FString::Printf(TEXT("-ScriptObjects=\"%s\" "),*ScriptObjectsFile) 
+					: TEXT("");
 
 				if(FPaths::FileExists(PlatformGlocalContainers))
 				{
 					FString CookOrderFile = FPaths::Combine(Context.GetSettingObject()->GetSaveAbsPath(),Context.NewVersionChunk.ChunkName,PlatformName,TEXT("CookOpenOrder.txt"));
 					FFileHelper::SaveStringArrayToFile(IoStoreCommands,*IoStoreCommandsFile);
 					FString IoStoreCommandlet = FString::Printf(
-						TEXT("-CreateGlobalContainer=\"%s\" -CookedDirectory=\"%s\" -Commands=\"%s\" -CookerOrder=\"%s\" -TargetPlatform=\"%s\" %s %s"),
+						TEXT("-CreateGlobalContainer=\"%s\" -CookedDirectory=\"%s\" -PackageStoreManifest=\"%s\" -Commands=\"%s\" -CookerOrder=\"%s\" -TargetPlatform=\"%s\" %s%s %s"),
 						// *UFlibHotPatcherCoreHelper::GetUECmdBinary(),
 						// *UFlibPatchParserHelper::GetProjectFilePath(),
 						*PlatformGlocalContainers,
 						*PlatformCookDir,
+						*PackageStoreManifestFile,
 						*IoStoreCommandsFile,
 						*CookOrderFile,
 						*PlatformName,
+						*ScriptObjectsCmd,
 						*IoStoreCommandletOptions,
 						*OutputDirectoryCmd
 					);

@@ -21,7 +21,7 @@ export class UIMsgBoxWin extends UIBaseView implements IOnCreate,IOnEnable<MsgBo
         return UIMsgBoxWin;
     }
 
-    public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UILoading/Prefabs/UIMsgBoxWin.UIMsgBoxWin_C";
+    public static readonly PrefabPath:string = "/Game/AssetsPackage/UI/UICommon/Prefabs/UIMsgBoxWin.UIMsgBoxWin_C";
 
     public text: UIText;
     public btn_cancel: UIButton;
@@ -41,11 +41,11 @@ export class UIMsgBoxWin extends UIBaseView implements IOnCreate,IOnEnable<MsgBo
 
     public onEnable(a: MsgBoxPara){
         this.para = a;
-        this.text.setText(a.content);
+        this.text.setText(a?.content);
         this.btn_cancel.setOnClick(this.onClickCancel.bind(this));
         this.btn_confirm.setOnClick(this.onClickConfirm.bind(this));
-        this.confirmText.setText(a.confirmText);
-        this.cancelText.setText(a.cancelText);
+        this.confirmText.setText(a?.confirmText);
+        this.cancelText.setText(a?.cancelText);
     }
 
     public onDisable(){

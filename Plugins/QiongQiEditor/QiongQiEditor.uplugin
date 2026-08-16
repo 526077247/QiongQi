@@ -31,6 +31,10 @@
     {
       "Name": "HotPatcher",
       "Enabled": true
+    },
+    {
+      "Name": "Paper2D",
+      "Enabled": true
     }
   ]
 }

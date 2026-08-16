@@ -124,6 +124,15 @@ void FPuertsEditorModule::OnPostEngineInit()
             {
                 if (JsEnv.IsValid())
                 {
+                    // 编辑器自身代码（CodeAnalyze.js 及其依赖的 TypeScript 库）不参与热重载：
+                    // 打包等并发读写场景下，对该目录 JS 的热重载会重新执行大模块并触发 V8 堆损坏崩溃（0xc0000374）。
+                    // 类型检查由 CodeAnalyze.js 内部的 ts.watch 独立驱动，不受此过滤影响。
+                    static const FString EditorScriptRoot = FPaths::ConvertRelativePathToFull(
+                        FPaths::Combine(FPaths::ProjectContentDir(), TEXT("JavaScript/PuertsEditor")));
+                    if (FPaths::ConvertRelativePathToFull(InPath).StartsWith(EditorScriptRoot + TEXT("/")))
+                    {
+                        return;
+                    }
                     TArray<uint8> Source;
                     if (FFileHelper::LoadFileToArray(Source, *InPath))
                     {

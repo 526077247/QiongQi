@@ -25,7 +25,6 @@ public class HotPatcherCore : ModuleRules
 				// ... add other private include paths required here ...
 			}
 			);
-			
 		
 		PublicDependencyModuleNames.AddRange(
 			new string[]
@@ -130,6 +129,7 @@ public class HotPatcherCore : ModuleRules
 			{
 				"IoStoreUtilities"
 			});
+			PrivateIncludePaths.Add(Path.Combine(EngineDirectory, "Source/Developer/IoStoreUtilities/Internal"));
 		}
 		AddPublicDefinitions("WITH_IO_STORE_SUPPORT", bIOStoreSupport);
 		AddPublicDefinitions("ENABLE_COOK_LOG", true);

@@ -26,6 +26,8 @@ public class QiongQiEditor : ModuleRules
             "BlueprintGraph",
             "ContentBrowser",
             "ContentBrowserData",
+            "AssetRegistry",
+            "Paper2D",
         });
     }
 }

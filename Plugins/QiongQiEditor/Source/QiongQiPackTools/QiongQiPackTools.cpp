@@ -55,7 +55,7 @@ void FQiongQiPackToolsModule::OpenPackPanel()
 {
 	TSharedRef<SWindow> Window = SNew(SWindow)
 		.Title(LOCTEXT("QiongQiPackPanelWindowTitle", "QiongQi 打包面板"))
-		.ClientSize(FVector2D(760, 660))
+		.ClientSize(FVector2D(880, 800))
 		.SupportsMaximize(false)
 		.SupportsMinimize(false);
 

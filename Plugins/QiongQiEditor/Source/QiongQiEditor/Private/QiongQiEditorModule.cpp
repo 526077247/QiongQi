@@ -1,5 +1,6 @@
 #include "QiongQiEditorModule.h"
 #include "UITemplateCodeGenerator.h"
+#include "AtlasGroupHelper.h"
 
 #include "WidgetBlueprintEditor.h"
 #include "WidgetBlueprint.h"
@@ -164,6 +165,11 @@ void FQiongQiEditorModule::ExecuteCopyRelativePath()
     FUITemplateCodeGenerator::CopyRelativePaths(WidgetEditor);
 }
 
+void FQiongQiEditorModule::ExecuteSetAllAtlasGroup()
+{
+    FAtlasGroupHelper::RunAll();
+}
+
 void FQiongQiEditorModule::RegisterContentBrowserMenu()
 {
     if (bContentBrowserMenuRegistered)
@@ -249,6 +255,13 @@ void FQiongQiEditorModule::PopulateQiongQiFolderSection(UToolMenu* Menu)
                     FUIAction(FExecuteAction::CreateLambda(
                         [this, SelectedUIFolders]() { ExecuteCreateSubDirectories(SelectedUIFolders); }))
                 );
+                SubSection.AddMenuEntry(
+                    TEXT("SetAllAtlasGroup"),
+                    LOCTEXT("SetAllAtlasGroupLabel", "一键设置 AtlasGroup（必须修改引擎源码否则卡死）"),
+                    LOCTEXT("SetAllAtlasGroupTooltip", "将所有 Atlas 目录下 Sprite 的 AtlasGroup 设置为同级 Atlas.uasset（缺失自动创建）"),
+                    FSlateIcon(),
+                    FUIAction(FExecuteAction::CreateRaw(this, &FQiongQiEditorModule::ExecuteSetAllAtlasGroup))
+                );
             }
         ))
     );
@@ -294,6 +307,11 @@ void FQiongQiEditorModule::ExecuteCreateSubDirectories(const TArray<FString>& Se
                 if (NewItem.IsValid())
                 {
                     ++CreatedCount;
+                    // 新增 Atlas 子目录时自动在同级创建 Atlas.uasset
+                    if (SubDirName == TEXT("Atlas"))
+                    {
+                        FAtlasGroupHelper::EnsureAtlasAsset(Folder);
+                    }
                     continue;
                 }
 
@@ -318,6 +336,11 @@ void FQiongQiEditorModule::ExecuteCreateSubDirectories(const TArray<FString>& Se
             {
                 ++CreatedCount;
                 ++DiskFallbackCount;
+                // 新增 Atlas 子目录时自动在同级创建 Atlas.uasset
+                if (SubDirName == TEXT("Atlas"))
+                {
+                    FAtlasGroupHelper::EnsureAtlasAsset(Folder);
+                }
             }
             else
             {

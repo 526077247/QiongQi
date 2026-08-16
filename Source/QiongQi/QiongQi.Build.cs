@@ -16,7 +16,14 @@ public class QiongQi : ModuleRules
             "SlateCore",          // 支持UMG和Slate UI
             "UMG",                // 支持UMG控件
             "HTTP",               // 支持 HTTP 请求（UeHttpHelper）
+            "Json",               // 支持 JSON 读写（UeDownloadHelper 版本清单）
 			//"StreamableManager"   // 明确包含流式管理器支持
+		});
+
+		// 运行时插件依赖：RuntimeFilesDownloader（CDN 资源下载）+ HotPatcherRuntime（pak 挂载）
+		PublicDependencyModuleNames.AddRange(new string[] {
+			"RuntimeFilesDownloader",
+			"HotPatcherRuntime"
 		});
 
 

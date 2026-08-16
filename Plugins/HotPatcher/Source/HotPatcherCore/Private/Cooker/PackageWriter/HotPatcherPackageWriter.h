@@ -5,10 +5,22 @@
 #if WITH_PACKAGE_CONTEXT && ENGINE_MAJOR_VERSION > 4
 #include "Serialization/PackageWriter.h"
 #include "PackageWriterToSharedBuffer.h"
+#include "Algo/Sort.h"
+#include "IO/IoDispatcher.h"
+#include "Misc/PathViews.h"
+#include "Serialization/CompactBinarySerialization.h"
+#include "Serialization/CompactBinaryWriter.h"
 
 class FHotPatcherPackageWriter:public TPackageWriterToSharedBuffer<ICookedPackageWriter>
 {
 public:
+	FHotPatcherPackageWriter() = default;
+	FHotPatcherPackageWriter(const FString& InOutputPath, const FString& InMetadataDirectoryPath)
+		: OutputPath(InOutputPath)
+		, MetadataDirectoryPath(InMetadataDirectoryPath)
+	{
+	}
+
 	virtual FCookCapabilities GetCookCapabilities() const override
 	{
 		FCookCapabilities Result;
@@ -74,6 +86,21 @@ private:
 	{
 		bool bCompletedExportsArchiveForDiff = false;
 	};
+
+	/** One loose file (package data or bulk data) recorded in the package store manifest. */
+	struct FOplogChunkInfo
+	{
+		FString RelativeFileName;
+		FIoChunkId ChunkId;
+	};
+
+	/** Per-package record in the package store manifest, mirroring the engine's FLooseCookedPackageWriter. */
+	struct FOplogPackageInfo
+	{
+		FName PackageName;
+		TArray<FOplogChunkInfo, TInlineAllocator<1>> PackageDataChunks;
+		TArray<FOplogChunkInfo> BulkDataChunks;
+	};
 	
 	/** Buffers that are combined into the HeaderAndExports file (which is then split into .uasset + .uexp or .uoasset + .uoexp). */
 	struct FExportBuffer
@@ -119,6 +146,17 @@ private:
 	// If EWriteOptions::ComputeHash is not set, the package will not get added to this.
 	TMap<FName, TRefCountPtr<FPackageHashes>> AllPackageHashes;
 	
+	/** Root directory of the loose cooked files; relative manifest paths are computed against it. */
+	FString OutputPath;
+	/** Directory where packagestore.manifest is written (e.g. .../Mededata). */
+	FString MetadataDirectoryPath;
+
+	FCriticalSection OplogLock;
+	TMap<FName, FOplogPackageInfo> Oplog;
+
+	void UpdateManifest(FRecord& Record);
+	void WriteOplogEntry(FCbWriter& Writer, const FOplogPackageInfo& PackageInfo);
+
 	TFuture<FMD5Hash> AsyncSave(FRecord& Record, const FCommitPackageInfo& Info);
 	TFuture<FMD5Hash> AsyncSaveOutputFiles(FRecord& Record, FCommitContext& Context);
 };

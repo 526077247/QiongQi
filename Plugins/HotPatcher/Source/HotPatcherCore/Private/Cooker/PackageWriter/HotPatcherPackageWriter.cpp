@@ -5,8 +5,13 @@
 #include "AssetRegistry/IAssetRegistry.h"
 #include "AssetRegistry/AssetRegistryState.h"
 #include "Async/Async.h"
+#include "Misc/PathViews.h"
+#include "Serialization/CompactBinarySerialization.h"
 #include "Serialization/LargeMemoryWriter.h"
 #include "UObject/SavePackage.h"
+#if WITH_IO_STORE_SUPPORT
+#include "PackageStoreOptimizer.h"
+#endif
 
 void FHotPatcherPackageWriter::Initialize(const FCookInfo& Info){}
 
@@ -20,6 +25,11 @@ void FHotPatcherPackageWriter::AddToExportsSize(int64& ExportsSize)
 void FHotPatcherPackageWriter::BeginPackage(const FBeginPackageInfo& Info)
 {
 	TPackageWriterToSharedBuffer<ICookedPackageWriter>::BeginPackage(Info);
+	FScopeLock Lock(&OplogLock);
+	FOplogPackageInfo& PackageInfo = Oplog.FindOrAdd(Info.PackageName);
+	PackageInfo.PackageName = Info.PackageName;
+	PackageInfo.PackageDataChunks.Reset();
+	PackageInfo.BulkDataChunks.Reset();
 }
 
 void FHotPatcherPackageWriter::BeginCook(
@@ -32,7 +42,78 @@ void FHotPatcherPackageWriter::EndCook(
 #if UE_VERSION_NEWER_THAN(5,1,1)
 		const FCookInfo& Info
 #endif
-){}
+)
+{
+#if UE_VERSION_NEWER_THAN(5,1,1)
+	// Only required when IoStore containers will be generated from the loose files.
+	if (MetadataDirectoryPath.IsEmpty())
+	{
+		return;
+	}
+
+	FScopeLock Lock(&OplogLock);
+
+	TArray<const FOplogPackageInfo*> SortedPackages;
+	SortedPackages.Reserve(Oplog.Num());
+	for (const TPair<FName, FOplogPackageInfo>& Pair : Oplog)
+	{
+		SortedPackages.Add(&Pair.Value);
+	}
+	Algo::Sort(SortedPackages,
+		[](const FOplogPackageInfo* A, const FOplogPackageInfo* B)
+	{
+		return A->PackageName.LexicalLess(B->PackageName);
+	});
+
+	FCbWriter ManifestWriter;
+	ManifestWriter.BeginObject();
+	ManifestWriter.BeginObject("oplog");
+	ManifestWriter.BeginArray("entries");
+	for (const FOplogPackageInfo* Package : SortedPackages)
+	{
+		WriteOplogEntry(ManifestWriter, *Package);
+	}
+	ManifestWriter.EndArray();
+	ManifestWriter.EndObject();
+	ManifestWriter.EndObject();
+
+	const FString PackageStoreManifestFilePath = FPaths::Combine(MetadataDirectoryPath, TEXT("packagestore.manifest"));
+	IFileManager::Get().MakeDirectory(*FPaths::GetPath(PackageStoreManifestFilePath), true);
+	TUniquePtr<FArchive> Ar(IFileManager::Get().CreateFileWriter(*PackageStoreManifestFilePath));
+	if (Ar)
+	{
+		SaveCompactBinary(*Ar, ManifestWriter.Save());
+		UE_LOG(LogTemp, Log, TEXT("Saved package store manifest to '%s' (%d entries)"), *PackageStoreManifestFilePath, SortedPackages.Num());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to save package store manifest file '%s'"), *PackageStoreManifestFilePath);
+	}
+
+	// Generate ScriptObjects.bin for the IoStore commandlet.
+	// FZenStoreWriter does this in EndCook() via FPackageStoreOptimizer; we replicate it here
+	// so the -run=IoStore commandlet can load it via -ScriptObjects=<path> when there is no ZenStoreClient.
+#if WITH_IO_STORE_SUPPORT
+	{
+		FPackageStoreOptimizer PackageStoreOptimizer;
+		PackageStoreOptimizer.Initialize();
+		FIoBuffer ScriptObjectsBuffer = PackageStoreOptimizer.CreateScriptObjectsBuffer();
+
+		const FString ScriptObjectsFilePath = FPaths::Combine(MetadataDirectoryPath, TEXT("ScriptObjects.bin"));
+		TUniquePtr<FArchive> ScriptObjectsAr(IFileManager::Get().CreateFileWriter(*ScriptObjectsFilePath));
+		if (ScriptObjectsAr)
+		{
+			ScriptObjectsAr->Serialize(const_cast<uint8*>(ScriptObjectsBuffer.Data()), ScriptObjectsBuffer.DataSize());
+			UE_LOG(LogTemp, Log, TEXT("Saved script objects to '%s'"), *ScriptObjectsFilePath);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to save script objects file '%s'"), *ScriptObjectsFilePath);
+		}
+	}
+#endif
+#endif
+}
 
 // void FHotPatcherPackageWriter::Flush()
 // {
@@ -274,8 +355,8 @@ TFuture<FMD5Hash> FHotPatcherPackageWriter::AsyncSaveOutputFiles(FRecord& Record
 
 FDateTime FHotPatcherPackageWriter::GetPreviousCookTime() const
 {
-	FString MetadataDirectoryPath = FPaths::ProjectDir() / TEXT("Metadata");
-	const FString PreviousAssetRegistry = FPaths::Combine(MetadataDirectoryPath, GetDevelopmentAssetRegistryFilename());
+	FString PreviousMetadataPath = FPaths::ProjectDir() / TEXT("Metadata");
+	const FString PreviousAssetRegistry = FPaths::Combine(PreviousMetadataPath, GetDevelopmentAssetRegistryFilename());
 	return IFileManager::Get().GetTimeStamp(*PreviousAssetRegistry);
 }
 
@@ -287,7 +368,68 @@ void FHotPatcherPackageWriter::CommitPackageInternal(FPackageRecord&& Record,
 	if (Info.Status == ECommitStatus::Success)
 	{
 		CookedHash = AsyncSave(InRecord, Info);
+		UpdateManifest(InRecord);
 	}
+}
+
+void FHotPatcherPackageWriter::UpdateManifest(FRecord& Record)
+{
+	FScopeLock Lock(&OplogLock);
+	for (const FPackageWriterRecords::FWritePackage& Package : Record.Packages)
+	{
+		FOplogPackageInfo* PackageInfo = Oplog.Find(Package.Info.PackageName);
+		check(PackageInfo);
+		FOplogChunkInfo& ChunkInfo = PackageInfo->PackageDataChunks.AddDefaulted_GetRef();
+		ChunkInfo.ChunkId = Package.Info.ChunkId;
+		FStringView RelativePathView;
+		if (!FPathViews::TryMakeChildPathRelativeTo(Package.Info.LooseFilePath, OutputPath, RelativePathView))
+		{
+			// Fallback: if the loose path is not under OutputPath, store the full path so the
+			// IoStore tool can still resolve the file when joined against the cooked directory.
+			RelativePathView = Package.Info.LooseFilePath;
+		}
+		ChunkInfo.RelativeFileName = RelativePathView;
+	}
+	for (const FPackageWriterRecords::FBulkData& BulkData : Record.BulkDatas)
+	{
+		FOplogPackageInfo* PackageInfo = Oplog.Find(BulkData.Info.PackageName);
+		check(PackageInfo);
+		FOplogChunkInfo& ChunkInfo = PackageInfo->BulkDataChunks.AddDefaulted_GetRef();
+		ChunkInfo.ChunkId = BulkData.Info.ChunkId;
+		FStringView RelativePathView;
+		if (!FPathViews::TryMakeChildPathRelativeTo(BulkData.Info.LooseFilePath, OutputPath, RelativePathView))
+		{
+			RelativePathView = BulkData.Info.LooseFilePath;
+		}
+		ChunkInfo.RelativeFileName = RelativePathView;
+	}
+}
+
+void FHotPatcherPackageWriter::WriteOplogEntry(FCbWriter& Writer, const FOplogPackageInfo& PackageInfo)
+{
+	Writer.BeginObject();
+	Writer.BeginObject("packagestoreentry");
+	Writer << "packagename" << PackageInfo.PackageName;
+	Writer.EndObject();
+	Writer.BeginArray("packagedata");
+	for (const FOplogChunkInfo& ChunkInfo : PackageInfo.PackageDataChunks)
+	{
+		Writer.BeginObject();
+		Writer << "id" << ChunkInfo.ChunkId;
+		Writer << "filename" << ChunkInfo.RelativeFileName;
+		Writer.EndObject();
+	}
+	Writer.EndArray();
+	Writer.BeginArray("bulkdata");
+	for (const FOplogChunkInfo& ChunkInfo : PackageInfo.BulkDataChunks)
+	{
+		Writer.BeginObject();
+		Writer << "id" << ChunkInfo.ChunkId;
+		Writer << "filename" << ChunkInfo.RelativeFileName;
+		Writer.EndObject();
+	}
+	Writer.EndArray();
+	Writer.EndObject();
 }
 
 /** Version of the superclass's per-package record that includes our class-specific data. */

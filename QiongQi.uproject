@@ -26,6 +26,10 @@
 		{
 			"Name": "HotPatcher",
 			"Enabled": true
+		},
+		{
+			"Name": "RuntimeFilesDownloader",
+			"Enabled": true
 		}
 	]
 }

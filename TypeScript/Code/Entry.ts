@@ -12,6 +12,9 @@ import { I18NManager } from "./Module/I18N/I18NManager"
 import { CacheManager } from "./Module/Player/CacheManager"
 import { ConfigManager } from "./Module/Config/ConfigManager"
 import { ImageLoaderManager } from "./Module/Resource/ImageLoaderManager"
+import { UIUpdateView } from "./Game/UI/UIUpdate/UIUpdateView"
+import { Define } from '../Mono/Define';
+import { ServerConfigManager } from './Module/Update/ServerConfigManager';
 
 export class Entry 
 {  
@@ -28,21 +31,40 @@ export class Entry
             ManagerProvider.registerManager(TimerManager);
             ManagerProvider.registerManager(CacheManager);
 
-            ManagerProvider.registerManager(ConfigManager);
-            // 启动时全量加载配置 JSON 原始数据，业务访问时再惰性反序列化
-            await ConfigManager.instance.loadAsync();
-
-            ManagerProvider.registerManager(ImageLoaderManager);
+            const cm = ManagerProvider.registerManager(ConfigManager);
 
             ManagerProvider.registerManager(I18NManager);
             ManagerProvider.registerManager(UIManager);
-
-            ManagerProvider.registerManager(SceneManager);
-
-            await SceneManager.instance.switchScene(HomeScene)
+            Log.info('IsEditor'+Define.IsEditor)
+            if (!Define.IsEditor && (Define.Networked||Define.ForceUpdate)) {
+                await cm.loadAsync();
+                ManagerProvider.registerManager(ServerConfigManager);
+                // === 阶段 B: 热更新检查 ===
+                await UIManager.instance.openWindow<UIUpdateView, VoidFunction>(
+                    UIUpdateView, UIUpdateView.PrefabPath, Entry.startGame,
+                );
+            } else {
+                // 编辑器中直接进入游戏
+                Entry.startGameAsync(false);
+            }
         } catch (e) {
             Log.error(e);
         }
+    }
+
+    private static async startGame(){
+        Entry.startGameAsync(true);
+    }
+
+    /**
+     * 更新完成后, 注册剩余 Manager 并进入游戏
+     */
+    private static async startGameAsync(configInit: boolean)
+    {
+        if(!configInit) await ConfigManager.instance.loadAsync();
+        ManagerProvider.registerManager(ImageLoaderManager);
+        ManagerProvider.registerManager(SceneManager);
+        await SceneManager.instance.switchScene(HomeScene)
     }
 }  
 

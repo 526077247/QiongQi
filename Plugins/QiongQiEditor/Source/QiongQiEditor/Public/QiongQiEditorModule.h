@@ -25,6 +25,9 @@ public:
     /** 菜单点击入口：复制选中节点相对根节点的路径 */
     void ExecuteCopyRelativePath();
 
+    /** 菜单点击入口：一键将所有 Atlas 目录下 Sprite 的 AtlasGroup 设置为同级 Atlas.uasset（缺失自动创建） */
+    void ExecuteSetAllAtlasGroup();
+
 private:
     /** 引擎完全初始化后（level editor 已启动）执行注册 */
     void OnEngineInitComplete();

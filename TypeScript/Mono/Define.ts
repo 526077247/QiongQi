@@ -20,7 +20,21 @@ export class Define {
 
     public static readonly MinRepeatedTimerInterval: number = 100;
 
-    public static readonly Debug = true;
+    /**
+     * 是否编辑器环境：由 C++ 层 QiongQiGameInstance::IsEditorEnvironment()（GIsEditor）获取，打包后为 false。
+     * 用于仅在编辑器中生效的逻辑（如编辑器内调试输出、跳过正式更新流程等）。
+     */
+    public static get IsEditor(): boolean {
+        return Define.Game ? Define.Game.IsEditorEnvironment() : false;
+    }
+
+    /**
+     * 是否调试模式：编辑器恒为 true；打包版由打包面板固化的 IsDebugPackage 决定（Debug 包=true，Release 包=false）。
+     * 用于调试逻辑（记忆服务器/切换服务器等）。
+     */
+    public static get Debug(): boolean {
+        return Define.IsEditor || (Define.Game ? Define.Game.IsDebugPackage() : false);
+    }
 
     public static get Networked(): boolean
     {
@@ -29,7 +43,8 @@ export class Define {
         return Status !== 1;
     }
 
-    public static readonly ForceUpdate = false;
+    /**强制更新，不能跳过？ */
+    public static readonly ForceUpdate = true;
 
     /** SH 服标记：由 UpdateIsSHProcess 依据 CDN 更新列表自动设置 */
     public static isSH: boolean = false;

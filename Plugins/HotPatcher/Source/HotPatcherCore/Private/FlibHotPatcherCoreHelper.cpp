@@ -363,7 +363,12 @@ FSavePackageContext* UFlibHotPatcherCoreHelper::CreateSaveContext(const ITargetP
 	else
 	{
 		// FAsyncIODelete AsyncIODelete{ResolvedProjectPath};
-		PackageWriter = new FHotPatcherPackageWriter;// new FLooseCookedPackageWriter(ResolvedProjectPath, ResolvedMetadataPath, TargetPlatform,AsyncIODelete,FPackageNameCache{},IPluginManager::Get().GetEnabledPlugins());
+		// OutputPath 必须等于 loose 文件沙箱根（不含项目名），这样 manifest 中的相对路径才会是
+		// {ProjectName}/... 或 Engine/...，与 CreateIoStoreWorker 传出的 -CookedDirectory 基准一致。
+		// 注意：LooseFilePath 经 GetAssetCookedSavePath 转成绝对路径，这里也必须转绝对，否则前缀匹配失败。
+		FString PackageWriterOutputPath = FPaths::ConvertRelativePathToFull(FPaths::Combine(OverrideCookedDir, PlatformString));
+		FPaths::NormalizeFilename(PackageWriterOutputPath);
+		PackageWriter = new FHotPatcherPackageWriter(PackageWriterOutputPath, ResolvedMetadataPath);// new FLooseCookedPackageWriter(ResolvedProjectPath, ResolvedMetadataPath, TargetPlatform,AsyncIODelete,FPackageNameCache{},IPluginManager::Get().GetEnabledPlugins());
 		WriterDebugName = TEXT("DirectoryWriter");
 	}
 // #if WITH_UE5_BY_COOKCMDLT

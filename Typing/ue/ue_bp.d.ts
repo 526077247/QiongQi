@@ -172,4 +172,18 @@ declare module "ue" {
     }
 
 // __TYPE_DECL_END
+// __TYPE_DECL_START: 1CC26D4A4CE336E55ED4419F7F0754B7
+    namespace Game.AssetsPackage.UI.UICommon.Prefabs.UIMsgBoxWin {
+        class UIMsgBoxWin_C extends UE.UserWidget {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): UIMsgBoxWin_C;
+            static Load(InName: string): UIMsgBoxWin_C;
+        
+            __tid_UIMsgBoxWin_C_0__: boolean;
+        }
+        
+    }
+
+// __TYPE_DECL_END
 }

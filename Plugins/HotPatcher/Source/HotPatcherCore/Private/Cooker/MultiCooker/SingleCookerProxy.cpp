@@ -79,9 +79,12 @@ void USingleCookerProxy::Init(FPatcherEntitySettingBase* InSetting)
 	}
 	else
 	{
+		// UE5.5 下启用 IoStore 时若使用 FZenStoreWriter 作为 PackageWriter，
+		// 在独立 cook 流程中会因容器环境未初始化触发 "Attempting to call an unbound TFunction!" 崩溃。
+		// IoStore 容器由 CreateIoStoreWorker 用引擎 -run=IoStore commandlet 生成，cook 阶段统一使用 loose writer。
 		PlatformSavePackageContexts = UFlibHotPatcherCoreHelper::CreatePlatformsPackageContexts(
 			GetSettingObject()->CookTargetPlatforms,
-			GetSettingObject()->IoStoreSettings.bIoStore,
+			false,
 			GetSettingObject()->GetStorageCookedAbsDir()
 			);
 	}
@@ -493,6 +496,25 @@ void USingleCookerProxy::Shutdown()
 			FFileHelper::SaveStringToFile(SerializePackageSetToString(LoadedOtherCookerAssets),*FPaths::Combine(StorageMetadataAbsDir,TEXT("OtherCookerAssetPackageSet.json")));
 		}
 	}
+#if WITH_PACKAGE_CONTEXT
+	if (GetSettingObject()->IoStoreSettings.bIoStore)
+	{
+		// loose writer 只有在 EndCook 时才会写出 packagestore.manifest，IoStore 容器生成依赖该文件。
+		// 注意：HotPatcher 的 cook 循环不会自动调用 EndCook，必须在此处手动触发。
+		for (auto& PlatformContextPair : GetPlatformSavePackageContexts())
+		{
+			// FSavePackageContext::PackageWriter 是 IPackageWriter*，这里实际是 ICookedPackageWriter
+			if (PlatformContextPair.Value.IsValid() && PlatformContextPair.Value->PackageWriter)
+			{
+				ICookedPackageWriter* CookedPackageWriter = static_cast<ICookedPackageWriter*>(PlatformContextPair.Value->PackageWriter);
+				ICookedPackageWriter::FCookInfo CookInfo;
+				CookInfo.CookMode = ICookedPackageWriter::FCookInfo::CookByTheBookMode;
+				CookInfo.bFullBuild = true;
+				CookedPackageWriter->EndCook(CookInfo);
+			}
+		}
+	}
+#endif
 	BulkDataManifest();
 	IoStoreManifest();
 	bAlready = false;

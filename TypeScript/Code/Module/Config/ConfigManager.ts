@@ -52,7 +52,7 @@ export class ConfigManager implements IManager{
             name = type.name;
 
         if (this.configCache.has(type)) {
-            return this.configCache.get(type) as T;
+            return this.configCache.get(type) as unknown as T;
         }
 
         const rawData = this.rawConfigBytes.get(name);
