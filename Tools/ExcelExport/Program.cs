@@ -31,11 +31,11 @@ namespace QiongQi
                             ExcelExporter.Export(true);
                             return 0;
                         }
-                    //case AppType.AttrExporter:
-                    //    {
-                    //        AttrExporter.Export();
-                    //        return 0;
-                    //    }
+                    case AppType.AttrExporter:
+                        {
+                            AttrExporter.Export();
+                            return 0;
+                        }
                     case AppType.I18NExporter:
                         {
                             ExcelExporter.ExportI18N();
@@ -44,7 +44,7 @@ namespace QiongQi
                     case AppType.ExporterAll:
                         {
                             ExcelExporter.Export();
-                            //AttrExporter.Export();
+                            AttrExporter.Export();
                             ExcelExporter.ExportI18N();
                             return 0;
                         }
