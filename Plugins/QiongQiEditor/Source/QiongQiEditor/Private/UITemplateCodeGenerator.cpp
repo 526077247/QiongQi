@@ -361,7 +361,7 @@ FString FUITemplateCodeGenerator::BuildTemplate(const FString& FileName, bool bI
     Lines.Add(FString::Printf(TEXT("import { IOnEnable } from \"%sModule/UI/IOnEnable\";"), *ImportPrefix));
     if (bIsView)
     {
-        Lines.Add(FString::Printf(TEXT("import { UIBaseView, uiView } from \"%sModule/UI/UIBaseView\";"), *ImportPrefix));
+        Lines.Add(FString::Printf(TEXT("import { UIBaseView, UIView } from \"%sModule/UI/UIBaseView\";"), *ImportPrefix));
     }
     else
     {
@@ -406,7 +406,7 @@ FString FUITemplateCodeGenerator::BuildTemplate(const FString& FileName, bool bI
     // ---- 类声明 ----
     if (bIsView)
     {
-        Lines.Add(FString::Printf(TEXT("@uiView(\"%s\")"), *FileName));
+        Lines.Add(FString::Printf(TEXT("@UIView(\"%s\")"), *FileName));
     }
     Lines.Add(FString::Printf(TEXT("export class %s extends %s implements IOnCreate, IOnEnable {"),
         *FileName, bIsView ? TEXT("UIBaseView") : TEXT("UIBaseContainer")));

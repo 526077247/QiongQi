@@ -1,4 +1,4 @@
-import { UIBaseView, uiView } from "../../../Module/UI/UIBaseView";
+import { UIBaseView, UIView } from "../../../Module/UI/UIBaseView";
 import { IOnCreate } from "../../../Module/UI/IOnCreate";
 import { IOnEnable } from "../../../Module/UI/IOnEnable";
 import { UIProgressBar } from "../../../Module/UIComponent/UIProgressBar";
@@ -18,7 +18,7 @@ import { BundleUpdateProcess } from "../../../Module/Update/UpdateProcess/Bundle
  *  - Over/Fail/Quit：回退当前 Code，回调进入游戏
  * onEnable 的 func 参数由 UIManager.openWindow 的 p1 透传（进入游戏回调）。
  */
-@uiView("UIUpdateView")
+@UIView("UIUpdateView")
 export class UIUpdateView extends UIBaseView implements IOnCreate, IOnEnable<() => void> {
 
     public static readonly PrefabPath: string = "/Game/AssetsPackage/UI/UILoading/Prefabs/UILoadingView.UILoadingView_C";
