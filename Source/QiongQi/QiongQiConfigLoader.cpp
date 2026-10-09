@@ -13,11 +13,11 @@ namespace
 	}
 }
 
-FString UQiongQiConfigLoader::GetConfigJsonFileNames()
+FString UQiongQiConfigLoader::GetConfigFileNames()
 {
 	TArray<FString> Result;
 	const FString ConfigDir = GetConfigDir();
-	IFileManager::Get().FindFiles(Result, *(ConfigDir / TEXT("*.json")), true, false);
+	IFileManager::Get().FindFiles(Result, *(ConfigDir / TEXT("*.bytes")), true, false);
 	UE_LOG(LogTemp, Warning, TEXT("[ConfigLoader] FindFiles found %d files in %s"), Result.Num(), *ConfigDir);
 	TArray<FString> Names;
 	for (FString& Name : Result)
@@ -27,10 +27,10 @@ FString UQiongQiConfigLoader::GetConfigJsonFileNames()
 	return FString::Join(Names, TEXT("|"));
 }
 
-FString UQiongQiConfigLoader::LoadConfigJson(const FString& FileName)
+FArrayBufferValue UQiongQiConfigLoader::LoadConfigBytes(const FString& FileName)
 {
-	FString Content;
-	const FString FilePath = GetConfigDir() / (FileName + TEXT(".json"));
-	FFileHelper::LoadFileToString(Content, *FilePath);
-	return Content;
+	FArrayBufferValue Result;
+	const FString FilePath = GetConfigDir() / (FileName + TEXT(".bytes"));
+	FFileHelper::LoadFileToArray(Result.Data, *FilePath);
+	return Result;
 }

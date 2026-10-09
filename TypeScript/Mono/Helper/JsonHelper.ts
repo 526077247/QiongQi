@@ -30,6 +30,22 @@ export class JsonHelper {
         return ignoreSet ? ignoreSet.has(propName) : false;
     }
     /**
+     * BigInt 是否在安全 number 范围内
+     * @param value BigInt 值
+     */
+    private static isSafeNumberRange(value: bigint): boolean {
+        return value >= BigInt(Number.MIN_SAFE_INTEGER) && value <= BigInt(Number.MAX_SAFE_INTEGER);
+    }
+
+    /**
+     * 序列化 BigInt：安全范围内转 number，否则转字符串
+     * @param value BigInt 值
+     */
+    private static serializeBigInt(value: bigint): any {
+        return this.isSafeNumberRange(value) ? Number(value) : value.toString();
+    }
+
+    /**
      * 序列化对象为 JSON 字符串
      * @param obj 要序列化的对象
      * @param pretty 是否格式化输出
@@ -37,10 +53,13 @@ export class JsonHelper {
      */
     public static toJson(obj: any, pretty: boolean = false): string {
         const serialized = this.serialize(obj);
-        
+        // 兜底：序列化过程中遗漏的 BigInt，安全范围内转 number，否则转字符串
+        const replacer = (_key: string, value: any) =>
+            typeof value === 'bigint' ? this.serializeBigInt(value) : value;
+
         return !!pretty 
-            ? JSON.stringify(serialized, null, 2)
-            : JSON.stringify(serialized);
+            ? JSON.stringify(serialized, replacer, 2)
+            : JSON.stringify(serialized, replacer);
     }
     
     /**
@@ -50,6 +69,10 @@ export class JsonHelper {
      * @returns 序列化后的对象
      */
     public static serialize(obj: any, path: string = ''): any {
+        // 处理 BigInt（typeof 为 'bigint'，JSON.stringify 无法序列化）
+        if (typeof obj === 'bigint') {
+            return this.serializeBigInt(obj);
+        }
         // 处理原始类型
         if (obj === null || typeof obj !== 'object') {
             return obj;
@@ -64,13 +87,13 @@ export class JsonHelper {
         
         // 处理 Date 对象
         if (obj instanceof Date) {
-            return { _type: 'Date', _value: obj.toISOString() };
+            return { _t: 'Date', _value: obj.toISOString() };
         }
         
         // 处理 Map 对象
         if (obj instanceof Map) {
             return {
-                _type: 'Map',
+                _t: 'Map',
                 _value: Array.from(obj.entries()).map(([key, value]) => [
                     this.serialize(key, `${path}.key`),
                     this.serialize(value, `${path}.value`)
@@ -81,7 +104,7 @@ export class JsonHelper {
         // 处理 Set 对象
         if (obj instanceof Set) {
             return {
-                _type: 'Set',
+                _t: 'Set',
                 _value: Array.from(obj.values()).map((value, i) => 
                     this.serialize(value, `${path}[${i}]`)
                 )
@@ -94,12 +117,12 @@ export class JsonHelper {
             const hasIgnore = JsonHelper.ignoreProperties.has(className);
             // 获取可序列化的属性
             const serializedObj: Record<string, any> = {
-                _type: className
+                _t: className
             };
             
             // 序列化所有自有属性
             for (const key in obj) {
-                if (obj.hasOwnProperty(key) && (!hasIgnore||!JsonHelper.isIgnoreProperty(className,key))) {
+                if (obj.hasOwnProperty(key) && obj[key] != null && (!hasIgnore||!JsonHelper.isIgnoreProperty(className,key))) {
                     serializedObj[key] = this.serialize(obj[key], `${path}.${key}`);
                 }
             }
@@ -109,7 +132,7 @@ export class JsonHelper {
                 const custom = obj.toJSON();
                 return {
                     ...this.serialize(custom, `${path}.toJSON()`),
-                    _type: className
+                    _t: className
                 };
             }
             
@@ -119,7 +142,7 @@ export class JsonHelper {
         // 处理普通对象
         const result: Record<string, any> = {};
         for (const key in obj) {
-            if (obj.hasOwnProperty(key)) {
+            if (obj.hasOwnProperty(key) && obj[key] != null) {
                 result[key] = this.serialize(obj[key], `${path}.${key}`);
             }
         }
@@ -131,7 +154,7 @@ export class JsonHelper {
      * @param json JSON 字符串
      * @returns 反序列化后的对象
      */
-    public static fromJson<T>(type: new (...args:any[]) => T, json: string) {
+    public static fromJson<T>(type: new (...args:any[]) => T, json: string): T {
         if(string.isNullOrEmpty(json)) return null
         const parsed = JSON.parse(json);
         return this.deserialize(type, parsed);
@@ -143,7 +166,7 @@ export class JsonHelper {
      * @param path 当前路径（用于调试）
      * @returns 反序列化后的对象
      */
-    public static deserialize<T>(type: new (...args:any[]) => T,data: any, path: string = ''): any {
+    public static deserialize<T>(type: new (...args:any[]) => T,data: any, path: string = ''): T {
         // 处理原始类型
         if (data === null || typeof data !== 'object') {
             return data;
@@ -153,14 +176,14 @@ export class JsonHelper {
         if (Array.isArray(data)) {
             return data.map((item, i) => 
                 this.deserialize(null, item, `${path}[${i}]`)
-            );
+            ) as T;
         }
         // 处理特殊类型
-        if ('_type' in data || !!type) {
-            const typeNmae = data._type;
+        if ('_t' in data || !!type) {
+            const typeNmae = data._t;
             // 处理 Date
             if (typeNmae === 'Date') {
-                return new Date(data._value);
+                return new Date(data._value) as T;
             }
             
             // 处理 Map
@@ -170,16 +193,16 @@ export class JsonHelper {
                         this.deserialize(null, key, `${path}.key`),
                         this.deserialize(null, value, `${path}.value`)
                     ])
-                );
+                ) as T;
             }
-            
+
             // 处理 Set
             if (typeNmae === 'Set') {
                 return new Set(
                     (data._value as any[]).map((value, i) => 
                         this.deserialize(null, value, `${path}[${i}]`)
                     )
-                );
+                ) as T;
             }
             let hasIgnore = false;
             // 处理注册的自定义类
@@ -190,7 +213,7 @@ export class JsonHelper {
             const instance = new type();
             // 反序列化属性
             for (const key in data) {
-                if (key !== '_type' && data.hasOwnProperty(key) && (!hasIgnore||!JsonHelper.isIgnoreProperty(typeNmae, key))) {
+                if (key !== '_t' && data.hasOwnProperty(key) && (!hasIgnore||!JsonHelper.isIgnoreProperty(typeNmae, key))) {
                     (instance as any)[key] = this.deserialize(null, data[key], `${path}.${key}`);
                 }
             }
@@ -209,7 +232,7 @@ export class JsonHelper {
                 result[key] = this.deserialize(null, data[key], `${path}.${key}`);
             }
         }
-        return result;
+        return result as T;
     }
 }
 

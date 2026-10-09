@@ -1,17 +1,23 @@
 import { Log } from "../../../Mono/Module/Log/Log";
+import { ProtoType, ProtoMember } from "../../../Mono/Helper/ProtoHelper";
 
 
+@ProtoType("I18NConfig")
 export class I18NConfig {
     /** Id */
-    public id: number
+    @ProtoMember(1, "int32")
+    public id: number = 0
     /** 内容  */
+    @ProtoMember(3, "string")
     public value: string
 }
 
+@ProtoType("I18NConfigCategory")
 export class I18NConfigCategory{
 
     private dict = new Map<number, I18NConfig>();
 
+    @ProtoMember(1, [I18NConfig])
     private list:I18NConfig[] = [];
 
     public endInit()

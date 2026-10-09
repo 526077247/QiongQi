@@ -26902,18 +26902,6 @@ declare module "ue" {
         __tid_ActorComponentInstanceSourceInfo_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.ActorComponentMacros {
-        class ActorComponentMacros_C extends UE.ActorComponent {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): ActorComponentMacros_C;
-            static Load(InName: string): ActorComponentMacros_C;
-        
-            __tid_ActorComponentMacros_C_0__: boolean;
-        }
-        
-    }
-
     class ActorContainerPath {
         constructor();
         constructor(ContainerGuids: TArray<UE.Guid>);
@@ -28322,18 +28310,6 @@ declare module "ue" {
         __tid_ActorLocatorFragmentResolveParameter_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.ActorMacros {
-        class ActorMacros_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): ActorMacros_C;
-            static Load(InName: string): ActorMacros_C;
-        
-            __tid_ActorMacros_C_0__: boolean;
-        }
-        
-    }
-
     namespace Engine.PythonTypes {
         class ActorOnClickedSignature__PythonCallable extends UE.PythonCallableForDelegate {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -43109,29 +43085,6 @@ declare module "ue" {
         __tid_AnimGraphNode_RigidBody_0__: boolean;
     }
     
-    class AnimNode_RigLogic extends UE.AnimNode_Base {
-        constructor();
-        constructor(AnimSequence: UE.PoseLink, LODThreshold: number);
-        AnimSequence: UE.PoseLink;
-        LODThreshold: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AnimNode_RigLogic_0__: boolean;
-    }
-    
-    class AnimGraphNode_RigLogic extends UE.AnimGraphNode_Base {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Node: UE.AnimNode_RigLogic;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): AnimGraphNode_RigLogic;
-        static Load(InName: string): AnimGraphNode_RigLogic;
-    
-        __tid_AnimGraphNode_RigLogic_0__: boolean;
-    }
-    
     class AnimGraphNode_Root extends UE.AnimGraphNode_Base {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Node: UE.AnimNode_Root;
@@ -50845,32 +50798,6 @@ declare module "ue" {
         __tid_AssetImportTestFunctions_0__: boolean;
     }
     
-    class AssetImportTime {
-        constructor();
-        constructor(path: string, time: string);
-        path: string;
-        time: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AssetImportTime_0__: boolean;
-    }
-    
-    class AssetInfo {
-        constructor();
-        constructor(path: string, version: string);
-        path: string;
-        version: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AssetInfo_0__: boolean;
-    }
-    
     class AssetLocatorFragment {
         constructor();
         constructor(Path: UE.TopLevelAssetPath);
@@ -51049,34 +50976,6 @@ declare module "ue" {
         static Load(InName: string): AssetManagerSettings;
     
         __tid_AssetManagerSettings_0__: boolean;
-    }
-    
-    class SemanticTags {
-        constructor();
-        constructor(Asset_Type: string);
-        Asset_Type: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_SemanticTags_0__: boolean;
-    }
-    
-    class AssetMetaDataJson {
-        constructor();
-        constructor(Id: string, Categories: TArray<string>, SemanticTags: UE.SemanticTags, Displacement_Bias_Tier1: number, Displacement_Scale_Tier1: number);
-        Id: string;
-        Categories: TArray<string>;
-        SemanticTags: UE.SemanticTags;
-        Displacement_Bias_Tier1: number;
-        Displacement_Scale_Tier1: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_AssetMetaDataJson_0__: boolean;
     }
     
     class ISMComponentDescriptorBase {
@@ -60032,19 +59931,6 @@ declare module "ue" {
         __tid_BehaviorTreeTypes_0__: boolean;
     }
     
-    class BifrostNodeInfo {
-        constructor();
-        constructor(Name: string, Value: string);
-        Name: string;
-        Value: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_BifrostNodeInfo_0__: boolean;
-    }
-    
     enum EBinariesPatchFeature { None, Count, EBinariesPatchFeature_MAX, __typeKeyDoNoAccess}
     class PakEncryptSettings {
         constructor();
@@ -60059,7 +59945,7 @@ declare module "ue" {
         __tid_PakEncryptSettings_0__: boolean;
     }
     
-    enum ETargetPlatform { None, AllPlatforms, Android, Android_ASTC, Android_DXT, Android_ETC2, AndroidClient, Android_ASTCClient, Android_DXTClient, Android_ETC2Client, Android_Multi, Android_MultiClient, IOS, IOSClient, Linux, LinuxEditor, LinuxServer, LinuxClient, LinuxArm64, LinuxArm64Server, LinuxArm64Client, Mac, MacEditor, MacServer, MacClient, TVOS, TVOSClient, Windows, WindowsEditor, WindowsServer, WindowsClient, ETargetPlatform_MAX, __typeKeyDoNoAccess}
+    enum ETargetPlatform { None, AllPlatforms, Android, Android_ASTC, Android_DXT, Android_ETC2, AndroidClient, Android_ASTCClient, Android_DXTClient, Android_ETC2Client, Android_Multi, Android_MultiClient, Linux, LinuxEditor, LinuxServer, LinuxClient, LinuxArm64, LinuxArm64Server, LinuxArm64Client, Windows, WindowsEditor, WindowsServer, WindowsClient, ETargetPlatform_MAX, __typeKeyDoNoAccess}
     class PlatformBasePak {
         constructor();
         constructor(Platform: UE.ETargetPlatform, Paks: TArray<UE.FilePath>);
@@ -63359,16 +63245,6 @@ declare module "ue" {
         __tid_BoneID_0__: boolean;
     }
     
-    class BoneIndexControlAttributeMapping {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_BoneIndexControlAttributeMapping_0__: boolean;
-    }
-    
     class BoneMaskFilter extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         BlendPoses: TArray<UE.InputBlendPose>;
@@ -64363,55 +64239,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_BrickCutterDataflowNode_0__: boolean;
-    }
-    
-    class WebJSCallbackBase {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_WebJSCallbackBase_0__: boolean;
-    }
-    
-    class WebJSFunction extends UE.WebJSCallbackBase {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_WebJSFunction_0__: boolean;
-    }
-    
-    class BrowserBinding extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        DialogFailCallback_EditorOnly(DialogJSCallback: UE.WebJSFunction) : void;
-        DialogSuccessCallback_EditorOnly(DialogJSCallback: UE.WebJSFunction) : void;
-        DragStarted_EditorOnly(ImageUrl: TArray<string>, IDs: TArray<string>, Types: TArray<string>) : void;
-        ExportDataToMSPlugin_EditorOnly(Data: string) : void;
-        GetAuthToken_EditorOnly() : string;
-        GetProjectPath_EditorOnly() : string;
-        Logout_EditorOnly() : void;
-        OnBulkExportMetahumansCallback_EditorOnly(OnBulkExportMetahumansJSCallback: UE.WebJSFunction) : void;
-        OnDropDiscardedCallback_EditorOnly(OnDropDiscardedJSCallback: UE.WebJSFunction) : void;
-        OnDroppedCallback_EditorOnly(OnDroppedJSCallback: UE.WebJSFunction) : void;
-        OnExitCallback_EditorOnly(OnExitJSCallback: UE.WebJSFunction) : void;
-        OpenExternalUrl_EditorOnly(Url: string) : void;
-        OpenMegascansPluginSettings_EditorOnly() : void;
-        RestartNodeProcess_EditorOnly() : void;
-        SaveAuthToken_EditorOnly(Value: string) : void;
-        SendFailure_EditorOnly(Message: string) : void;
-        SendSuccess_EditorOnly(Value: string) : void;
-        ShowDialog_EditorOnly(Type: string, Url: string) : void;
-        ShowLoginDialog_EditorOnly(LoginUrl: string, ResponseCodeUrl: string) : void;
-        StartNodeProcess_EditorOnly() : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): BrowserBinding;
-        static Load(InName: string): BrowserBinding;
-    
-        __tid_BrowserBinding_0__: boolean;
     }
     
     class BrowseToAssetOverrideSubsystem extends UE.EditorSubsystem {
@@ -68547,6 +68374,16 @@ declare module "ue" {
         __tid_CeilDataflowNode_0__: boolean;
     }
     
+    class PointerToUberGraphFrame {
+        constructor();
+        /**
+         * @deprecated use StaticStruct instead.
+         */
+        static StaticClass(): ScriptStruct;
+        static StaticStruct(): ScriptStruct;
+        __tid_PointerToUberGraphFrame_0__: boolean;
+    }
+    
     class ChannelMapInfo {
         constructor();
         constructor(ControlIndex: number, TotalChannelIndex: number, ChannelIndex: number, ParentControlIndex: number, ChannelTypeName: string, bDoesHaveSpace: boolean, SpaceChannelIndex: number, MaskIndex: number, CategoryIndex: number, ConstraintsIndex: TArray<number>);
@@ -68566,19 +68403,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_ChannelMapInfo_0__: boolean;
-    }
-    
-    class ChannelPackedInfo {
-        constructor();
-        constructor(channel: string, packedType: string);
-        channel: string;
-        packedType: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ChannelPackedInfo_0__: boolean;
     }
     
     class CollisionChaosEventBodyInfo {
@@ -76024,10 +75848,6 @@ declare module "ue" {
         __tid_CompareIntDataflowNode_0__: boolean;
     }
     
-    namespace Niagara.Enums.Comparison.CompareValues {
-        enum CompareValues { "Return Largest", "Return Smallest", CompareValues_MAX, __typeKeyDoNoAccess}
-    }
-
     class CompileAllBlueprintsCommandlet extends UE.Commandlet {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -87605,21 +87425,6 @@ declare module "ue" {
         __tid_CookShadersCommandlet_0__: boolean;
     }
     
-    enum EDirection { Left, Right, Up, Down, Front, Back, EDirection_MAX, __typeKeyDoNoAccess}
-    class CoordinateSystem {
-        constructor();
-        constructor(XAxis: UE.EDirection, YAxis: UE.EDirection, ZAxis: UE.EDirection);
-        XAxis: UE.EDirection;
-        YAxis: UE.EDirection;
-        ZAxis: UE.EDirection;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_CoordinateSystem_0__: boolean;
-    }
-    
     class CopyBonesModifier extends UE.AnimationModifier {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         BonePairs: TArray<UE.BoneReferencePair>;
@@ -94846,51 +94651,6 @@ declare module "ue" {
         
     }
 
-    class DNAAsset extends UE.AssetUserData {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        AssetImportData_EditorOnly: UE.AssetImportData;
-        DnaFileName: string;
-        bKeepDNAAfterInitialization: boolean;
-        MetaData: TMap<string, string>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): DNAAsset;
-        static Load(InName: string): DNAAsset;
-    
-        __tid_DNAAsset_0__: boolean;
-    }
-    
-    class DNAAssetImportUI extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        SkeletalMesh: UE.SkeletalMesh;
-        FileName: string;
-        ResetToDefault_EditorOnly() : void;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): DNAAssetImportUI;
-        static Load(InName: string): DNAAssetImportUI;
-    
-        __tid_DNAAssetImportUI_0__: boolean;
-    }
-    
-    class DNAAssetImportFactory extends UE.Factory {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        ImportUI: UE.DNAAssetImportUI;
-        OriginalImportUI: UE.DNAAssetImportUI;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): DNAAssetImportFactory;
-        static Load(InName: string): DNAAssetImportFactory;
-    
-        __tid_DNAAssetImportFactory_0__: boolean;
-    }
-    
-    class DNAIndexMapping extends UE.AssetUserData {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): DNAIndexMapping;
-        static Load(InName: string): DNAIndexMapping;
-    
-        __tid_DNAIndexMapping_0__: boolean;
-    }
-    
     namespace ControlRig.Python.RigHierarchy.rename_items_PY {
         class do_rename_dialog extends UE.Object {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -96006,11 +95766,6 @@ declare module "ue" {
         __tid_DynamicTextureInstance_0__: boolean;
     }
     
-    namespace ControlRig.Modules.E_SkeletonData {
-        enum E_SkeletonData { "UE5 Mannequin", "UE4 Mannequin", Mixamo, AdvancedSkeleton, HumanIK, mGear, Motive, Vicon, XSens, Paragon, E_MAX, __typeKeyDoNoAccess}
-    }
-
-    enum EActivationFunction { Linear, ReLU, LeakyReLU, Tanh, Sigmoid, EActivationFunction_MAX, __typeKeyDoNoAccess}
     enum EAdManagerDelegate { AMD_ClickedBanner, AMD_UserClosedAd, AMD_MAX, __typeKeyDoNoAccess}
     enum EAILockSource { Animation, Logic, Script, Gameplay, MAX, __typeKeyDoNoAccess}
     enum EAimMode { AimAtTarget, OrientToTarget, MAX, __typeKeyDoNoAccess}
@@ -96034,7 +95789,6 @@ declare module "ue" {
     enum EAppMsgCategory { Warning, Error, Success, Info, EAppMsgCategory_MAX, __typeKeyDoNoAccess}
     enum EAppMsgType { Ok, YesNo, OkCancel, YesNoCancel, CancelRetryContinue, YesNoYesAllNoAll, YesNoYesAllNoAllCancel, YesNoYesAll, EAppMsgType_MAX, __typeKeyDoNoAccess}
     enum EAppReturnType { No, Yes, YesAll, NoAll, Cancel, Ok, Retry, Continue, EAppReturnType_MAX, __typeKeyDoNoAccess}
-    enum EArchetype { Asian, Black, Caucasian, Hispanic, Alien, Other, EArchetype_MAX, __typeKeyDoNoAccess}
     enum EArraySortOrder { Ascending, Descending, EArraySortOrder_MAX, __typeKeyDoNoAccess}
     class EasingComponentData {
         constructor();
@@ -96070,7 +95824,6 @@ declare module "ue" {
     enum EAutoChangeMode { AutoKey, AutoTrack, All, None, EAutoChangeMode_MAX, __typeKeyDoNoAccess}
     enum EAutoExposureMethodUI { AEM_Histogram, AEM_Basic, AEM_Manual, AEM_MAX, __typeKeyDoNoAccess}
     enum EAutoMapChainType { Exact, Fuzzy, Clear, EAutoMapChainType_MAX, __typeKeyDoNoAccess}
-    enum EAutomaticRadius { On, Off, EAutomaticRadius_MAX, __typeKeyDoNoAccess}
     enum EAutoSaveMethod { BackupAndRestore, BackupAndOverwrite, EAutoSaveMethod_MAX, __typeKeyDoNoAccess}
     enum EAutoUVTextureResolution { Resolution16, Resolution32, Resolution64, Resolution128, Resolution256, Resolution512, Resolution1024, Resolution2048, Resolution4096, Resolution8192, EAutoUVTextureResolution_MAX, __typeKeyDoNoAccess}
     enum EAxisList { None, X, Y, Z, Screen, XY, XZ, YZ, XYZ, All, ZRotation, Rotate2D, EAxisList_MAX, __typeKeyDoNoAccess}
@@ -96098,14 +95851,6 @@ declare module "ue" {
     enum ECameraRigLayer { Base, Main, Global, Visual, ECameraRigLayer_MAX, __typeKeyDoNoAccess}
     enum ECameraShakePatternUpdateResultFlags { ApplyAsAbsolute, SkipAutoScale, SkipAutoPlaySpace, Default, ECameraShakePatternUpdateResultFlags_MAX, __typeKeyDoNoAccess}
     enum ECanCreateConnectionResponse { CONNECT_RESPONSE_MAKE, CONNECT_RESPONSE_DISALLOW, CONNECT_RESPONSE_BREAK_OTHERS_A, CONNECT_RESPONSE_BREAK_OTHERS_B, CONNECT_RESPONSE_BREAK_OTHERS_AB, CONNECT_RESPONSE_MAKE_WITH_CONVERSION_NODE, CONNECT_RESPONSE_MAKE_WITH_PROMOTION, CONNECT_RESPONSE_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.CascadeConversion.ECascadeNiagaraOrbitChainMode {
-        enum ECascadeNiagaraOrbitChainMode { Add, Scale, Link, NONE, ECascadeNiagaraOrbitChainMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.CascadeConversion.ECascadeNiagaraTwoVectorChannels {
-        enum ECascadeNiagaraTwoVectorChannels { XY, YZ, XZ, ECascadeNiagaraTwoVectorChannels_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EChannelEditToolAction { NoAction, Add, Copy, Delete, EChannelEditToolAction_MAX, __typeKeyDoNoAccess}
     enum EChannelMaskParameterColor { Red, Green, Blue, Alpha, EChannelMaskParameterColor_MAX, __typeKeyDoNoAccess}
     enum EChaosSoftsSimulationSpace { WorldSpace, ComponentSpace, ReferenceBoneSpace, EChaosSoftsSimulationSpace_MAX, __typeKeyDoNoAccess}
@@ -103057,7 +102802,6 @@ declare module "ue" {
         __tid_EditUVIslandsToolBuilder_0__: boolean;
     }
     
-    enum EDNADataLayer { None, Descriptor, Definition, Behavior, Geometry, GeometryWithoutBlendShapes, MachineLearnedBehavior, RBFBehavior, All, EDNADataLayer_MAX, __typeKeyDoNoAccess}
     enum EDownloadToMemoryResult { Success, SucceededByPayload, Cancelled, DownloadFailed, InvalidURL, EDownloadToMemoryResult_MAX, __typeKeyDoNoAccess}
     enum EDownloadToStorageResult { Success, SucceededByPayload, Cancelled, DownloadFailed, SaveFailed, DirectoryCreationFailed, InvalidURL, InvalidSavePath, EDownloadToStorageResult_MAX, __typeKeyDoNoAccess}
     enum EDownsamplingMode { Random, UniformSpacing, KeepSharp, EDownsamplingMode_MAX, __typeKeyDoNoAccess}
@@ -103098,9 +102842,6 @@ declare module "ue" {
     enum EExtractCollisionOutputType { Simple, Complex, EExtractCollisionOutputType_MAX, __typeKeyDoNoAccess}
     enum EExtrudeMeshSelectionInteractionMode { Interactive, Fixed, EExtrudeMeshSelectionInteractionMode_MAX, __typeKeyDoNoAccess}
     enum EExtrudeMeshSelectionRegionModifierMode { OriginalShape, FlattenToPlane, RaycastToPlane, EExtrudeMeshSelectionRegionModifierMode_MAX, __typeKeyDoNoAccess}
-    enum EFabEnvironment { Prod, Gamedev, Test, CustomUrl, EFabEnvironment_MAX, __typeKeyDoNoAccess}
-    enum EFabPreferredFormats { GLTF, FBX, EFabPreferredFormats_MAX, __typeKeyDoNoAccess}
-    enum EFabPreferredQualityTier { Low, Medium, High, Raw, EFabPreferredQualityTier_MAX, __typeKeyDoNoAccess}
     enum EFallbackEnum { EFallbackEnum_MAX, __typeKeyDoNoAccess}
     enum EFastArraySerializerDeltaFlags { None, HasBeenSerialized, HasDeltaBeenRequested, IsUsingDeltaSerialization, EFastArraySerializerDeltaFlags_MAX, __typeKeyDoNoAccess}
     enum EFBIKBoneLimitType { Free, Limit, Locked, EFBIKBoneLimitType_MAX, __typeKeyDoNoAccess}
@@ -103118,20 +102859,8 @@ declare module "ue" {
     enum EFbxSceneVertexColorImportOption { Replace, Ignore, Override, EFbxSceneVertexColorImportOption_MAX, __typeKeyDoNoAccess}
     enum EFBXTestPlanActionType { Import, Reimport, AddLOD, ReimportLOD, ImportReload, AddAlternateSkinnig, EFBXTestPlanActionType_MAX, __typeKeyDoNoAccess}
     enum EFiBVersion { FIB_VER_NONE, FIB_VER_BASE, FIB_VER_VARIABLE_REFERENCE, FIB_VER_INTERFACE_GRAPHS, FIB_VER_FUNC_CALL_SITES, FIB_VER_PLUS_ONE, FIB_VER_LATEST, FIB_VER_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldActivationType {
-        enum EFieldActivationType { Delay, OnTick, OnTickWithDelay, Trigger, EFieldActivationType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldFilterType { Field_Filter_Dynamic, Field_Filter_Kinematic, Field_Filter_Static, Field_Filter_All, Field_Filter_Sleeping, Field_Filter_Disabled, Field_Filter_Max, Field_Filter_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldForceVel {
-        enum EFieldForceVel { "Use Force", "Use Velocity", EFieldForceVel_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldIntegerType { Integer_DynamicState, Integer_ActivateDisabled, Integer_CollisionGroup, Integer_PositionAnimated, Integer_PositionStatic, Integer_TargetMax, Integer_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode {
-        enum EFieldNoiseCompMode { Add, Multiply, EFieldNoiseCompMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldObjectType { Field_Object_Rigid, Field_Object_Cloth, Field_Object_Destruction, Field_Object_Character, Field_Object_All, Field_Object_Max, Field_Object_MAX, __typeKeyDoNoAccess}
     enum EFieldOperationType { Field_Multiply, Field_Divide, Field_Add, Field_Substract, Field_Operation_Max, __typeKeyDoNoAccess}
     enum EFieldOutputType { Field_Output_Vector, Field_Output_Scalar, Field_Output_Integer, Field_Output_Max, Field_Output_MAX, __typeKeyDoNoAccess}
@@ -103139,14 +102868,6 @@ declare module "ue" {
     enum EFieldPositionType { Field_Position_CenterOfMass, Field_Position_PivotPoint, Field_Position_Max, Field_Position_MAX, __typeKeyDoNoAccess}
     enum EFieldResolutionType { Field_Resolution_Minimal, Field_Resolution_DisabledParents, Field_Resolution_Maximum, Field_Resolution_Max, Field_Resolution_MAX, __typeKeyDoNoAccess}
     enum EFieldScalarType { Scalar_ExternalClusterStrain, Scalar_Kill, Scalar_DisableThreshold, Scalar_SleepingThreshold, Scalar_InternalClusterStrain, Scalar_DynamicConstraint, Scalar_TargetMax, Scalar_MAX, __typeKeyDoNoAccess}
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldShapeType {
-        enum EFieldShapeType { Box, Sphere, Plane, EFieldShapeType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.EditorResources.FieldNodes._Resources.EFieldSleepType {
-        enum EFieldSleepType { Sleep, Disable, Kill, EFieldSleepType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFieldVectorType { Vector_LinearForce, Vector_LinearVelocity, Vector_AngularVelocity, Vector_AngularTorque, Vector_PositionTarget, Vector_InitialLinearVelocity, Vector_InitialAngularVelocity, Vector_LinearImpulse, Vector_TargetMax, Vector_MAX, __typeKeyDoNoAccess}
     enum EFilterBarLayout { Horizontal, Vertical, EFilterBarLayout_MAX, __typeKeyDoNoAccess}
     enum EFilterPillStyle { Default, Basic, EFilterPillStyle_MAX, __typeKeyDoNoAccess}
@@ -103180,10 +102901,6 @@ declare module "ue" {
     enum EFloatArrayToIntArrayFunctionEnum { Dataflow_FloatToInt_Function_Floor, Dataflow_FloatToInt_Function_Ceil, Dataflow_FloatToInt_Function_Round, Dataflow_FloatToInt_Function_Truncate, Dataflow_FloatToInt_NonZeroToIndex, Dataflow_FloatToInt_ZeroToIndex, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
     enum EFloatToIntFunctionEnum { Dataflow_FloatToInt_Function_Floor, Dataflow_FloatToInt_Function_Ceil, Dataflow_FloatToInt_Function_Round, Dataflow_FloatToInt_Function_Truncate, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
     enum EFloatToIntMode { Truncate, Floor, Round, Ceil, EFloatToIntMode_MAX, __typeKeyDoNoAccess}
-    namespace Engine.ArtTools.RenderToTexture.Enums.EFloatTypes {
-        enum EFloatTypes { Float, Float2, Float3, Float4, EFloatTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EFocusCause { Mouse, Navigation, SetDirectly, Cleared, OtherWidgetLostFocus, WindowActivate, EFocusCause_MAX, __typeKeyDoNoAccess}
     enum EFoliageScaling { Uniform, Free, LockXY, LockXZ, LockYZ, EFoliageScaling_MAX, __typeKeyDoNoAccess}
     enum EFollicleMaskChannel { R, G, B, A, EFollicleMaskChannel_MAX, __typeKeyDoNoAccess}
@@ -103208,7 +102925,6 @@ declare module "ue" {
     enum EGameplayTagSourceType { Native, DefaultTagList, TagList, RestrictedTagList, DataTable, Invalid, EGameplayTagSourceType_MAX, __typeKeyDoNoAccess}
     enum EGameplayTaskState { Uninitialized, AwaitingActivation, Paused, Active, Finished, EGameplayTaskState_MAX, __typeKeyDoNoAccess}
     enum EGBufferFormat { Force8BitsPerChannel, Default, HighPrecisionNormals, Force16BitsPerChannel, EGBufferFormat_MAX, __typeKeyDoNoAccess}
-    enum EGender { Male, Female, Other, EGender_MAX, __typeKeyDoNoAccess}
     enum EGenerateLODAssetOutputMode { CreateNewAsset, UpdateExistingAsset, EGenerateLODAssetOutputMode_MAX, __typeKeyDoNoAccess}
     enum EGenerateLODAssetToolPresetAction { ReadFromPreset, WriteToPreset, EGenerateLODAssetToolPresetAction_MAX, __typeKeyDoNoAccess}
     enum EGenerateStaticMeshLOD_BakeConstraint { NoConstraint, DoNotBake, EGenerateStaticMeshLOD_MAX, __typeKeyDoNoAccess}
@@ -103290,10 +103006,6 @@ declare module "ue" {
     enum EInertializationBoneState { Invalid, Valid, Excluded, EInertializationBoneState_MAX, __typeKeyDoNoAccess}
     enum EInertializationSpace { Default, WorldSpace, WorldRotation, EInertializationSpace_MAX, __typeKeyDoNoAccess}
     enum EInertializationState { Inactive, Pending, Active, EInertializationState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Modules.Audio.EInitialAudioParamType {
-        enum EInitialAudioParamType { Boolean, Integer, Float, EInitialAudioParamType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum EInitialOscillatorOffset { EOO_OffsetRandom, EOO_OffsetZero, EOO_MAX, __typeKeyDoNoAccess}
     enum EInitialWaveOscillatorOffsetType { Random, Zero, EInitialWaveOscillatorOffsetType_MAX, __typeKeyDoNoAccess}
     enum EInputAxisSwizzle { YXZ, ZYX, XZY, YZX, ZXY, EInputAxisSwizzle_MAX, __typeKeyDoNoAccess}
@@ -103341,14 +103053,6 @@ declare module "ue" {
     enum EInterchangeTranslatorType { Invalid, Assets, Actors, Scenes, EInterchangeTranslatorType_MAX, __typeKeyDoNoAccess}
     enum EInterchangeVertexColorImportOption { IVCIO_Replace, IVCIO_Ignore, IVCIO_Override, IVCIO_MAX, __typeKeyDoNoAccess}
     enum EInterpToBehaviourType { OneShot, OneShot_Reverse, Loop_Reset, PingPong, EInterpToBehaviourType_MAX, __typeKeyDoNoAccess}
-    namespace Engine.ArtTools.RenderToTexture.Enums.EIntTypes {
-        enum EIntTypes { int, int2, int3, int4, EIntTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    enum EIOSCloudKitSyncStrategy { None, OnlyAtGameStart, Always, EIOSCloudKitSyncStrategy_MAX, __typeKeyDoNoAccess}
-    enum EIOSLandscapeOrientation { LandscapeLeft, LandscapeRight, EIOSLandscapeOrientation_MAX, __typeKeyDoNoAccess}
-    enum EIOSMetalShaderStandard { IOSMetalSLStandard_Minimum, IOSMetalSLStandard_2_4, IOSMetalSLStandard_3_0, IOSMetalSLStandard_3_1, IOSMetalSLStandard_MAX, __typeKeyDoNoAccess}
-    enum EIOSVersion { IOS_Minimum, IOS_15, IOS_16, IOS_17, IOS_MAX, __typeKeyDoNoAccess}
     enum EISMEditorToolActions { NoAction, ClearSelection, Delete, Duplicate, Replace, EISMEditorToolActions_MAX, __typeKeyDoNoAccess}
     enum EISMEditorTransformMode { SharedGizmo, SharedGizmoLocal, PerObjectGizmo, LastValue, EISMEditorTransformMode_MAX, __typeKeyDoNoAccess}
     enum EJsonStringifyFlags { Default, FilterEditorOnlyData, EJsonStringifyFlags_MAX, __typeKeyDoNoAccess}
@@ -103439,7 +103143,6 @@ declare module "ue" {
     enum ELocationZToSpawnEnum { ChaosNiagara_LocationZToSpawn_None, ChaosNiagara_LocationZToSpawn_Min, ChaosNiagara_LocationZToSpawn_Max, ChaosNiagara_LocationZToSpawn_MinMax, ChaosNiagara_Max, ChaosNiagara_MAX, __typeKeyDoNoAccess}
     enum ELocTextPlatformSplitMode { None, Confidential, All, ELocTextPlatformSplitMode_MAX, __typeKeyDoNoAccess}
     enum ELODManagerToolActions { NoAction, MoveHiResToLOD0, DeleteHiResSourceModel, RemoveUnreferencedMaterials, ELODManagerToolActions_MAX, __typeKeyDoNoAccess}
-    enum ELodUpdateOption { LOD0Only, LOD1AndHigher, All, ELodUpdateOption_MAX, __typeKeyDoNoAccess}
     enum ELogCategoryColorizationMode { None, ColorizeWholeLine, ColorizeCategoryOnly, ColorizeCategoryAsBadge, ELogCategoryColorizationMode_MAX, __typeKeyDoNoAccess}
     enum ELogTimes { None, UTC, SinceGStartTime, Local, ELogTimes_MAX, __typeKeyDoNoAccess}
     enum ELoudnessCurveTypeEnum { A, B, C, D, None, ELoudnessCurveTypeEnum_MAX, __typeKeyDoNoAccess}
@@ -103499,9 +103202,6 @@ declare module "ue" {
     enum EMediaTimeRangeBPType { Absolute, Current, EMediaTimeRangeBPType_MAX, __typeKeyDoNoAccess}
     enum EMediaVideoCaptureDeviceFilter { None, Card, Software, Unknown, Webcam, EMediaVideoCaptureDeviceFilter_MAX, __typeKeyDoNoAccess}
     enum EMediaWebcamCaptureDeviceFilter { None, DepthSensor, Front, Rear, Unknown, EMediaWebcamCaptureDeviceFilter_MAX, __typeKeyDoNoAccess}
-    enum EMegascanImportTier { Invalid, Raw, High, Medium, Low, EMegascanImportTier_MAX, __typeKeyDoNoAccess}
-    enum EMegascanImportType { Model3D, Surface, Decal, Imperfection, Plant, EMegascanImportType_MAX, __typeKeyDoNoAccess}
-    enum EMegascanMaterialType { Invalid, Base, BaseMasked, BaseFuzz, BaseTransmission, Glass, Surface, SurfaceMasked, SurfaceFuzz, SurfaceTransmission, Fabric, FabricMasked, Decal, Plant, PlantBillboard, EMegascanMaterialType_MAX, __typeKeyDoNoAccess}
     enum EMemoryUnitStandard { IEC, SI, EMemoryUnitStandard_MAX, __typeKeyDoNoAccess}
     enum EMenuPlacement { MenuPlacement_BelowAnchor, MenuPlacement_CenteredBelowAnchor, MenuPlacement_BelowRightAnchor, MenuPlacement_ComboBox, MenuPlacement_ComboBoxRight, MenuPlacement_MenuRight, MenuPlacement_AboveAnchor, MenuPlacement_CenteredAboveAnchor, MenuPlacement_AboveRightAnchor, MenuPlacement_MenuLeft, MenuPlacement_Center, MenuPlacement_RightLeftCenter, MenuPlacement_MatchBottomLeft, MenuPlacement_MAX, __typeKeyDoNoAccess}
     enum EMergeType { MergeGeometry, MergeClusters, EMergeType_MAX, __typeKeyDoNoAccess}
@@ -103550,8 +103250,6 @@ declare module "ue" {
     enum EMeshVertexSculptBrushFilterType { None, Component, PolyGroup, EMeshVertexSculptBrushFilterType_MAX, __typeKeyDoNoAccess}
     enum EMeshVertexSculptBrushType { Move, PullKelvin, PullSharpKelvin, Smooth, SmoothFill, Offset, SculptView, SculptMax, Inflate, ScaleKelvin, Pinch, TwistKelvin, Flatten, Plane, PlaneViewAligned, FixedPlane, LastValue, EMeshVertexSculptBrushType_MAX, __typeKeyDoNoAccess}
     enum EMetadataType { None, Bool, Int, Float, String, EMetadataType_MAX, __typeKeyDoNoAccess}
-    enum EMetaHumanBodyBodyPartIndex { Body, Face, Torso, Legs, Feet, Count, EMetaHumanBodyBodyPartIndex_MAX, __typeKeyDoNoAccess}
-    enum EMetaHumanBodyType { f_med_nrw, f_med_ovw, f_med_unw, f_srt_nrw, f_srt_ovw, f_srt_unw, f_tal_nrw, f_tal_ovw, f_tal_unw, m_med_nrw, m_med_ovw, m_med_unw, m_srt_nrw, m_srt_ovw, m_srt_unw, m_tal_nrw, m_tal_ovw, m_tal_unw, Count, EMetaHumanBodyType_MAX, __typeKeyDoNoAccess}
     enum EMetasoundActiveAnalyzerEnvelopeDirection { FromSourceOutput, FromDestinationInput, EMetasoundActiveAnalyzerEnvelopeDirection_MAX, __typeKeyDoNoAccess}
     enum EMetasoundActiveDetailView { Metasound, General, EMetasoundActiveDetailView_MAX, __typeKeyDoNoAccess}
     enum EMetasoundBoolMemberDefaultWidget { None, Button, EMetasoundBoolMemberDefaultWidget_MAX, __typeKeyDoNoAccess}
@@ -105087,413 +104785,25 @@ declare module "ue" {
         __tid_EnhancedInputWorldSubsystem_0__: boolean;
     }
     
-    namespace Niagara.Enums.Angles.ENiagara_AngleInput {
-        enum ENiagara_AngleInput { Degrees, "Normalized Angle (0-1)", Radians, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_AttributeSamplingApplyOutput {
-        enum ENiagara_AttributeSamplingApplyOutput { Apply, Output, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_AudioParamType {
-        enum ENiagara_AudioParamType { Volume, Pitch, Location, Rotation, "Boolean Parameter", "Float Parameter", "Integer Parameter", "Paused State", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_AutomaticManual {
-        enum ENiagara_AutomaticManual { "Automatic (From Renderer SubImage Size)", Manual, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_BankOnTurns {
-        enum ENiagara_BankOnTurns { "Add Local Banking Rotation", "Full Orientation Update", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_BoundsCalculationMethod {
-        enum ENiagara_BoundsCalculationMethod { "Emitter Bounds with Padding", "Local Space Bounding Box", "World Space Bounding Box", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_BoxPlaneMode {
-        enum ENiagara_BoxPlaneMode { Box, Plane, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraMeshOrientation {
-        enum ENiagara_CameraMeshOrientation { "Camera Position", "Camera Plane", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraProperties {
-        enum ENiagara_CameraProperties { "Camera Position", "Camera Forward Vector", "Camera Up Vector", "Camera Right Vector", "Vector To Camera", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CameraVectors {
-        enum ENiagara_CameraVectors { "Camera Forward Vector", "Camera Up Vector", "Camera Right Vector", "Vector To Camera", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CollisionType {
-        enum ENiagara_CollisionType { "GPU Depth Buffer", "GPU Distance Fields", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_ColorInitializationMode {
-        enum ENiagara_ColorInitializationMode { Unset, "Direct Set", "Random Range", "Random Hue/Saturation/Value", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_ColorInput {
-        enum ENiagara_ColorInput { "Particle Color", "Chaos DI Color", "User Color", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_ConeMode {
-        enum ENiagara_ConeMode { "Spherical Cone", "Spherical Wedge", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_CPUCollisionType {
-        enum ENiagara_CPUCollisionType { "Ray Traced", "Analytical Planes", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_CurlNoiseRemapType {
-        enum ENiagara_CurlNoiseRemapType { Off, Uniform, "Non-Uniform", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_CylinderMode {
-        enum ENiagara_CylinderMode { Random, Direct, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadApplicationMode {
-        enum ENiagara_DirectReadApplicationMode { Overwrite, Add, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadParticleIDSampling {
-        enum ENiagara_DirectReadParticleIDSampling { Disabled, "Apply Sampled ID as Ribbon ID", "Output Only", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_DirectReadSamplingMode {
-        enum ENiagara_DirectReadSamplingMode { Disabled, "Apply to Attribute", "Output Only", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_EmitterLocSamplingMode {
-        enum ENiagara_EmitterLocSamplingMode { Random, Sequential, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_EmitterStateOptions {
-        enum ENiagara_EmitterStateOptions { Infinite, Once, Multiple, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_FadeOperationType {
-        enum ENiagara_FadeOperationType { Linear, Percentage, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_Float4Channel {
-        enum ENiagara_Float4Channel { R, G, B, A, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_FPSPlayrate {
-        enum ENiagara_FPSPlayrate { "Loops Per Second", "Frames Per Second", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_GDFQueryExecutionRate {
-        enum ENiagara_GDFQueryExecutionRate { "First Frame", "Every Frame", "On Demand", Never, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.DistanceFields.ENiagara_GlobalVsRigidBodyDistanceFields {
-        enum ENiagara_GlobalVsRigidBodyDistanceFields { "Global Distance Field", "Global Distance field + High Quality Rigid Body SDF", "Static Distance Field Volume Texture", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_GPUCollisionType {
-        enum ENiagara_GPUCollisionType { "GPU Depth Buffer", "GPU Distance Fields", "GPU Ray Traces (Experimental)", "Analytical Planes", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_IDAttributes {
-        enum ENiagara_IDAttributes { "Particles.UniqueID", "Particles.ID Index", "Particles.ID Acquire Tag", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_ImportanceColorMode {
-        enum ENiagara_ImportanceColorMode { "RGB Luminance", "RGB Average", "RGB Max", "Individual RGBA Channel", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_ImportanceRejectionMode {
-        enum ENiagara_ImportanceRejectionMode { "RGB Luminance", "RGB Average", "RGB Max", "R Channel", "G Channel", "B Channel", "A Channel", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_InfiniteLoopDuration {
-        enum ENiagara_InfiniteLoopDuration { Fixed, Infinite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_IntegerConversion {
-        enum ENiagara_IntegerConversion { Truncate, Round, Ceil, Floor, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_LifetimeInheritanceOptions {
-        enum ENiagara_LifetimeInheritanceOptions { Min, Max, Overwrite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_LifetimeMode {
-        enum ENiagara_LifetimeMode { "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Location.ENiagara_LocationShapes {
-        enum ENiagara_LocationShapes { Sphere, Cylinder, "Box / Plane", Torus, "Ring / Disc", Cone, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Events.ENiagara_LocEventType {
-        enum ENiagara_LocEventType { "Send Rate", "Send Per Unit Traveled", "Every Frame", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_LWCConvertPosToVec {
-        enum ENiagara_LWCConvertPosToVec { "Passthrough as a Non Large World Vector", "Convert to Absolute Large World Space", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_LWCConvertVecToPos {
-        enum ENiagara_LWCConvertVecToPos { "Passthrough as Non Large World Position", "Interpret as a Large World Position Vector", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_MassInitializationMode {
-        enum ENiagara_MassInitializationMode { "Unset / (Mass of 1)", "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_MeshLocalBoundsCalcMethod {
-        enum ENiagara_MeshLocalBoundsCalcMethod { "Minimum Bounds", "Maximum Bounds", Size, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_MeshOrientationOptions {
-        enum ENiagara_MeshOrientationOptions { None, Random, System, "Orient to Vector", "Orient to Matrix", "Orient to Quaternion", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_MultipleLerpCount {
-        enum ENiagara_MultipleLerpCount { ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_OffsetMode {
-        enum ENiagara_OffsetMode { Default, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_OrientVectorCount {
-        enum ENiagara_OrientVectorCount { Facing, "Facing/Up", "Facing/Side", "Facing/Side/Up", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_PartitionMode {
-        enum ENiagara_PartitionMode { Alternating, Sequential, "Elapsed Time", Distance, "Float Comparison", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_PositionInitializationMode {
-        enum ENiagara_PositionInitializationMode { Unset, "Direct Set", "Simulation Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_PositionInput {
-        enum ENiagara_PositionInput { "Chaos DI Position", "User Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_RotationDefinitionApproach {
-        enum ENiagara_RotationDefinitionApproach { Euler, Quaternion, "Axis Angle ", "Basis Vectors", Matrix, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_RotationMode {
-        enum ENiagara_RotationMode { Default, "Axis Angle", "Yaw / Pitch / Roll", Quaternion, Matrix, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_ScaleMode {
-        enum ENiagara_ScaleMode { Default, None, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.SpriteRenderer.ENiagara_ScaleSpriteSize {
-        enum ENiagara_ScaleSpriteSize { Uniform, "Uniform Curve", "Non-Uniform", "Non-Uniform Curve", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SizeScaleMode {
-        enum ENiagara_SizeScaleMode { Unset, Uniform, "Random Uniform", "Non-Uniform", "Random Non-Uniform", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SpawnBurstMode {
-        enum ENiagara_SpawnBurstMode { Timed, Manual, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_SplinePointCount {
-        enum ENiagara_SplinePointCount { ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SpriteRotationMode {
-        enum ENiagara_SpriteRotationMode { Unset, Random, "Direct Angle (Degrees)", "Direct Normalized Angle (0-1)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticSamplingMode {
-        enum ENiagara_StaticSamplingMode { Triangles, Sockets, Vertices, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticSocketMode {
-        enum ENiagara_StaticSocketMode { "Random (All Sockets)", "Random (Filtered Sockets)", "Direct (All Sockets)", "Direct (Filtered Sockets)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticTriangleMode {
-        enum ENiagara_StaticTriangleMode { "Random (All Triangles)", "Random (Section Filter)", "Direct (All Triangles)", "Direct (Section Filter)", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.StaticMesh.ENiagara_StaticVertexMode {
-        enum ENiagara_StaticVertexMode { "Random Vertex", "Direct Vertex", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SubUVLookupMode {
-        enum ENiagara_SubUVLookupMode { Linear, Curve, Random, Infinite, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_SubUVLookupModeV2 {
-        enum ENiagara_SubUVLookupModeV2 { Linear, Curve, Random, "Infinite Loop", "Direct Index", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineAuthority {
-        enum ENiagara_TimelineAuthority { "Play is the Authority", "Rewind is the Authority", Pause, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TImelineMode {
-        enum ENiagara_TimelineMode { "Automatic Rewind", "Manual Rewind", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineOutput {
-        enum ENiagara_TimelineOutput { None, Float, Vector2D, Vector, "Linear Color", Integer, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_TimelineOutputMode {
-        enum ENiagara_TimelineOutputMode { Array, Curve, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformBaseOptions {
-        enum ENiagara_TransformBaseOptions { "Transform Vector", "Transform Position", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformMode {
-        enum ENiagara_TransformMode { Manual, Matrix, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_TransformOrder {
-        enum ENiagara_TransformOrder { "Scale / Rotate / Offset", "Scale / Offset / Rotate", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_TransformOrientationMode {
-        enum ENiagara_TransformOrientationMode { "Yaw/Pitch/Roll", Quaternion, Matrix, "Basis Vectors", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Transforms.ENiagara_TransformType {
-        enum ENiagara_TransformType { Default, "Custom Matrix", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Ribbons.ENiagara_UnsetDirectSet {
-        enum ENiagara_UnsetDirectSet { Unset, "Direct Set", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Ribbons.ENiagara_UnsetDirectSetRandom {
-        enum ENiagara_UnsetDirectSetRandom { Unset, "Direct Set", Random, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_UpdateMeshOrientationMode {
-        enum ENiagara_UpdateMeshOrientationMode { "Rotation Rate", "Orient To Vector(s)", "Orient to Position", "Flight Orientation", "Rolling Orientation", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_UVFlippingMode {
-        enum ENiagara_UVFlippingMode { Unset, "Random X", "Random Y", "Random X / Y", Custom, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_VelocityInput {
-        enum ENiagara_VelocityInput { "Chaos DI Velocity", "User Velocity", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagara_VelocityMode {
-        enum ENiagara_VelocityMode { Linear, "From Point", "In Cone", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WaveformBlendMode {
-        enum ENiagara_WaveformBlendMode { Add, Subtract, Multiply, Max, Min, Interpolate, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WaveformCount {
-        enum ENiagara_WaveformCount { "[1] One", "[2] Two", "[3] Three", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_Waveforms {
-        enum ENiagara_Waveforms { Sine, Cosine, "Compound Sin/Cos", Pendulum, Square, Pulse, Triangle, Sawtooth, Random, "Random Blend", "Random Spline", "Random Spline Smooth", "Random Spline Segmented", ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagara_WrapClamp {
-        enum ENiagara_WrapClamp { Clamp, Wrap, ENiagara_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraAddDefaultsTrackMode { NoSubtracks, ComponentTrackOnly, LifecycleTrack, ENiagaraAddDefaultsTrackMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraAerodynamicDragPivotMode {
-        enum ENiagaraAerodynamicDragPivotMode { Random, Direct, ENiagaraAerodynamicDragPivotMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.EniagaraAlternateRendererModes {
-        enum EniagaraAlternateRendererModes { Sprite, Mesh, Ribbon, Light, EniagaraAlternateRendererModes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraAnimTrailWidthMode {
-        enum ENiagaraAnimTrailWidthMode { Auto, Manual, ENiagaraAnimTrailWidthMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraArraySamplingMode {
-        enum ENiagaraArraySamplingMode { Random, "Direct Set", Interpolate, ENiagaraArraySamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraAssetLibraryAssetTypes { Emitters, Systems, Scripts, ENiagaraAssetLibraryAssetTypes_MAX, __typeKeyDoNoAccess}
     enum ENiagaraAssetTagDefinitionImportance { Primary, Secondary, Internal, ENiagaraAssetTagDefinitionImportance_MAX, __typeKeyDoNoAccess}
     enum ENiagaraBaseTypes { Half, Float, Int32, Bool, Max, ENiagaraBaseTypes_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraBoneSamplingMode {
-        enum ENiagaraBoneSamplingMode { "Random (Filtered Bones)", "Random (Unfiltered Bones)", "Random (All Bones)", "Direct (Filtered Bones)", "Direct (Unfiltered Bones)", "Direct (All Bones)", ENiagaraBoneSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraBoneSocketSamplingMode {
-        enum ENiagaraBoneSocketSamplingMode { "Random (Filtered Bone or Sockets)", "Direct (Filtered Bone or Sockets)", ENiagaraBoneSocketSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraBoolDisplayMode { DisplayAlways, DisplayIfTrue, DisplayIfFalse, ENiagaraBoolDisplayMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraBooleanLogicOps {
-        enum ENiagaraBooleanLogicOps { "Greater Than", "Greater Than Or Equal To", "Equal To", "Not Equal To", ENiagaraBooleanLogicOps_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraBooleanLogicOps_v2 {
-        enum ENiagaraBooleanLogicOps_v2 { "A Greater Than B", "A Greater Than Or Equal To B", "A Equal To B", "A Not Equal To B", "A Less Than B", "A Less Than Or Equal To B", ENiagaraBooleanLogicOps_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraCalculateRadiusOptions {
-        enum ENiagaraCalculateRadiusOptions { Bounds, "Minimum Axis", "Maximum Axis", ENiagaraCalculateRadiusOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCategoryExpandState { Default, DefaultExpandModified, CollapseAll, ExpandAll, ENiagaraCategoryExpandState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraChannelCorrelation {
-        enum ENiagaraChannelCorrelation { "Link RGBA", "Link RGB / Link A", "Random Individual Channels", ENiagaraChannelCorrelation_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraClipboardFunctionInputValueMode { Local, Linked, Data, ObjectAsset, Expression, Dynamic, ResetToDefault, ENiagaraClipboardFunctionInputValueMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraClipboardFunctionScriptMode { ScriptAsset, Assignment, ENiagaraClipboardFunctionScriptMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCollisionMode { None, SceneGeometry, DepthBuffer, DistanceField, ENiagaraCollisionMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCollisionRadiusOptions {
-        enum ENiagaraCollisionRadiusOptions { Sprite, Mesh, Custom, ENiagaraCollisionRadiusOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCompilationMode { Original, AsyncTasks, Verify, ENiagaraCompilationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompilationState { CheckDDC, Precompile, StartCompileJob, AwaitResult, OptimizeByteCode, ProcessResult, PutToDDC, Finished, Aborted, ENiagaraCompilationState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompileErrorSeverity { Ignore, LogOnly, Warning, Error, ENiagaraCompileErrorSeverity_MAX, __typeKeyDoNoAccess}
     enum ENiagaraCompileUsageStaticSwitch { Spawn, Update, Event, SimulationStage, Default, ENiagaraCompileUsageStaticSwitch_MAX, __typeKeyDoNoAccess}
     enum ENiagaraConditionalOperator { Equals, NotEqual, LessThan, LessThanOrEqual, GreaterThan, GreaterThanOrEqual, Max, ENiagaraConditionalOperator_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCoordinateSpace {
-        enum ENiagaraCoordinateSpace { Simulation, World, Local, ENiagaraCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraCoordinateSpace { Simulation, World, Local, ENiagaraCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraCurlNoiseQuality {
-        enum ENiagaraCurlNoiseQuality { "Baked (Low)", "Baked (Medium)", "Baked (High)", "Evaluated (Ultra)", ENiagaraCurlNoiseQuality_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDataChannelAllocationMode { Static, Dynamic, ENiagaraDataChannelAllocationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataChanneSpawnModuleMode { ConditionalSpawn, DirectSpawn, ENiagaraDataChanneSpawnModuleMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataChanneWriteModuleMode { AppendNewElement, WriteToExistingElement, ENiagaraDataChanneWriteModuleMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDataSetAccessMode { AppendConsume, Direct, Num, ENiagaraDataSetAccessMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Utility.ENiagaraDebugDrawLineMode {
-        enum ENiagaraDebugDrawLineMode { "Start/End Position", Vector, "Direction/Length", ENiagaraDebugDrawLineMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagaraDebugDrawMode {
-        enum ENiagaraDebugDrawMode { Off, Line, Box, Sphere, ENiagaraDebugDrawMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Masks.ENiagaraDebugDrawShape {
-        enum ENiagaraDebugDrawShape { Sphere, Box, Plane, Slab, ENiagaraDebugDrawShape_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDebugHUDDOverviewSort { Name, NumberRegistered, NumberActive, NumberScalability, MemoryUsage, RecentlyVisibilty, ENiagaraDebugHUDDOverviewSort_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudFont { Small, Normal, ENiagaraDebugHudFont_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudHAlign { Left, Center, Right, ENiagaraDebugHudHAlign_MAX, __typeKeyDoNoAccess}
@@ -105504,129 +104814,33 @@ declare module "ue" {
     enum ENiagaraDebugHudVAlign { Top, Center, Bottom, ENiagaraDebugHudVAlign_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugHudVerbosity { None, Basic, Verbose, ENiagaraDebugHudVerbosity_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDebugPlaybackMode { Play, Loop, Paused, Step, ENiagaraDebugPlaybackMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraDecalTransforms {
-        enum ENiagaraDecalTransforms { Simulation, World, Local, Decal, ENiagaraDecalTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraDefaultGpuTranslucentLatency { Immediate, Latent, ENiagaraDefaultGpuTranslucentLatency_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultMode { Value, Binding, Custom, FailIfPreviouslyNotSet, ENiagaraDefaultMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultRendererMotionVectorSetting { Precise, Approximate, ENiagaraDefaultRendererMotionVectorSetting_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultRendererPixelCoverageMode { Enabled, Disabled, ENiagaraDefaultRendererPixelCoverageMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDefaultSortPrecision { Low, High, ENiagaraDefaultSortPrecision_MAX, __typeKeyDoNoAccess}
     enum ENiagaraDeviceProfileRedirectMode { CVar, DeviceProfile, ENiagaraDeviceProfileRedirectMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraDragCoefficientShapeMode {
-        enum ENiagaraDragCoefficientShapeMode { Exponent, Curve, ENiagaraDragCoefficientShapeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraDragMethodMode {
-        enum ENiagaraDragMethodMode { Linear, Aerodynamic, ENiagaraDragMethodMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterLifeCycleMode {
-        enum ENiagaraEmitterLifeCycleMode { System, Self, ENiagaraEmitterLifeCycleMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterScalabilityMode {
-        enum ENiagaraEmitterScalabilityMode { System, Self, None, ENiagaraEmitterScalabilityMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraEmitterScalabilityMode_Limited {
-        enum ENiagaraEmitterScalabilityMode_Limited { System, Self, ENiagaraEmitterScalabilityMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraExecutionState { Active, Inactive, InactiveClear, Complete, Disabled, Num, ENiagaraExecutionState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraExecutionStateSource { Scalability, Internal, Owner, InternalCompletion, ENiagaraExecutionStateSource_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraExpansionMode {
-        enum ENiagaraExpansionMode { Inside, Centered, Outside, ENiagaraExpansionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraFrictionMergeType {
-        enum ENiagaraFrictionMergeType { Ignore, Average, Min, Max, ENiagaraFrictionMergeType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraFunctionDebugState { NoDebug, Basic, ENiagaraFunctionDebugState_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Utility.ENiagaraGBufferList {
-        enum ENiagaraGBufferList { "Base Color", "Custom Depth", "Custom Stencil", Depth, "Diffuse Color", Metallic, Roughness, "Scene Color", "Screen Velocity", "Shading Model ID", Specular, "World Normal", "World Velocity", ENiagaraGBufferList_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Utility.ENiagaraGBufferQueryType {
-        enum ENiagaraGBufferQueryType { Position, "Viewport UV", "Screen UV", ENiagaraGBufferQueryType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraGpuBufferFormat { Float, HalfFloat, UnsignedNormalizedByte, Max, ENiagaraGpuBufferFormat_MAX, __typeKeyDoNoAccess}
     enum ENiagaraGpuComputeTickStage { PreInitViews, PostInitViews, PostOpaqueRender, Max, First, Last, ENiagaraGpuComputeTickStage_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraGPUDepthResponseType {
-        enum ENiagaraGPUDepthResponseType { Kill, Bounce, ENiagaraGPUDepthResponseType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraGpuSyncMode { None, SyncCpuToGpu, SyncGpuToCpu, SyncBoth, ENiagaraGpuSyncMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraGridPlacementType {
-        enum ENiagaraGridPlacementType { "Padding Per Cell ", "Bounding Box Size", ENiagaraGridPlacementType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraInactiveMode {
-        enum ENiagaraInactiveMode { "Complete (Let Particles Finish then Kill Emitter)", "Kill (Emitter and Particles Die Immediately)", "Continue (Emitter Deactivates But Doesn't Die Until System Does)", ENiagaraInactiveMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraInputNodeUsage { Undefined, Parameter, Attribute, SystemConstant, TranslatorConstant, RapidIterationParameter, ENiagaraInputNodeUsage_MAX, __typeKeyDoNoAccess}
     enum ENiagaraInputWidgetType { Default, Slider, Volume, NumericDropdown, EnumStyle, SegmentedButtons, ENiagaraInputWidgetType_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraKillVolumeOptions {
-        enum ENiagaraKillVolumeOptions { Sphere, Box, Plane, Slab, Cone, ENiagaraKillVolumeOptions_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraLegacyTrailWidthMode { FromCentre, FromFirst, FromSecond, ENiagaraLegacyTrailWidthMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraLibrarySourceDefaultMode { Value, Binding, FailIfPreviouslyNotSet, ENiagaraLibrarySourceDefaultMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraLibrarySynchronizedDefaultMode { Definition, Value, Binding, Custom, FailIfPreviouslyNotSet, ENiagaraLibrarySynchronizedDefaultMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraLinearColor_Channels {
-        enum ENiagaraLinearColor_Channels { R, G, B, A, ENiagaraLinearColor_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMassByVolume {
-        enum ENiagaraMassByVolume { Rock, Steel, Wood, Water, Paper, Styrofoam, ENiagaraMassByVolume_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMassCalculationForRendererTypes {
-        enum ENiagaraMassCalculationForRendererTypes { Sprite, Mesh, Ribbon, ENiagaraMassCalculationForRendererTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMenuSections { Suggested, General, ENiagaraMenuSections_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshFacingMode { Default, Velocity, CameraPosition, CameraPlane, ENiagaraMeshFacingMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshLockedAxisSpace { Simulation, World, Local, ENiagaraMeshLockedAxisSpace_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMeshLODMode { LODLevel, LODBias, ByComponentBounds, PerParticle, ENiagaraMeshLODMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMeshOrSprite {
-        enum ENiagaraMeshOrSprite { Sprite, Mesh, ENiagaraMeshOrSprite_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMeshPivotOffsetSpace { Mesh, Simulation, World, Local, ENiagaraMeshPivotOffsetSpace_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMeshSamplingMode {
-        enum ENiagaraMeshSamplingMode { Random, Direct, ENiagaraMeshSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMeshSurfaceSamplingMode {
-        enum ENiagaraMeshSurfaceSamplingMode { Triangles, Vertices, ENiagaraMeshSurfaceSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraMeshTransforms {
-        enum ENiagaraMeshTransforms { Simulation, World, Local, Mesh, ENiagaraMeshTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMessageSeverity { CriticalError, Error, PerformanceWarning, Warning, Info, ENiagaraMessageSeverity_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraMinOrMax {
-        enum ENiagaraMinOrMax { Min, Max, ENiagaraMinOrMax_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraMipMapGeneration { Disabled, PostStage, PostSimulate, ENiagaraMipMapGeneration_MAX, __typeKeyDoNoAccess}
     enum ENiagaraMipMapGenerationType { Unfiltered, Linear, Blur1, Blur2, Blur3, Blur4, ENiagaraMipMapGenerationType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraModuleDependencyUsage { None, Spawn, Update, Event, SimulationStage, ENiagaraModuleDependencyUsage_MAX, __typeKeyDoNoAccess}
     enum ENiagaraNamespaceMetadataOptions { HideInScript, HideInSystem, AdvancedInScript, AdvancedInSystem, PreventEditingNamespace, PreventEditingNamespaceModifier, PreventEditingName, PreventCreatingInSystemEditor, HideInDefinitions, ENiagaraNamespaceMetadataOptions_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraNumericVariableTypes {
-        enum ENiagaraNumericVariableTypes { Float, "Vector 2D", "Vector 3D", "Vector 4D", "Linear Color", Quaternion, Position, ENiagaraNumericVariableTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraOrientationAxis {
-        enum ENiagaraOrientationAxis { "X Axis", "Y Axis", "Z Axis", ENiagaraOrientationAxis_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraOrientationAxis { XAxis, YAxis, ZAxis, ENiagaraOrientationAxis_MAX, __typeKeyDoNoAccess}
     enum ENiagaraOutlinerSortMode { Auto, FilterMatches, AverageTime, MaxTime, ENiagaraOutlinerSortMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraOutlinerTimeUnits { Microseconds, Milliseconds, Seconds, ENiagaraOutlinerTimeUnits_MAX, __typeKeyDoNoAccess}
@@ -105635,56 +104849,8 @@ declare module "ue" {
     enum ENiagaraPlatformSetState { Disabled, Enabled, Active, Unknown, ENiagaraPlatformSetState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraPreviewGridResetMode { Never, Individual, All, ENiagaraPreviewGridResetMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraPythonScriptInputSource { Input, Output, Local, InputOutput, InitialValueInput, None, Num, ENiagaraPythonScriptInputSource_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraQuaternionDerivationTechnique {
-        enum ENiagaraQuaternionDerivationTechnique { "X Vector", "X And Y Vectors", "X And Z Vectors", ENiagaraQuaternionDerivationTechnique_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRandomnessEvaluation {
-        enum ENiagaraRandomnessEvaluation { "Spawn Only", "Every Frame", ENiagaraRandomnessEvaluation_MAX, __typeKeyDoNoAccess}
-    }
-
     namespace Niagara.Enums.ENiagaraRandomnessMode {
         enum ENiagaraRandomnessMode { "Simulation Defaults", Determinisitic, "Non-Deterministic", ENiagaraRandomnessMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleAttributeMode {
-        enum ENiagaraRecycleAttributeMode { "No Change", "Initial Value", Set, ENiagaraRecycleAttributeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleColorMode {
-        enum ENiagaraRecycleColorMode { "No Change", "Initial Value", Set, "Random Range", "Random Hue/Saturation/Value", ENiagaraRecycleColorMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleLifetimeMode {
-        enum ENiagaraRecycleLifetimeMode { "No Change", "Initial Value", Set, Random, ENiagaraRecycleLifetimeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleMassMode {
-        enum ENiagaraRecycleMassMode { "No Change", "Initial Value", Set, Random, ENiagaraRecycleMassMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleRendererType {
-        enum ENiagaraRecycleRendererType { "Set (Diameter)", Sprite, Mesh, ENiagaraRecycleRendererType_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleSpriteRotationMode {
-        enum ENiagaraRecycleSpriteRotationMode { "No Change", "Initial Value", Random, "Direct Angle (Degrees)", "Direct Normalized Angle (0-1)", ENiagaraRecycleSpriteRotationMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Recycle.ENiagaraRecycleSpriteSizeMode {
-        enum ENiagaraRecycleSpriteSizeMode { "No Change", "Initial Value", Uniform, "Random Uniform", "Non-Uniform", "Random Non-Uniform", ENiagaraRecycleSpriteSizeMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRegionCoordinateSpace {
-        enum ENiagaraRegionCoordinateSpace { World, Local, ENiagaraRegionCoordinateSpace_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Masks.ENiagaraRegionMaskValue {
-        enum ENiagaraRegionMaskValue { Float, Vector2D, Vector, "Linear Color", ENiagaraRegionMaskValue_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraRegionTransformOrder {
-        enum ENiagaraRegionTransformOrder { "Offset-Rotation", "Rotation-Offset", ENiagaraRegionTransformOrder_MAX, __typeKeyDoNoAccess}
     }
 
     enum ENiagaraRendererGpuTranslucentLatency { ProjectDefault, Immediate, Latent, ENiagaraRendererGpuTranslucentLatency_MAX, __typeKeyDoNoAccess}
@@ -105692,10 +104858,6 @@ declare module "ue" {
     enum ENiagaraRendererSortPrecision { Default, Low, High, ENiagaraRendererSortPrecision_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRendererSourceDataMode { Particles, Emitter, ENiagaraRendererSourceDataMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRenderTargetVolumeVisualizerMask { R, G, B, A, ENiagaraRenderTargetVolumeVisualizerMask_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraRestitutionMergeType {
-        enum ENiagaraRestitutionMergeType { Ignore, Min, Max, Average, ENiagaraRestitutionMergeType_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraRibbonAgeOffsetMode { Scale, Clip, ENiagaraRibbonAgeOffsetMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonDrawDirection { FrontToBack, BackToFront, ENiagaraRibbonDrawDirection_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonFacingMode { Screen, Custom, CustomSideVector, ENiagaraRibbonFacingMode_MAX, __typeKeyDoNoAccess}
@@ -105703,55 +104865,11 @@ declare module "ue" {
     enum ENiagaraRibbonTessellationMode { Automatic, Custom, Disabled, ENiagaraRibbonTessellationMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonUVDistributionMode { ScaledUniformly, ScaledUsingRibbonSegmentLength, TiledOverRibbonLength, TiledFromStartOverRibbonLength, ENiagaraRibbonUVDistributionMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraRibbonUVEdgeMode { SmoothTransition, Locked, ENiagaraRibbonUVEdgeMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.Location.ENiagaraRingDiscMode {
-        enum ENiagaraRingDiscMode { Circle, Hexagon, ENiagaraRingDiscMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraScaleColorMode {
-        enum ENiagaraScaleColorMode { "RGB and Alpha Separately", "RGBA Together", "RGBA Linear Color Curve", ENiagaraScaleColorMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraScriptContextStaticSwitch { System, Emitter, Particle, ENiagaraScriptContextStaticSwitch_MAX, __typeKeyDoNoAccess}
     enum ENiagaraScriptGroup { Particle, Emitter, System, Max, ENiagaraScriptGroup_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraShapeTorusMode {
-        enum ENiagaraShapeTorusMode { Torus, TorusKnot, ENiagaraShapeTorusMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSimCacheSectionPlayMode { SimWithoutCache, DisplayCacheOnly, ENiagaraSimCacheSectionPlayMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSimCacheSectionStretchMode { Repeat, TimeDilate, ENiagaraSimCacheSectionStretchMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSimulationTarget {
-        enum ENiagaraSimulationTarget { "CPU Sim", "GPUCompute Sim", ENiagaraSimulationTarget_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkeletalSpawning {
-        enum ENiagaraSkeletalSpawning { Bones, Sockets, "Bones and Sockets", ENiagaraSkeletalSpawning_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelMeshPositionSamplingMode {
-        enum ENiagaraSkelMeshPositionSamplingMode { "Apply (Rigid)", "Apply (Soft)", Output, ENiagaraSkelMeshPositionSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelMeshTransforms {
-        enum ENiagaraSkelMeshTransforms { Simulation, World, Local, "Sampled Mesh", "Mesh Particle", ENiagaraSkelMeshTransforms_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelSamplingFilteringMode {
-        enum ENiagaraSkelSamplingFilteringMode { All, Filtered, Unfiltered, ENiagaraSkelSamplingFilteringMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSkelSamplingModeFull {
-        enum ENiagaraSkelSamplingModeFull { "Skeleton (Bones)", "Skeleton (Sockets)", "Skeleton (Bones and Sockets)", "Surface (Triangles)", "Surface (Vertices)", ENiagaraSkelSamplingModeFull_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSocketSamplingMode {
-        enum ENiagaraSocketSamplingMode { "Random (Filtered Sockets)", "Direct (Filtered Sockets)", ENiagaraSocketSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSortMode { None, ViewDepth, ViewDistance, CustomAscending, CustomDecending, ENiagaraSortMode_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSphereDistributionMode {
-        enum ENiagaraSphereDistributionMode { Random, Direct, Uniform, ENiagaraSphereDistributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSpriteAlignment { Unaligned, VelocityAligned, CustomAlignment, Automatic, ENiagaraSpriteAlignment_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSpriteFacingMode { FaceCamera, FaceCameraPlane, CustomFacingVector, FaceCameraPosition, FaceCameraDistanceBlend, Automatic, ENiagaraSpriteFacingMode_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStackEntryInlineDisplayMode { Expression, GraphHorizontal, GraphVertical, GraphHybrid, None, ENiagaraStackEntryInlineDisplayMode_MAX, __typeKeyDoNoAccess}
@@ -105760,91 +104878,11 @@ declare module "ue" {
     enum ENiagaraStatEvaluationType { Average, Maximum, ENiagaraStatEvaluationType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStaticSwitchType { Bool, Integer, Enum, ENiagaraStaticSwitchType_MAX, __typeKeyDoNoAccess}
     enum ENiagaraStripScriptByteCodeOption { Default, Strip_Original, Strip_Experimental, ENiagaraStripScriptByteCodeOption_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraSUbUVAnimationMode {
-        enum ENiagaraSUbUVAnimationMode { Linear, Random, ENiagaraSUbUVAnimationMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraSystemInactiveMode {
-        enum ENiagaraSystemInactiveMode { "Complete (Let Emitters Finish then Kill The System)", "Kill (System and Emitters Die Immediately)", ENiagaraSystemInactiveMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraSystemInstanceState { None, PendingSpawn, PendingSpawnPaused, Spawning, Running, Paused, Num, ENiagaraSystemInstanceState_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionEndBehavior { SetSystemInactive, Deactivate, None, ENiagaraSystemSpawnSectionEndBehavior_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionEvaluateBehavior { ActivateIfInactive, None, ENiagaraSystemSpawnSectionEvaluateBehavior_MAX, __typeKeyDoNoAccess}
     enum ENiagaraSystemSpawnSectionStartBehavior { Activate, ENiagaraSystemSpawnSectionStartBehavior_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraTorusDistributionMode {
-        enum ENiagaraTorusDistributionMode { Random, Direct, ENiagaraTorusDistributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraTorusMode {
-        enum ENiagaraTorusMode { Torus, TorusKnot, Ring, ENiagaraTorusMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraTriangleSamplingMode {
-        enum ENiagaraTriangleSamplingMode { "Random (All Triangles)", "Random (Sampling Regions)", "Direct (All Triangles)", "Direct (Sampling Regions)", ENiagaraTriangleSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagaraValidationSeverity { Info, Warning, Error, ENiagaraValidationSeverity_MAX, __typeKeyDoNoAccess}
-    namespace Niagara.Enums.ENiagaraVector2_Channels {
-        enum ENiagaraVector2_Channels { X, Y, ENiagaraVector2_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVector3_Channels {
-        enum ENiagaraVector3_Channels { X, Y, Z, ENiagaraVector3_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVector4_Channels {
-        enum ENiagaraVector4_Channels { X, Y, Z, W, ENiagaraVector4_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVectorNoiseQuality {
-        enum ENiagaraVectorNoiseQuality { "Baked (Low)", "Baked (Medium)", "Baked (High)", "Evaluated (Ultra)", "Vector Field Asset", ENiagaraVectorNoiseQuality_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVertexFilteringMode {
-        enum ENiagaraVertexFilteringMode { All, Filtered, ENiagaraVertexFilteringMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.ENiagaraVertexSamplingMode {
-        enum ENiagaraVertexSamplingMode { "Random (All Vertices)", "Random (Sampling Regions)", "Direct (All Vertices)", "Direct (Sampling Regions)", ENiagaraVertexSamplingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindCollisionMode {
-        enum ENiagaraWindCollisionMode { None, "From Collision Module", ENiagaraWindCollisionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindCombingMode {
-        enum ENiagaraWindCombingMode { None, "Surface Distance", ENiagaraWindCombingMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindFrictionDistanceMode {
-        enum ENiagaraWindFrictionDistanceMode { "Distance Limit", "Falloff Start / End", ENiagaraWindFrictionDistanceMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindFrictionMode {
-        enum ENiagaraWindFrictionMode { None, "Surface Distance", ENiagaraWindFrictionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindGroundMaskMode {
-        enum ENiagaraWindGroundMaskMode { "Direct Set", Landscape, ENiagaraWindGroundMaskMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindOffsetMode {
-        enum ENiagaraWindOffsetMode { None, "Direct Set", "Time Offset", ENiagaraWindOffsetMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceContributionMode {
-        enum ENiagaraWindTurbulenceContributionMode { "Direct Set", "Speed Range", "Speed Range Curve", ENiagaraWindTurbulenceContributionMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceFrequencyMode {
-        enum ENiagaraWindTurbulenceFrequencyMode { Constant, Varying, ENiagaraWindTurbulenceFrequencyMode_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Enums.Wind.ENiagaraWindTurbulenceMode {
-        enum ENiagaraWindTurbulenceMode { None, "Curl Noise", ENiagaraWindTurbulenceMode_MAX, __typeKeyDoNoAccess}
-    }
-
     enum ENiagartaDataChannelReadResult { Success, Failure, ENiagartaDataChannelReadResult_MAX, __typeKeyDoNoAccess}
     enum ENiagraDataChannel_IslandMode { AlignedStatic, Dynamic, ENiagraDataChannel_MAX, __typeKeyDoNoAccess}
     enum ENNEAttributeDataType { None, Float, FloatArray, Int32, Int32Array, String, StringArray, Tensor, TensorArray, ENNEAttributeDataType_MAX, __typeKeyDoNoAccess}
@@ -106614,55 +105652,6 @@ declare module "ue" {
     enum EOrientPositionSelector { Orientation, Position, OrientationAndPosition, EOrientPositionSelector_MAX, __typeKeyDoNoAccess}
     enum EOrthoThumbnailDirection { Top, Bottom, Left, Right, Front, Back, EOrthoThumbnailDirection_MAX, __typeKeyDoNoAccess}
     enum EOscillatorWaveform { SineWave, PerlinNoise, EOscillatorWaveform_MAX, __typeKeyDoNoAccess}
-    class EosConstantsGameDev {
-        constructor();
-        constructor(ProductId: string, SandboxId: string, DeploymentId: string, ClientCredentialsId: string, ClientCredentialsSecret: string, GameName: string, EncryptionKey: string, ProductVersion: string);
-        ProductId: string;
-        SandboxId: string;
-        DeploymentId: string;
-        ClientCredentialsId: string;
-        ClientCredentialsSecret: string;
-        GameName: string;
-        EncryptionKey: string;
-        ProductVersion: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_EosConstantsGameDev_0__: boolean;
-    }
-    
-    class EosConstantsProd {
-        constructor();
-        constructor(ProductId: string, SandboxId: string, DeploymentId: string, ClientCredentialsId: string, ClientCredentialsSecret: string, GameName: string, EncryptionKey: string, ProductVersion: string);
-        ProductId: string;
-        SandboxId: string;
-        DeploymentId: string;
-        ClientCredentialsId: string;
-        ClientCredentialsSecret: string;
-        GameName: string;
-        EncryptionKey: string;
-        ProductVersion: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_EosConstantsProd_0__: boolean;
-    }
-    
-    class EosConstants extends UE.DataAsset {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        GameDev: UE.EosConstantsGameDev;
-        Prod: UE.EosConstantsProd;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): EosConstants;
-        static Load(InName: string): EosConstants;
-    
-        __tid_EosConstants_0__: boolean;
-    }
-    
     enum EOutlinerColumnMode { State, Damage, Removal, Collision, Size, Geometry, EOutlinerColumnMode_MAX, __typeKeyDoNoAccess}
     enum EOutlinerItemNameEnum { BoneName, BoneIndex, EOutlinerItemNameEnum_MAX, __typeKeyDoNoAccess}
     enum EOutputResourceName { Output, EOutputResourceName_MAX, __typeKeyDoNoAccess}
@@ -106750,7 +105739,6 @@ declare module "ue" {
     enum EPortableObjectFormat { Unreal, Crowdin, EPortableObjectFormat_MAX, __typeKeyDoNoAccess}
     enum EPositionIncludedOffsets { IncludeOffsets, ExcludeOffsets, EPositionIncludedOffsets_MAX, __typeKeyDoNoAccess}
     enum EPositionOrigin { Absolute, CameraRelative, EPositionOrigin_MAX, __typeKeyDoNoAccess}
-    enum EPowerUsageFrameRateLock { PUFRL_None, PUFRL_20, PUFRL_30, PUFRL_60, PUFRL_MAX, __typeKeyDoNoAccess}
     enum EPrimitiveObjectSets { PrimitiveObjectSets_AllObjects, PrimitiveObjectSets_CurrentLevel, PrimitiveObjectSets_SelectedObjects, PrimitiveObjectSets_MAX, __typeKeyDoNoAccess}
     enum EProceduralDiscType { Disc, PuncturedDisc, EProceduralDiscType_MAX, __typeKeyDoNoAccess}
     enum EProceduralRectType { Rectangle, RoundedRectangle, EProceduralRectType_MAX, __typeKeyDoNoAccess}
@@ -106900,11 +105888,6 @@ declare module "ue" {
     enum ERigElementDetailsTransformComponent { TranslationX, TranslationY, TranslationZ, RotationRoll, RotationPitch, RotationYaw, ScaleX, ScaleY, ScaleZ, ERigElementDetailsTransformComponent_MAX, __typeKeyDoNoAccess}
     enum ERigElementResolveState { Unknown, InvalidTarget, PossibleTarget, DefaultTarget, Max, ERigElementResolveState_MAX, __typeKeyDoNoAccess}
     enum ERigEvent { None, RequestAutoKey, OpenUndoBracket, CloseUndoBracket, Max, ERigEvent_MAX, __typeKeyDoNoAccess}
-    enum ERigLogicCalculationType { Scalar, SSE, AVX, NEON, AnyVector, ERigLogicCalculationType_MAX, __typeKeyDoNoAccess}
-    enum ERigLogicRotationOrder { XYZ, XZY, YXZ, YZX, ZXY, ZYX, ERigLogicRotationOrder_MAX, __typeKeyDoNoAccess}
-    enum ERigLogicRotationType { None, EulerAngles, Quaternions, ERigLogicRotationType_MAX, __typeKeyDoNoAccess}
-    enum ERigLogicScaleType { None, Vector, ERigLogicScaleType_MAX, __typeKeyDoNoAccess}
-    enum ERigLogicTranslationType { None, Vector, ERigLogicTranslationType_MAX, __typeKeyDoNoAccess}
     enum ERigMetaDataNameSpace { None, Self, Parent, Root, Last, ERigMetaDataNameSpace_MAX, __typeKeyDoNoAccess}
     enum ERigSwitchParentMode { World, DefaultParent, ParentItem, ERigSwitchParentMode_MAX, __typeKeyDoNoAccess}
     enum ERigTransformStackEntryType { TransformPose, ControlOffset, ControlShape, CurveValue, ERigTransformStackEntryType_MAX, __typeKeyDoNoAccess}
@@ -106933,8 +105916,6 @@ declare module "ue" {
     enum ERootSelectionMode { Disabled, Enabled, Self, ERootSelectionMode_MAX, __typeKeyDoNoAccess}
     enum ERotationGridMode { GridMode_DivisionsOf360, GridMode_Common, GridMode_MAX, __typeKeyDoNoAccess}
     enum ERotationOrderEnum { Dataflow_RotationOrder_XYZ, Dataflow_RotationOrder_YZX, Dataflow_RotationOrder_ZXY, Dataflow_RotationOrder_XZY, Dataflow_RotationOrder_YXZ, Dataflow_RotationOrder_ZYX, Dataflow_Max, Dataflow_MAX, __typeKeyDoNoAccess}
-    enum ERotationRepresentation { EulerAngles, Quaternion, ERotationRepresentation_MAX, __typeKeyDoNoAccess}
-    enum ERotationUnit { Degrees, Radians, ERotationUnit_MAX, __typeKeyDoNoAccess}
     enum ERoundingMode { HalfToEven, HalfFromZero, HalfToZero, FromZero, ToZero, ToNegativeInfinity, ToPositiveInfinity, ERoundingMode_MAX, __typeKeyDoNoAccess}
     enum ERTDrawingType { RTAtlas, RTAtlasToNonAtlas, RTNonAtlasToAtlas, RTNonAtlas, RTMips, ERTDrawingType_MAX, __typeKeyDoNoAccess}
     enum ERuntimePartitionCellBoundsMethod { UseContent, UseCellBounds, UseMinContentCellBounds, ERuntimePartitionCellBoundsMethod_MAX, __typeKeyDoNoAccess}
@@ -106993,7 +105974,6 @@ declare module "ue" {
         __tid_EscalationState_0__: boolean;
     }
     
-    enum EScaleRepresentation { Vector, EScaleRepresentation_MAX, __typeKeyDoNoAccess}
     enum ESCCModification { Modified, Added, Removed, Conflicted, ESCCModification_MAX, __typeKeyDoNoAccess}
     enum ESceneSnapQueryTargetType { None, MeshVertex, MeshEdge, Grid, All, ESceneSnapQueryTargetType_MAX, __typeKeyDoNoAccess}
     enum ESceneSnapQueryType { Position, Rotation, ESceneSnapQueryType_MAX, __typeKeyDoNoAccess}
@@ -107232,12 +106212,9 @@ declare module "ue" {
     enum ETransformMeshesTransformMode { SharedGizmo, SharedGizmoLocal, PerObjectGizmo, LastValue, ETransformMeshesTransformMode_MAX, __typeKeyDoNoAccess}
     enum ETransformSpaceMode { LocalSpace, GlobalSpace, BaseSpace, BaseJoint, Max, ETransformSpaceMode_MAX, __typeKeyDoNoAccess}
     enum ETransitionGetter { AnimationAsset_GetCurrentTime, AnimationAsset_GetLength, AnimationAsset_GetCurrentTimeFraction, AnimationAsset_GetTimeFromEnd, AnimationAsset_GetTimeFromEndFraction, CurrentState_ElapsedTime, CurrentState_GetBlendWeight, CurrentTransitionDuration, ArbitraryState_GetBlendWeight, ETransitionGetter_MAX, __typeKeyDoNoAccess}
-    enum ETranslationRepresentation { Vector, ETranslationRepresentation_MAX, __typeKeyDoNoAccess}
-    enum ETranslationUnit { CM, M, ETranslationUnit_MAX, __typeKeyDoNoAccess}
     enum ETranslucentSortPolicy { SortByDistance, SortByProjectedZ, SortAlongAxis, ETranslucentSortPolicy_MAX, __typeKeyDoNoAccess}
     enum ETriggerEventsSupported { None, Instant, Uninterruptible, Ongoing, All, ETriggerEventsSupported_MAX, __typeKeyDoNoAccess}
     enum ETunnelBoundaryType { Unknown, EntrySite, InputSite, OutputSite, ETunnelBoundaryType_MAX, __typeKeyDoNoAccess}
-    enum ETwistAxis { X, Y, Z, ETwistAxis_MAX, __typeKeyDoNoAccess}
     enum ETwitterIntegrationDelegate { TID_AuthorizeComplete, TID_TweetUIComplete, TID_RequestComplete, TID_MAX, __typeKeyDoNoAccess}
     enum ETwitterRequestMethod { TRM_Get, TRM_Post, TRM_Delete, TRM_MAX, __typeKeyDoNoAccess}
     enum ETwoPlayerSplitScreenType { Horizontal, Vertical, ETwoPlayerSplitScreenType_MAX, __typeKeyDoNoAccess}
@@ -108056,135 +107033,6 @@ declare module "ue" {
         __tid_ExtrudeMeshSelectionToolBuilder_0__: boolean;
     }
     
-    class FabApiVersion {
-        constructor();
-        constructor(Ue: string, Api: string, PluginVersion: string, Platform: string);
-        Ue: string;
-        Api: string;
-        PluginVersion: string;
-        Platform: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FabApiVersion_0__: boolean;
-    }
-    
-    class FabAnalyticsEventValue {
-        constructor();
-        constructor(Platform: string, ApiVersion: UE.FabApiVersion);
-        Platform: string;
-        ApiVersion: UE.FabApiVersion;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FabAnalyticsEventValue_0__: boolean;
-    }
-    
-    class FabAnalyticsPayload {
-        constructor();
-        constructor(InteractionType: string, EventCategory: string, EventAction: string, EventLabel: string, EventType: string, EventValue: UE.FabAnalyticsEventValue);
-        InteractionType: string;
-        EventCategory: string;
-        EventAction: string;
-        EventLabel: string;
-        EventType: string;
-        EventValue: UE.FabAnalyticsEventValue;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FabAnalyticsPayload_0__: boolean;
-    }
-    
-    class FabAssetMetadata {
-        constructor();
-        constructor(AssetId: string, AssetName: string, AssetType: string, ListingType: string, IsQuixel: boolean, AssetNamespace: string, DistributionPointBaseUrls: TArray<string>);
-        AssetId: string;
-        AssetName: string;
-        AssetType: string;
-        ListingType: string;
-        IsQuixel: boolean;
-        AssetNamespace: string;
-        DistributionPointBaseUrls: TArray<string>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FabAssetMetadata_0__: boolean;
-    }
-    
-    class FabFrontendSettings {
-        constructor();
-        constructor(PreferredFormat: string, PreferredQuality: string);
-        PreferredFormat: string;
-        PreferredQuality: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FabFrontendSettings_0__: boolean;
-    }
-    
-    class FabBrowserApi extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        AddToProject_EditorOnly(DownloadUrl: string, AssetMetadata: UE.FabAssetMetadata) : void;
-        CopyToClipboard_EditorOnly(Content: string) : void;
-        DragStart_EditorOnly(AssetMetadata: UE.FabAssetMetadata) : void;
-        GetAuthToken_EditorOnly() : string;
-        GetRefreshToken_EditorOnly() : string;
-        GetSettings_EditorOnly() : UE.FabFrontendSettings;
-        GetUrl_EditorOnly() : string;
-        Login_EditorOnly() : void;
-        Logout_EditorOnly() : void;
-        OnDragInfoFailure_EditorOnly(AssetId: string) : void;
-        OnDragInfoSuccess_EditorOnly(DownloadUrl: string, AssetMetadata: UE.FabAssetMetadata) : void;
-        OpenPluginSettings_EditorOnly() : void;
-        OpenUrlInBrowser_EditorOnly(Url: string) : void;
-        PluginOpened_EditorOnly() : void;
-        SetPreferredQualityTier_EditorOnly(PreferredQuality: string) : void;
-        static GetApiVersion_EditorOnly() : UE.FabApiVersion;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabBrowserApi;
-        static Load(InName: string): FabBrowserApi;
-    
-        __tid_FabBrowserApi_0__: boolean;
-    }
-    
-    class FabPlaceholderSpawner extends UE.ActorFactory {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabPlaceholderSpawner;
-        static Load(InName: string): FabPlaceholderSpawner;
-    
-        __tid_FabPlaceholderSpawner_0__: boolean;
-    }
-    
-    class FabDecalPlaceholderSpawner extends UE.FabPlaceholderSpawner {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabDecalPlaceholderSpawner;
-        static Load(InName: string): FabDecalPlaceholderSpawner;
-    
-        __tid_FabDecalPlaceholderSpawner_0__: boolean;
-    }
-    
-    class FabLocalAssets extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        PathsListingID: TMap<string, string>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabLocalAssets;
-        static Load(InName: string): FabLocalAssets;
-    
-        __tid_FabLocalAssets_0__: boolean;
-    }
-    
     class FABRIKChainLink {
         constructor();
         /**
@@ -108193,42 +107041,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_FABRIKChainLink_0__: boolean;
-    }
-    
-    class FabSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Environment: UE.EFabEnvironment;
-        CustomUrl: string;
-        CustomAuthToken: string;
-        bEnableDebugOptions: boolean;
-        CacheDirectoryPath: UE.DirectoryPath;
-        CacheDirectorySize: string;
-        ProductFormatsSectionSubText: string;
-        PreferredDefaultFormat: UE.EFabPreferredFormats;
-        PreferredQualityTier: UE.EFabPreferredQualityTier;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabSettings;
-        static Load(InName: string): FabSettings;
-    
-        __tid_FabSettings_0__: boolean;
-    }
-    
-    class FabSkeletalMeshPlaceholderSpawner extends UE.FabPlaceholderSpawner {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabSkeletalMeshPlaceholderSpawner;
-        static Load(InName: string): FabSkeletalMeshPlaceholderSpawner;
-    
-        __tid_FabSkeletalMeshPlaceholderSpawner_0__: boolean;
-    }
-    
-    class FabStaticMeshPlaceholderSpawner extends UE.FabPlaceholderSpawner {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): FabStaticMeshPlaceholderSpawner;
-        static Load(InName: string): FabStaticMeshPlaceholderSpawner;
-    
-        __tid_FabStaticMeshPlaceholderSpawner_0__: boolean;
     }
     
     class FacialAnimationBulkImporterSettings extends UE.Object {
@@ -110440,18 +109252,6 @@ declare module "ue" {
         static Load(InName: string): FoliageType_ISMThumbnailRenderer;
     
         __tid_FoliageType_ISMThumbnailRenderer_0__: boolean;
-    }
-    
-    class FoliageTypeInfo {
-        constructor();
-        constructor(path: string);
-        path: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_FoliageTypeInfo_0__: boolean;
     }
     
     class FoliageTypeObject {
@@ -122720,18 +121520,6 @@ declare module "ue" {
         
     }
 
-    class ImportTimeData {
-        constructor();
-        constructor(assets: TArray<UE.AssetImportTime>);
-        assets: TArray<UE.AssetImportTime>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_ImportTimeData_0__: boolean;
-    }
-    
     class ImportVertexColorOptions extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         UVIndex: number;
@@ -126550,44 +125338,6 @@ declare module "ue" {
         __tid_InterchangeImportTestStepReimport_0__: boolean;
     }
     
-    class InterchangeInstancedFoliageTypeFactory extends UE.InterchangeFactoryBase {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): InterchangeInstancedFoliageTypeFactory;
-        static Load(InName: string): InterchangeInstancedFoliageTypeFactory;
-    
-        __tid_InterchangeInstancedFoliageTypeFactory_0__: boolean;
-    }
-    
-    class InterchangeInstancedFoliageTypeFactoryNode extends UE.InterchangeFactoryBaseNode {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        GetCustomAffectDistanceFieldLighting_EditorOnly(AttributeValue: $Ref<boolean>) : boolean;
-        GetCustomAlignToNormal_EditorOnly(AttributeValue: $Ref<boolean>) : boolean;
-        GetCustomRandomPitchAngle_EditorOnly(AttributeValue: $Ref<number>) : boolean;
-        GetCustomRandomYaw_EditorOnly(AttributeValue: $Ref<boolean>) : boolean;
-        GetCustomScaleX_EditorOnly(AttributeValue: $Ref<UE.Vector2f>) : boolean;
-        GetCustomScaleY_EditorOnly(AttributeValue: $Ref<UE.Vector2f>) : boolean;
-        GetCustomScaleZ_EditorOnly(AttributeValue: $Ref<UE.Vector2f>) : boolean;
-        GetCustomScaling_EditorOnly(AttributeValue: $Ref<UE.EFoliageScaling>) : boolean;
-        GetCustomStaticMesh_EditorOnly(AttributeValue: $Ref<string>) : boolean;
-        GetCustomWorldPositionOffsetDisableDistance_EditorOnly(AttributeValue: $Ref<number>) : boolean;
-        SetCustomAffectDistanceFieldLighting_EditorOnly(AttributeValue: boolean, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        SetCustomAlignToNormal_EditorOnly(AttributeValue: boolean, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        SetCustomRandomPitchAngle_EditorOnly(AttributeValue: number, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        SetCustomRandomYaw_EditorOnly(AttributeValue: boolean, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        SetCustomScaleX_EditorOnly(AttributeValue: UE.Vector2f) : boolean;
-        SetCustomScaleY_EditorOnly(AttributeValue: UE.Vector2f) : boolean;
-        SetCustomScaleZ_EditorOnly(AttributeValue: UE.Vector2f) : boolean;
-        SetCustomScaling_EditorOnly(AttributeValue: UE.EFoliageScaling, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        SetCustomStaticMesh_EditorOnly(AttributeValue: string) : boolean;
-        SetCustomWorldPositionOffsetDisableDistance_EditorOnly(AttributeValue: number, bAddApplyDelegate?: boolean /* = true */) : boolean;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): InterchangeInstancedFoliageTypeFactoryNode;
-        static Load(InName: string): InterchangeInstancedFoliageTypeFactoryNode;
-    
-        __tid_InterchangeInstancedFoliageTypeFactoryNode_0__: boolean;
-    }
-    
     class InterchangeJPGTranslator extends UE.InterchangeTranslatorBase {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -127221,41 +125971,6 @@ declare module "ue" {
         static Load(InName: string): InterchangeMaterialXTranslator;
     
         __tid_InterchangeMaterialXTranslator_0__: boolean;
-    }
-    
-    class MegascanMaterialPair {
-        constructor();
-        constructor(StandardMaterial: TSoftObjectPtr<UE.MaterialInterface>, VTMaterial: TSoftObjectPtr<UE.MaterialInterface>);
-        StandardMaterial: TSoftObjectPtr<UE.MaterialInterface>;
-        VTMaterial: TSoftObjectPtr<UE.MaterialInterface>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MegascanMaterialPair_0__: boolean;
-    }
-    
-    class MegascansMaterialParentSettings extends UE.DeveloperSettings {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MaterialParents: TMap<UE.EMegascanMaterialType, UE.MegascanMaterialPair>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MegascansMaterialParentSettings;
-        static Load(InName: string): MegascansMaterialParentSettings;
-    
-        __tid_MegascansMaterialParentSettings_0__: boolean;
-    }
-    
-    class InterchangeMegascansPipeline extends UE.InterchangePipelineBase {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MegascanImportType: UE.EMegascanImportType;
-        MegascansMaterialParentSettings: UE.MegascansMaterialParentSettings;
-        BaseNodeContainer: UE.InterchangeBaseNodeContainer;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): InterchangeMegascansPipeline;
-        static Load(InName: string): InterchangeMegascansPipeline;
-    
-        __tid_InterchangeMegascansPipeline_0__: boolean;
     }
     
     class InterchangeMeshActorFactoryNode extends UE.InterchangeActorFactoryNode {
@@ -130255,139 +128970,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_InvertTransformDataflowNode_0__: boolean;
-    }
-    
-    class IOSBuildResourceDirectory {
-        constructor();
-        constructor(Path: string);
-        Path: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_IOSBuildResourceDirectory_0__: boolean;
-    }
-    
-    class IOSBuildResourceFilePath {
-        constructor();
-        constructor(FilePath: string);
-        FilePath: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_IOSBuildResourceFilePath_0__: boolean;
-    }
-    
-    class IOSRuntimeSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        bEnableStoreKitSupport: boolean;
-        bEnableGameCenterSupport: boolean;
-        bEnableCloudKitSupport: boolean;
-        IOSCloudKitSyncStrategy: UE.EIOSCloudKitSyncStrategy;
-        bEnableRemoteNotificationsSupport: boolean;
-        bEnableBackgroundFetch: boolean;
-        bSupportsMetal: boolean;
-        bSupportsMetalMRT: boolean;
-        bSupportHighRefreshRates: boolean;
-        bStreamLandscapeMeshLODs: boolean;
-        MinimumiOSVersion: UE.EIOSVersion;
-        bBuildAsFramework: boolean;
-        WindowsMetalToolchainOverride: UE.IOSBuildResourceDirectory;
-        bGeneratedSYMFile: boolean;
-        bGeneratedSYMBundle: boolean;
-        bGenerateCrashReportSymbols: boolean;
-        bGenerateXCArchive: boolean;
-        bUsesNonExemptEncryption: boolean;
-        ITSEncryptionExportComplianceCode: string;
-        bEnableAdvertisingIdentifier: boolean;
-        AdditionalLinkerFlags: string;
-        AdditionalShippingLinkerFlags: string;
-        AdditionalPlistData: string;
-        RequiredEntitlements: TArray<string>;
-        bSupportsIPad: boolean;
-        bSupportsIPhone: boolean;
-        bEnableSplitView: boolean;
-        bEnableSimulatorSupport: boolean;
-        FrameRateLock: UE.EPowerUsageFrameRateLock;
-        bEnableDynamicMaxFPS: boolean;
-        bUseRSync: boolean;
-        RemoteServerName: string;
-        RSyncUsername: string;
-        RemoteServerOverrideBuildPath: string;
-        CwRsyncInstallPath: UE.IOSBuildResourceDirectory;
-        SSHPrivateKeyLocation: string;
-        SSHPrivateKeyOverridePath: UE.IOSBuildResourceFilePath;
-        bSupportSecondaryMac: boolean;
-        SecondaryRemoteServerName: string;
-        SecondaryRSyncUsername: string;
-        SecondaryRemoteServerOverrideBuildPath: string;
-        SecondaryCwRsyncInstallPath: UE.IOSBuildResourceDirectory;
-        SecondarySSHPrivateKeyLocation: string;
-        SecondarySSHPrivateKeyOverridePath: UE.IOSBuildResourceFilePath;
-        bUserSwitching: boolean;
-        bGameSupportsMultipleActiveControllers: boolean;
-        bAllowRemoteRotation: boolean;
-        bAllowControllers: boolean;
-        bControllersBlockDeviceFeedback: boolean;
-        bDisableMotionData: boolean;
-        bSupportsPortraitOrientation: boolean;
-        bSupportsUpsideDownOrientation: boolean;
-        bSupportsLandscapeLeftOrientation: boolean;
-        bSupportsLandscapeRightOrientation: boolean;
-        bSupportsITunesFileSharing: boolean;
-        bSupportsFilesApp: boolean;
-        PreferredLandscapeOrientation: UE.EIOSLandscapeOrientation;
-        BundleDisplayName: string;
-        BundleName: string;
-        BundleIdentifier: string;
-        VersionInfo: string;
-        bCustomLaunchscreenStoryboard: boolean;
-        bEnableFacebookSupport: boolean;
-        FacebookAppID: string;
-        MobileProvision: string;
-        SigningCertificate: string;
-        bAutomaticSigning: boolean;
-        IOSTeamID: string;
-        DevCenterUsername: string;
-        DevCenterPassword: string;
-        bDisableHTTPS: boolean;
-        MetalLanguageVersion: number;
-        UseFastIntrinsics: boolean;
-        ForceFloats: boolean;
-        EnableMathOptimisations: boolean;
-        IndirectArgumentTier: number;
-        bSupportAppleA8: boolean;
-        bUseIntegratedKeyboard: boolean;
-        AudioSampleRate: number;
-        AudioCallbackBufferFrameSize: number;
-        AudioNumBuffersToEnqueue: number;
-        AudioMaxChannels: number;
-        AudioNumSourceWorkers: number;
-        SpatializationPlugin: string;
-        SourceDataOverridePlugin: string;
-        ReverbPlugin: string;
-        OcclusionPlugin: string;
-        CompressionOverrides: UE.PlatformRuntimeAudioCompressionOverrides;
-        bSupportsBackgroundAudio: boolean;
-        CacheSizeKB: number;
-        MaxChunkSizeOverrideKB: number;
-        bResampleForDevice: boolean;
-        SoundCueCookQualityIndex: number;
-        MaxSampleRate: number;
-        HighSampleRate: number;
-        MedSampleRate: number;
-        LowSampleRate: number;
-        MinSampleRate: number;
-        CompressionQualityModifier: number;
-        AutoStreamingThreshold: number;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): IOSRuntimeSettings;
-        static Load(InName: string): IOSRuntimeSettings;
-    
-        __tid_IOSRuntimeSettings_0__: boolean;
     }
     
     class IoStoreCommandlet extends UE.Commandlet {
@@ -149521,43 +148103,6 @@ declare module "ue" {
         __tid_MasterAudioSubmixCaptureProtocol_0__: boolean;
     }
     
-    class MasterMaterialInfo {
-        constructor();
-        constructor(masterID: string, masterMaterialName: string, path: string);
-        masterID: string;
-        masterMaterialName: string;
-        path: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MasterMaterialInfo_0__: boolean;
-    }
-    
-    class MaterialAssetSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MasterMaterial3d: string;
-        MasterMaterialSurface: string;
-        MasterMaterialPlant: string;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MaterialAssetSettings;
-        static Load(InName: string): MaterialAssetSettings;
-    
-        __tid_MaterialAssetSettings_0__: boolean;
-    }
-    
-    class MaterialBlendSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        BlendedMaterialName: string;
-        BlendedMaterialPath: UE.DirectoryPath;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MaterialBlendSettings;
-        static Load(InName: string): MaterialBlendSettings;
-    
-        __tid_MaterialBlendSettings_0__: boolean;
-    }
-    
     class MaterialCachedParameterEntry {
         constructor();
         constructor(ParameterInfoSet: TSet<UE.MaterialParameterInfo>);
@@ -154493,36 +153038,6 @@ declare module "ue" {
         __tid_MaterialInstanceEditorOnlyData_0__: boolean;
     }
     
-    class MaterialParams {
-        constructor();
-        constructor(paramName: string, usedTextureID: string);
-        paramName: string;
-        usedTextureID: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MaterialParams_0__: boolean;
-    }
-    
-    class MaterialInstanceInfo {
-        constructor();
-        constructor(instanceID: string, instanceName: string, instancePath: string, instanceMaster: string, type: string, params: TArray<UE.MaterialParams>);
-        instanceID: string;
-        instanceName: string;
-        instancePath: string;
-        instanceMaster: string;
-        type: string;
-        params: TArray<UE.MaterialParams>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MaterialInstanceInfo_0__: boolean;
-    }
-    
     class MaterialInstanceThumbnailRenderer extends UE.DefaultSizedThumbnailRenderer {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -154590,18 +153105,6 @@ declare module "ue" {
         static Load(InName: string): MaterialParameterCollectionFactoryNew;
     
         __tid_MaterialParameterCollectionFactoryNew_0__: boolean;
-    }
-    
-    class MaterialPresetsSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        MasterMaterial3d: TLazyObjectPtr<UE.Material>;
-        MasterMaterialSurface: TLazyObjectPtr<UE.Material>;
-        MasterMaterialPlant: TLazyObjectPtr<UE.Material>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MaterialPresetsSettings;
-        static Load(InName: string): MaterialPresetsSettings;
-    
-        __tid_MaterialPresetsSettings_0__: boolean;
     }
     
     class MaterialProvider extends UE.Interface {
@@ -154675,19 +153178,6 @@ declare module "ue" {
         static Load(InName: string): MaterialStatsOptions;
     
         __tid_MaterialStatsOptions_0__: boolean;
-    }
-    
-    class MaterialUsage {
-        constructor();
-        constructor(instanceID: string, materialSlot: string);
-        instanceID: string;
-        materialSlot: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MaterialUsage_0__: boolean;
     }
     
     class MaterialXPipelineSettings extends UE.DeveloperSettings {
@@ -155453,17 +153943,6 @@ declare module "ue" {
         __tid_MediaTextureFactoryNew_0__: boolean;
     }
     
-    class MegascansSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        bCreateFoliage: boolean;
-        bApplyToSelection: boolean;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MegascansSettings;
-        static Load(InName: string): MegascansSettings;
-    
-        __tid_MegascansSettings_0__: boolean;
-    }
-    
     class MenuAnchor extends UE.ContentWidget {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         MenuClass: UE.Class;
@@ -155693,19 +154172,6 @@ declare module "ue" {
         static Load(InName: string): MeshAttributePaintToolBuilder;
     
         __tid_MeshAttributePaintToolBuilder_0__: boolean;
-    }
-    
-    class MeshBlendShapeChannelMapping {
-        constructor();
-        constructor(MeshIndex: number, BlendShapeChannelIndex: number);
-        MeshIndex: number;
-        BlendShapeChannelIndex: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MeshBlendShapeChannelMapping_0__: boolean;
     }
     
     class MeshBooleanDataflowNode extends UE.DataflowNode {
@@ -155948,22 +154414,6 @@ declare module "ue" {
         static Load(InName: string): MeshGroupPaintToolBuilder;
     
         __tid_MeshGroupPaintToolBuilder_0__: boolean;
-    }
-    
-    class MeshInfo {
-        constructor();
-        constructor(meshID: string, name: string, path: string, numberOfLods: number, materialUsage: TArray<UE.MaterialUsage>);
-        meshID: string;
-        name: string;
-        path: string;
-        numberOfLods: number;
-        materialUsage: TArray<UE.MaterialUsage>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MeshInfo_0__: boolean;
     }
     
     class MeshInfoDataflowNode extends UE.DataflowNode {
@@ -157042,68 +155492,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_MetadataConfig_0__: boolean;
-    }
-    
-    class MetaHumanCustomizableBodyPart {
-        constructor();
-        constructor(SkeletalMeshComponent: UE.SkeletalMeshComponent, ControlRigClass: UE.Class, ControlRigLODThreshold: number, PhysicsAsset: UE.PhysicsAsset, RigidBodyLODThreshold: number, ComponentName: string);
-        SkeletalMeshComponent: UE.SkeletalMeshComponent;
-        ControlRigClass: UE.Class;
-        ControlRigLODThreshold: number;
-        PhysicsAsset: UE.PhysicsAsset;
-        RigidBodyLODThreshold: number;
-        ComponentName: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_MetaHumanCustomizableBodyPart_0__: boolean;
-    }
-    
-    class MetaHumanComponentBase extends UE.ActorComponent {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        Body: UE.SkeletalMeshComponent;
-        BodyComponentName: string;
-        BodyType: UE.EMetaHumanBodyType;
-        bEnableBodyCorrectives: boolean;
-        Face: UE.SkeletalMeshComponent;
-        FaceComponentName: string;
-        RigLogicLODThreshold: number;
-        bEnableNeckCorrectives: boolean;
-        NeckCorrectivesLODThreshold: number;
-        bEnableNeckProcControlRig: boolean;
-        NeckProcControlRigLODThreshold: number;
-        Torso: UE.MetaHumanCustomizableBodyPart;
-        Legs: UE.MetaHumanCustomizableBodyPart;
-        Feet: UE.MetaHumanCustomizableBodyPart;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MetaHumanComponentBase;
-        static Load(InName: string): MetaHumanComponentBase;
-    
-        __tid_MetaHumanComponentBase_0__: boolean;
-    }
-    
-    class MetaHumanComponentUE extends UE.MetaHumanComponentBase {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        PostProcessAnimBP: TSoftClassPtr<UE.AnimInstance>;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MetaHumanComponentUE;
-        static Load(InName: string): MetaHumanComponentUE;
-    
-        __tid_MetaHumanComponentUE_0__: boolean;
-    }
-    
-    class MetaHumanSDKSettings extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        VersionServiceBaseUrl: string;
-        CinematicImportPath: UE.DirectoryPath;
-        OptimizedImportPath: UE.DirectoryPath;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): MetaHumanSDKSettings;
-        static Load(InName: string): MetaHumanSDKSettings;
-    
-        __tid_MetaHumanSDKSettings_0__: boolean;
     }
     
     class MetasoundAnalyzerAnimationSettings {
@@ -171165,10 +169553,6 @@ declare module "ue" {
         __tid_NewPluginDescriptorData_0__: boolean;
     }
     
-    namespace Niagara.Enums.Niagara_Units {
-        enum Niagara_Units { Centimeters, Meters, Kilometers, Niagara_MAX, __typeKeyDoNoAccess}
-    }
-
     class NiagaraMenuAction_Base {
         constructor();
         /**
@@ -178335,17 +176719,6 @@ declare module "ue" {
         static Load(InName: string): NodeMappingProviderInterface;
     
         __tid_NodeMappingProviderInterface_0__: boolean;
-    }
-    
-    class NodePort extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        GetNodePort_EditorOnly() : string;
-        IsNodeRunning_EditorOnly() : boolean;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): NodePort;
-        static Load(InName: string): NodePort;
-    
-        __tid_NodePort_0__: boolean;
     }
     
     class NodeSpawnData {
@@ -190359,18 +188732,6 @@ declare module "ue" {
         __tid_PinTypeSelectorFilter_0__: boolean;
     }
     
-    namespace Niagara.Functions.PivotPainter.PivotPainter16bitTextureAlphaDataTypes {
-        enum PivotPainter16bitTextureAlphaDataTypes { "Number of Steps to Root", "Random 0-1", "Origin Extents (16-bit)", "Bounding Box Diameter", "Selection Order (Int as float)", "Normalized 0-1 Hierarchy Position", "Object X Width", "Object Y Depth", "Object Z Height", "Parent Index (Float - Up To 2048)", PivotPainter16bitTextureAlphaDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Functions.PivotPainter.PivotPainter8BitTextureAlphaDataTypes {
-        enum PivotPainter8BitTextureAlphaDataTypes { "Normalized 0-1 Hierarchy Position", "Normalized 0-1 Value Per Element", "X Extent Divided by 2048 (2048 max)", "Y Extent Divided by 2048 (2048 max)", "Z Extent Divided by 2048 (2048 max)", PivotPainter8BitTextureAlphaDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Niagara.Functions.PivotPainter.PivotPainterTextureRGBDataTypes {
-        enum PivotPainterTextureRGBDataTypes { "Pivot Position (16-bit)", "Origin Position (16-bit)", "Origin Extents (16-bit)", "X-Vector (8-bit)", "Y-Vector (8-bit)", "Z-Vector (8-bit)", PivotPainterTextureRGBDataTypes_MAX, __typeKeyDoNoAccess}
-    }
-
     class PivotPlaneTranslationGizmoHandleGroup extends UE.AxisGizmoHandleGroup {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -191155,10 +189516,6 @@ declare module "ue" {
         __tid_PlatformsMenuSettings_0__: boolean;
     }
     
-    namespace Niagara.Enums.Audio.PlayAudioMode {
-        enum PlayAudioMode { "Direct Set", Random, "On Death", PlayAudioMode_MAX, __typeKeyDoNoAccess}
-    }
-
     class PrimaryDataAsset extends UE.DataAsset {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         AssetBundleData_EditorOnly: UE.AssetBundleData;
@@ -191540,16 +189897,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_PointDamageEvent_0__: boolean;
-    }
-    
-    class PointerToUberGraphFrame {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_PointerToUberGraphFrame_0__: boolean;
     }
     
     class PointLight extends UE.Light {
@@ -193878,15 +192225,16 @@ declare module "ue" {
     class QiongQiConfigLoader extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         /*
-         *返回 Config 目录下所有 .json 文件的名称（不含扩展名，如 ServerConfigCategory），用 "|" 分隔
+         *返回 Config 目录下所有 .bytes 文件的名称（不含扩展名，如 ServerConfigCategory），用 "|" 分隔
          *注意：不能直接返回 TArray<FString>，puer-ts 1.0.5 反射模式下静态函数返回容器会转成 {}，
          *因此这里改为返回 FString，由 JS 侧 split。
          */
-        static GetConfigJsonFileNames() : string;
+        static GetConfigFileNames() : string;
         /*
-         *按文件名读取 JSON 内容（FileName 不含扩展名，文件不存在返回空串）
+         *按文件名读取 protobuf 二进制内容（FileName 不含扩展名，文件不存在返回空 buffer）
+         *返回 FArrayBufferValue，Puerts 会转换为 JS 侧 ArrayBuffer
          */
-        static LoadConfigJson(FileName: string) : string;
+        static LoadConfigBytes(FileName: string) : ArrayBuffer;
         static StaticClass(): Class;
         static Find(OrigInName: string, Outer?: Object): QiongQiConfigLoader;
         static Load(InName: string): QiongQiConfigLoader;
@@ -193904,16 +192252,16 @@ declare module "ue" {
          */
         GetNetworkConnectionStatus() : number;
         /*
+         *当前包是否为打包面板选择的 Debug 包（读取 DefaultGame.ini 的 [QiongQi] IsDebugPackage，
+         *由打包面板整包前固化：Debug 包=true，Release 包=false，无配置_旧包回退 false）。
+         *TS 层 Define.Debug 由此获取，用于调试模式（记忆服务器_跳过更新检查等）。
+         */
+        IsDebugPackage() : boolean;
+        /*
          *当前是否编辑器环境（GIsEditor：编辑器内运行_PIE 为 true，打包游戏为 false）。
          *TS 层 Define.IsEditor() 由此获取，替代原先的硬编码常量。
          */
         IsEditorEnvironment() : boolean;
-        /*
-         *当前包是否为打包面板选择的 Debug 包（读取 DefaultGame.ini 的 [QiongQi] IsDebugPackage，
-         *由打包面板整包前固化：Debug 包=true，Release 包=false，无配置/旧包回退 false）。
-         *TS 层 Define.Debug 由此获取，用于调试模式（记忆服务器/跳过更新检查等）。
-         */
-        IsDebugPackage() : boolean;
         /*
          *重启整个 JS 虚拟机（Puerts JsEnv）。
          *热更下载新 Code 后调用：先解绑 Tick 委托，再异步销毁旧 JsEnv 并以相同参数重建、
@@ -195714,44 +194062,6 @@ declare module "ue" {
         __tid_RenderTargetExporterPNG_0__: boolean;
     }
     
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum {
-        enum RenderToTexture_Enum { Material, "Unwrapped Mesh", "Depth Map", Lightmaps, "Lightmaps 2-sided", "Flipbook Mesh Animation", "Physics Ground - Tiling Physics Drop of Meshes", "Tiling Material from Hand Placed Meshes", RenderToTexture_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Flipbook_Enum {
-        enum RenderToTexture_Flipbook_Enum { "Simple Mesh rotation", "Material Instance Interpolation", "Both Mesh rotation and Material Instance Interpolation", RenderToTexture_Flipbook_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum {
-        enum RenderToTexture_Imposter_Enum { "Full 3D Imposter", "Single Rotation Axis", RenderToTexture_Imposter_MAX, __typeKeyDoNoAccess}
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureFunctionLibrary {
-        class RenderToTextureFunctionLibrary_C extends UE.BlueprintFunctionLibrary {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static ["Array to HLSL Int Array"](Type: UE.Engine.ArtTools.RenderToTexture.Enums.EIntTypes.EIntTypes, VariableName: $Ref<string>, int: $Ref<TArray<number>>, int2: $Ref<TArray<UE.Vector2D>>, int3: $Ref<TArray<UE.Vector>>, int4: $Ref<TArray<UE.LinearColor>>, __WorldContext: $Nullable<UE.Object>, String: $Ref<string>) : void;
-            static ["Set Canvas Material Scale and Position"](Size: UE.Vector2D, Position: UE.Vector2D, Scale: number, __WorldContext: $Nullable<UE.Object>, ScreenPosition: $Ref<UE.Vector2D>, ScreenSize: $Ref<UE.Vector2D>) : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTextureFunctionLibrary_C;
-            static Load(InName: string): RenderToTextureFunctionLibrary_C;
-        
-            __tid_RenderToTextureFunctionLibrary_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureMacros {
-        class RenderToTextureMacros_C extends UE.Actor {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTextureMacros_C;
-            static Load(InName: string): RenderToTextureMacros_C;
-        
-            __tid_RenderToTextureMacros_C_0__: boolean;
-        }
-        
-    }
-
     class ReOrientRootBoneModifier extends UE.AnimationModifier {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Rotator: UE.Rotator;
@@ -197025,28 +195335,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_RigLinearColorMetadata_0__: boolean;
-    }
-    
-    class RigLogicConfiguration {
-        constructor();
-        constructor(CalculationType: UE.ERigLogicCalculationType, LoadJoints: boolean, LoadBlendShapes: boolean, LoadAnimatedMaps: boolean, LoadMachineLearnedBehavior: boolean, LoadRBFBehavior: boolean, LoadTwistSwingBehavior: boolean, TranslationType: UE.ERigLogicTranslationType, RotationType: UE.ERigLogicRotationType, RotationOrder: UE.ERigLogicRotationOrder, ScaleType: UE.ERigLogicScaleType);
-        CalculationType: UE.ERigLogicCalculationType;
-        LoadJoints: boolean;
-        LoadBlendShapes: boolean;
-        LoadAnimatedMaps: boolean;
-        LoadMachineLearnedBehavior: boolean;
-        LoadRBFBehavior: boolean;
-        LoadTwistSwingBehavior: boolean;
-        TranslationType: UE.ERigLogicTranslationType;
-        RotationType: UE.ERigLogicRotationType;
-        RotationOrder: UE.ERigLogicRotationOrder;
-        ScaleType: UE.ERigLogicScaleType;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_RigLogicConfiguration_0__: boolean;
     }
     
     class RigNameArrayMetadata extends UE.RigBaseMetadata {
@@ -202232,52 +200520,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_RigUnit_ResolveConnector_0__: boolean;
-    }
-    
-    class RigUnit_RigLogic_IntArray {
-        constructor();
-        constructor(Values: TArray<number>);
-        Values: TArray<number>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_RigUnit_RigLogic_IntArray_0__: boolean;
-    }
-    
-    class RigUnit_RigLogic_Data {
-        constructor();
-        constructor(SkelMeshComponent: TWeakObjectPtr<UE.SkeletalMeshComponent>, InputCurveIndices: TArray<number>, NeuralNetMaskCurveIndices: TArray<number>, HierarchyBoneIndices: TArray<number>, DriverJointsToControlAttributesMap: TArray<UE.BoneIndexControlAttributeMapping>, MorphTargetCurveIndices: TArray<UE.RigUnit_RigLogic_IntArray>, BlendShapeIndices: TArray<UE.RigUnit_RigLogic_IntArray>, CurveElementIndicesForAnimMaps: TArray<UE.RigUnit_RigLogic_IntArray>, RigLogicIndicesForAnimMaps: TArray<UE.RigUnit_RigLogic_IntArray>, CurrentLOD: number);
-        SkelMeshComponent: TWeakObjectPtr<UE.SkeletalMeshComponent>;
-        InputCurveIndices: TArray<number>;
-        NeuralNetMaskCurveIndices: TArray<number>;
-        HierarchyBoneIndices: TArray<number>;
-        DriverJointsToControlAttributesMap: TArray<UE.BoneIndexControlAttributeMapping>;
-        MorphTargetCurveIndices: TArray<UE.RigUnit_RigLogic_IntArray>;
-        BlendShapeIndices: TArray<UE.RigUnit_RigLogic_IntArray>;
-        CurveElementIndicesForAnimMaps: TArray<UE.RigUnit_RigLogic_IntArray>;
-        RigLogicIndicesForAnimMaps: TArray<UE.RigUnit_RigLogic_IntArray>;
-        CurrentLOD: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_RigUnit_RigLogic_Data_0__: boolean;
-    }
-    
-    class RigUnit_RigLogic extends UE.RigUnitMutable {
-        constructor();
-        constructor(Data: UE.RigUnit_RigLogic_Data, bIsInitialized: boolean);
-        Data: UE.RigUnit_RigLogic_Data;
-        bIsInitialized: boolean;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_RigUnit_RigLogic_0__: boolean;
     }
     
     class RigUnit_RigModulesBaseMutable extends UE.RigUnitMutable {
@@ -213011,10 +211253,6 @@ declare module "ue" {
         __tid_SceneCaptureCube_0__: boolean;
     }
     
-    namespace Niagara.Enums.Collision.SceneDepthCollisionQueryMethod {
-        enum SceneDepthCollisionQueryMethod { "Scene Depth", "Custom Depth", "Partial Depth", SceneDepthCollisionQueryMethod_MAX, __typeKeyDoNoAccess}
-    }
-
     class SceneOutlinerMenuContext extends UE.Object {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -216171,15 +214409,6 @@ declare module "ue" {
         static StaticClass(): ScriptStruct;
         static StaticStruct(): ScriptStruct;
         __tid_SkeletonToMeshLinkup_0__: boolean;
-    }
-    
-    class SkelMeshDNAUtils extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): SkelMeshDNAUtils;
-        static Load(InName: string): SkelMeshDNAUtils;
-    
-        __tid_SkelMeshDNAUtils_0__: boolean;
     }
     
     class SkelMeshMergeMeshUVTransforms {
@@ -220021,18 +218250,6 @@ declare module "ue" {
         __tid_StackBox_0__: boolean;
     }
     
-    namespace Engine.EditorBlueprintResources.StandardMacros {
-        class StandardMacros_C extends UE.Object {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): StandardMacros_C;
-            static Load(InName: string): StandardMacros_C;
-        
-            __tid_StandardMacros_C_0__: boolean;
-        }
-        
-    }
-
     class StandardSculptBrushOpProps extends UE.MeshSculptBrushOpProps {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         Strength: number;
@@ -227943,19 +226160,6 @@ declare module "ue" {
         __tid_TextureColorAdapterClickToolBuilder_0__: boolean;
     }
     
-    class TextureCoordinate {
-        constructor();
-        constructor(U: number, V: number);
-        U: number;
-        V: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TextureCoordinate_0__: boolean;
-    }
-    
     class TextureCubeArray extends UE.Texture {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         SourceTextures_EditorOnly: TArray<UE.TextureCube>;
@@ -228226,38 +226430,6 @@ declare module "ue" {
         static Load(InName: string): TextureRenderTargetVolumeFactoryNew;
     
         __tid_TextureRenderTargetVolumeFactoryNew_0__: boolean;
-    }
-    
-    class TextureUsage {
-        constructor();
-        constructor(matID: string, matParams: string);
-        matID: string;
-        matParams: string;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TextureUsage_0__: boolean;
-    }
-    
-    class TexturesList {
-        constructor();
-        constructor(textureID: string, type: string, resolution: string, name: string, path: string, isChannelPacked: boolean, channelPackInfo: TArray<UE.ChannelPackedInfo>, pluggedIn: TArray<UE.TextureUsage>);
-        textureID: string;
-        type: string;
-        resolution: string;
-        name: string;
-        path: string;
-        isChannelPacked: boolean;
-        channelPackInfo: TArray<UE.ChannelPackedInfo>;
-        pluggedIn: TArray<UE.TextureUsage>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_TexturesList_0__: boolean;
     }
     
     class TextureStats extends UE.Object {
@@ -231505,28 +229677,6 @@ declare module "ue" {
         __tid_TypeScriptGeneratedClass_0__: boolean;
     }
     
-    class UAssetMeta {
-        constructor();
-        constructor(assetID: string, assetName: string, assetType: string, assetSubType: string, assetTier: number, assetRootPath: string, meshList: TArray<UE.MeshInfo>, foliageAssetPaths: TArray<string>, materialInstances: TArray<UE.MaterialInstanceInfo>, textureSets: TArray<UE.TexturesList>, masterMaterials: TArray<UE.MasterMaterialInfo>);
-        assetID: string;
-        assetName: string;
-        assetType: string;
-        assetSubType: string;
-        assetTier: number;
-        assetRootPath: string;
-        meshList: TArray<UE.MeshInfo>;
-        foliageAssetPaths: TArray<string>;
-        materialInstances: TArray<UE.MaterialInstanceInfo>;
-        textureSets: TArray<UE.TexturesList>;
-        masterMaterials: TArray<UE.MasterMaterialInfo>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_UAssetMeta_0__: boolean;
-    }
-    
     class UDIMBlock {
         constructor();
         constructor(UDIM: number, TextureResolution: number);
@@ -231663,6 +229813,13 @@ declare module "ue" {
          */
         GetPlatformName() : string;
         /*
+         *当前包是否为"全量资源打入首包"模式（读取 Config_DefaultGame.ini 的 [QiongQi] FullInFirstPak，
+         *由打包面板整包前写入）。全量进首包：首包已含全部资源，本地版本对齐包内版本后无需再拉 CDN 累积增量，
+         *TS 更新流程据此在"本地版本已不低于最新版本"时短路跳过下载。
+         *无配置（旧包_读取失败）时回退 false（按 CDN 模式处理，不短路），避免 CDN 包误短路导致资源缺失。
+         */
+        IsFullInFirstPak() : boolean;
+        /*
          *挂载本地已下载的 CDN pak（Saved_Paks.pak）。
          *遍历按文件名排序保证顺序稳定，逐个以 PakOrder=100+i 挂载（高于首包默认 0），
          *使二次启动时文件系统层即命中最新资源（含新 Code）。失败不中断。
@@ -231684,14 +229841,6 @@ declare module "ue" {
          *@return 本地版本被提升并写回成功返回 true；包内无版本号、本地已不低于包内或写失败返回 false。
          */
         SyncLocalVersionFromPackage() : boolean;
-        /*
-         *当前包是否为"全量资源打入首包"模式（读取 Config_DefaultGame.ini 的 [QiongQi] FullInFirstPak，
-         *由打包面板整包前写入）。全量进首包：首包已含全部资源，本地版本对齐包内版本后无需再拉 CDN 累积增量，
-         *TS 更新流程据此在"本地版本已不低于最新版本"时短路跳过下载。
-         *无配置（旧包/读取失败）时回退 false（按 CDN 模式处理，不短路），避免 CDN 包误短路导致资源缺失。
-         *@return 全量进首包模式返回 true，否则返回 false。
-         */
-        IsFullInFirstPak() : boolean;
         /*
          *获取单例（AddToRoot 防 GC）
          */
@@ -235222,29 +233371,6 @@ declare module "ue" {
         __tid_VerseStruct_0__: boolean;
     }
     
-    class VersionData {
-        constructor();
-        constructor(assets: TArray<UE.AssetInfo>);
-        assets: TArray<UE.AssetInfo>;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_VersionData_0__: boolean;
-    }
-    
-    class VersionInfoHandler extends UE.Object {
-        constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-        CommonVersionData: UE.VersionData;
-        static Get_EditorOnly() : UE.VersionInfoHandler;
-        static StaticClass(): Class;
-        static Find(OrigInName: string, Outer?: Object): VersionInfoHandler;
-        static Load(InName: string): VersionInfoHandler;
-    
-        __tid_VersionInfoHandler_0__: boolean;
-    }
-    
     class VertexAdapterClickTool extends UE.MeshClickTool {
         constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
         static StaticClass(): Class;
@@ -235296,20 +233422,6 @@ declare module "ue" {
         static Load(InName: string): VertexColorSoftenBrushOpProps;
     
         __tid_VertexColorSoftenBrushOpProps_0__: boolean;
-    }
-    
-    class VertexLayout {
-        constructor();
-        constructor(Position: number, TextureCoordinate: number, Normal: number);
-        Position: number;
-        TextureCoordinate: number;
-        Normal: number;
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_VertexLayout_0__: boolean;
     }
     
     class VertexOffsetUsage {
@@ -237243,16 +235355,6 @@ declare module "ue" {
         static Load(InName: string): WeakObjectProperty;
     
         __tid_WeakObjectProperty_0__: boolean;
-    }
-    
-    class WebJSResponse extends UE.WebJSCallbackBase {
-        constructor();
-        /**
-         * @deprecated use StaticStruct instead.
-         */
-        static StaticClass(): ScriptStruct;
-        static StaticStruct(): ScriptStruct;
-        __tid_WebJSResponse_0__: boolean;
     }
     
     class WebMPlatFileMediaSourceFactory extends UE.Factory {
@@ -240069,6 +238171,405 @@ declare module "ue" {
         
     }
 
+    namespace Engine.EditorBlueprintResources.ActorComponentMacros {
+        class ActorComponentMacros_C extends UE.ActorComponent {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ActorComponentMacros_C;
+            static Load(InName: string): ActorComponentMacros_C;
+        
+            __tid_ActorComponentMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorBlueprintResources.ActorMacros {
+        class ActorMacros_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): ActorMacros_C;
+            static Load(InName: string): ActorMacros_C;
+        
+            __tid_ActorMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorBlueprintResources.StandardMacros {
+        class StandardMacros_C extends UE.Object {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): StandardMacros_C;
+            static Load(InName: string): StandardMacros_C;
+        
+            __tid_StandardMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.EIntTypes {
+        enum EIntTypes { int, int2, int3, int4, EIntTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureFunctionLibrary {
+        class RenderToTextureFunctionLibrary_C extends UE.BlueprintFunctionLibrary {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static ["Array to HLSL Int Array"](Type: UE.Engine.ArtTools.RenderToTexture.Enums.EIntTypes.EIntTypes, VariableName: $Ref<string>, int: $Ref<TArray<number>>, int2: $Ref<TArray<UE.Vector2D>>, int3: $Ref<TArray<UE.Vector>>, int4: $Ref<TArray<UE.LinearColor>>, __WorldContext: $Nullable<UE.Object>, String: $Ref<string>) : void;
+            static ["Set Canvas Material Scale and Position"](Size: UE.Vector2D, Position: UE.Vector2D, Scale: number, __WorldContext: $Nullable<UE.Object>, ScreenPosition: $Ref<UE.Vector2D>, ScreenSize: $Ref<UE.Vector2D>) : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTextureFunctionLibrary_C;
+            static Load(InName: string): RenderToTextureFunctionLibrary_C;
+        
+            __tid_RenderToTextureFunctionLibrary_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Macros.RenderToTextureMacros {
+        class RenderToTextureMacros_C extends UE.Actor {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTextureMacros_C;
+            static Load(InName: string): RenderToTextureMacros_C;
+        
+            __tid_RenderToTextureMacros_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.EFloatTypes {
+        enum EFloatTypes { Float, Float2, Float3, Float4, EFloatTypes_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum {
+        enum RenderToTexture_Enum { Material, "Unwrapped Mesh", "Depth Map", Lightmaps, "Lightmaps 2-sided", "Flipbook Mesh Animation", "Physics Ground - Tiling Physics Drop of Meshes", "Tiling Material from Hand Placed Meshes", RenderToTexture_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Flipbook_Enum {
+        enum RenderToTexture_Flipbook_Enum { "Simple Mesh rotation", "Material Instance Interpolation", "Both Mesh rotation and Material Instance Interpolation", RenderToTexture_Flipbook_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum {
+        enum RenderToTexture_Imposter_Enum { "Full 3D Imposter", "Single Rotation Axis", RenderToTexture_Imposter_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Game {
+        class RenderToTexture_Game_C extends UE.GameMode {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            DefaultSceneRoot: UE.SceneComponent;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Game_C;
+            static Load(InName: string): RenderToTexture_Game_C;
+        
+            __tid_RenderToTexture_Game_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh {
+        class PhysMesh {
+            constructor();
+            constructor(SMesh: UE.StaticMesh, Transform: UE.Transform);
+            SMesh: UE.StaticMesh;
+            Transform: UE.Transform;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_PhysMesh_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh {
+        class TilingMesh {
+            constructor();
+            constructor(StaticMesh: UE.StaticMesh, Transform: UE.Transform, Material: UE.MaterialInstanceConstant, Visible: boolean, DisplacementTexture: UE.Texture);
+            StaticMesh: UE.StaticMesh;
+            Transform: UE.Transform;
+            Material: UE.MaterialInstanceConstant;
+            Visible: boolean;
+            DisplacementTexture: UE.Texture;
+            /**
+             * @deprecated use StaticStruct instead.
+             */
+            static StaticClass(): ScriptStruct;
+            static StaticStruct(): ScriptStruct;
+            __tid_TilingMesh_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP {
+        class RenderToTexture_LevelBP_C extends UE.Pawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            ["BottomCollision-LargeMeshesOnly"]: UE.BoxComponent;
+            ["SceneCapture Motion Position 1"]: UE.SceneCaptureComponent2D;
+            TopOutline: UE.BoxComponent;
+            PreviewMesh: UE.StaticMeshComponent;
+            TilingPreviewCapture: UE.SceneCaptureComponent2D;
+            BottomCollision: UE.BoxComponent;
+            Box5: UE.BoxComponent;
+            Box4: UE.BoxComponent;
+            Box3: UE.BoxComponent;
+            Box2: UE.BoxComponent;
+            PlaneMesh: UE.StaticMeshComponent;
+            Debug: UE.TextRenderComponent;
+            Camera1: UE.CameraComponent;
+            Root: UE.StaticMeshComponent;
+            RotationArray: TArray<UE.Rotator>;
+            ["Render Type"]: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum.RenderToTexture_Enum;
+            ["Viewport size (see Tooltip)"]: number;
+            ResolutionMultiplier: number;
+            BaseColor: boolean;
+            Specular: boolean;
+            Metallic: boolean;
+            Normal: boolean;
+            Opacity: boolean;
+            Roughness: boolean;
+            AmbientOcclusion: boolean;
+            MaterialAmbientOcclusion: boolean;
+            ["Decal Mask"]: boolean;
+            ["Lighting Only"]: boolean;
+            ["Subsurface Color"]: boolean;
+            ["Imposter Static Mesh"]: UE.StaticMesh;
+            BufferCommands: string;
+            ResCommand: string;
+            SheetSize: number;
+            ShotCommand: string;
+            MeshScale: number;
+            ["Imposter MaterialInstanceArray"]: TArray<UE.MaterialInstance>;
+            MaterialColor2: UE.LinearColor;
+            SectorSize: number;
+            InitialOffset: UE.Vector;
+            initialscale: number;
+            Internalscalefactor: number;
+            StaticMeshComponent: UE.StaticMeshComponent;
+            LevelStaticMeshActorArray: TArray<UE.Actor>;
+            ["Render to Texture Mesh"]: UE.StaticMeshActor;
+            ["Use Level Meshes for Depth"]: boolean;
+            LightVector: UE.Vector;
+            ["Directional Light"]: UE.DirectionalLight;
+            ["Opacity Mask Textures"]: TArray<UE.Texture>;
+            ["Opacity Mask Channels"]: TArray<UE.LinearColor>;
+            ["Frames around Z rotation"]: number;
+            ["Aspect Ratio 1 by"]: number;
+            ["Use Level Placed Meshes"]: boolean;
+            ["Lightmap Mesh"]: UE.StaticMeshActor;
+            ["Lightmap Mesh 2-sided, Side 1"]: UE.StaticMeshActor;
+            ["Lightmap Mesh 2-sided, Side 2"]: UE.StaticMeshActor;
+            ["Depth Map Static Mesh"]: UE.StaticMesh;
+            Unwrap: boolean;
+            ["Depth Material Mask Textures"]: TArray<UE.Texture2D>;
+            ["Flipbook Start Rotation"]: UE.Rotator;
+            ["Flipbook Rotation Axis 1"]: UE.Vector;
+            ["Flipbook Rotation Axis 2"]: UE.Vector;
+            ["Axis 1 Rotations"]: number;
+            ["Axis 2 Rotations"]: number;
+            ["Flipbook Columns (X)"]: number;
+            ["Flipbook Rows (Y)"]: number;
+            ["Flipbook MaterialInstance List"]: TArray<UE.MaterialInstance>;
+            ["Opacity MaskTextures"]: TArray<UE.Texture>;
+            ["Opacity MaskChannels"]: TArray<UE.LinearColor>;
+            ["Flipbook Static Mesh"]: UE.StaticMesh;
+            ["Flipbook Mesh scale"]: number;
+            ["Preview Speed"]: number;
+            ImposterEnum: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum.RenderToTexture_Imposter_Enum;
+            ["Single Rotation Axis"]: UE.Vector;
+            ["Unwrap Lightmap 2sided"]: boolean;
+            Unwrap2sidedMIDlistA: TArray<UE.MaterialInstanceDynamic>;
+            Unwrap2sidedMIDListB: TArray<UE.MaterialInstanceDynamic>;
+            ["Lightmap Unwrap Material"]: UE.MaterialInstanceConstant;
+            ["Unwrap Lightmap"]: boolean;
+            ["Mask Channel"]: TArray<UE.LinearColor>;
+            DepthMeshInitialSize: UE.Vector;
+            DepthMID: UE.MaterialInstanceDynamic;
+            ["Scale XY"]: number;
+            ["Scale Z"]: number;
+            ["Fit Vector and scale info onto texture"]: boolean;
+            TextSize: number;
+            ["Text Locations"]: TArray<UE.Vector>;
+            ParticleSystem: UE.ParticleSystem;
+            SavedPhysMeshList: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh.PhysMesh>;
+            ["Simulate Physics"]: boolean;
+            ["Keep Tiling Hand Placed Meshes"]: boolean;
+            ["Simple Random Placement"]: boolean;
+            ["PhysGround Mat"]: UE.MaterialInstanceConstant;
+            ["Mesh List"]: TArray<UE.StaticMesh>;
+            ["Mesh Size Min"]: number;
+            ["Mesh Size Max"]: number;
+            ["Size Curve"]: number;
+            ["Spawn by Size"]: boolean;
+            ["PhysGround Density m^2"]: number;
+            Count: number;
+            ["Number of Meshes"]: number;
+            PhysStaticMeshes: TArray<UE.StaticMeshComponent>;
+            ["Debug Displacement Depth"]: boolean;
+            ["Displacement Min"]: number;
+            ["Displacement Max"]: number;
+            ["Kill Above Z Min"]: number;
+            ["Kill Above Z Max"]: number;
+            ["Copied Mesh Array"]: TArray<UE.StaticMeshComponent>;
+            ["Current Component"]: UE.StaticMeshComponent;
+            StaticMobilityMeshes: TArray<UE.StaticMeshComponent>;
+            SavedMeshComponents: TArray<UE.StaticMeshComponent>;
+            ["Material Instance"]: UE.MaterialInstance;
+            ["Stadium Offsetting"]: boolean;
+            ["TilingMesh List"]: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh.TilingMesh>;
+            SceneDepthWorldUnits: boolean;
+            DisplacementMin: number;
+            DisplacementMax: number;
+            DebugDisplacementDepth: boolean;
+            ["Custom Depth"]: boolean;
+            ["Displacement Texture Height"]: number;
+            ["Preview Tiling"]: boolean;
+            ["Tiling Amount"]: number;
+            ImposterArray: TArray<UE.Transform>;
+            PreviewLocation: UE.Vector;
+            ["Output Depth Maps"]: boolean;
+            ImposterMeshComponents: TArray<UE.StaticMeshComponent>;
+            BackgroundSheetMID: UE.MaterialInstanceDynamic;
+            ["Debug Depth"]: boolean;
+            ["Max Pitch/Roll"]: number;
+            ["Render Motion Vectors"]: boolean;
+            SceneColor: boolean;
+            ["Sheet height"]: number;
+            ["Background Sheet Color"]: UE.LinearColor;
+            FlipbookMeshes: TArray<UE.StaticMeshComponent>;
+            ["UV Layout Dilation Amount"]: number;
+            OffsetVectors: TArray<UE.Vector>;
+            ["Empty Spacer"]: boolean;
+            CurrentRenderLoc: UE.Vector;
+            ["UV Dilation Steps"]: number;
+            MaterialChoice: UE.MaterialInstance;
+            MVFloors: TArray<UE.StaticMeshComponent>;
+            FlipbookMID: UE.MaterialInstanceDynamic;
+            ["Motion Dilation Steps"]: number;
+            UnwrappedMotionVectorMeshes: TArray<UE.StaticMeshComponent>;
+            MotionVectorIntensityBoost: number;
+            sRGB: boolean;
+            ["Render MotionVectors"]: boolean;
+            ["Large Mesh Sink Height"]: number;
+            ["Large Mesh Size Threshold"]: number;
+            ["UV DilationPass"]: boolean;
+            ["MotionVector Pass"]: boolean;
+            MotionVectorMaterial: UE.MaterialInstanceConstant;
+            MotionVectorsApplied: UE.MaterialInstanceConstant;
+            ["UV Layout DilationAmount"]: number;
+            ["UV DilationSteps"]: number;
+            ["Motion DilationSteps"]: number;
+            ["Motion Vector IntensityBoost"]: number;
+            MotionVectorsApplied_Imposter: UE.MaterialInstanceConstant;
+            ["Flipbook Preview Mat"]: UE.MaterialInstanceConstant;
+            ["Imposter-SingleAxis Preview Mat"]: UE.MaterialInstanceConstant;
+            ["Imposter-3D Preview Mat"]: UE.MaterialInstanceConstant;
+            MIDList: TArray<UE.MaterialInstanceDynamic>;
+            PolyCenter: UE.Vector;
+            ["Offst Phase"]: number;
+            ["Dilation Phase"]: number;
+            ["Ortho FOV"]: number;
+            ["Indicies to Delete"]: TArray<number>;
+            TilingAmount: number;
+            UVIndex: number;
+            ["UV Index"]: number;
+            NewVar: UE.MaterialInstanceDynamic;
+            ["Export images as EXR"]: boolean;
+            ["Copy a mesh"](MeshComponent: $Nullable<UE.StaticMeshComponent>, OffsetVector: UE.Vector, ArraytoPlaceMeshesin: $Ref<TArray<UE.StaticMeshComponent>>) : void;
+            ExecuteUbergraph_RenderToTexture_LevelBP(EntryPoint: number) : void;
+            ["Find Z Bounds"](Meshes: $Ref<TArray<UE.StaticMeshComponent>>, Min: $Ref<number>, Max: $Ref<number>) : void;
+            FlipBook() : void;
+            ["Imposter Sprites"]() : void;
+            ["Match Level Actors to Imposter Array"]() : void;
+            ["New Mesh"](Mesh: $Nullable<UE.StaticMesh>, WorldPos: UE.Vector, Material: $Nullable<UE.MaterialInterface>, Scale3d: UE.Vector, MeshComp: $Ref<UE.StaticMeshComponent>) : void;
+            ["Particle System Frame Dump"]() : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            ["Render Depth Map"](MID: $Ref<UE.MaterialInstanceDynamic>) : void;
+            ["Render Lightmap"]() : void;
+            ["Render LIghtmap 2-sided"]() : void;
+            ["Render Random Tiling Physics Drop"]() : void;
+            ["Render Tiling Material"]() : void;
+            ["Render Tiling Material from Meshes"]() : void;
+            ["Render Unwrapped Mesh To Textures"]() : void;
+            ["Set Buffer Commands"]() : void;
+            ["Set up MPC"]() : void;
+            ["Setup Collision"](Visible: boolean) : void;
+            /*
+             *Construction script, the place to spawn components and do other setup.
+             *@note Name used in CreateBlueprint function
+             */
+            UserConstructionScript() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_LevelBP_C;
+            static Load(InName: string): RenderToTexture_LevelBP_C;
+        
+            __tid_RenderToTexture_LevelBP_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Pawn {
+        class RenderToTexture_Pawn_C extends UE.Pawn {
+            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
+            UberGraphFrame: UE.PointerToUberGraphFrame;
+            Pawncam: UE.CameraComponent;
+            Root: UE.StaticMeshComponent;
+            BaseColor: boolean;
+            Specular: boolean;
+            Normal: boolean;
+            Opacity: boolean;
+            Roughness: boolean;
+            AmbientOcclusion: boolean;
+            MaterialAmbientOcclusion: boolean;
+            ResolutionMultiplier: number;
+            BufferCommands: string;
+            ShotCommand: string;
+            ["Backface SSS Meshes"]: TArray<UE.StaticMeshActor>;
+            MIDArray: TArray<UE.MaterialInstanceDynamic>;
+            Generator: UE.Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP.RenderToTexture_LevelBP_C;
+            debugdepth() : void;
+            ExecuteUbergraph_RenderToTexture_Pawn(EntryPoint: number) : void;
+            /*
+             *Event when play begins for this actor.
+             */
+            ReceiveBeginPlay() : void;
+            renderdepth() : void;
+            renderimposter() : void;
+            renderlightmaps() : void;
+            rendertextures() : void;
+            static StaticClass(): Class;
+            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Pawn_C;
+            static Load(InName: string): RenderToTexture_Pawn_C;
+        
+            __tid_RenderToTexture_Pawn_C_0__: boolean;
+        }
+        
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldShapeType {
+        enum EFieldShapeType { Box, Sphere, Plane, EFieldShapeType_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldActivationType {
+        enum EFieldActivationType { Delay, OnTick, OnTickWithDelay, Trigger, EFieldActivationType_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldForceVel {
+        enum EFieldForceVel { "Use Force", "Use Velocity", EFieldForceVel_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldNoiseCompMode {
+        enum EFieldNoiseCompMode { Add, Multiply, EFieldNoiseCompMode_MAX, __typeKeyDoNoAccess}
+    }
+
+    namespace Engine.EditorResources.FieldNodes._Resources.EFieldSleepType {
+        enum EFieldSleepType { Sleep, Disable, Kill, EFieldSleepType_MAX, __typeKeyDoNoAccess}
+    }
+
     namespace Engine.EditorResources.FieldNodes.Niagara.FS_BaseField {
         class FS_BaseField_C extends UE.FieldSystemActor {
             constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
@@ -241132,303 +239633,6 @@ declare module "ue" {
             static Load(InName: string): Linear_Velocity_for_Cloth_C;
         
             __tid_Linear_Velocity_for_Cloth_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh {
-        class PhysMesh {
-            constructor();
-            constructor(SMesh: UE.StaticMesh, Transform: UE.Transform);
-            SMesh: UE.StaticMesh;
-            Transform: UE.Transform;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_PhysMesh_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh {
-        class TilingMesh {
-            constructor();
-            constructor(StaticMesh: UE.StaticMesh, Transform: UE.Transform, Material: UE.MaterialInstanceConstant, Visible: boolean, DisplacementTexture: UE.Texture);
-            StaticMesh: UE.StaticMesh;
-            Transform: UE.Transform;
-            Material: UE.MaterialInstanceConstant;
-            Visible: boolean;
-            DisplacementTexture: UE.Texture;
-            /**
-             * @deprecated use StaticStruct instead.
-             */
-            static StaticClass(): ScriptStruct;
-            static StaticStruct(): ScriptStruct;
-            __tid_TilingMesh_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP {
-        class RenderToTexture_LevelBP_C extends UE.Pawn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            ["BottomCollision-LargeMeshesOnly"]: UE.BoxComponent;
-            ["SceneCapture Motion Position 1"]: UE.SceneCaptureComponent2D;
-            TopOutline: UE.BoxComponent;
-            PreviewMesh: UE.StaticMeshComponent;
-            TilingPreviewCapture: UE.SceneCaptureComponent2D;
-            BottomCollision: UE.BoxComponent;
-            Box5: UE.BoxComponent;
-            Box4: UE.BoxComponent;
-            Box3: UE.BoxComponent;
-            Box2: UE.BoxComponent;
-            PlaneMesh: UE.StaticMeshComponent;
-            Debug: UE.TextRenderComponent;
-            Camera1: UE.CameraComponent;
-            Root: UE.StaticMeshComponent;
-            RotationArray: TArray<UE.Rotator>;
-            ["Render Type"]: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Enum.RenderToTexture_Enum;
-            ["Viewport size (see Tooltip)"]: number;
-            ResolutionMultiplier: number;
-            BaseColor: boolean;
-            Specular: boolean;
-            Metallic: boolean;
-            Normal: boolean;
-            Opacity: boolean;
-            Roughness: boolean;
-            AmbientOcclusion: boolean;
-            MaterialAmbientOcclusion: boolean;
-            ["Decal Mask"]: boolean;
-            ["Lighting Only"]: boolean;
-            ["Subsurface Color"]: boolean;
-            ["Imposter Static Mesh"]: UE.StaticMesh;
-            BufferCommands: string;
-            ResCommand: string;
-            SheetSize: number;
-            ShotCommand: string;
-            MeshScale: number;
-            ["Imposter MaterialInstanceArray"]: TArray<UE.MaterialInstance>;
-            MaterialColor2: UE.LinearColor;
-            SectorSize: number;
-            InitialOffset: UE.Vector;
-            initialscale: number;
-            Internalscalefactor: number;
-            StaticMeshComponent: UE.StaticMeshComponent;
-            LevelStaticMeshActorArray: TArray<UE.Actor>;
-            ["Render to Texture Mesh"]: UE.StaticMeshActor;
-            ["Use Level Meshes for Depth"]: boolean;
-            LightVector: UE.Vector;
-            ["Directional Light"]: UE.DirectionalLight;
-            ["Opacity Mask Textures"]: TArray<UE.Texture>;
-            ["Opacity Mask Channels"]: TArray<UE.LinearColor>;
-            ["Frames around Z rotation"]: number;
-            ["Aspect Ratio 1 by"]: number;
-            ["Use Level Placed Meshes"]: boolean;
-            ["Lightmap Mesh"]: UE.StaticMeshActor;
-            ["Lightmap Mesh 2-sided, Side 1"]: UE.StaticMeshActor;
-            ["Lightmap Mesh 2-sided, Side 2"]: UE.StaticMeshActor;
-            ["Depth Map Static Mesh"]: UE.StaticMesh;
-            Unwrap: boolean;
-            ["Depth Material Mask Textures"]: TArray<UE.Texture2D>;
-            ["Flipbook Start Rotation"]: UE.Rotator;
-            ["Flipbook Rotation Axis 1"]: UE.Vector;
-            ["Flipbook Rotation Axis 2"]: UE.Vector;
-            ["Axis 1 Rotations"]: number;
-            ["Axis 2 Rotations"]: number;
-            ["Flipbook Columns (X)"]: number;
-            ["Flipbook Rows (Y)"]: number;
-            ["Flipbook MaterialInstance List"]: TArray<UE.MaterialInstance>;
-            ["Opacity MaskTextures"]: TArray<UE.Texture>;
-            ["Opacity MaskChannels"]: TArray<UE.LinearColor>;
-            ["Flipbook Static Mesh"]: UE.StaticMesh;
-            ["Flipbook Mesh scale"]: number;
-            ["Preview Speed"]: number;
-            ImposterEnum: UE.Engine.ArtTools.RenderToTexture.Enums.RenderToTexture_Imposter_Enum.RenderToTexture_Imposter_Enum;
-            ["Single Rotation Axis"]: UE.Vector;
-            ["Unwrap Lightmap 2sided"]: boolean;
-            Unwrap2sidedMIDlistA: TArray<UE.MaterialInstanceDynamic>;
-            Unwrap2sidedMIDListB: TArray<UE.MaterialInstanceDynamic>;
-            ["Lightmap Unwrap Material"]: UE.MaterialInstanceConstant;
-            ["Unwrap Lightmap"]: boolean;
-            ["Mask Channel"]: TArray<UE.LinearColor>;
-            DepthMeshInitialSize: UE.Vector;
-            DepthMID: UE.MaterialInstanceDynamic;
-            ["Scale XY"]: number;
-            ["Scale Z"]: number;
-            ["Fit Vector and scale info onto texture"]: boolean;
-            TextSize: number;
-            ["Text Locations"]: TArray<UE.Vector>;
-            ParticleSystem: UE.ParticleSystem;
-            SavedPhysMeshList: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.PhysMesh.PhysMesh>;
-            ["Simulate Physics"]: boolean;
-            ["Keep Tiling Hand Placed Meshes"]: boolean;
-            ["Simple Random Placement"]: boolean;
-            ["PhysGround Mat"]: UE.MaterialInstanceConstant;
-            ["Mesh List"]: TArray<UE.StaticMesh>;
-            ["Mesh Size Min"]: number;
-            ["Mesh Size Max"]: number;
-            ["Size Curve"]: number;
-            ["Spawn by Size"]: boolean;
-            ["PhysGround Density m^2"]: number;
-            Count: number;
-            ["Number of Meshes"]: number;
-            PhysStaticMeshes: TArray<UE.StaticMeshComponent>;
-            ["Debug Displacement Depth"]: boolean;
-            ["Displacement Min"]: number;
-            ["Displacement Max"]: number;
-            ["Kill Above Z Min"]: number;
-            ["Kill Above Z Max"]: number;
-            ["Copied Mesh Array"]: TArray<UE.StaticMeshComponent>;
-            ["Current Component"]: UE.StaticMeshComponent;
-            StaticMobilityMeshes: TArray<UE.StaticMeshComponent>;
-            SavedMeshComponents: TArray<UE.StaticMeshComponent>;
-            ["Material Instance"]: UE.MaterialInstance;
-            ["Stadium Offsetting"]: boolean;
-            ["TilingMesh List"]: TArray<UE.Engine.ArtTools.RenderToTexture.Blueprints.TilingMesh.TilingMesh>;
-            SceneDepthWorldUnits: boolean;
-            DisplacementMin: number;
-            DisplacementMax: number;
-            DebugDisplacementDepth: boolean;
-            ["Custom Depth"]: boolean;
-            ["Displacement Texture Height"]: number;
-            ["Preview Tiling"]: boolean;
-            ["Tiling Amount"]: number;
-            ImposterArray: TArray<UE.Transform>;
-            PreviewLocation: UE.Vector;
-            ["Output Depth Maps"]: boolean;
-            ImposterMeshComponents: TArray<UE.StaticMeshComponent>;
-            BackgroundSheetMID: UE.MaterialInstanceDynamic;
-            ["Debug Depth"]: boolean;
-            ["Max Pitch/Roll"]: number;
-            ["Render Motion Vectors"]: boolean;
-            SceneColor: boolean;
-            ["Sheet height"]: number;
-            ["Background Sheet Color"]: UE.LinearColor;
-            FlipbookMeshes: TArray<UE.StaticMeshComponent>;
-            ["UV Layout Dilation Amount"]: number;
-            OffsetVectors: TArray<UE.Vector>;
-            ["Empty Spacer"]: boolean;
-            CurrentRenderLoc: UE.Vector;
-            ["UV Dilation Steps"]: number;
-            MaterialChoice: UE.MaterialInstance;
-            MVFloors: TArray<UE.StaticMeshComponent>;
-            FlipbookMID: UE.MaterialInstanceDynamic;
-            ["Motion Dilation Steps"]: number;
-            UnwrappedMotionVectorMeshes: TArray<UE.StaticMeshComponent>;
-            MotionVectorIntensityBoost: number;
-            sRGB: boolean;
-            ["Render MotionVectors"]: boolean;
-            ["Large Mesh Sink Height"]: number;
-            ["Large Mesh Size Threshold"]: number;
-            ["UV DilationPass"]: boolean;
-            ["MotionVector Pass"]: boolean;
-            MotionVectorMaterial: UE.MaterialInstanceConstant;
-            MotionVectorsApplied: UE.MaterialInstanceConstant;
-            ["UV Layout DilationAmount"]: number;
-            ["UV DilationSteps"]: number;
-            ["Motion DilationSteps"]: number;
-            ["Motion Vector IntensityBoost"]: number;
-            MotionVectorsApplied_Imposter: UE.MaterialInstanceConstant;
-            ["Flipbook Preview Mat"]: UE.MaterialInstanceConstant;
-            ["Imposter-SingleAxis Preview Mat"]: UE.MaterialInstanceConstant;
-            ["Imposter-3D Preview Mat"]: UE.MaterialInstanceConstant;
-            MIDList: TArray<UE.MaterialInstanceDynamic>;
-            PolyCenter: UE.Vector;
-            ["Offst Phase"]: number;
-            ["Dilation Phase"]: number;
-            ["Ortho FOV"]: number;
-            ["Indicies to Delete"]: TArray<number>;
-            TilingAmount: number;
-            UVIndex: number;
-            ["UV Index"]: number;
-            NewVar: UE.MaterialInstanceDynamic;
-            ["Export images as EXR"]: boolean;
-            ["Copy a mesh"](MeshComponent: $Nullable<UE.StaticMeshComponent>, OffsetVector: UE.Vector, ArraytoPlaceMeshesin: $Ref<TArray<UE.StaticMeshComponent>>) : void;
-            ExecuteUbergraph_RenderToTexture_LevelBP(EntryPoint: number) : void;
-            ["Find Z Bounds"](Meshes: $Ref<TArray<UE.StaticMeshComponent>>, Min: $Ref<number>, Max: $Ref<number>) : void;
-            FlipBook() : void;
-            ["Imposter Sprites"]() : void;
-            ["Match Level Actors to Imposter Array"]() : void;
-            ["New Mesh"](Mesh: $Nullable<UE.StaticMesh>, WorldPos: UE.Vector, Material: $Nullable<UE.MaterialInterface>, Scale3d: UE.Vector, MeshComp: $Ref<UE.StaticMeshComponent>) : void;
-            ["Particle System Frame Dump"]() : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            ["Render Depth Map"](MID: $Ref<UE.MaterialInstanceDynamic>) : void;
-            ["Render Lightmap"]() : void;
-            ["Render LIghtmap 2-sided"]() : void;
-            ["Render Random Tiling Physics Drop"]() : void;
-            ["Render Tiling Material"]() : void;
-            ["Render Tiling Material from Meshes"]() : void;
-            ["Render Unwrapped Mesh To Textures"]() : void;
-            ["Set Buffer Commands"]() : void;
-            ["Set up MPC"]() : void;
-            ["Setup Collision"](Visible: boolean) : void;
-            /*
-             *Construction script, the place to spawn components and do other setup.
-             *@note Name used in CreateBlueprint function
-             */
-            UserConstructionScript() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_LevelBP_C;
-            static Load(InName: string): RenderToTexture_LevelBP_C;
-        
-            __tid_RenderToTexture_LevelBP_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Pawn {
-        class RenderToTexture_Pawn_C extends UE.Pawn {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            UberGraphFrame: UE.PointerToUberGraphFrame;
-            Pawncam: UE.CameraComponent;
-            Root: UE.StaticMeshComponent;
-            BaseColor: boolean;
-            Specular: boolean;
-            Normal: boolean;
-            Opacity: boolean;
-            Roughness: boolean;
-            AmbientOcclusion: boolean;
-            MaterialAmbientOcclusion: boolean;
-            ResolutionMultiplier: number;
-            BufferCommands: string;
-            ShotCommand: string;
-            ["Backface SSS Meshes"]: TArray<UE.StaticMeshActor>;
-            MIDArray: TArray<UE.MaterialInstanceDynamic>;
-            Generator: UE.Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_LevelBP.RenderToTexture_LevelBP_C;
-            debugdepth() : void;
-            ExecuteUbergraph_RenderToTexture_Pawn(EntryPoint: number) : void;
-            /*
-             *Event when play begins for this actor.
-             */
-            ReceiveBeginPlay() : void;
-            renderdepth() : void;
-            renderimposter() : void;
-            renderlightmaps() : void;
-            rendertextures() : void;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Pawn_C;
-            static Load(InName: string): RenderToTexture_Pawn_C;
-        
-            __tid_RenderToTexture_Pawn_C_0__: boolean;
-        }
-        
-    }
-
-    namespace Engine.ArtTools.RenderToTexture.Blueprints.RenderToTexture_Game {
-        class RenderToTexture_Game_C extends UE.GameMode {
-            constructor(Outer?: Object, Name?: string, ObjectFlags?: number);
-            DefaultSceneRoot: UE.SceneComponent;
-            static StaticClass(): Class;
-            static Find(OrigInName: string, Outer?: Object): RenderToTexture_Game_C;
-            static Load(InName: string): RenderToTexture_Game_C;
-        
-            __tid_RenderToTexture_Game_C_0__: boolean;
         }
         
     }

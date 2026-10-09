@@ -1,9 +1,9 @@
 import { IManager } from "../../../Mono/Core/Manager/IManager";
-import { JsonHelper } from "../../../Mono/Helper/JsonHelper";
 import { Log } from "../../../Mono/Module/Log/Log";
 import * as string from "../../../Mono/Helper/StringHelper"
 import { IConfigLoader } from "./IConfigLoader";
 import { ConfigLoader } from "./ConfigLoader";
+import { ProtoHelper } from "../../../Mono/Helper/ProtoHelper";
 
 export class ConfigManager implements IManager{
 
@@ -13,8 +13,8 @@ export class ConfigManager implements IManager{
         return ConfigManager._instance;
     }
 
-    /** 全量原始 JSON 数据缓存（name -> JSON.parse 后的原始对象，未反序列化） */
-    private rawConfigBytes: Map<string, any> = new Map<string, any>();
+    /** 全量原始数据缓存 */
+    private rawConfigBytes: Map<string, ArrayBuffer> = new Map<string, ArrayBuffer>();
 
     /** 反序列化后的强类型缓存（type -> category 实例） */
     private configCache: Map<any, object> = new Map<any, object>();
@@ -34,7 +34,7 @@ export class ConfigManager implements IManager{
     }
 
     /**
-     * 全量加载 AssetsPackage/Config 下所有配置 JSON 到内存（只 JSON.parse 不反序列化）
+     * 全量加载 AssetsPackage/Config 下所有配置 protobuf 二进制到内存（只缓存字节不反序列化）
      */
     public async loadAsync(): Promise<void> {
         await this.loader.loadAllAsync((name, data) => {
@@ -61,8 +61,8 @@ export class ConfigManager implements IManager{
             return null;
         }
 
-        const category = JsonHelper.deserialize(type, rawData);
-        category.endInit();
+        const category = ProtoHelper.fromBytes(type, rawData) as any;
+        category?.endInit();
         this.configCache.set(type, category);
         return category as T;
     }
@@ -87,8 +87,8 @@ export class ConfigManager implements IManager{
             return null;
         }
 
-        const category = JsonHelper.deserialize(type, rawData);
-        category.endInit();
+        const category = ProtoHelper.fromBytes(type, rawData) as any;
+        category?.endInit();
         return category as T;
     }
 
