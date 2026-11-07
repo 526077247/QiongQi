@@ -61,7 +61,7 @@ export abstract class UIBaseContainer extends UIBaseComponent {
         this.length--;
         if (this.length <= 0)
         {
-            if (this.parent != null && !!this.path)
+            if (this.parent != null && this.path != null)
                 this.parent._innerRemoveComponent(this, this.path);
             else
                 Log.info("Close window here, type name: " + this.constructor.name);

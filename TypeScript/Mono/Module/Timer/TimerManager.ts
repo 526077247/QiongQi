@@ -154,7 +154,13 @@ export class TimerManager implements IManager,IUpdate {
                 }
                 let obj = timerAction.object;
                 this.remove(timerAction.id);
-                timer.call(obj);
+                try {
+                    timer.call(obj);
+                } catch (e: any) {
+                    // 单个定时器异常不能让 update 中断：否则同帧已出队的其它 frame timer 会
+                    // 无法重新入队，永久丢失，表现为整体卡死。
+                    Log.error(e);
+                }
                 break;
             }
             case TimerClass.OnceWaitTimer: {
@@ -173,7 +179,12 @@ export class TimerManager implements IManager,IUpdate {
                     Log.error(`not found timer action: ${type}`);
                     return;
                 }
-                timer.call(timerAction.object);
+                try {
+                    timer.call(timerAction.object);
+                } catch (e: any) {
+                    // 同上：重复定时器异常不能中断 update，否则会导致大量定时器丢失。
+                    Log.error(e);
+                }
                 break;
             }
         }
@@ -225,7 +236,7 @@ export class TimerManager implements IManager,IUpdate {
         try {
             cancellationToken?.add(CancelAction);
             ret = await tcs;
-        } catch (ex) {
+        } catch (ex: any) {
             ret = false;
             Log.error(ex);
         } finally {
@@ -262,7 +273,7 @@ export class TimerManager implements IManager,IUpdate {
         try {
             cancellationToken?.add(cancelAction);
             ret = await tcs;
-        } catch (ex) {
+        } catch (ex: any) {
             ret = false;
             Log.error(ex);
         } finally {
@@ -331,6 +342,6 @@ export class TimerManager implements IManager,IUpdate {
     }
 
     public getTimeNow(): number {
-        return TimeInfo.instance.serverNow();
+        return TimeInfo.instance.clientNow();
     }
 }
